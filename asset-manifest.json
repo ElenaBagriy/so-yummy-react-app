@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/so-yummy-react-app/static/css/main.7d4b1dbf.css",
-    "main.js": "/so-yummy-react-app/static/js/main.5ca43776.js",
+    "main.js": "/so-yummy-react-app/static/js/main.af46beec.js",
     "index.html": "/so-yummy-react-app/index.html",
     "main.7d4b1dbf.css.map": "/so-yummy-react-app/static/css/main.7d4b1dbf.css.map",
-    "main.5ca43776.js.map": "/so-yummy-react-app/static/js/main.5ca43776.js.map"
+    "main.af46beec.js.map": "/so-yummy-react-app/static/js/main.af46beec.js.map"
   },
   "entrypoints": [
     "static/css/main.7d4b1dbf.css",
-    "static/js/main.5ca43776.js"
+    "static/js/main.af46beec.js"
   ]
 }
