@@ -1,17 +1,20 @@
-@import-normalize; /* bring in normalize.css styles */
+import { createGlobalStyle } from "styled-components";
+import { normalize } from 'styled-normalize';
+
+
+export const GlobalStyle = createGlobalStyle`
+${normalize}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fafafa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Box sizing rules */
@@ -123,3 +126,5 @@ table {
     padding-right: 100px;
   }
 }
+
+`
