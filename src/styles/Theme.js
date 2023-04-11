@@ -24,8 +24,7 @@ const darkTheme = {
 };
 
 export const Theme = ({ children }) => {
-    const [theme, setTheme] = useState('light');
-    const isDarkTheme = theme === "dark";
+    const isDarkTheme = false;
     
     return <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>{children}</ThemeProvider>
 } 
