@@ -22,11 +22,17 @@ export const UserAPI = {
     setAuthHeader(data.token);
     return data;
   },
-  logout: async () => {
-    await axios.post('/users/logout');
+  logout: async (persistedToken) => {
+    await axios.post('/users/logout', persistedToken);    //тут нужно что-то вернуть
     clearAuthHeader();
   },
-  refresh: async persistedToken => {
+
+  refreshToken: async refreshToken => {
+    const { data } = await axios.post('/users/refresh', refreshToken);
+    return data;
+  },
+
+  refreshUser: async persistedToken => {
     setAuthHeader(persistedToken);
     const { data } = await axios.get('/users/current');
     return data;
