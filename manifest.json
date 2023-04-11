@@ -8,14 +8,34 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo-desktop@1x.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "44x44"
     },
     {
-      "src": "logo512.png",
+      "src": "logo-desktop@2x.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "88x88"
+    },
+    {
+      "src": "logo-desktop@3x.png",
+      "type": "image/png",
+      "sizes": "132x132"
+    },
+    {
+      "src": "logo-mobile@1x.png",
+      "type": "image/png",
+      "sizes": "40x40"
+    },
+    {
+      "src": "logo-mobile@2x.png",
+      "type": "image/png",
+      "sizes": "80x80"
+    },
+    {
+      "src": "logo-mobile@3x.png",
+      "type": "image/png",
+      "sizes": "120x120"
     }
   ],
   "start_url": ".",
