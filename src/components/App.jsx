@@ -1,5 +1,7 @@
-import { GlobalStyle } from "styles/GlobalStyle";
-import { Theme } from "styles/Theme";
+import { Route, Routes } from 'react-router-dom';
+import { GlobalStyle } from 'styles/GlobalStyle';
+import { Theme } from 'styles/Theme';
+import { SharedLayout } from './SharedLayout/SharedLayout';
 
 export const App = () => {
   return (
@@ -7,7 +9,12 @@ export const App = () => {
       <Theme>
         <GlobalStyle />
         тут щось буде...
-        </Theme>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            {/* --- Отсальные страницы сюда --- */}
+          </Route>
+        </Routes>
+      </Theme>
     </div>
   );
 };
