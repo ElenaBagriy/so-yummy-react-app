@@ -1,0 +1,16 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-blackDot-desktop" viewBox="0 0 32 32">
+<path d="M5.8 8.113l11.601-5.41c3.203-1.494 7.011-0.108 8.505 3.096l5.41 11.601c1.494 3.203 0.108 7.011-3.096 8.505l-11.601 5.41c-3.203 1.494-7.011 0.108-8.505-3.096l-5.41-11.601c-1.494-3.203-0.108-7.011 3.096-8.505z"></path>
+</symbol>
+<symbol id="icon-blackDot-mobile" viewBox="0 0 32 32">
+<path d="M12.429 3.347c6.865-3.201 15.024-0.231 18.225 6.633s0.231 15.024-6.633 18.225c-6.865 3.201-15.024 0.231-18.225-6.633s-0.231-15.024 6.633-18.225z"></path>
+</symbol>
+<symbol id="icon-greenDot-desktop" viewBox="0 0 32 32">
+<path fill="#8baa36" style="fill: var(--color1, #8baa36)" d="M4.834 8.265l12.89-6.011c2.67-1.245 5.843-0.090 7.088 2.58l6.011 12.89c1.245 2.67 0.090 5.843-2.58 7.088l-12.89 6.011c-2.67 1.245-5.843 0.090-7.088-2.58l-6.011-12.89c-1.245-2.67-0.090-5.843 2.58-7.088z"></path>
+</symbol>
+<symbol id="icon-greenDot-mobile" viewBox="0 0 32 32">
+<path fill="#8baa36" style="fill: var(--color1, #8baa36)" d="M8.701 6.762l5.8-2.705c4.805-2.241 10.517-0.162 12.758 4.643l2.705 5.8c2.241 4.805 0.162 10.517-4.643 12.758l-5.8 2.705c-4.805 2.241-10.517 0.162-12.758-4.643l-2.705-5.8c-2.241-4.805-0.162-10.517 4.643-12.758z"></path>
+</symbol>
+</defs>
+</svg>

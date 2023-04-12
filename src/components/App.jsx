@@ -4,8 +4,8 @@ import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { WelcomePage } from 'pages/WelcomePage/WelcomePage';
-import { RestrictedRoute } from 'RestrictedRoute';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import { RestrictedRoute } from 'routes/RestrictedRoute';
+import RegisterPage from 'pages/RegisterPage/Register';
 import SigninPage from 'pages/SigninPage/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute';
 
@@ -21,25 +21,24 @@ export const App = () => {
         <GlobalStyle />
         <WelcomePage />
         <Routes>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/main"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
+            }
+          />
+
           <Route path="/" element={<SharedLayout />}>
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<RegisterPage />}
-                />
-              }
-            />
-            <Route
-              path="/signin"
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<SigninPage />}
-                />
-              }
-            />
+
 
             <Route
               path="/categories"
