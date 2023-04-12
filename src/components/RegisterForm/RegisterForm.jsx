@@ -1,36 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Formik, Field, Form } from 'formik';
+import { Link } from 'react-router-dom';
 
-export const FegisterForm = () => (
+export const RegisterForm = () => (
   <div>
     <h1>Registration</h1>
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
+        Name: '',
+        Email: '',
+        Password: '',
       }}
-      onSubmit={async values => {
-        await new Promise(r => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
-      }}
+      onSubmit={async values => {}}
     >
       <Form>
-        <label htmlFor="firstName">First Name</label>
-        <Field id="firstName" name="firstName" placeholder="Jane" />
-
-        <label htmlFor="lastName">Last Name</label>
-        <Field id="lastName" name="lastName" placeholder="Doe" />
-
-        <label htmlFor="email">Email</label>
+        <label htmlFor="name"></label>
+        <Field id="name" name="name" placeholder="Name" />
+        <label htmlFor="email"></label>
+        <Field id="email" name="email" placeholder="Email" />
+        <label htmlFor="password"></label>
         <Field
-          id="email"
-          name="email"
-          placeholder="jane@acme.com"
-          type="email"
+          id="password"
+          name="password"
+          placeholder="Password"
+          type="password"
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Sign up</button>
+        <Link to="/signin">Sign in</Link>
       </Form>
     </Formik>
   </div>
