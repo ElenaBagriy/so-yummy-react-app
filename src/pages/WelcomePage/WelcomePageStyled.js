@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import img from '../../images/welcomePage/hero-desktop@1x.jpeg';
-import { Link } from 'react-router-dom';
 
 export const WelcomePageStyled = styled.main`
   padding-top: 214px;
@@ -29,6 +28,7 @@ export const WelcomePageStyled = styled.main`
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
+    text-align: center;
   }
 
   ul {
@@ -41,11 +41,13 @@ export const WelcomePageStyled = styled.main`
   }
 `;
 
-export const LinkStyled = styled(Link)`
+export const BtnStyled = styled.button`
   padding: 22px 44px;
   border-radius: 24px 44px;
-  border: 1px solid #8baa36;
+  border: 2px solid #8baa36;
   background-color: #8baa36;
+  color: #fff;
+  font-size: 16px;
 
   &:hover,
   &:focus {
@@ -55,7 +57,7 @@ export const LinkStyled = styled(Link)`
 
   &.outlined {
     background-color: transparent;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
   }
 
   &.outlined:hover,

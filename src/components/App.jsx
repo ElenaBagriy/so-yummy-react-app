@@ -1,15 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { WelcomePage } from 'pages/WelcomePage/WelcomePage';
 import { RestrictedRoute } from 'RestrictedRoute';
-import RegisterPage from 'pages/RegisterPage/Register';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import SigninPage from 'pages/SigninPage/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute';
-import { lazy } from 'react';
 
-const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage'));
+const CategoriesPage = lazy(() =>
+  import('../pages/CategoriesPage/CategoriesPage')
+);
 
 export const App = () => {
   // const isLoggedIn = false;
@@ -20,27 +22,35 @@ export const App = () => {
         <WelcomePage />
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/main"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
-            }
-          />
-          
             <Route
-            path="/categories"
-            element={<PrivateRoute redirectTo="/login" component={<CategoriesPage />} />}
-          />
-          
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<SigninPage />}
+                />
+              }
+            />
+
+            <Route
+              path="/categories"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<CategoriesPage />}
+                />
+              }
+            />
+
             {/* --- Отсальные страницы сюда --- */}
           </Route>
         </Routes>
