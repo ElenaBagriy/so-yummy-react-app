@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, logoutUser, refreshUser, refreshToken, registerUser } from "./authOperations";
+import { loginUser, logoutUser, refreshUser, refreshToken, registerUser, updateUser, getShoppingList, addProduct, updateProduct, subscribe } from "./userOperations";
 
-const authInitialState = {
+const userInitialState = {
     user: {
         name: null,
         email: null,
@@ -10,14 +10,22 @@ const authInitialState = {
     accessToken: null,
     refreshToken: null,
     isLoggedIn: false,
-    isRefreshing: false,
     isLoading: false,
     error: null,
+    shoppingList: [
+        {
+            "productId": '',
+            "title": '',
+            "thumb": '',
+            "measure": []
+        }
+    ],
+    subscribeList: [],
 };
 
-const authSlice = createSlice({
-    name: 'auth',
-    initialState: authInitialState,
+const userSlice = createSlice({
+    name: 'user',
+    initialState: userInitialState,
     extraReducers: (builder) =>
         builder
             
@@ -92,7 +100,6 @@ const authSlice = createSlice({
             .addCase(refreshUser.pending, (state) => {
                 state.error = null;
                 state.isLoading = true;
-                state.isRefreshing = true;
             })
             .addCase(refreshUser.fulfilled, (state, action) => {
                 state.user = {   
@@ -102,15 +109,82 @@ const authSlice = createSlice({
                 };
                 state.isLoggedIn = true;
                 state.isLoading = false;
-                state.isRefreshing = false;
             })
             .addCase(refreshUser.rejected, (state, action) => {
                 state.error = action.payload.message;
                 state.isLoading = false;
-                state.isRefreshing = false;
+            })
+    
+                // ------------ Update user ----------------
+            .addCase(updateUser.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(updateUser.fulfilled, (state, action) => {
+                state.user = action.payload;
+                state.isLoading = false;
+            })
+            .addCase(updateUser.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.isLoading = false;
+            })
+
+            // ------------ Get Shopping List ----------------
+            .addCase(getShoppingList.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(getShoppingList.fulfilled, (state, action) => {
+                state.shoppingList = action.payload.shoppingList;
+                state.isLoading = false;
+            })
+            .addCase(getShoppingList.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.isLoading = false;
+            })
+            
+            // ------------ Add Product ----------------
+            .addCase(addProduct.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(addProduct.fulfilled, (state, action) => {
+                state.shoppingList = action.payload.shoppingList;
+                state.isLoading = false;
+            })
+            .addCase(addProduct.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.isLoading = false;
+            })
+
+                // ------------ Update Product ----------------
+            .addCase(updateProduct.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                state.shoppingList = action.payload.shoppingList;
+                state.isLoading = false;
+            })
+            .addCase(updateProduct.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.isLoading = false;
+            })
+                    // ------------ Subscribe ----------------
+            .addCase(subscribe.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(subscribe.fulfilled, (state, action) => {
+                state.subscribeList = action.payload.subscribeList;
+                state.isLoading = false;
+            })
+            .addCase(subscribe.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.isLoading = false;
             })
 });
 
 
 
-export const authReducer = authSlice.reducer;
+export const userReducer = userSlice.reducer;

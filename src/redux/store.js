@@ -10,17 +10,21 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { authReducer } from "./auth/authSlice";
+import { userReducer } from "./user/userSlice";
+import { recipesReducer } from "./recipes/recipesSlice";
+import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 
-const authConfig = {
-  key: "token",
+const userConfig = {
+  key: "user",
   storage,
-  whitelist: ["token"],
+  whitelist: ["accessToken", "refreshToken"],
 };
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authConfig, authReducer),
+    auth: persistReducer(userConfig, userReducer),
+    recipes: recipesReducer,
+    ownRecipes: ownRecipesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

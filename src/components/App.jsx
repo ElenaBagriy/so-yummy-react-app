@@ -6,9 +6,10 @@ import { WelcomePage } from 'pages/WelcomePage/WelcomePage';
 import { RestrictedRoute } from 'RestrictedRoute';
 import RegisterPage from 'pages/RegisterPage/Register';
 import SigninPage from 'pages/SigninPage/SigninPage';
+import PrivateRoute from 'routes/PrivateRoute';
+import { lazy } from 'react';
 
-// import { RegisterForm } from './RegisterForm/RegisterForm';
-// import { SigninForm } from './SigningForm/SigningForm';
+const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage'));
 
 export const App = () => {
   // const isLoggedIn = false;
@@ -18,6 +19,7 @@ export const App = () => {
         <GlobalStyle />
         <WelcomePage />
         <Routes>
+          <Route path="/" element={<SharedLayout />}>
           <Route
             path="/register"
             element={
@@ -33,8 +35,12 @@ export const App = () => {
               <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
             }
           />
-
-          <Route path="/" element={<SharedLayout />}>
+          
+            <Route
+            path="/categories"
+            element={<PrivateRoute redirectTo="/login" component={<CategoriesPage />} />}
+          />
+          
             {/* --- Отсальные страницы сюда --- */}
           </Route>
         </Routes>
