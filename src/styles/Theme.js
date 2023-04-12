@@ -9,6 +9,9 @@ const lightTheme = {
     black: '#22252A',
     white: '#ffffff',
   },
+  text: {
+    title: '#001833'
+  },
   breakPoints: {
     mobile: '375px',
     tablet: '768px',

@@ -19,7 +19,7 @@ export const App = () => {
     <div>
       <Theme>
         <GlobalStyle />
-        <WelcomePage />
+        {/* <WelcomePage /> */}
         <Routes>
           <Route
             path="/register"
@@ -46,9 +46,13 @@ export const App = () => {
                 <PrivateRoute
                   redirectTo="/login"
                   component={<CategoriesPage />}
-                />
+                >
+                  
+                </PrivateRoute>
               }
-            />
+            >
+              <Route path="/categories/:categoryName" element={<div>hrenovina</div>} ></Route>
+            </Route>
 
             {/* --- Отсальные страницы сюда --- */}
           </Route>
