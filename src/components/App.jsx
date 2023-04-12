@@ -19,7 +19,6 @@ export const App = () => {
         <GlobalStyle />
         <WelcomePage />
         <Routes>
-          <Route path="/" element={<SharedLayout />}>
           <Route
             path="/register"
             element={
@@ -35,6 +34,8 @@ export const App = () => {
               <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
             }
           />
+          <Route path="/" element={<SharedLayout />}>
+          
           
             <Route
             path="/categories"
