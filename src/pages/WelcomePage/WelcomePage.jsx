@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import { LinkStyled, WelcomePageStyled } from './WelcomePageStyled';
+import { Link, Outlet } from 'react-router-dom';
+import { BtnStyled, WelcomePageStyled } from './WelcomePageStyled';
 // import logo from '../../images/welcomePage/logo-desk-tabl.png';
-import logo2x from '../../images/welcomePage/logo-desc@2x.png';
+import logo2x from '../../images/welcomePage/logo-desk@2x.png';
 // import logom from '../../images/welcomePage/logo-mob.png';
 // import logom2x from '../../images/welcomePage/logo-mob@2x.png';
 
@@ -11,7 +11,7 @@ export const WelcomePage = () => {
   return (
     !isLoggedIn && (
       <WelcomePageStyled>
-        <img src={logo2x} alt="logo" width="64" />
+        <img src={logo2x} alt="logo" width="68" />
         <h1>Welcome to the app!</h1>
         <p>
           This app offers more than just a collection of recipes - it is
@@ -20,12 +20,14 @@ export const WelcomePage = () => {
         </p>
         <ul>
           <li>
-            <LinkStyled to="/register">Registration</LinkStyled>
+            <Link to="/register">
+              <BtnStyled>Registration</BtnStyled>
+            </Link>
           </li>
           <li>
-            <LinkStyled to="/signin" className="outlined">
-              Sign in
-            </LinkStyled>
+            <Link to="/signin">
+              <BtnStyled className="outlined">Sign in</BtnStyled>
+            </Link>
           </li>
         </ul>
         <Suspense fallback={<div>Loading ...</div>}>

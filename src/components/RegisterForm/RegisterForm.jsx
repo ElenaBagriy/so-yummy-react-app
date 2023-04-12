@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
+import { RegisterStyled } from './RegisterFormStyled';
 
 export const RegisterForm = () => (
-  <div>
+  <RegisterStyled>
     <h1>Registration</h1>
     <Formik
       initialValues={{
@@ -30,5 +31,5 @@ export const RegisterForm = () => (
         <Link to="/signin">Sign in</Link>
       </Form>
     </Formik>
-  </div>
+  </RegisterStyled>
 );
