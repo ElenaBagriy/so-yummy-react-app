@@ -5,7 +5,7 @@ import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { WelcomePage } from 'pages/WelcomePage/WelcomePage';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
-import RegisterPage from 'pages/RegisterPage/Register';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import SigninPage from 'pages/SigninPage/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute';
 
