@@ -8,7 +8,8 @@ import { LinkStyled, RegisterStyled } from './RegisterFormStyled';
 import sprite from '../../images/welcomePage/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from 'redux/user/userOperations';
+import { loginUser, registerUser } from 'redux/user/userOperations';
+
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
@@ -39,10 +40,14 @@ export const RegisterForm = () => {
         }}
         validationSchema={RegisterSchema}
         onSubmit={(values, actions) => {
+          const { email, password } = values;
           dispatch(registerUser(values))
-            .unwrap()
+            .then(() => {dispatch(loginUser({email, password}))
+            // .unwrap()
             .then(() => navigate('/main'))
-            .catch(() => navigate('/'));
+            .catch(() => navigate('/'));}
+            );
+          
           // console.log(values);
           // console.log(actions);
           actions.resetForm();

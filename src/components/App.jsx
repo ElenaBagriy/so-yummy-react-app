@@ -19,7 +19,7 @@ export const App = () => {
     <div>
       <Theme>
         <GlobalStyle />
-        {/* <WelcomePage /> */}
+        <WelcomePage />
         <Routes>
           <Route
             path="/register"

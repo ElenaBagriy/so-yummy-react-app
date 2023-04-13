@@ -15,9 +15,9 @@ import { recipesReducer } from "./recipes/recipesSlice";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 
 const userConfig = {
-  key: "user",
+  key: "token",
   storage,
-  whitelist: ["accessToken", "refreshToken"],
+  whitelist: ["refreshToken"],
 };
 
 export const store = configureStore({
