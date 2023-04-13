@@ -21,8 +21,8 @@ export const RegisterStyled = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    margin-left: 760px;
-    /* margin-left: auto; */
+    /* margin-left: 760px; */
+    margin-left: auto;
     padding: 44px 50px;
     width: 500px;
     /* height: 484px; */
