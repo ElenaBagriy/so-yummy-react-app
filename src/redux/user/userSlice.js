@@ -43,14 +43,11 @@ const userSlice = createSlice({
       // ------------ Register user ----------------
       .addCase(registerUser.pending, state => {
         state.error = null;
-        state.isLoading = true;
+        state.isLoading = false;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
         state.isLoading = false;
-        state.isLoggedIn = true;
+        state.isLoggedIn = false;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.error = action.payload.message;

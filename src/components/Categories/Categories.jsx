@@ -1,22 +1,32 @@
 
-
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
 import { Title } from "reusableComponents/Title/Title";
 import Tab from '@mui/material/Tab';
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { StyledTabs } from "./Categories.styled";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
+import { RecipesAPI } from '../../services/api/API';
 
 export const Categories = () => {
-
-
-    
+    const [allCategories, setAllCategories] = useState([]);
     const [category, setCategory] = useState('Beef');
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(8);
+    const [totalPages, setTotalPages] = useState(null);
     const { categoryName } = useParams();
+
+
+  
+  const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        RecipesAPI.getAllCategories();
+
+  }, []);
+
+    
+
 
 
     const handleChange = (event, newValue) => {
@@ -52,14 +62,11 @@ export const Categories = () => {
                 <NavLink to="beef" >Beef</NavLink>
 
 
-
-
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
                 </Suspense>
-                <Pagination  totalPages={totalPages} onChange={handleChangePage} page={page}/>
+                <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
             </Container>
-
-    </section>
+        </section>
   );
 };

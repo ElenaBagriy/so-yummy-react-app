@@ -36,6 +36,7 @@ export const UserAPI = {
   login: async credentials => {
     const { data } = await axios.post('/users/login', credentials);
     setAuthHeader(data.accessToken);
+    console.log(data.accessToken);
     return data;
   },
 
