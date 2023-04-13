@@ -27,8 +27,8 @@ export const SigninStyled = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    margin-left: 760px;
-    /* margin-left: auto; */
+    /* margin-left: 760px; */
+    margin-left: auto;
     padding: 44px 50px;
     width: 500px;
     /* height: 419px; */
@@ -80,6 +80,15 @@ export const SigninStyled = styled.div`
     &:focus {
       color: ${props => props.theme.colors.black};
     }
+  }
+
+  .error {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #e74a3b;
   }
 `;
 
