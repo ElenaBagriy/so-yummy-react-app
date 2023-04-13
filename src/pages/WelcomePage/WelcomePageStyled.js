@@ -13,7 +13,7 @@ export const WelcomePageStyled = styled.main`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #fff;
+  color: ${props => props.theme.colors.white};
 
   img {
     margin-bottom: 44px;
@@ -21,6 +21,9 @@ export const WelcomePageStyled = styled.main`
 
   h1 {
     margin-bottom: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
   }
 
   p {
@@ -46,23 +49,23 @@ export const BtnStyled = styled.button`
   border-radius: 24px 44px;
   border: 2px solid #8baa36;
   background-color: #8baa36;
-  color: #fff;
+  color: ${props => props.theme.colors.white};
   font-size: 16px;
 
   &:hover,
   &:focus {
-    background-color: #22252a;
-    border-color: #22252a;
+    background-color: ${props => props.theme.colors.black};
+    border-color: ${props => props.theme.colors.black};
   }
 
   &.outlined {
     background-color: transparent;
-    border: 2px solid #fff;
+    border: 2px solid ${props => props.theme.colors.white};
   }
 
   &.outlined:hover,
   &.outlined:focus {
-    color: #8baa36;
-    border-color: #8baa36;
+    color: ${props => props.theme.colors.green};
+    border-color: ${props => props.theme.colors.green};
   }
 `;

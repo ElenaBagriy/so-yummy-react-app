@@ -18,6 +18,20 @@ export const RegisterStyled = styled.div`
     left: 113px;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 760px;
+    /* margin-left: auto; */
+    padding: 44px 50px;
+    width: 500px;
+    /* height: 484px; */
+    border-radius: 30px;
+    background-color: #2a2c36;
+    color: ${props => props.theme.colors.white};
+    box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
+  }
+
   label:not(:nth-child(4)) {
     margin-bottom: 24px;
   }
@@ -44,6 +58,7 @@ export const RegisterStyled = styled.div`
     background-color: transparent;
     font-size: 18px;
     line-height: 27px;
+    letter-spacing: -0.02em;
     color: ${props => props.theme.colors.white};
   }
 
@@ -67,18 +82,13 @@ export const RegisterStyled = styled.div`
     }
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    margin-left: 760px;
-    /* margin-left: auto; */
-    padding: 44px 50px;
-    width: 500px;
-    height: 484px;
-    border-radius: 30px;
-    background-color: #2a2c36;
-    color: ${props => props.theme.colors.white};
-    box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
+  .error {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #e74a3b;
   }
 `;
 

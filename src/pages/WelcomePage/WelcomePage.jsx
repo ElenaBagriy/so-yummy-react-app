@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import { BtnStyled, WelcomePageStyled } from './WelcomePageStyled';
 // import logo from '../../images/welcomePage/logo-desk-tabl.png';
 import logo2x from '../../images/welcomePage/logo-desk@2x.png';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/selectors';
 // import logom from '../../images/welcomePage/logo-mob.png';
 // import logom2x from '../../images/welcomePage/logo-mob@2x.png';
 
 export const WelcomePage = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     !isLoggedIn && (
       <WelcomePageStyled>

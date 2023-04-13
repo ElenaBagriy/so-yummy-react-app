@@ -24,10 +24,6 @@ export const SigninStyled = styled.div`
     margin-bottom: 50px;
   }
 
-  button {
-    height: 59px;
-  }
-
   form {
     display: flex;
     flex-direction: column;
@@ -35,7 +31,7 @@ export const SigninStyled = styled.div`
     /* margin-left: auto; */
     padding: 44px 50px;
     width: 500px;
-    height: 419px;
+    /* height: 419px; */
     border-radius: 30px;
     background-color: #2a2c36;
     color: ${props => props.theme.colors.white};
@@ -68,6 +64,7 @@ export const SigninStyled = styled.div`
     background-color: transparent;
     font-size: 18px;
     line-height: 27px;
+    letter-spacing: -0.02em;
     color: ${props => props.theme.colors.white};
   }
 
