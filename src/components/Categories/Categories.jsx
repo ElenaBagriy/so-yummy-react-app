@@ -3,12 +3,14 @@
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
 import { Title } from "reusableComponents/Title/Title";
-import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Suspense, useState } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
+import { StyledTabs } from "./Categories.styled";
 
 export const Categories = () => {
+
+    
   const [category, setCategory] = useState('Beef');
   const { categoryName } = useParams();
 
@@ -23,13 +25,14 @@ export const Categories = () => {
             <Background/>
             <Container>
                 <Title title='Categories' />
-                <Tabs
+                <StyledTabs
                     component='ul'
                     value={category}
                     onChange={handleChange}
                     variant="scrollable"
                     scrollButtons={false}
-                    aria-label="categories list">
+                    aria-label="categories list"
+                >
                     <Tab label="Item One" value='q'/>
                     <Tab label="Beef" value='Beef' component='a'/>
                     <Tab label="Item Three" value='e' />
@@ -37,10 +40,9 @@ export const Categories = () => {
                     <Tab label="Item Five" value='t'/>
                     <Tab label="Item Six" value='y'/>
                     <Tab label="Item Seven" value='u'/>
-                </Tabs>
+                </StyledTabs>
                 <NavLink to="beef" >Beef</NavLink>
 
-                
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
                 </Suspense>

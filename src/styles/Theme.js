@@ -10,7 +10,11 @@ const lightTheme = {
     white: '#ffffff',
   },
   text: {
-    title: '#001833'
+    title: '#001833',
+    grey: '#BDBDBD',
+  },
+  border: {
+    grey: 'rgba(224, 224, 224, 1)',
   },
   breakPoints: {
     mobile: '375px',
