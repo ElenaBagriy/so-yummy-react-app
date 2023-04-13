@@ -1,35 +1,47 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import { Formik, Field, Form } from 'formik';
-import { Link } from 'react-router-dom';
-import { RegisterStyled } from './RegisterFormStyled';
+import picture from '../../images/welcomePage/img-sign-reg-desktop@2x.png';
+import { LinkStyled, RegisterStyled } from './RegisterFormStyled';
+import sprite from '../../images/welcomePage/symbol-defs.svg';
 
 export const RegisterForm = () => (
   <RegisterStyled>
-    <h1>Registration</h1>
+    <img src={picture} alt="" height="468" />
     <Formik
       initialValues={{
-        Name: '',
-        Email: '',
-        Password: '',
+        name: '',
+        email: '',
+        password: '',
       }}
       onSubmit={async values => {}}
     >
       <Form>
-        <label htmlFor="name"></label>
-        <Field id="name" name="name" placeholder="Name" />
-        <label htmlFor="email"></label>
-        <Field id="email" name="email" placeholder="Email" />
-        <label htmlFor="password"></label>
-        <Field
-          id="password"
-          name="password"
-          placeholder="Password"
-          type="password"
-        />
+        <h2>Registration</h2>
+        <label>
+          <svg width="24" height="24">
+            <use href={sprite + '#icon-user'} />
+          </svg>
+          <Field name="name" placeholder="Name" />
+        </label>
+
+        <label>
+          <svg width="24" height="24">
+            <use href={sprite + '#icon-mail'} />
+          </svg>
+          <Field name="email" placeholder="Email" />
+        </label>
+        <label>
+          <svg width="24" height="24">
+            <use href={sprite + '#icon-lock'} />
+          </svg>
+          <Field name="password" placeholder="Password" type="password" />
+        </label>
+
         <button type="submit">Sign up</button>
-        <Link to="/signin">Sign in</Link>
       </Form>
     </Formik>
+
+    <LinkStyled to="/signin">Sign in</LinkStyled>
   </RegisterStyled>
 );

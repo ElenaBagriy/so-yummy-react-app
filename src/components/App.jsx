@@ -38,8 +38,6 @@ export const App = () => {
           />
 
           <Route path="/" element={<SharedLayout />}>
-
-
             <Route
               path="/categories"
               element={

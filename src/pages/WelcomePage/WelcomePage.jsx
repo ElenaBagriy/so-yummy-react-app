@@ -1,5 +1,4 @@
-import { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BtnStyled, WelcomePageStyled } from './WelcomePageStyled';
 // import logo from '../../images/welcomePage/logo-desk-tabl.png';
 import logo2x from '../../images/welcomePage/logo-desk@2x.png';
@@ -30,9 +29,6 @@ export const WelcomePage = () => {
             </Link>
           </li>
         </ul>
-        <Suspense fallback={<div>Loading ...</div>}>
-          <Outlet />
-        </Suspense>
       </WelcomePageStyled>
     )
   );
