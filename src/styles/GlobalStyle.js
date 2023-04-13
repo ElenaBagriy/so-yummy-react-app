@@ -1,9 +1,33 @@
+import Regular from '../fonts/Poppins-Regular.ttf';
+import Medium from '../fonts/Poppins-Medium.ttf';
+import SemiBold from '../fonts/Poppins-SemiBold.ttf';
+import Bold from '../fonts/Poppins-Bold.ttf';
 import { createGlobalStyle } from "styled-components";
 import { normalize } from 'styled-normalize';
 
-
 export const GlobalStyle = createGlobalStyle`
 ${normalize}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url(${Regular}) format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(${Medium}) format("truetype");
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(${SemiBold}) format("truetype");
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(${Bold}) format("truetype");
+    font-weight: 700;
+}
 
 body {
   margin: 0;

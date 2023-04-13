@@ -12,6 +12,7 @@ const lightTheme = {
   text: {
     title: '#001833',
     grey: '#BDBDBD',
+    paginationText: '#656565',
   },
   border: {
     grey: 'rgba(224, 224, 224, 1)',

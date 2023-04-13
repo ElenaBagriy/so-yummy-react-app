@@ -7,19 +7,27 @@ import Tab from '@mui/material/Tab';
 import { Suspense, useState } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { StyledTabs } from "./Categories.styled";
+import { Pagination } from "reusableComponents/Pagination/Pagination";
 
 export const Categories = () => {
 
+
     
-  const [category, setCategory] = useState('Beef');
-  const { categoryName } = useParams();
+    const [category, setCategory] = useState('Beef');
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(8);
+    const { categoryName } = useParams();
 
 
     const handleChange = (event, newValue) => {
-        console.log(newValue);
+        setPage(1);
         setCategory(newValue);
   };
     
+    const handleChangePage = (event, value) => {
+        setPage(value);
+    };
+
     return (
         <section>
             <Background/>
@@ -43,9 +51,13 @@ export const Categories = () => {
                 </StyledTabs>
                 <NavLink to="beef" >Beef</NavLink>
 
+
+
+
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
                 </Suspense>
+                <Pagination  totalPages={totalPages} onChange={handleChangePage} page={page}/>
             </Container>
 
     </section>
