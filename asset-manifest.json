@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/so-yummy-react-app/static/js/main.635cf097.js",
+    "main.js": "/so-yummy-react-app/static/js/main.4acac67b.js",
     "static/js/148.0af713bf.chunk.js": "/so-yummy-react-app/static/js/148.0af713bf.chunk.js",
     "static/js/610.51ffd696.chunk.js": "/so-yummy-react-app/static/js/610.51ffd696.chunk.js",
     "static/media/hero-desktop@2x.jpeg": "/so-yummy-react-app/static/media/hero-desktop@2x.d7b838912d3091d7da6d.jpeg",
@@ -21,6 +21,7 @@
     "static/media/img-sign-reg-desktop@2x.png": "/so-yummy-react-app/static/media/img-sign-reg-desktop@2x.c3bd6a0ccb21498f3bd1.png",
     "static/media/hero-tablet@1x.jpg": "/so-yummy-react-app/static/media/hero-tablet@1x.ff799efee56512ed6e09.jpg",
     "static/media/img-sign-reg-mobile@2x.png": "/so-yummy-react-app/static/media/img-sign-reg-mobile@2x.da11157ad7b5ef9e03b8.png",
+    "static/media/icon-for-404.svg": "/so-yummy-react-app/static/media/icon-for-404.09006ba7466e07938b37aec445fc80b9.svg",
     "static/media/img-sign-reg-tablet.png": "/so-yummy-react-app/static/media/img-sign-reg-tablet.cdba1e3a414fd34c91e7.png",
     "static/media/img-sign-reg-desktop.png": "/so-yummy-react-app/static/media/img-sign-reg-desktop.d54557d8e0e035486d9b.png",
     "static/media/img-sign-reg-desktop@2x.webp": "/so-yummy-react-app/static/media/img-sign-reg-desktop@2x.b689138213c208f54af5.webp",
@@ -41,11 +42,11 @@
     "static/media/greenDot-desktop.svg": "/so-yummy-react-app/static/media/greenDot-desktop.5c79e1ce904b00a007921692a25886cc.svg",
     "static/media/greenDot-mobile.svg": "/so-yummy-react-app/static/media/greenDot-mobile.af29d8b1bca94eacaade35b8f1adef72.svg",
     "static/media/blackDot-mobile.svg": "/so-yummy-react-app/static/media/blackDot-mobile.2ccb0a550da4cedb703cea8325e1509c.svg",
-    "main.635cf097.js.map": "/so-yummy-react-app/static/js/main.635cf097.js.map",
+    "main.4acac67b.js.map": "/so-yummy-react-app/static/js/main.4acac67b.js.map",
     "148.0af713bf.chunk.js.map": "/so-yummy-react-app/static/js/148.0af713bf.chunk.js.map",
     "610.51ffd696.chunk.js.map": "/so-yummy-react-app/static/js/610.51ffd696.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.635cf097.js"
+    "static/js/main.4acac67b.js"
   ]
 }
