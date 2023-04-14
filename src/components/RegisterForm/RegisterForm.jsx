@@ -41,6 +41,7 @@ export const RegisterForm = () => {
 
   return (
     <RegisterStyled>
+
       <picture>
         {/* desktop */}
         <source

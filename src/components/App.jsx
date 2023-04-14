@@ -39,20 +39,16 @@ export const App = () => {
 
           <Route path="/" element={<SharedLayout />}>
             <Route
-              path="/categories"
+              path="/categories/:categoryName"
               element={
                 <PrivateRoute
                   redirectTo="/login"
                   component={<CategoriesPage />}
-                >
-                  
-                </PrivateRoute>
+                />
               }
-            >
-              <Route path="/categories/:categoryName" element={<div>hrenovina</div>} ></Route>
-            </Route>
+            />
 
-            {/* --- Отсальные страницы сюда --- */}
+            {/* --- Інші сторінки тут --- */}
           </Route>
         </Routes>
       </Theme>
