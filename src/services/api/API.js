@@ -36,7 +36,6 @@ export const UserAPI = {
   login: async credentials => {
     const { data } = await axios.post('/users/login', credentials);
     setAuthHeader(data.accessToken);
-    console.log(data.accessToken);
     return data;
   },
 
@@ -120,12 +119,13 @@ export const RecipesAPI = {
     return data;
   },
 
-  getRecipeByCategories: async ({category, page, limit, sort=''}) => {
-    const { data } = await axios.get(`/recipes/category/${category}?page=${page}&limit=${limit}&sort=${sort}`);
+  getRecipeByCategories: async ({ category, page, limit = 8, sort = 'popular' }) => {
+    const normalisedQuery = category.charAt(0).toUpperCase() + category.slice(1);
+    const { data } = await axios.get(`/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`);
     return data;
   },
 
-  getRecipesByQuery: async ({query, page, limit, sort=''}) => {
+  getRecipesByQuery: async ({ query, page, limit, sort = '' }) => {
     const { data } = await axios.get(`/recipes/title/${query}?page=${page}&limit=${limit}&sort=${sort}`);
     return data;
   },
