@@ -1,11 +1,17 @@
-
+<<<<<<< Updated upstream
+=======
+// import { useMediaQuery } from '@mui/material';
+// import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
+// import DishCard from 'reusableComponents/DishCard/DishCard';
+// import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
+>>>>>>> Stashed changes
 
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
 import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import Tab from '@mui/material/Tab';
 import { Suspense, useEffect, useState } from "react";
-import { NavLink, Navigate, Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { StyledTabs } from "./Categories.styled";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import { RecipesAPI } from '../../services/api/API';
@@ -22,8 +28,21 @@ export const Categories = () => {
 
     const navigate = useNavigate();
   
+<<<<<<< Updated upstream
+=======
+//   const [isShow, setIsShow] = useState(false);
+  
+  
 
+//   const mobile = useMediaQuery('(max-width: 767px)');
+//   const tablet = useMediaQuery('(max-width: 1439px)');
+//   const desctop = useMediaQuery('(min-width: 1440px)');
 
+//   const toogle = () => {
+//     setIsShow(prevState => !prevState);
+//   };
+
+>>>>>>> Stashed changes
     useEffect(() => {
         if (!category) {
             return;
@@ -119,9 +138,62 @@ export const Categories = () => {
                 {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
                 <CommonItemList list={categoryRecipes}></CommonItemList>}
 
+<<<<<<< Updated upstream
+=======
+      {/* {isLoading || recepiesCategory.length === 0 ? (
+          (desctop && (
+            <>
+              <div className={css.loader}>
+                <Loader.Desktop />
+              </div>
+              <Loader.Desktop />
+            </>
+          )) ||
+          (tablet && (
+            <>
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+            </>
+          )) ||
+          (mobile && <Loader.Mobile />)
+        ) : (
+          <ul className={css.categoryList}>
+            {recepiesCategory.map(
+              ({
+                category,
+                description,
+                favorite,
+                like,
+                popularity,
+                preview,
+                time,
+                title,
+                _id,
+              }) => (
+                <li key={_id} className={css.categoryItem}>
+                  <DishCard
+                    id={_id}
+                    isShow={isShow}
+                    toogle={toogle}
+                    image={preview}
+                    altText={title}
+                    text={title}
+                    favorite={favorite}
+                    like={like}
+                    allData={сategoryRecipes}
+                    setAllData={setCategoryRecipes}
+                    popularity={popularity}
+                  />
+                </li>
+              ),
+            )}
+          </ul>
+        )}
+        */}
 
-
-
+>>>>>>> Stashed changes
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
                 </Suspense>
