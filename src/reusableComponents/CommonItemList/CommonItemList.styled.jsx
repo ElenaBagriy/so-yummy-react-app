@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const List = styled.ul`
     display: flex;
+    padding-top: 32px;
     gap: 28px;
     flex-wrap: wrap;
 
@@ -17,8 +18,8 @@ export const List = styled.ul`
 
 export const Item = styled.li`
     position: relative;
-    width: 343px;
-    height: 323px;
+    width: 100%;
+    /* height: 323px; */
     border-radius: 8px;
     overflow: hidden;
 
@@ -27,6 +28,8 @@ export const Item = styled.li`
     };
 
     @media screen and (min-width: 1280px) {
-        width: calc((100% - 14px) / 4);
+        width: calc((100% - 3*14px) / 4);
+
     }
-`
+`;
+

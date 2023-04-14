@@ -1,11 +1,10 @@
 
-
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
 import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import Tab from '@mui/material/Tab';
 import { Suspense, useEffect, useState } from "react";
-import { NavLink, Navigate, Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { StyledTabs } from "./Categories.styled";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import { RecipesAPI } from '../../services/api/API';
@@ -22,8 +21,6 @@ export const Categories = () => {
 
     const navigate = useNavigate();
   
-
-
     useEffect(() => {
         if (!category) {
             return;
@@ -118,9 +115,6 @@ export const Categories = () => {
 
                 {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
                 <CommonItemList list={categoryRecipes}></CommonItemList>}
-
-
-
 
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>

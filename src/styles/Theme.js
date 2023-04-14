@@ -13,6 +13,7 @@ const lightTheme = {
     title: '#001833',
     grey: '#BDBDBD',
     paginationText: '#656565',
+    primary: '#3E4462',
   },
   border: {
     grey: 'rgba(224, 224, 224, 1)',
@@ -21,6 +22,9 @@ const lightTheme = {
     mobile: '375px',
     tablet: '768px',
     desktop: '1280px',
+  },
+  transition: {
+    normal: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
 };
 

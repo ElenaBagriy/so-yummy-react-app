@@ -93,7 +93,7 @@ export const RegisterForm = () => {
             dispatch(registerUser(values)).then(() => {
               dispatch(loginUser({ email, password }))
                 // .unwrap()
-                .then(() => navigate('/main'))
+                .then(() => navigate('/categories/beef'))
                 .catch(() => navigate('/'));
             });
             actions.resetForm();
