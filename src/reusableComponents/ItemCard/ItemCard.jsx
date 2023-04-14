@@ -1,6 +1,4 @@
 
-// import { toast } from 'react-toastify';
-// import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 
 import { useNavigate } from "react-router-dom";
 import { CheckedIcon, Icon, LikeButton, Link, PictureTitle } from "./ItemCard.styled";
@@ -10,29 +8,11 @@ import { RecipesAPI } from "services/api/API";
 
 export const ItemCard = ({item}) => {
 
-    const { title, _id, preview, favorite
-        //   image,
-        //   altText,
-        //   text,
-        //   favorite,
-        //   like,
-        //   toogle,
-        //   id,
-        //   allData = [],
-        //   setAllData = () => {},
-        //   popularity,
-    } = item;
-
-//   const maxTextLength = 26;
+    const { title, _id, preview, favorite } = item;
 
     const [isFavorite, setIsFavorite] = useState(favorite);
 
     const navigate = useNavigate();
-
-//   const [isLoadFavorite, setIsLoadFavorite] = useState(false);
-//   const [motivation, setMotivation] = useState('');
-
-  
     const addToFavorite = () => {
         //     setIsLoading(true);
      
@@ -40,9 +20,6 @@ export const ItemCard = ({item}) => {
             try {
                 const { favorite } = await RecipesAPI.toggleFavoriteRecipesById(id);
                 setIsFavorite(favorite);
-                //         favorite && toast.success(`Added to Favorite!`);
-                //         !favorite && toast.info(`Removed from Favorite!`);
-                //         setMotivation(motivation);
             } catch (error) {
                 // return alert('Something went wrong!')///Прописать ошибку
             } finally {
@@ -51,11 +28,6 @@ export const ItemCard = ({item}) => {
         }
       toggleFavorite(_id);
   };
-
-//   const shortText =
-//     text.length < maxTextLength
-//       ? text
-//       : text.substr(0, maxTextLength).replace(/\s+\S*$/, '') + '...';
 
     const onLinkClick = (e) => {
         if (e.target.classList.contains('PrivateSwitchBase-input')) {
@@ -77,17 +49,6 @@ export const ItemCard = ({item}) => {
               </LikeButton>
           </Tooltip>
 
-
-      {/* {motivation === '10' && <MotivatingModal option={3} />}
-      <div className={css.cardContainer}>
-
-        <button
-          onMouseOver={text.length < maxTextLength ? null : toogle}
-          className={css.textContainer}
-          onClick={text.length < maxTextLength ? null : toogle}
-        >
-        </button>
- */}
     </Link>
   );
 };

@@ -1,5 +1,3 @@
-// import { useMediaQuery } from '@mui/material';
-// import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
 
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
@@ -23,12 +21,6 @@ export const Categories = () => {
 
     const navigate = useNavigate();
   
-
-//   const mobile = useMediaQuery('(max-width: 767px)');
-//   const tablet = useMediaQuery('(max-width: 1439px)');
-//   const desctop = useMediaQuery('(min-width: 1440px)');
-
-
     useEffect(() => {
         if (!category) {
             return;
@@ -123,29 +115,6 @@ export const Categories = () => {
 
                 {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
                 <CommonItemList list={categoryRecipes}></CommonItemList>}
-
-      {/* {isLoading || recepiesCategory.length === 0 ? (
-          (desctop && (
-            <>
-              <div className={css.loader}>
-                <Loader.Desktop />
-              </div>
-              <Loader.Desktop />
-            </>
-          )) ||
-          (tablet && (
-            <>
-              <Loader.Tablet />
-              <Loader.Tablet />
-              <Loader.Tablet />
-              <Loader.Tablet />
-            </>
-          )) ||
-          (mobile && <Loader.Mobile />)
-        ) : (
-          <ul className={css.categoryList}>
-        )}
-        */}
 
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
