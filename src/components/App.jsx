@@ -4,6 +4,7 @@ import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { WelcomePage } from 'pages/WelcomePage/WelcomePage';
+import { PageNotFound } from 'pages/PageNotFound/PageNotFound';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import SigninPage from 'pages/SigninPage/SigninPage';
@@ -47,6 +48,15 @@ export const App = () => {
                 />
               }
             />
+          <Route
+            path="*"
+            element={
+              <RestrictedRoute // замінить на Private
+                redirectTo="/"
+                component={<PageNotFound />}
+              />
+            }
+          />              
 
             {/* --- Інші сторінки тут --- */}
           </Route>
