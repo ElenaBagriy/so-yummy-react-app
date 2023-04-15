@@ -4,6 +4,7 @@ import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { WelcomePage } from 'pages/WelcomePage/WelcomePage';
+import Search from 'pages/Search/Search';
 import { PageNotFound } from 'pages/PageNotFound/PageNotFound';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
@@ -48,17 +49,26 @@ export const App = () => {
                 />
               }
             />
-          <Route
-            path="*"
-            element={
-              <RestrictedRoute // замінить на Private
-                redirectTo="/"
-                component={<PageNotFound />}
-              />
-            }
-          />              
+            <Route
+              path="*"
+              element={
+                <RestrictedRoute // замінить на Private
+                  redirectTo="/"
+                  component={<PageNotFound />}
+                />
+              }
+            />
 
             {/* --- Інші сторінки тут --- */}
+            <Route
+              path="/search"
+              element={
+                <PrivateRoute // замінить на Private
+                  redirectTo="/login"
+                  component={<Search />}
+                />
+              }
+            />
           </Route>
         </Routes>
       </Theme>
