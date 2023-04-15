@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/so-yummy-react-app/static/js/main.8ec10086.js",
-    "static/js/148.d9cffc79.chunk.js": "/so-yummy-react-app/static/js/148.d9cffc79.chunk.js",
+    "main.js": "/so-yummy-react-app/static/js/main.c9fcf5cd.js",
+    "static/js/148.6fa3f378.chunk.js": "/so-yummy-react-app/static/js/148.6fa3f378.chunk.js",
     "static/js/221.abfd1296.chunk.js": "/so-yummy-react-app/static/js/221.abfd1296.chunk.js",
     "static/media/hero-desktop@2x.jpeg": "/so-yummy-react-app/static/media/hero-desktop@2x.d7b838912d3091d7da6d.jpeg",
     "static/media/spinach-desktop@2x.png": "/so-yummy-react-app/static/media/spinach-desktop@2x.9bf9d2303ea19c12bbba.png",
@@ -42,11 +42,11 @@
     "static/media/greenDot-desktop.svg": "/so-yummy-react-app/static/media/greenDot-desktop.5c79e1ce904b00a007921692a25886cc.svg",
     "static/media/greenDot-mobile.svg": "/so-yummy-react-app/static/media/greenDot-mobile.af29d8b1bca94eacaade35b8f1adef72.svg",
     "static/media/blackDot-mobile.svg": "/so-yummy-react-app/static/media/blackDot-mobile.2ccb0a550da4cedb703cea8325e1509c.svg",
-    "main.8ec10086.js.map": "/so-yummy-react-app/static/js/main.8ec10086.js.map",
-    "148.d9cffc79.chunk.js.map": "/so-yummy-react-app/static/js/148.d9cffc79.chunk.js.map",
+    "main.c9fcf5cd.js.map": "/so-yummy-react-app/static/js/main.c9fcf5cd.js.map",
+    "148.6fa3f378.chunk.js.map": "/so-yummy-react-app/static/js/148.6fa3f378.chunk.js.map",
     "221.abfd1296.chunk.js.map": "/so-yummy-react-app/static/js/221.abfd1296.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.8ec10086.js"
+    "static/js/main.c9fcf5cd.js"
   ]
 }
