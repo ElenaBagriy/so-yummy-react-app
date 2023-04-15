@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/so-yummy-react-app/static/js/main.19f4f91c.js",
+    "main.js": "/so-yummy-react-app/static/js/main.86a24776.js",
     "static/js/852.f737ccea.chunk.js": "/so-yummy-react-app/static/js/852.f737ccea.chunk.js",
-    "static/js/481.9b3801cb.chunk.js": "/so-yummy-react-app/static/js/481.9b3801cb.chunk.js",
+    "static/js/481.476a4898.chunk.js": "/so-yummy-react-app/static/js/481.476a4898.chunk.js",
     "static/js/385.585e126b.chunk.js": "/so-yummy-react-app/static/js/385.585e126b.chunk.js",
-    "static/js/377.e5a1e4d8.chunk.js": "/so-yummy-react-app/static/js/377.e5a1e4d8.chunk.js",
+    "static/js/377.6750a224.chunk.js": "/so-yummy-react-app/static/js/377.6750a224.chunk.js",
     "static/js/221.abfd1296.chunk.js": "/so-yummy-react-app/static/js/221.abfd1296.chunk.js",
     "static/media/hero-desktop@2x.jpeg": "/so-yummy-react-app/static/media/hero-desktop@2x.d7b838912d3091d7da6d.jpeg",
     "static/media/spinach-desktop@2x.png": "/so-yummy-react-app/static/media/spinach-desktop@2x.9bf9d2303ea19c12bbba.png",
@@ -45,14 +45,14 @@
     "static/media/greenDot-desktop.svg": "/so-yummy-react-app/static/media/greenDot-desktop.5c79e1ce904b00a007921692a25886cc.svg",
     "static/media/greenDot-mobile.svg": "/so-yummy-react-app/static/media/greenDot-mobile.af29d8b1bca94eacaade35b8f1adef72.svg",
     "static/media/blackDot-mobile.svg": "/so-yummy-react-app/static/media/blackDot-mobile.2ccb0a550da4cedb703cea8325e1509c.svg",
-    "main.19f4f91c.js.map": "/so-yummy-react-app/static/js/main.19f4f91c.js.map",
+    "main.86a24776.js.map": "/so-yummy-react-app/static/js/main.86a24776.js.map",
     "852.f737ccea.chunk.js.map": "/so-yummy-react-app/static/js/852.f737ccea.chunk.js.map",
-    "481.9b3801cb.chunk.js.map": "/so-yummy-react-app/static/js/481.9b3801cb.chunk.js.map",
+    "481.476a4898.chunk.js.map": "/so-yummy-react-app/static/js/481.476a4898.chunk.js.map",
     "385.585e126b.chunk.js.map": "/so-yummy-react-app/static/js/385.585e126b.chunk.js.map",
-    "377.e5a1e4d8.chunk.js.map": "/so-yummy-react-app/static/js/377.e5a1e4d8.chunk.js.map",
+    "377.6750a224.chunk.js.map": "/so-yummy-react-app/static/js/377.6750a224.chunk.js.map",
     "221.abfd1296.chunk.js.map": "/so-yummy-react-app/static/js/221.abfd1296.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.19f4f91c.js"
+    "static/js/main.86a24776.js"
   ]
 }
