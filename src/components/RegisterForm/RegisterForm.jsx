@@ -21,6 +21,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from 'redux/user/userOperations';
 
+const passwordNumbers = /(?=.*[0-9])/;
+
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -29,7 +31,9 @@ const RegisterSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
     .min(8, 'Password must be at least 8 characters long')
-    .required(),
+    .matches(passwordNumbers, { message: 'Your password is little secure' })
+    .matches()
+    .required('Required'),
   // .matches(/[0-9]/, 'Password requires a number')
   // .matches(/[A-Z]/, 'Password requires an uppercase letter')
   // .matches(/[^\w]/, 'Password requires a symbol'),
@@ -41,7 +45,6 @@ export const RegisterForm = () => {
 
   return (
     <RegisterStyled>
-
       <picture>
         {/* desktop */}
         <source
@@ -88,15 +91,21 @@ export const RegisterForm = () => {
             password: '',
           }}
           validationSchema={RegisterSchema}
+          validateOnChange={false}
+          validateOnBlur={false}
           onSubmit={(values, actions) => {
             const { email, password } = values;
-            dispatch(registerUser(values)).then(() => {
-              dispatch(loginUser({ email, password }))
-                // .unwrap()
-                .then(() => navigate('/main'))
-                .catch(() => navigate('/'));
-            });
-            actions.resetForm();
+
+            setTimeout(
+              dispatch(registerUser(values)).then(() => {
+                dispatch(loginUser({ email, password }))
+                  // .unwrap()
+                  .then(() => navigate('/main'))
+                  .catch(() => navigate('/'));
+                actions.resetForm();
+              }),
+              2000
+            );
           }}
         >
           <Form>
