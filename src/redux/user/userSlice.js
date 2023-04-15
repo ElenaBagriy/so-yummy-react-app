@@ -22,6 +22,7 @@ const userInitialState = {
   refreshToken: null,
   isLoggedIn: false,
   isLoading: false,
+  isRefreshing: false,
   error: null,
   shoppingList: [
     {
@@ -111,6 +112,7 @@ const userSlice = createSlice({
       .addCase(refreshUser.pending, state => {
         state.error = null;
         state.isLoading = true;
+        state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = {
@@ -120,10 +122,11 @@ const userSlice = createSlice({
         };
         state.isLoggedIn = true;
         state.isLoading = false;
+        state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, (state, action) => {
-        state.error = action.payload.message;
         state.isLoading = false;
+        state.isRefreshing = false;
       })
 
       // ------------ Update user ----------------
