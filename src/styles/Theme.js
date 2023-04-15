@@ -10,6 +10,8 @@ const lightTheme = {
     white: '#ffffff',
   },
   text: {
+    hero: '#22252A',
+    heroParagraph: '#23262A',
     title: '#001833',
     grey: '#BDBDBD',
     paginationText: '#656565',
