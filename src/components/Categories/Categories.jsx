@@ -28,6 +28,12 @@ export const Categories = () => {
 //   const tablet = useMediaQuery('(max-width: 1439px)');
 //   const desctop = useMediaQuery('(min-width: 1440px)');
 
+    useEffect(() => {
+        console.log(categoryName);
+        if (categoryName) {
+            setCategory(categoryName);
+        };
+    }, [categoryName]);
 
     useEffect(() => {
         if (!category) {
@@ -59,7 +65,10 @@ export const Categories = () => {
         getRecipeByCategories({ category, page });
     }, [category, page, totalPages]);
 
+
+
     useEffect(() => {
+        
         setIsLoading(true);
         async function getCategories() {
             try {
@@ -81,13 +90,6 @@ export const Categories = () => {
         getCategories();
     }, []);
     
-    useEffect(() => {
-        if (categoryName) {
-            setCategory(categoryName);
-        };
-    }, [categoryName])
-    
-
     const handleChange = (event, newValue) => {
         setPage(1);
         setCategory(newValue);
