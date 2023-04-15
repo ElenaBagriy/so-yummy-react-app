@@ -77,6 +77,8 @@ export const SigninForm = () => {
             password: '',
           }}
           validationSchema={SigninSchema}
+          validateOnChange={false}
+          validateOnBlur={false}
           onSubmit={(values, actions) => {
             dispatch(loginUser(values))
               .unwrap()

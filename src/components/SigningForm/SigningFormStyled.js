@@ -13,7 +13,7 @@ export const SigninStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 305px 20px 157px;
+  padding: 305px 20px 153px;
   background-color: ${props => props.theme.colors.white};
   background-image: url(${backMob});
   background-position: 50% 100%;
@@ -30,7 +30,7 @@ export const SigninStyled = styled.div`
   //tablet
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    padding: 444px 134px 100px;
+    padding: 443px 134px 120px;
     background-image: url(${backTabl});
   }
 
@@ -44,7 +44,7 @@ export const SigninStyled = styled.div`
   //desktop
   @media screen and (min-width: 1440px) {
     background-image: url(${backDesktop});
-    padding: 122px 180px 164px 760px;
+    padding: 155px 180px 153px 760px;
     justify-content: right;
     align-items: end;
   }

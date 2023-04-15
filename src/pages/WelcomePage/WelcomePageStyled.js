@@ -42,7 +42,7 @@ export const WelcomePageStyled = styled.main`
 
   //desktop
   @media screen and (min-width: 1440px) {
-    padding: 375px 450px 416px;
+    padding: 214px 450px 216px;
     background-image: url(${imgDesktop});
   }
 
