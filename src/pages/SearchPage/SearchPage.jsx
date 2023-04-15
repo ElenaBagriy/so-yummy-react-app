@@ -6,7 +6,7 @@ import ButtonRound from '../../reusableComponents/Button/ButtonRound';
 import Input from '../../reusableComponents/Input/Input';
 import { useState } from 'react';
 
-export default function Search() {
+export default function SearchPage() {
   const [search, setSearch] = useState(' ');
   return (
     <>

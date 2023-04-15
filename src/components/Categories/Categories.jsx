@@ -152,7 +152,7 @@ export const Categories = () => {
           )) ||
           (mobile && <Loader.Mobile />)
         ) : (
-          <ul className={css.categoryList}>
+          <ul>
         )}
         */}
 

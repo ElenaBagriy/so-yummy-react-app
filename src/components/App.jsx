@@ -3,72 +3,34 @@ import { lazy } from 'react';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import { WelcomePage } from 'pages/WelcomePage/WelcomePage';
-import Search from 'pages/Search/Search';
-import { PageNotFound } from 'pages/PageNotFound/PageNotFound';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import SigninPage from 'pages/SigninPage/SigninPage';
-import PrivateRoute from 'routes/PrivateRoute';
+import { PrivateRoute } from 'routes/PrivateRoute';
 
-const CategoriesPage = lazy(() =>
-  import('../pages/CategoriesPage/CategoriesPage')
-);
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
+const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage'));
+const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
+const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
+const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 
 export const App = () => {
-  // const isLoggedIn = false;
+
   return (
     <div>
       <Theme>
         <GlobalStyle />
         <WelcomePage />
         <Routes>
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/main"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
-            }
-          />
-
+          <Route path="/register" element={<RestrictedRoute redirectTo="/main" component={<RegisterPage />}/>}/>
+          <Route path="/signin" element={ <RestrictedRoute redirectTo="/main" component={<SigninPage />} />}/>
           <Route path="/" element={<SharedLayout />}>
-            <Route
-              path="/categories/:categoryName"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<CategoriesPage />}
-                />
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <RestrictedRoute // замінить на Private
-                  redirectTo="/"
-                  component={<PageNotFound />}
-                />
-              }
-            />
-
-            {/* --- Інші сторінки тут --- */}
-            <Route
-              path="/search"
-              element={
-                <PrivateRoute // замінить на Private
-                  redirectTo="/login"
-                  component={<Search />}
-                />
-              }
-            />
+            <Route path="/main" element={ <PrivateRoute redirectTo="/login" component={<MainPage />}/>}/>
+            <Route path="/categories/:categoryName" element={ <PrivateRoute redirectTo="/login" component={<CategoriesPage />}/>}/>
+            <Route path="*" element={<RestrictedRoute // замінить на Private 
+              redirectTo="/" component={<PageNotFound />}
+            />}/>
+            <Route path="/search" element={<PrivateRoute redirectTo="/login" component={<SearchPage />} /> } />
           </Route>
         </Routes>
       </Theme>
