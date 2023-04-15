@@ -6,10 +6,12 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
 import { PrivateRoute } from 'routes/PrivateRoute';
 import WelcomePage from 'pages/WelcomePage/WelcomePage';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
+import SigninPage from '../pages/SigninPage/SigninPage';
 
 // const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
+// const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+// const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
