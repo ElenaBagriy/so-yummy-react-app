@@ -6,7 +6,7 @@ import { LogoWrapper } from './Logo.styled';
 export function Logo() {
   return (
     <LogoWrapper>
-      <Link to="/">
+      <Link to="/main">
         <LogoSVG width="44" height="44" />
       </Link>
     </LogoWrapper>

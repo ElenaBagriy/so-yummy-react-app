@@ -5,7 +5,7 @@ export function Navigation() {
     <>
       <StyledNav>
         {/* <NavLink to={`/categories/:${categoryName}`}>Categories</NavLink> */}
-        <StyledLink to="/categories">Categories</StyledLink>
+        <StyledLink to="/categories/beef">Categories</StyledLink>
         <StyledLink to="/add">Add recipes</StyledLink>
         <StyledLink to="/my">My recipes</StyledLink>
         <StyledLink to="/favorite">Favorites</StyledLink>
