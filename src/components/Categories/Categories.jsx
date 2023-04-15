@@ -1,3 +1,5 @@
+// import { useMediaQuery } from '@mui/material';
+// import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
 
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
@@ -17,10 +19,16 @@ export const Categories = () => {
     const [totalPages, setTotalPages] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [categoryRecipes, setCategoryRecipes] = useState([]);
+    
     const { categoryName } = useParams();
 
     const navigate = useNavigate();
   
+//   const mobile = useMediaQuery('(max-width: 767px)');
+//   const tablet = useMediaQuery('(max-width: 1439px)');
+//   const desctop = useMediaQuery('(min-width: 1440px)');
+
+
     useEffect(() => {
         if (!category) {
             return;
@@ -35,7 +43,6 @@ export const Categories = () => {
                     return alert('Something went wrong!');     ///Прописать ошибку
                 };
 
-                console.log(results);
                 setCategoryRecipes(results.recipes);
                 const pages = Math.round(results.total / results.limit);
                 if (pages > 1) {
@@ -90,6 +97,16 @@ export const Categories = () => {
     const handleChangePage = (event, value) => {
         setPage(value);
     };
+
+    const onRecipeFavoriteChange = (id, favorite) => {
+        const changedRecipes = categoryRecipes.map(recipe => {
+            if (recipe._id === id) {
+                return { ...recipe, favorite };
+            }
+            return recipe;
+        });
+        setCategoryRecipes(changedRecipes);
+    }
     
     return (
         <section>
@@ -114,7 +131,30 @@ export const Categories = () => {
                 </StyledTabs>
 
                 {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
-                <CommonItemList list={categoryRecipes}></CommonItemList>}
+                <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>}
+
+      {/* {isLoading || recepiesCategory.length === 0 ? (
+          (desctop && (
+            <>
+              <div className={css.loader}>
+                <Loader.Desktop />
+              </div>
+              <Loader.Desktop />
+            </>
+          )) ||
+          (tablet && (
+            <>
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+            </>
+          )) ||
+          (mobile && <Loader.Mobile />)
+        ) : (
+          <ul className={css.categoryList}>
+        )}
+        */}
 
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
