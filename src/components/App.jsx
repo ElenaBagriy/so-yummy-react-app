@@ -5,13 +5,14 @@ import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
 import { PrivateRoute } from 'routes/PrivateRoute';
+import WelcomePage from 'pages/WelcomePage/WelcomePage';
 
+// const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage'));
-const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
-const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
-const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 
 export const App = () => {

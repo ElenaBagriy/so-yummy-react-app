@@ -110,7 +110,7 @@ export const Categories = () => {
     
     return (
         <section>
-            <Background/>
+            {/* <Background/> */}
             <Container>
                 <MainPageTitle title='Categories' />
                 <StyledTabs
@@ -161,6 +161,7 @@ export const Categories = () => {
                 </Suspense>
                 <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
             </Container>
+            <Background/>
         </section>
   );
 };
