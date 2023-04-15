@@ -1,7 +1,7 @@
 import { Tabs } from "@mui/material";
 import styled from "styled-components";
 
-export const Section = styled.section`
+export const Section = styled.main`
     position: relative;
 `
 

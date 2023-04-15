@@ -1,6 +1,6 @@
 import iconFor404 from '../../images/PageNotFound/icon-for-404.svg';
 
-export const PageNotFound = () => {
+const PageNotFound = () => {
   return (
     <>
       <img src={iconFor404} alt="Icon 404" />
@@ -9,3 +9,5 @@ export const PageNotFound = () => {
     </>
   );
 };
+
+export default PageNotFound;

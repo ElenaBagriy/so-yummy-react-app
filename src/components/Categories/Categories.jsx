@@ -1,3 +1,5 @@
+// import { useMediaQuery } from '@mui/material';
+// import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
 
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
@@ -5,7 +7,7 @@ import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import Tab from '@mui/material/Tab';
 import { Suspense, useEffect, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import { StyledTabs } from "./Categories.styled";
+import { Section, StyledTabs } from "./Categories.styled";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import { RecipesAPI } from '../../services/api/API';
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
@@ -17,10 +19,22 @@ export const Categories = () => {
     const [totalPages, setTotalPages] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [categoryRecipes, setCategoryRecipes] = useState([]);
+    
     const { categoryName } = useParams();
 
     const navigate = useNavigate();
   
+//   const mobile = useMediaQuery('(max-width: 767px)');
+//   const tablet = useMediaQuery('(max-width: 1439px)');
+//   const desctop = useMediaQuery('(min-width: 1440px)');
+
+    useEffect(() => {
+        console.log(categoryName);
+        if (categoryName) {
+            setCategory(categoryName);
+        };
+    }, [categoryName]);
+
     useEffect(() => {
         if (!category) {
             return;
@@ -35,7 +49,6 @@ export const Categories = () => {
                     return alert('Something went wrong!');     ///Прописать ошибку
                 };
 
-                console.log(results);
                 setCategoryRecipes(results.recipes);
                 const pages = Math.round(results.total / results.limit);
                 if (pages > 1) {
@@ -52,7 +65,10 @@ export const Categories = () => {
         getRecipeByCategories({ category, page });
     }, [category, page, totalPages]);
 
+
+
     useEffect(() => {
+        
         setIsLoading(true);
         async function getCategories() {
             try {
@@ -74,13 +90,6 @@ export const Categories = () => {
         getCategories();
     }, []);
     
-    useEffect(() => {
-        if (categoryName) {
-            setCategory(categoryName);
-        };
-    }, [categoryName])
-    
-
     const handleChange = (event, newValue) => {
         setPage(1);
         setCategory(newValue);
@@ -90,9 +99,19 @@ export const Categories = () => {
     const handleChangePage = (event, value) => {
         setPage(value);
     };
+
+    const onRecipeFavoriteChange = (id, favorite) => {
+        const changedRecipes = categoryRecipes.map(recipe => {
+            if (recipe._id === id) {
+                return { ...recipe, favorite };
+            }
+            return recipe;
+        });
+        setCategoryRecipes(changedRecipes);
+    }
     
     return (
-        <section>
+        <Section>
             <Background/>
             <Container>
                 <MainPageTitle title='Categories' />
@@ -114,13 +133,36 @@ export const Categories = () => {
                 </StyledTabs>
 
                 {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
-                <CommonItemList list={categoryRecipes}></CommonItemList>}
+                <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>}
+
+      {/* {isLoading || recepiesCategory.length === 0 ? (
+          (desctop && (
+            <>
+              <div className={css.loader}>
+                <Loader.Desktop />
+              </div>
+              <Loader.Desktop />
+            </>
+          )) ||
+          (tablet && (
+            <>
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+            </>
+          )) ||
+          (mobile && <Loader.Mobile />)
+        ) : (
+          <ul>
+        )}
+        */}
 
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
                 </Suspense>
                 <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
             </Container>
-        </section>
+        </Section>
   );
 };

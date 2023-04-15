@@ -13,7 +13,7 @@ export const RegisterStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 305px 20px 157px;
+  padding: 305px 20px 118px;
   background-color: ${props => props.theme.colors.white};
   background-image: url('${backMob}');
   background-position: 50% 100%;
@@ -30,7 +30,7 @@ export const RegisterStyled = styled.div`
   //tablet
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    padding: 444px 134px 100px;
+    padding: 443px 134px 59px;
     background-image: url(${backTabl});
   }
 

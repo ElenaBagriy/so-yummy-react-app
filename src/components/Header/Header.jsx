@@ -6,16 +6,14 @@ import { HeaderWrapper } from './Header.styled';
 
 export function Header() {
   return (
-    <>
-      <header>
-        <Container>
-          <HeaderWrapper>
-            <Logo />
-            <Navigation />
-            <UserLogo />
-          </HeaderWrapper>
-        </Container>
-      </header>
-    </>
+    <header>
+      <Container>
+        <HeaderWrapper>
+          <Logo />
+          <Navigation />
+          <UserLogo />
+        </HeaderWrapper>
+      </Container>
+    </header>
   );
 }

@@ -11,7 +11,7 @@ import { selectIsLoggedIn } from 'redux/selectors';
 // import logom from '../../images/welcomePage/logo-mob.png';
 // import logom2x from '../../images/welcomePage/logo-mob@2x.png';
 
-export const WelcomePage = () => {
+const WelcomePage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     !isLoggedIn && (
@@ -71,3 +71,5 @@ export const WelcomePage = () => {
     )
   );
 };
+
+export default WelcomePage;
