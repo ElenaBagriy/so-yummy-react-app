@@ -1,8 +1,7 @@
-import { BackgroundContainer, StyledDots, StyledSpinach } from "./Background.styled"
+import { StyledDots } from "./Background.styled"
 
 export const Background = () => {
-    return <BackgroundContainer>
-        <StyledDots/>
-        <StyledSpinach />
-        </BackgroundContainer>
+    return <>
+        <StyledDots />
+    </>
 }
