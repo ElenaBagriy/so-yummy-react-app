@@ -7,7 +7,7 @@ import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import Tab from '@mui/material/Tab';
 import { Suspense, useEffect, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import { StyledTabs } from "./Categories.styled";
+import { Section, StyledTabs } from "./Categories.styled";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import { RecipesAPI } from '../../services/api/API';
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
@@ -109,8 +109,8 @@ export const Categories = () => {
     }
     
     return (
-        <section>
-            {/* <Background/> */}
+        <Section>
+            <Background/>
             <Container>
                 <MainPageTitle title='Categories' />
                 <StyledTabs
@@ -161,7 +161,6 @@ export const Categories = () => {
                 </Suspense>
                 <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
             </Container>
-            <Background/>
-        </section>
+        </Section>
   );
 };
