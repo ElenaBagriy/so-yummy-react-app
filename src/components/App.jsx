@@ -8,6 +8,8 @@ import { RestrictedRoute } from 'routes/RestrictedRoute';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import SigninPage from 'pages/SigninPage/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute';
+import ShoppingListPage from 'pages/ShoppingList/ShoppingList';
+
 
 const CategoriesPage = lazy(() =>
   import('../pages/CategoriesPage/CategoriesPage')
@@ -51,7 +53,7 @@ export const App = () => {
             >
               <Route path="/categories/:categoryName" element={<div>hrenovina</div>} ></Route>
             </Route>
-
+            <Route path="shopping-list" element={<ShoppingListPage />} />
             {/* --- Отсальные страницы сюда --- */}
           </Route>
         </Routes>
