@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/852.f737ccea.chunk.js","mappings":"uLAAaA,EAAW,WAEpB,OAAO,mFAMV,C","sources":["pages/MainPage/MainPage.jsx"],"sourcesContent":["export const MainPage = () => {\n\n    return <>\n        СhooseYourBreakfast\n        Search\n        PreviewCategories\n    </>\n\n}"],"names":["MainPage"],"sourceRoot":""}
