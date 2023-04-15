@@ -19,9 +19,7 @@ const CategoriesPage = lazy(() =>
 );
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
-const AddRecipePage = lazy(() =>
-  import('../pages/AddRecipePage/AddRecipePage')
-);
+const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 
 export const App = () => {
   return (
@@ -30,68 +28,17 @@ export const App = () => {
         <GlobalStyle />
         <WelcomePage />
         <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<RegisterPage />}
-                />
-              }
-            />
-            <Route
-              path="/signin"
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<SigninPage />}
-                />
-              }
-            />
-            <Route path="/" element={<SharedLayout />}>
-              <Route
-                path="/main"
-                element={
-                  <PrivateRoute redirectTo="/login" component={<MainPage />} />
-                }
-              />
-              <Route
-                path="/categories/:categoryName"
-                element={
-                  <PrivateRoute
-                    redirectTo="/login"
-                    component={<CategoriesPage />}
-                  />
-                }
-              />
-              <Route
-                path="*"
-                element={
-                  <RestrictedRoute // замінить на Private
-                    redirectTo="/"
-                    component={<PageNotFound />}
-                  />
-                }
-              />
-              <Route
-                path="/search"
-                element={
-                  <PrivateRoute
-                    redirectTo="/login"
-                    component={<SearchPage />}
-                  />
-                }
-              />
-              <Route
-                path="/add"
-                element={
-                  <PrivateRoute
-                    redirectTo="/login"
-                    component={<AddRecipePage />}
-                  />
-                }
-              />
+        <Routes>
+          <Route path="/register" element={<RestrictedRoute redirectTo="/main" component={<RegisterPage />}/>}/>
+          <Route path="/signin" element={ <RestrictedRoute redirectTo="/main" component={<SigninPage />} />}/>
+          <Route path="/" element={<SharedLayout />}>
+            <Route path="/main" element={ <PrivateRoute redirectTo="/login" component={<MainPage />}/>}/>
+            <Route path="/categories/:categoryName" element={ <PrivateRoute redirectTo="/login" component={<CategoriesPage />}/>}/>
+            <Route path="*" element={<RestrictedRoute // замінить на Private 
+              redirectTo="/" component={<PageNotFound />}
+            />}/>
+              <Route path="/search" element={<PrivateRoute redirectTo="/login" component={<SearchPage />} />} />
+              <Route path="/add" element={<PrivateRoute redirectTo="/login" component={<AddRecipePage />} />} />
             </Route>
           </Routes>
         </Suspense>
