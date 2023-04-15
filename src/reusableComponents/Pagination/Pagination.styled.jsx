@@ -42,6 +42,7 @@ export const BasicPagination = styled(Pagination)`
         width: 27px;
         height: 27px;
         color: ${props => props.theme.text.paginationText};
+        transition: background-color ${props => props.theme.hover.transition};
         
         &:hover {
             background-color: #cce681;
@@ -49,6 +50,7 @@ export const BasicPagination = styled(Pagination)`
 
         &.Mui-selected {
         background-color: ${props => props.theme.colors.lightGreen};
+        transition: background-color ${props => props.theme.hover.transition};
 
         &:hover {
             background-color: #cce681;
