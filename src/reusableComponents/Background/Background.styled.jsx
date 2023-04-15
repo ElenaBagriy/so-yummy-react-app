@@ -10,6 +10,12 @@ import spinachTablet2x from '../../images/commonImages/spinach-tablet@2x.png';
 import spinachDesktop1x from '../../images/commonImages/spinach-desktop@1x.png';
 import spinachDesktop2x from '../../images/commonImages/spinach-desktop@2x.png';
 
+export const BackgroundContainer = styled.div`
+width: 100%;
+height: 100%;
+position: relative;
+`;
+
 export const StyledDots = styled.div`
   position: absolute;
   z-index: -1;
@@ -73,7 +79,7 @@ export const StyledSpinach = styled.div`
   transform: rotate(149deg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: left 54px bottom 0;
+  background-position: left 32px bottom 0;
     
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),

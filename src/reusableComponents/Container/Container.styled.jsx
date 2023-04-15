@@ -12,10 +12,11 @@ export const StyledContainer = styled.div`
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 200px;
-  }
+  };
+  
   @media screen and (min-width: 1280px) {
     max-width: 1440px;
     padding-left: 100px;
     padding-right: 100px;
   }
-`
+`;
