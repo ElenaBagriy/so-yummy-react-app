@@ -5,6 +5,7 @@ import { PopularRecipe } from 'components/PopularRecipe/PopularRecipe';
 import { AddRecipeForm } from 'components/AddRecipeForm/AddRecipeForm';
 import { Background } from 'reusableComponents/Background/Background';
 import { Container } from 'reusableComponents/Container/Container';
+import { WrapperStyled } from './AddRecipePage.styled';
 import { Main } from 'reusableComponents/Main/Main';
 
 const AddRecipePage = () => {
@@ -13,9 +14,15 @@ const AddRecipePage = () => {
       <Background />
       <Container>
         <MainPageTitle title="Add recipe" />
-        <AddRecipeForm />
-        <FollowUs />
-        <PopularRecipe />
+        <WrapperStyled>
+          <div>
+            <AddRecipeForm />
+          </div>
+          <div>
+            <FollowUs />
+            <PopularRecipe />
+          </div>
+        </WrapperStyled>
       </Container>
     </Main>
   );
