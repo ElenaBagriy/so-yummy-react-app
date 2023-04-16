@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
@@ -8,6 +8,9 @@ import { PrivateRoute } from 'routes/PrivateRoute';
 import WelcomePage from 'pages/WelcomePage/WelcomePage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import SigninPage from '../pages/SigninPage/SigninPage';
+import { useDispatch } from 'react-redux';
+import { useAuth } from './hooks';
+import { refreshUser } from 'redux/user/userOperations';
 // import AddRecipePage from 'pages/AddRecipePage/AddRecipePage';
 
 // const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -22,27 +25,90 @@ const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
-    <div>
-      <Theme>
-        <GlobalStyle />
-        <WelcomePage />
-        <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/register" element={<RestrictedRoute redirectTo="/main" component={<RegisterPage />}/>}/>
-          <Route path="/signin" element={ <RestrictedRoute redirectTo="/main" component={<SigninPage />} />}/>
-          <Route path="/" element={<SharedLayout />}>
-            <Route path="/main" element={ <PrivateRoute redirectTo="/login" component={<MainPage />}/>}/>
-            <Route path="/categories/:categoryName" element={ <PrivateRoute redirectTo="/login" component={<CategoriesPage />}/>}/>
-            <Route path="*" element={<RestrictedRoute // замінить на Private 
-              redirectTo="/" component={<PageNotFound />}
-            />}/>
-              <Route path="/search" element={<PrivateRoute redirectTo="/login" component={<SearchPage />} />} />
-              <Route path="/add" element={<PrivateRoute redirectTo="/login" component={<AddRecipePage />} />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </Theme>
-    </div>
+    !isRefreshing && (
+      <div>
+        <Theme>
+          <GlobalStyle />
+          <WelcomePage />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route
+                path="/register"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/main"
+                    component={<RegisterPage />}
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/main"
+                    component={<SigninPage />}
+                  />
+                }
+              />
+              <Route path="/" element={<SharedLayout />}>
+                <Route
+                  path="main"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/login"
+                      component={<MainPage />}
+                    />
+                  }
+                />
+                <Route
+                  path="categories/:categoryName"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/login"
+                      component={<CategoriesPage />}
+                    />
+                  }
+                />
+                <Route
+                  path="*"
+                  element={
+                    <RestrictedRoute // замінить на Private
+                      redirectTo="/"
+                      component={<PageNotFound />}
+                    />
+                  }
+                />
+                <Route
+                  path="search"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/login"
+                      component={<SearchPage />}
+                    />
+                  }
+                />
+                <Route
+                  path="/add"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/login"
+                      component={<AddRecipePage />}
+                    />
+                  }
+                />
+              </Route>
+            </Routes>
+          </Suspense>
+        </Theme>
+      </div>
+    )
   );
 };
