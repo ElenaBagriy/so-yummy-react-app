@@ -15,7 +15,6 @@ import axios from 'axios';
 
 // $privateHost.interceptors.request.use(authInterceptor);
 
-
 axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
 
 const setAuthHeader = token => {
@@ -40,7 +39,7 @@ export const UserAPI = {
   },
 
   logout: async () => {
-    const { data } = await axios.post('/users/logout'); 
+    const { data } = await axios.post('/users/logout');
     clearAuthHeader();
     return data;
   },
@@ -77,7 +76,7 @@ export const UserAPI = {
     const { data } = await axios.patch('users/shopping-list', info);
     return data;
   },
-  
+
   updateUserInfoForSubscribe: async info => {
     const { data } = await axios.patch('users/subscribe', info);
     return data;
@@ -86,16 +85,20 @@ export const UserAPI = {
 
 //=========Recipes==============
 export const RecipesAPI = {
-  getRecipes: async ({page, limit, sort=''}) => {
-    const { data } = await axios.get(`/recipes?page=${page}&limit=${limit}&sort=${sort}`);
+  getRecipes: async ({ page, limit, sort = '' }) => {
+    const { data } = await axios.get(
+      `/recipes?page=${page}&limit=${limit}&sort=${sort}`
+    );
     return data;
   },
   getRecipesMainPage: async () => {
     const { data } = await axios.get('/recipes/main-page');
     return data;
   },
-  getRecipesFavorite: async ({page, limit, sort=''}) => {
-    const { data } = await axios.get(`/recipes/favorite?page=${page}&limit=${limit}&sort=${sort}`);
+  getRecipesFavorite: async ({ page, limit, sort = '' }) => {
+    const { data } = await axios.get(
+      `/recipes/favorite?page=${page}&limit=${limit}&sort=${sort}`
+    );
     return data;
   },
 
@@ -108,42 +111,61 @@ export const RecipesAPI = {
     const { data } = await axios.patch(`/recipes/like/${id}`);
     return data;
   },
-    
+
   getRecipeById: async id => {
     const { data } = await axios.get(`/recipes/id/${id}`);
     return data;
   },
-    
+
   getAllCategories: async () => {
     const { data } = await axios.get(`/recipes/category/list`);
     return data;
   },
 
-  getRecipeByCategories: async ({ category, page, limit = 8, sort = 'popular' }) => {
-    const normalisedQuery = category.charAt(0).toUpperCase() + category.slice(1);
-    const { data } = await axios.get(`/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`);
+  getRecipeByCategories: async ({
+    category,
+    page,
+    limit = 8,
+    sort = 'popular',
+  }) => {
+    const normalisedQuery =
+      category.charAt(0).toUpperCase() + category.slice(1);
+    const { data } = await axios.get(
+      `/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`
+    );
     return data;
   },
 
   getRecipesByQuery: async ({ query, page, limit, sort = '' }) => {
-    const { data } = await axios.get(`/recipes/title/${query}?page=${page}&limit=${limit}&sort=${sort}`);
+    const { data } = await axios.get(
+      `/recipes/title/${query}?page=${page}&limit=${limit}&sort=${sort}`
+    );
     return data;
   },
-    
-  getIngredientsByQuery: async ({query, page, limit, sort=''}) => {
-    const { data } = await axios.get(`/recipes/ingredient/${query}?page=${page}&limit=${limit}&sort=${sort}`);
+
+  getIngredientsByQuery: async ({ query, page, limit, sort = '' }) => {
+    const { data } = await axios.get(
+      `/recipes/ingredient/${query}?page=${page}&limit=${limit}&sort=${sort}`
+    );
+    return data;
+  },
+
+  getIngredients: async () => {
+    const { data } = await axios.get(`/recipes/ingredients`);
     return data;
   },
 };
 
 //=========Own recipes ==================
 export const OwnRecipesAPI = {
-  getAllOwnRecipes: async ({page, limit}) => {
-    const { data } = await axios.get(`/own-recipes?page=${page}&limit=${limit}`);
+  getAllOwnRecipes: async ({ page, limit }) => {
+    const { data } = await axios.get(
+      `/own-recipes?page=${page}&limit=${limit}`
+    );
     return data;
   },
-  addOwnRecipe: async recipe => {
-    const { data } = await axios.post('/own-recipes', recipe);
+  addOwnRecipe: async recipeData => {
+    const { data } = await axios.post('/own-recipes', recipeData);
     return data;
   },
   deleteOwnRecipe: async recipeId => {

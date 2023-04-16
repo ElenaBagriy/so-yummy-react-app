@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   getAllCategories,
+  getIngredients,
   getIngredientsByQuery,
   getRecipeByCategories,
   getRecipeById,
@@ -28,6 +29,7 @@ const recipesInitialState = {
   ],
   randomRecipes: [],
   categoryList: [],
+  ingredientsList: [],
   total: null,
   page: null,
   limit: null,
@@ -68,8 +70,13 @@ const recipesSlice = createSlice({
       .addCase(toggleLikeRecipesStatusById.rejected, (state, action) => {})
 
       // ------------ Get Recipe By Id ----------------
-      .addCase(getRecipeById.pending, state => {})
-      .addCase(getRecipeById.fulfilled, (state, action) => {})
+      .addCase(getRecipeById.pending, state => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(getRecipeById.fulfilled, (state, action) => {
+        state.recipeId = action.payload._id;
+      })
       .addCase(getRecipeById.rejected, (state, action) => {})
 
       // ------------ Get All Categories ----------------
@@ -97,7 +104,20 @@ const recipesSlice = createSlice({
       // ------------ Get Ingredients By Query ----------------
       .addCase(getIngredientsByQuery.pending, state => {})
       .addCase(getIngredientsByQuery.fulfilled, (state, action) => {})
-      .addCase(getIngredientsByQuery.rejected, (state, action) => {}),
+      .addCase(getIngredientsByQuery.rejected, (state, action) => {})
+      // ------------ Get All Ingredients ----------------
+      .addCase(getIngredients.pending, state => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(getIngredients.fulfilled, (state, action) => {
+        state.ingredientsList = action.payload.ingredients;
+        // console.log(action.payload.ingredients);
+      })
+      .addCase(getIngredients.rejected, state => {
+        state.isLoading = false;
+        state.error = true;
+      }),
 });
 
 export const recipesReducer = recipesSlice.reducer;

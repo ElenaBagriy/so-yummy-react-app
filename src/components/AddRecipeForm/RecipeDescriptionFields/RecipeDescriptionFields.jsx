@@ -1,15 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { RecipeDescStyled } from './RecipeDescriptionFields.styled';
+import { InputsStyled } from './RecipeDescriptionFields.styled';
 
 export const RecipeDescriptionFields = ({ categories }) => {
   const {
     register,
-    handleSubmit,
-    watch,
+    // handleSubmit,
+    // watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
+
   let timeOptions = [];
 
   const timeGenerator = (min, max) => {
@@ -18,21 +19,17 @@ export const RecipeDescriptionFields = ({ categories }) => {
     }
     return timeOptions;
   };
-
-  timeGenerator(5, 200);
+  timeGenerator(5, 120);
 
   return (
-    <div>
-      <RecipeDescStyled onSubmit={handleSubmit(onSubmit)}>
-        <input type="file" name="picture" />
-        <div>
-          <input placeholder="Enter item title" {...register('title')} />
-
-          <input
-            placeholder="Enter about recipe"
-            {...register('description')}
-          />
-          {errors.exampleRequired && <span>This field is required</span>}
+    <RecipeDescStyled>
+      <input type="file" name="picture" {...register('picture')} />
+      <InputsStyled>
+        <input placeholder="Enter item title" {...register('title')} />
+        <input placeholder="Enter about recipe" {...register('description')} />
+        {errors.exampleRequired && <span>This field is required</span>}
+        <label>
+          Category
           <select {...register('category')}>
             {categories.map(item => (
               <option key={item._id} value={item.title}>
@@ -40,16 +37,19 @@ export const RecipeDescriptionFields = ({ categories }) => {
               </option>
             ))}
           </select>
-          <select placeholder="Cooking time" {...register('cooking time')}>
+        </label>
+        <label>
+          {' '}
+          Cooking time
+          <select placeholder="Cooking time" {...register('time')}>
             {timeOptions.map(item => (
               <option key={item} value={item}>
                 {item} min
               </option>
             ))}
           </select>
-          <button type="submit">Add</button>
-        </div>
-      </RecipeDescStyled>
-    </div>
+        </label>
+      </InputsStyled>
+    </RecipeDescStyled>
   );
 };

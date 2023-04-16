@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RecipeDescStyled = styled.form`
+export const RecipeDescStyled = styled.div`
   display: flex;
   gap: 50px;
 `;
