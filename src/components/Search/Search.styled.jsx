@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
+    margin: 0 auto;
     position: relative;
     width: 295px;
 
     @media screen and (min-width: 768px) {
+        margin: 0;
         width: 362px;
     }
 
@@ -36,6 +38,7 @@ export const Input = styled.input`
     };
 
     @media screen and (min-width: 768px) {
+        font-size: 16px;
         padding: 18px 161px 18px 38px;
     }
 
@@ -57,6 +60,7 @@ export const Button = styled.button`
   font-size: 14px;
   line-height: 1.5;
   border: none;
+  transition: background-color ${props => props.theme.hover.transition};
 
 
   //tablet

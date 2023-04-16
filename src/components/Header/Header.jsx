@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { HeaderSection } from "./Header.styled";
 
 export function Header() {
   return (
-      <header>
+      <HeaderSection>
         <h2>HEADER</h2>
         <NavLink to="/main">Logo</NavLink>
         <NavLink to="/categories/beef">Categories</NavLink>
@@ -11,6 +12,6 @@ export function Header() {
         <NavLink to="/favorites"></NavLink>
         <NavLink to="/shopping-list">Shopping list</NavLink>
         <NavLink to="/search">Search icon</NavLink>
-      </header>
+      </HeaderSection>
   );
 }

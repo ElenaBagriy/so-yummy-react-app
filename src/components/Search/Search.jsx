@@ -18,14 +18,14 @@ export const Search = () => {
         navigate(`/search/?query=${query}`);
   };
     
-    return <div>Search
+    return <>
         <Form onSubmit={onSearchFormSubmit}>
             <Input
                 name="search"
                 type="text"
                 placeholder="Enter the text"
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Search</Button>
         </Form>
-    </div>
+    </>
 };
