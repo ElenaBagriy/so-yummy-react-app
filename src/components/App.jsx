@@ -8,6 +8,7 @@ import { PrivateRoute } from 'routes/PrivateRoute';
 import WelcomePage from 'pages/WelcomePage/WelcomePage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import SigninPage from '../pages/SigninPage/SigninPage';
+import ShoppingListPage from 'pages/ShoppingList/ShoppingList';
 import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks';
 import { refreshUser } from 'redux/user/userOperations';
@@ -103,6 +104,10 @@ export const App = () => {
                     />
                   }
                 />
+                <Route path="/shopping-list" element={<PrivateRoute
+                      redirectTo="/login"
+                      component={<ShoppingListPage />}
+                    />} />
               </Route>
             </Routes>
           </Suspense>
@@ -111,3 +116,4 @@ export const App = () => {
     )
   );
 };
+
