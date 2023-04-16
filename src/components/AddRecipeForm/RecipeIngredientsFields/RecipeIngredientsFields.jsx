@@ -24,11 +24,11 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
   // console.log(allIngredients);
 
   const addField = () => {
-    setNumberOfFields(prevState => (prevState > 0 ? prevState - 1 : prevState));
+    setNumberOfFields(prevState => prevState + 1);
   };
 
   const deleteField = () => {
-    setNumberOfFields(prevState => prevState + 1);
+    setNumberOfFields(prevState => (prevState > 0 ? prevState - 1 : prevState));
   };
 
   // const onSubmit = data => console.log(data);
