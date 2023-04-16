@@ -1,16 +1,23 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+// Удалить высоту Hero
+
 export const Hero = styled.section`
+    position: relative;
+    height: 777px;
+    border: 1px solid red;
     text-align: center;
     padding-top: 68px;
 
     @media screen and (min-width: 768px) {
+      height: 640px;
       text-align: start;
       padding-top: 140px;
     };
   
     @media screen and (min-width: 1280px) {
+      height: 800px;
       padding-top: 162px;
     }
 `;
