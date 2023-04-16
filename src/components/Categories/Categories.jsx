@@ -1,5 +1,7 @@
-// import { useMediaQuery } from '@mui/material';
-// import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
+//  Добавить лоудеры под разные размеры через useMediaQuery('(max-width: ...px)');
+//  Добавить мотивашки
+//  Прописать ошибку
+//  Добавить нотифай
 
 import { Container } from "reusableComponents/Container/Container";
 import { Background } from "reusableComponents/Background/Background";
@@ -23,22 +25,9 @@ export const Categories = () => {
     const { categoryName } = useParams();
 
     const navigate = useNavigate();
-  
-//   const mobile = useMediaQuery('(max-width: 767px)');
-//   const tablet = useMediaQuery('(max-width: 1439px)');
-//   const desctop = useMediaQuery('(min-width: 1440px)');
 
     useEffect(() => {
-        console.log(categoryName);
-        if (categoryName) {
-            setCategory(categoryName);
-        };
-    }, [categoryName]);
-
-    useEffect(() => {
-        if (!category) {
-            return;
-        }
+        if (!category) return;
         setIsLoading(true);
         
         async function getRecipeByCategories(data) {
@@ -46,7 +35,7 @@ export const Categories = () => {
                 const results = await RecipesAPI.getRecipeByCategories(data);
                 
                 if (results.length === 0) {
-                    return alert('Something went wrong!');     ///Прописать ошибку
+                    return;     ///Прописать ошибку
                 };
 
                 setCategoryRecipes(results.recipes);
@@ -57,43 +46,54 @@ export const Categories = () => {
                     setTotalPages(null);
                 };
             } catch (error) {
-                return alert('Something went wrong!')///Прописать ошибку
+                return; ///Прописать ошибку
             } finally {
                 setIsLoading(false);
             };
         };
         getRecipeByCategories({ category, page });
-    }, [category, page, totalPages]);
-
-
+    }, [category, page]);
 
     useEffect(() => {
-        
+        if (categoryName) {
+            setCategory(categoryName);
+        };
+    }, [categoryName]);
+
+    useEffect(() => {
+        if (category) return;
         setIsLoading(true);
+
         async function getCategories() {
             try {
                 const results = await RecipesAPI.getAllCategories();
                 
                 if (results.length === 0) {
-                    return alert('Something went wrong!');     ///Прописать ошибку
+                    return;     ///Прописать ошибку
                 }
                 const categories = results.map(result => ({ id: result._id, title: result.title.toLowerCase() }))
                     .sort((a, b) => a.title.localeCompare(b.title));
                 setAllCategories(categories);
+                if (categoryName) {
+                    setCategory(categoryName);
+                    return;
+                };
                 setCategory(categories[0].title);
             } catch (error) {
-                return alert('Something went wrong!')///Прописать ошибку
+                return;  ///Прописать ошибку
             } finally {
                 setIsLoading(false);
             }
         }
         getCategories();
-    }, []);
+    }, [categoryName, category]);
+
     
     const handleChange = (event, newValue) => {
-        setPage(1);
-        setCategory(newValue);
         navigate(`/categories/${newValue}`)
+        setCategory(newValue);
+        if (page === 1) return;
+        setPage(1);
   };
     
     const handleChangePage = (event, value) => {
@@ -131,33 +131,8 @@ export const Categories = () => {
                             component='a'
                         />)}
                 </StyledTabs>
-
                 {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
                 <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>}
-
-      {/* {isLoading || recepiesCategory.length === 0 ? (
-          (desctop && (
-            <>
-              <div className={css.loader}>
-                <Loader.Desktop />
-              </div>
-              <Loader.Desktop />
-            </>
-          )) ||
-          (tablet && (
-            <>
-              <Loader.Tablet />
-              <Loader.Tablet />
-              <Loader.Tablet />
-              <Loader.Tablet />
-            </>
-          )) ||
-          (mobile && <Loader.Mobile />)
-        ) : (
-          <ul>
-        )}
-        */}
-
                 <Suspense fallback={<div>...Loading</div>}>
                     <Outlet/>
                 </Suspense>
