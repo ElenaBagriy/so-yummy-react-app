@@ -11,7 +11,6 @@ import SigninPage from '../pages/SigninPage/SigninPage';
 import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks';
 import { refreshUser } from 'redux/user/userOperations';
-// import AddRecipePage from 'pages/AddRecipePage/AddRecipePage';
 
 // const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 // const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
