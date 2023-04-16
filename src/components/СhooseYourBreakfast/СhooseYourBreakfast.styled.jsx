@@ -6,20 +6,20 @@ import { ReactComponent as Arrow } from "../../images/mainPage/arrowLink.svg";
 
 export const Hero = styled.section`
     position: relative;
-    height: 777px;
     border: 1px solid red;
     text-align: center;
-    padding-top: 68px;
+    padding-top: 132px;
+    padding-bottom: 83px;
 
     @media screen and (min-width: 768px) {
-      height: 640px;
       text-align: start;
-      padding-top: 140px;
+      padding-top: 204px;
+      padding-bottom: 195px;
     };
   
     @media screen and (min-width: 1280px) {
-      height: 800px;
-      padding-top: 162px;
+      padding-top: 226px;
+      padding-bottom: 268px;
     }
 `;
 
@@ -48,7 +48,7 @@ export const Accent = styled.span`
 `;
 
 export const Paragraph = styled.p`
-    margin: 0 auto;
+    margin: 0 auto 364px;
     width: 248px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -58,12 +58,13 @@ export const Paragraph = styled.p`
     color: ${props => props.theme.text.heroParagraph};
     
     @media screen and (min-width: 768px) {
-      margin: 0;
+      margin: 0 0 32px;
       padding-left: 6px;
       width: 362px;
     };
   
     @media screen and (min-width: 1280px) {
+      margin: 0 0 50px;
       width: 465px;
       font-size: 18px;
       line-height: 1.33;

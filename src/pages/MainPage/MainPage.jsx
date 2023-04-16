@@ -1,15 +1,11 @@
 import { PreviewCategories } from "components/PreviewCategories/PreviewCategories";
-import { Search } from "components/Search/Search";
 import { СhooseYourBreakfast } from "components/СhooseYourBreakfast/СhooseYourBreakfast";
 
 const MainPage = () => {
-
-    return <>
+    return <main>
         <СhooseYourBreakfast/>
-        <Search/>
         <PreviewCategories/>
-    </>
-
+    </main>
 };
 
 export default MainPage;

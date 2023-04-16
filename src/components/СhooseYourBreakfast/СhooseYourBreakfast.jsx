@@ -1,6 +1,7 @@
 import { Container } from "reusableComponents/Container/Container";
 import { Accent, ArrowLink, Hero, Link, Paragraph, ProductBlock, Text, Title } from "./СhooseYourBreakfast.styled";
 import { HeroBG } from "components/HeroBG/HeroBG";
+import { Search } from "components/Search/Search";
 
 
 export const СhooseYourBreakfast = () => {
@@ -14,6 +15,7 @@ export const СhooseYourBreakfast = () => {
                 <Text><Accent>Delicious and healthy</Accent> way to enjoy a variety of fresh ingredients in one satisfying meal</Text>
                 <Link to='/categories/breakfast'>See recipes<ArrowLink/></Link>
             </ProductBlock>
+            <Search/>
         </Container>
     </Hero>
 };
