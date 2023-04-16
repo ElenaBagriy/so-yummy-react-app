@@ -1,7 +1,8 @@
-import { StyledDots } from "./Background.styled"
+import { StyledDots, StyledSpinach } from "./Background.styled"
 
-export const Background = () => {
+export const Background = ({noDots= false}) => {
     return <>
-        <StyledDots />
+       {!noDots && <StyledDots />} 
+        <StyledSpinach/>
     </>
 }

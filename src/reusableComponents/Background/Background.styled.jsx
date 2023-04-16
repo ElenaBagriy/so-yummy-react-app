@@ -20,7 +20,7 @@ export const StyledDots = styled.div`
     url(${blackDotMobile}),
     url(${greenDotMobile});
   background-repeat: no-repeat;
-  background-position: left 120px top 15px, right 120px top 81px, right 15.37px top 48px;
+  background-position: left 120px top 76px, right 120px top 142px, right 15.37px top 109px;
 
 
   @media screen and (min-width: 768px) {
@@ -28,7 +28,7 @@ export const StyledDots = styled.div`
       url(${blackDotDesktop}),
       url(${greenDotDesktop});
     background-repeat: no-repeat;
-    background-position: left 219px top 22px, right 315px top 92px, right 23px top 35px;
+    background-position: left 219px top 85px, right 315px top 155px, right 23px top 98px;
 
   }
   
@@ -36,23 +36,21 @@ export const StyledDots = styled.div`
     background-image: url(${greenDotDesktop}),
       url(${blackDotDesktop}),
       url(${greenDotDesktop});
-    background-position: left 328px top 54px, right 617px top 137px, right 171px top 67px;
+    background-position: left 328px top 117px, right 617px top 200px, right 171px top 130px;
   }
 `
 
 export const StyledSpinach = styled.div`
   position: absolute;
-  left: -32px;
-  bottom: -220px;
+  left: 0;
+  bottom: -251px;
   z-index: -1;
-  width: 256px;
-  height: 392px; 
+  width: 306px;
+  height: 469px; 
   background-image: url(${spinachMobile1x});
-  /* filter: blur(4.5px); */
-  transform: rotate(149deg);
+  filter: blur(4.5px);
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-position: left 32px bottom 0px; */
     
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
@@ -61,16 +59,12 @@ export const StyledSpinach = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 423px;
-    height: 646px; 
-    left: -68px;
-    bottom: -180px;
+    width: 491px;
+    height: 772px; 
+    left: 0px;
+    bottom: -365.27px;
     background-image: url(${spinachTablet1x});
     filter: blur(4.5px);
-    transform: rotate(149deg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* background-position: left 101px bottom 0; */
 
       @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
@@ -80,12 +74,11 @@ export const StyledSpinach = styled.div`
   }
   
   @media screen and (min-width: 1280px) {
-    width: 558px;
-    height: 852px; 
+    width: 687px;
+    height: 1019px; 
+    bottom: -509.69px;
     background-image: url(${spinachDesktop1x});
     filter: blur(4.5px);
-    transform: rotate(149deg);
-    background-position: left 98px bottom 0;
 
       @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),

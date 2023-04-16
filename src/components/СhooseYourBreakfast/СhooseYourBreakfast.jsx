@@ -7,7 +7,7 @@ import { Search } from "components/Search/Search";
 export const СhooseYourBreakfast = () => {
 
     return <Hero>
-        <HeroBG/>
+        <HeroBG />
         <Container>
             <Title><Accent>So</Accent>Yummy</Title>
             <Paragraph>"What to cook?" is not only a recipe app, it is, in fact, your cookbook. You can add your own recipes to save them for the future.</Paragraph>

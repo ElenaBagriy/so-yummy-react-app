@@ -5,10 +5,11 @@ import { PopularRecipe } from 'components/PopularRecipe/PopularRecipe';
 import { AddRecipeForm } from 'components/AddRecipeForm/AddRecipeForm';
 import { Background } from 'reusableComponents/Background/Background';
 import { Container } from 'reusableComponents/Container/Container';
+import { Main } from 'reusableComponents/Main/Main';
 
 const AddRecipePage = () => {
   return (
-    <>
+    <Main>
       <Background />
       <Container>
         <MainPageTitle title="Add recipe" />
@@ -16,7 +17,7 @@ const AddRecipePage = () => {
         <FollowUs />
         <PopularRecipe />
       </Container>
-    </>
+    </Main>
   );
 };
 

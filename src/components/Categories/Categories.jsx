@@ -13,6 +13,8 @@ import { Section, StyledTabs } from "./Categories.styled";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import { RecipesAPI } from '../../services/api/API';
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
+import { onCapitalise } from "services/api/onCapitalise";
+import { Main } from "reusableComponents/Main/Main";
 
 export const Categories = () => {
     const [allCategories, setAllCategories] = useState([]);
@@ -51,7 +53,8 @@ export const Categories = () => {
                 setIsLoading(false);
             };
         };
-        getRecipeByCategories({ category, page });
+        const normalisedQuery = onCapitalise(category);
+        getRecipeByCategories({ normalisedQuery, page });
     }, [category, page]);
 
     useEffect(() => {
@@ -111,33 +114,35 @@ export const Categories = () => {
     }
     
     return (
-        <Section>
+        <Main>
             <Background/>
             <Container>
-                <MainPageTitle title='Categories' />
-                <StyledTabs
-                    component='ul'
-                    value={category}
-                    onChange={handleChange}
-                    variant="scrollable"
-                    scrollButtons={false}
-                    aria-label="categories list"
-                >
-                    {allCategories.length !== 0 && allCategories.map(({ id, title }) =>
-                        <Tab
-                            key={id}
-                            label={title}
-                            value={title}
-                            component='a'
-                        />)}
-                </StyledTabs>
-                {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
-                <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>}
-                <Suspense fallback={<div>...Loading</div>}>
-                    <Outlet/>
-                </Suspense>
-                <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
+                <Section>
+                    <MainPageTitle title='Categories' />
+                    <StyledTabs
+                        component='ul'
+                        value={category}
+                        onChange={handleChange}
+                        variant="scrollable"
+                        scrollButtons={false}
+                        aria-label="categories list"
+                    >
+                        {allCategories.length !== 0 && allCategories.map(({ id, title }) =>
+                            <Tab
+                                key={id}
+                                label={title}
+                                value={title}
+                                component='a'
+                            />)}
+                   </StyledTabs>
+                    {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
+                    <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>}
+                    <Suspense fallback={<div>...Loading</div>}>
+                        <Outlet/>
+                    </Suspense>
+                    <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
+                    </Section>
             </Container>
-        </Section>
+        </Main>
   );
 };

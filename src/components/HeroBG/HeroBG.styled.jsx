@@ -29,12 +29,6 @@ import arrowTablet2x from '../../images/mainPage/arrowTablet@2x.png';
 import arrowDesktop1x from '../../images/mainPage/arrowDesktop@1x.png';
 import arrowDesktop2x from '../../images/mainPage/arrowDesktop@2x.png';
 
-export const Background = styled.div`
-    /* position: absolute; */
-    /* top: 0;
-    left: 0; */
-`
-
 export const BackgroundColor = styled.div`
   position: absolute;
   right: 0;
@@ -84,7 +78,7 @@ export const BackgroundColor = styled.div`
 export const SpinachLeft = styled.div`
   position: absolute;
   left: 0;
-  top: 0;
+  top: 48px;
   z-index: -10;
   width: 39px;
   height: 184px; 
@@ -100,7 +94,7 @@ export const SpinachLeft = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    top: 48px;
+    top: 0px;
     width: 58px;
     height: 314px; 
     background-image: url(${spinachLeftTablet1x});
@@ -115,7 +109,7 @@ export const SpinachLeft = styled.div`
   }
   
   @media screen and (min-width: 1280px) {
-    top: 1px;
+    top: 0px;
     width: 107px;
     height: 389px; 
     background-image: url(${spinachLeftDesktop1x});

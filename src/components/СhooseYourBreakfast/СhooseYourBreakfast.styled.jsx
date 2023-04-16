@@ -2,11 +2,9 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../images/mainPage/arrowLink.svg";
 
-// Удалить высоту Hero?
-
 export const Hero = styled.section`
     position: relative;
-    border: 1px solid red;
+    border-bottom: 1px solid red;
     text-align: center;
     padding-top: 132px;
     padding-bottom: 83px;
