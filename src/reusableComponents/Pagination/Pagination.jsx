@@ -2,7 +2,7 @@ import { BasicPagination, ArrowBack, ArrowForward } from "./Pagination.styled"
 import { PaginationItem } from "@mui/material";
 
 export const Pagination = ({ onChange, page, totalPages }) => {
-    return  <>{totalPages && <BasicPagination
+    return  <>{totalPages >1 && <BasicPagination
         count={totalPages}
         page={page}
         onChange={onChange}

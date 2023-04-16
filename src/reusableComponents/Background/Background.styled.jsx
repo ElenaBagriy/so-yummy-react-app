@@ -3,6 +3,7 @@ import greenDotMobile from '../../images/commonImages/greenDot-mobile.svg';
 import blackDotMobile from '../../images/commonImages/blackDot-mobile.svg';
 import greenDotDesktop from '../../images/commonImages/greenDot-desktop.svg';
 import blackDotDesktop from '../../images/commonImages/blackDot-desktop.svg';
+
 import spinachMobile1x from '../../images/commonImages/spinach-mobile@1x.png';
 import spinachMobile2x from '../../images/commonImages/spinach-mobile@2x.png';
 import spinachTablet1x from '../../images/commonImages/spinach-tablet@1x.png';
@@ -19,61 +20,39 @@ export const StyledDots = styled.div`
     url(${blackDotMobile}),
     url(${greenDotMobile});
   background-repeat: no-repeat;
-  background-size: 8px 8px, 6px 6px, 8px 8px;
-  background-position: left 120px top 76px, right 120px top 141.46px, right 15.37px top 108.36px;
-    
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-    background-image: url(${greenDotMobile}),
-    url(${blackDotMobile}),
-    url(${greenDotMobile});
-  }
+  background-position: left 120px top 15px, right 120px top 81px, right 15.37px top 48px;
+
 
   @media screen and (min-width: 768px) {
     background-image: url(${greenDotDesktop}),
       url(${blackDotDesktop}),
       url(${greenDotDesktop});
     background-repeat: no-repeat;
-    background-size: 14px 14px, 12px 12px, 14px 14px;
-    background-position: left 219px top 85px, right 315px top 155px, right 23px top 98px;
+    background-position: left 219px top 22px, right 315px top 92px, right 23px top 35px;
 
-      @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-        background-image: url(${greenDotDesktop}),
-          url(${blackDotDesktop}),
-          url(${greenDotDesktop});
-      }
   }
   
   @media screen and (min-width: 1280px) {
     background-image: url(${greenDotDesktop}),
       url(${blackDotDesktop}),
       url(${greenDotDesktop});
-    background-position: left 328px top 116px, right 617px top 199px, right 171px top 129px;
-
-      @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-        background-image: url(${greenDotDesktop}),
-          url(${blackDotDesktop}),
-          url(${greenDotDesktop});
-      }
+    background-position: left 328px top 54px, right 617px top 137px, right 171px top 67px;
   }
 `
 
 export const StyledSpinach = styled.div`
   position: absolute;
+  left: -32px;
+  bottom: -220px;
   z-index: -1;
   width: 256px;
   height: 392px; 
   background-image: url(${spinachMobile1x});
-  filter: blur(4.5px);
+  /* filter: blur(4.5px); */
   transform: rotate(149deg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: left 54px bottom 0;
+  /* background-position: left 32px bottom 0px; */
     
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
@@ -84,12 +63,14 @@ export const StyledSpinach = styled.div`
   @media screen and (min-width: 768px) {
     width: 423px;
     height: 646px; 
+    left: -68px;
+    bottom: -180px;
     background-image: url(${spinachTablet1x});
     filter: blur(4.5px);
     transform: rotate(149deg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: left 101px bottom 0;
+    /* background-position: left 101px bottom 0; */
 
       @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),

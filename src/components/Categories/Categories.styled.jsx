@@ -1,7 +1,7 @@
 import { Tabs } from "@mui/material";
 import styled from "styled-components";
 
-export const Section = styled.section`
+export const Section = styled.main`
     position: relative;
 `
 
@@ -30,6 +30,7 @@ export const StyledTabs = styled(Tabs)`
     font-weight: 400;
     font-size: 14px;
     line-height: 1;
+    text-transform: capitalize;
     padding: 10px 10px 32px;
     color: ${props => props.theme.text.grey};
 
