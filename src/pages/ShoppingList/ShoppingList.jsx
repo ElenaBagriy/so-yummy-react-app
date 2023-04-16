@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import ShoppingListTabl from "components/ShoppingList/ShoppingListTabl";
 import { fetchShoppingList } from "redux/shoplist/shoplistOperation";
 import { Container } from 'reusableComponents/Container/Container';
-import { Title } from 'reusableComponents/Title/Title';
+import { MainPageTitle } from '../../reusableComponents/ManePageTitle/ManePageTitle';
 
 
 
@@ -16,7 +16,7 @@ const ShoppingListPage = () => {
 
   return (
     <Container>
-        <Title title="Shopping list"></Title>
+        <MainPageTitle title="Shopping list"></MainPageTitle>
         <ShoppingListTabl />
     </Container>
   );

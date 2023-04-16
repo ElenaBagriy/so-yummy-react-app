@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { UserAPI } from "../../services/api/API";
 
 // axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
 
@@ -11,7 +12,7 @@ export const fetchShoppingList = createAsyncThunk(
   'shopping-list/all',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
     if (persistedToken === null) return thunkAPI.rejectWithValue();
 
     setAuthHeader(persistedToken);
