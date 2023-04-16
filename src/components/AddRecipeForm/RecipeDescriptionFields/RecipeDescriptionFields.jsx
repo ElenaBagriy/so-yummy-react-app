@@ -10,19 +10,16 @@ export const RecipeDescriptionFields = ({ categories }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = data => console.log(data);
+  let timeOptions = [];
 
-  const timeGenerator = () => {
-    const min = 10;
-    const max = 200;
-    let timeOptions = [];
-
+  const timeGenerator = (min, max) => {
     for (let i = min; i <= max; i += 5) {
       timeOptions.push(i);
     }
     return timeOptions;
   };
 
-  // console.log(timeGenerator(max));
+  timeGenerator(5, 200);
 
   return (
     <div>
@@ -43,12 +40,13 @@ export const RecipeDescriptionFields = ({ categories }) => {
               </option>
             ))}
           </select>
-          <select
-            placeholder="Cooking time"
-            {...register('cooking time')}
-            options={timeGenerator()}
-          />
-
+          <select placeholder="Cooking time" {...register('cooking time')}>
+            {timeOptions.map(item => (
+              <option key={item} value={item}>
+                {item} min
+              </option>
+            ))}
+          </select>
           <button type="submit">Add</button>
         </div>
       </RecipeDescStyled>
