@@ -13,3 +13,6 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 //recipes
 export const selectCategoryList = state => state.recipes.categoryList;
+
+//search
+export const selectSearchQuery = state => state.search.query;

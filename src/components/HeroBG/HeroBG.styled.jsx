@@ -18,6 +18,16 @@ import spinachLeftTablet1x from '../../images/mainPage/spinachLeft-tablet@1x.png
 import spinachLeftTablet2x from '../../images/mainPage/spinachLeft-tablet@2x.png';
 import spinachLeftMobile1x from '../../images/mainPage/spinachLeft-mobile@1x.png';
 import spinachLeftMobile2x from '../../images/mainPage/spinachLeft-mobile@2x.png';
+import spinachRightDesktop1x from '../../images/mainPage/spinachRight-desktop@1x.png';
+import spinachRightDesktop2x from '../../images/mainPage/spinachRight-desktop@2x.png';
+import spinachRightTablet1x from '../../images/mainPage/spinachRight-tablet@1x.png';
+import spinachRightTablet2x from '../../images/mainPage/spinachRight-tablet@2x.png';
+import spinachRightMobile1x from '../../images/mainPage/spinachRight-mobile@1x.png';
+import spinachRightMobile2x from '../../images/mainPage/spinachRight-mobile@2x.png';
+import arrowTablet1x from '../../images/mainPage/arrowTablet@1x.png';
+import arrowTablet2x from '../../images/mainPage/arrowTablet@2x.png';
+import arrowDesktop1x from '../../images/mainPage/arrowDesktop@1x.png';
+import arrowDesktop2x from '../../images/mainPage/arrowDesktop@2x.png';
 
 export const Background = styled.div`
     /* position: absolute; */
@@ -166,4 +176,87 @@ export const Plate = styled.div`
         background-image: url(${plateDesktop2x});
       }
   }
-`
+`;
+
+export const SpinachRight = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: -82px;
+  z-index: -10;
+  width: 375px;
+  height: 806px; 
+  background-image: url(${spinachRightMobile1x});
+  filter: blur(2px);
+  background-repeat: no-repeat;
+  background-size: cover;
+    
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: url(${spinachRightMobile2x});
+  }
+
+  @media screen and (min-width: 768px) {
+    right: 0;
+    bottom: 0px;
+    width: 579px;
+    height: 640px; 
+    background-image: url(${spinachRightTablet1x});
+    background-repeat: no-repeat;
+    background-size: cover;
+
+      @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+        background-image: url(${spinachRightTablet2x});
+      }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    width: 909px;
+    height: 800px; 
+    background-image: url(${spinachRightDesktop1x});
+
+      @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+        background-image: url(${spinachRightDesktop2x});
+      }
+  }
+`;
+
+export const Arrow = styled.div`
+  position: absolute;
+  z-index: -10;
+
+  @media screen and (min-width: 768px) {
+    right: 72.15px;
+    bottom: 92.3px;
+    width: 152px;
+    height: 107px; 
+    background-image: url(${arrowTablet1x});
+    filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));
+    background-repeat: no-repeat;
+    background-size: cover;
+
+      @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+        background-image: url(${arrowTablet2x});
+      }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    right: 183.22px;
+    bottom: 113.82px;
+    width: 190px;
+    height: 148px; 
+    background-image: url(${arrowDesktop1x});
+
+      @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+        background-image: url(${arrowDesktop2x});
+      }
+  }
+`;
