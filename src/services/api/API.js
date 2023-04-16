@@ -119,8 +119,7 @@ export const RecipesAPI = {
     return data;
   },
 
-  getRecipeByCategories: async ({ category, page, limit = 8, sort = 'popular' }) => {
-    const normalisedQuery = category.charAt(0).toUpperCase() + category.slice(1);
+  getRecipeByCategories: async ({ normalisedQuery, page, limit = 8, sort = 'popular' }) => {
     const { data } = await axios.get(`/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`);
     return data;
   },
