@@ -56,27 +56,27 @@ const recipesSlice = createSlice({
 
       // ------------ Get all recipes ----------------
       .addCase(getRecipes.pending, handlePending)
-      .addCase(getRecipes.fulfilled, (state, action) => {})
+      .addCase(getRecipes.fulfilled, (state, action) => { })
       .addCase(getRecipes.rejected, handleRejected)
 
       // ------------ Get Recipes Main Page ----------------
       .addCase(getRecipesMainPage.pending, handlePending)
-      .addCase(getRecipesMainPage.fulfilled, (state, action) => {})
+      .addCase(getRecipesMainPage.fulfilled, (state, action) => { })
       .addCase(getRecipesMainPage.rejected, handleRejected)
 
       // ------------ Get Recipes Favorite ----------------
       .addCase(getRecipesFavorite.pending, handlePending)
-      .addCase(getRecipesFavorite.fulfilled, (state, action) => {})
+      .addCase(getRecipesFavorite.fulfilled, (state, action) => { })
       .addCase(getRecipesFavorite.rejected, handleRejected)
 
       // ------------ Toggle Favorite Recipes By Id ----------------
       .addCase(toggleFavoriteRecipesById.pending, handlePending)
-      .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => {})
+      .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => { })
       .addCase(toggleFavoriteRecipesById.rejected, handleRejected)
 
       // ------------ Toggle Like Recipes Status By Id ----------------
       .addCase(toggleLikeRecipesStatusById.pending, handlePending)
-      .addCase(toggleLikeRecipesStatusById.fulfilled, (state, action) => {})
+      .addCase(toggleLikeRecipesStatusById.fulfilled, (state, action) => { })
       .addCase(toggleLikeRecipesStatusById.rejected, handleRejected)
 
       // ------------ Get Recipe By Id ----------------
@@ -91,26 +91,27 @@ const recipesSlice = createSlice({
       .addCase(getAllCategories.fulfilled, (state, action) => {
         state.categoryList = action.payload;
       })
-      .addCase(getAllCategories.rejected, handleRejected),
-})
-  // ------------ Get Recipe By Categories ----------------
-  .addCase(getRecipeByCategories.pending, handlePending)
-  .addCase(getRecipeByCategories.fulfilled, (state, action) => {})
-  .addCase(getRecipeByCategories.rejected, handleRejected)
+      .addCase(getAllCategories.rejected, handleRejected)
 
-  // ------------ Get Recipes ByQuery ----------------
-  .addCase(getRecipesByQuery.pending, handlePending)
-  .addCase(getRecipesByQuery.fulfilled, (state, action) => {})
-  .addCase(getRecipesByQuery.rejected, handleRejected)
-  // ------------ Get Ingredients By Query ----------------
-  .addCase(getIngredientsByQuery.pending, handlePending)
-  .addCase(getIngredientsByQuery.fulfilled, (state, action) => {})
-  .addCase(getIngredientsByQuery.rejected, handleRejected)
-  // ------------ Get All Ingredients ----------------
-  .addCase(getIngredients.pending, handlePending)
-  .addCase(getIngredients.fulfilled, (state, action) => {
-    state.ingredientsList = action.payload.ingredients;
-  })
-  .addCase(getIngredients.rejected, handleRejected);
+      // ------------ Get Recipe By Categories ----------------
+      .addCase(getRecipeByCategories.pending, handlePending)
+      .addCase(getRecipeByCategories.fulfilled, (state, action) => { })
+      .addCase(getRecipeByCategories.rejected, handleRejected)
+
+      // ------------ Get Recipes ByQuery ----------------
+      .addCase(getRecipesByQuery.pending, handlePending)
+      .addCase(getRecipesByQuery.fulfilled, (state, action) => { })
+      .addCase(getRecipesByQuery.rejected, handleRejected)
+      // ------------ Get Ingredients By Query ----------------
+      .addCase(getIngredientsByQuery.pending, handlePending)
+      .addCase(getIngredientsByQuery.fulfilled, (state, action) => { })
+      .addCase(getIngredientsByQuery.rejected, handleRejected)
+      // ------------ Get All Ingredients ----------------
+      .addCase(getIngredients.pending, handlePending)
+      .addCase(getIngredients.fulfilled, (state, action) => {
+        state.ingredientsList = action.payload.ingredients;
+      })
+      .addCase(getIngredients.rejected, handleRejected)
+});
 
 export const recipesReducer = recipesSlice.reducer;
