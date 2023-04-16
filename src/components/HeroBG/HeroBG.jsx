@@ -1,10 +1,12 @@
-import { Background, BackgroundColor, Plate, SpinachLeft } from "./HeroBG.styled";
+import { Arrow, BackgroundColor, Plate, SpinachLeft, SpinachRight } from "./HeroBG.styled";
 
 export const HeroBG = () => {
-    return <Background>
+    return <div>
         <BackgroundColor />
         <SpinachLeft />
-        <Plate/>
-    </Background>
+        <SpinachRight/>
+        <Plate />
+        <Arrow/>
+    </div>
         ;
 };

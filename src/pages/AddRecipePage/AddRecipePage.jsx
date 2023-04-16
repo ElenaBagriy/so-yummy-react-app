@@ -6,10 +6,11 @@ import { AddRecipeForm } from 'components/AddRecipeForm/AddRecipeForm';
 import { Background } from 'reusableComponents/Background/Background';
 import { Container } from 'reusableComponents/Container/Container';
 import { WrapperStyled } from './AddRecipePage.styled';
+import { Main } from 'reusableComponents/Main/Main';
 
 const AddRecipePage = () => {
   return (
-    <>
+    <Main>
       <Background />
       <Container>
         <MainPageTitle title="Add recipe" />
@@ -23,7 +24,7 @@ const AddRecipePage = () => {
           </div>
         </WrapperStyled>
       </Container>
-    </>
+    </Main>
   );
 };
 

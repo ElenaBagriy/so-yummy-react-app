@@ -1,15 +1,14 @@
 import { PreviewCategories } from "components/PreviewCategories/PreviewCategories";
-import { Search } from "components/Search/Search";
 import { СhooseYourBreakfast } from "components/СhooseYourBreakfast/СhooseYourBreakfast";
+import { Background } from "reusableComponents/Background/Background";
+import { Main } from "reusableComponents/Main/Main";
 
 const MainPage = () => {
-
-    return <>
+    return <Main>
+        <Background noDots/>
         <СhooseYourBreakfast/>
-        <Search/>
-        <PreviewCategories/>
-    </>
-
+        <PreviewCategories />
+    </Main>
 };
 
 export default MainPage;

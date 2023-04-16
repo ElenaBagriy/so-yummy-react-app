@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTitle = styled.h1`
-  padding-top: 53px;
+export const StyledTitle = styled.h2`
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 28px;
@@ -10,12 +9,10 @@ export const StyledTitle = styled.h1`
   color: ${props => `${props.theme.text.title}`};
 
     @media screen and (min-width: 768px) {
-      padding-top: 73px;
       font-size: 32px;
     }
 
     @media screen and (min-width: 1280px) {
-      padding-top: 102px;
       font-size: 44px;
     }
 `
