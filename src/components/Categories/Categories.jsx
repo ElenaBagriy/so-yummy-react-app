@@ -7,7 +7,7 @@ import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import Tab from '@mui/material/Tab';
 import { Suspense, useEffect, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import { StyledTabs } from "./Categories.styled";
+import { Section, StyledTabs } from "./Categories.styled";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import { RecipesAPI } from '../../services/api/API';
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
@@ -28,6 +28,12 @@ export const Categories = () => {
 //   const tablet = useMediaQuery('(max-width: 1439px)');
 //   const desctop = useMediaQuery('(min-width: 1440px)');
 
+    useEffect(() => {
+        console.log(categoryName);
+        if (categoryName) {
+            setCategory(categoryName);
+        };
+    }, [categoryName]);
 
     useEffect(() => {
         if (!category) {
@@ -59,7 +65,10 @@ export const Categories = () => {
         getRecipeByCategories({ category, page });
     }, [category, page, totalPages]);
 
+
+
     useEffect(() => {
+        
         setIsLoading(true);
         async function getCategories() {
             try {
@@ -81,13 +90,6 @@ export const Categories = () => {
         getCategories();
     }, []);
     
-    useEffect(() => {
-        if (categoryName) {
-            setCategory(categoryName);
-        };
-    }, [categoryName])
-    
-
     const handleChange = (event, newValue) => {
         setPage(1);
         setCategory(newValue);
@@ -109,8 +111,8 @@ export const Categories = () => {
     }
     
     return (
-        <section>
-            {/* <Background/> */}
+        <Section>
+            <Background/>
             <Container>
                 <MainPageTitle title='Categories' />
                 <StyledTabs
@@ -161,7 +163,6 @@ export const Categories = () => {
                 </Suspense>
                 <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
             </Container>
-            <Background/>
-        </section>
+        </Section>
   );
 };

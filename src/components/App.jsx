@@ -22,9 +22,7 @@ const CategoriesPage = lazy(() =>
 );
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
-const AddRecipePage = lazy(() =>
-  import('../pages/AddRecipePage/AddRecipePage')
-);
+const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
