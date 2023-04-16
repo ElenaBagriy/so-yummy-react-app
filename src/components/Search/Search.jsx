@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateSearchQuery } from "redux/search/searchSlice";
-import Input from "reusableComponents/Input/Input";
+import { Button, Form, Input } from "./Search.styled";
 
 export const Search = () => {
     const navigate = useNavigate();
@@ -19,13 +19,13 @@ export const Search = () => {
   };
     
     return <div>Search
-        <form onSubmit={onSearchFormSubmit}>
-            <input
+        <Form onSubmit={onSearchFormSubmit}>
+            <Input
                 name="search"
                 type="text"
+                placeholder="Enter the text"
             />
-            <button type="submit">Submit</button>
-        </form>
-        
+            <Button type="submit">Submit</Button>
+        </Form>
     </div>
 };

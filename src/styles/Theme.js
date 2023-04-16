@@ -19,7 +19,11 @@ const lightTheme = {
     accent: '#8BAA36',
   },
   border: {
-    grey: 'rgba(224, 224, 224, 1)',
+    grey: '#E0E0E0',
+  },
+  input: {
+    normal: '#F0F0F0',
+    active: 'rgba(35, 38, 42, 0.2)',
   },
   breakPoints: {
     mobile: '375px',
