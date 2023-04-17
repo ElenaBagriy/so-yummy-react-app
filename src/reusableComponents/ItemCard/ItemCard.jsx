@@ -6,6 +6,7 @@ import { RecipesAPI } from "services/api/API";
 
 export const ItemCard = ({item, onChange}) => {
 
+    console.log(item);
     const { title, _id, preview, favorite } = item;
 
     const [isFavorite, setIsFavorite] = useState(favorite);

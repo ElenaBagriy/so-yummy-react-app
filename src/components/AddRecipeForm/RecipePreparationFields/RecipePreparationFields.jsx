@@ -1,5 +1,26 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 export const RecipePreparationFields = () => {
-  return <div></div>;
+  const {
+    register,
+    // handleSubmit,
+    // watch,
+    formState: { errors },
+  } = useForm();
+  // const onSubmit = data => console.log(data);
+
+  return (
+    <div>
+      <h3>Recipe Preparation</h3>
+      <textarea
+        placeholder="Enter recipe"
+        name="preparation"
+        // id=""
+        // cols="30"
+        // rows="10"
+        {...register('recipe', {})}
+      ></textarea>
+    </div>
+  );
 };

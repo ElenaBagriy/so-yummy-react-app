@@ -13,6 +13,9 @@ import storage from "redux-persist/lib/storage";
 import { userReducer } from "./user/userSlice";
 import { recipesReducer } from "./recipes/recipesSlice";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
+import { shoppingListReducer } from "./shoplist/shoplistSlice";
+import { searchReducer } from "./search/searchSlice";
+
 
 const userConfig = {
   key: "token",
@@ -25,6 +28,8 @@ export const store = configureStore({
     auth: persistReducer(userConfig, userReducer),
     recipes: recipesReducer,
     ownRecipes: ownRecipesReducer,
+    shoppingList: shoppingListReducer,
+    search: searchReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
