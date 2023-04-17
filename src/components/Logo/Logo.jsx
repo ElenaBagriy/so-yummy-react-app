@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
+import SVG from 'images/svg/sprite.svg';
+import { LogoWrapper, StyledLogoLink, StyledSVG } from './Logo.styled';
 
-import { ReactComponent as LogoSVG } from 'images/svg/logo.svg';
-import { LogoWrapper } from './Logo.styled';
-
-export function Logo() {
+export function Logo({ handleClose = () => {} }) {
   return (
     <LogoWrapper>
-      <Link to="/main">
-        <LogoSVG width="44" height="44" />
-      </Link>
+      <StyledLogoLink to="/main" onClick={handleClose}>
+        <StyledSVG>
+          <use href={`${SVG}#icon-logo`}></use>
+        </StyledSVG>
+      </StyledLogoLink>
     </LogoWrapper>
   );
 }

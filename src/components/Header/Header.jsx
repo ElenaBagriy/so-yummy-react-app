@@ -1,19 +1,29 @@
+import { useMediaQuery } from '@mui/material';
+
 import { Container } from '../../reusableComponents/Container/Container';
 import { Navigation } from 'components/Navigation/Navigation';
 import { Logo } from 'components/Logo/Logo';
 import { UserLogo } from 'components/UserLogo/UserLogo';
-import { HeaderWrapper } from './Header.styled';
+import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
+
+import { HeaderWrapper, StyledHeader, UserMenuWrapper } from './Header.styled';
+import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 
 export function Header() {
+  const isMobile = useMediaQuery('(max-width: 1439px)');
   return (
-    <header>
+    <StyledHeader>
       <Container>
         <HeaderWrapper>
           <Logo />
-          <Navigation />
-          <UserLogo />
+          {!isMobile && <Navigation isMobile={isMobile} />}
+          <UserMenuWrapper>
+            <UserLogo />
+            {isMobile && <BurgerMenu />}
+            {!isMobile && <ThemeToggler />}
+          </UserMenuWrapper>
         </HeaderWrapper>
       </Container>
-    </header>
+    </StyledHeader>
   );
 }

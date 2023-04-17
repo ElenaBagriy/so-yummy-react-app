@@ -1,8 +1,10 @@
+import { Avatar, StyledUserName, UserLogoWrapper } from './UserLogo.styled';
+
 export function UserLogo() {
   return (
-    <div>
-      <p>UserImg</p>
-      <p>UserName</p>
-    </div>
+    <UserLogoWrapper>
+      <Avatar />
+      <StyledUserName>UserName</StyledUserName>
+    </UserLogoWrapper>
   );
 }
