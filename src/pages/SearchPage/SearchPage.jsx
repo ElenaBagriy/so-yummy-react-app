@@ -70,7 +70,7 @@ export default function SearchPage() {
         <ButtonRound type="button" onClick={onSearch}>
           Search
         </ButtonRound>
-        {isRecipes && isRecipes.recipes.length && (
+        {isRecipes && isRecipes.recipes?.length && (
           <CommonItemList list={isRecipes.recipes} />
         )}
         <Pagination
