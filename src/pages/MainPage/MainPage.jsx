@@ -4,6 +4,7 @@ import { Background } from "reusableComponents/Background/Background";
 import { Main } from "reusableComponents/Main/Main";
 
 const MainPage = () => {
+    
     return <Main>
         <Background noDots/>
         <СhooseYourBreakfast/>

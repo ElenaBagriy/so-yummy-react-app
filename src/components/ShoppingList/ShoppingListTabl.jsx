@@ -19,6 +19,8 @@ export default function IngredientsShoppingList() {
   const dispatch = useDispatch();
   const products = useSelector(selectShoppingList);
 
+  console.log(products);
+
   return (
     <div>
       <IngredientsShoppingListHead>

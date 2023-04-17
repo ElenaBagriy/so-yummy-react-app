@@ -1,28 +1,19 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { UserAPI } from "../../services/api/API";
+import { UserAPI } from "../../services/api/API";
 
 // axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
 
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// const setAuthHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 export const fetchShoppingList = createAsyncThunk(
   'shopping-list/all',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.accessToken;
-    if (persistedToken === null) return thunkAPI.rejectWithValue();
-
-    setAuthHeader(persistedToken);
     try {
-      const { data } = await axios.get('/users/shopping-list');
-
-      console.log(data);
-      console.log(data.shoppingList);
-
-      return data.shoppingList;
+      const {shoppingList} = await UserAPI.getShoppingList();
+      return shoppingList;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -35,7 +26,7 @@ export const addProductToShoppingList = createAsyncThunk(
   async (product, thunkAPI) => {
     try {
       console.log(product);
-      const response = await axios.post('/users/shopping-list', product);
+      const response = await UserAPI.addToShoppingList(product);
 
       console.log(response);
       console.log(response.data);
@@ -52,7 +43,7 @@ export const removeProductFromShoppingList = createAsyncThunk(
   'shopping-list/remove',
   async (product, thunkAPI) => {
     try {
-      const response = await axios.patch('/users/shopping-list', product);
+      const response = await UserAPI.updateShoppingList(product);
 
       console.log(response);
       console.log(response.data);

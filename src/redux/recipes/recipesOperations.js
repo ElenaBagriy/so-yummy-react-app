@@ -6,7 +6,7 @@ export const getRecipes = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await RecipesAPI.getRecipes(formData);
-
+      console.log(response);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

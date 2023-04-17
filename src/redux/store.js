@@ -20,7 +20,7 @@ import { searchReducer } from "./search/searchSlice";
 const userConfig = {
   key: "token",
   storage,
-  whitelist: ["refreshToken"],
+  whitelist: ["refreshToken", "accessToken"],
 };
 
 export const store = configureStore({
