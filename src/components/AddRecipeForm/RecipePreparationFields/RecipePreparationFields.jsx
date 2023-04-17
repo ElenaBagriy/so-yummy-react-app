@@ -13,14 +13,16 @@ export const RecipePreparationFields = () => {
   return (
     <div>
       <h3>Recipe Preparation</h3>
-      <textarea
-        placeholder="Enter recipe"
-        name="preparation"
-        // id=""
-        // cols="30"
-        // rows="10"
-        {...register('recipe', {})}
-      ></textarea>
+      <label>
+        <textarea
+          placeholder="Enter recipe"
+          name="preparation"
+          // id=""
+          // cols="30"
+          // rows="10"
+          {...register('recipe', {})}
+        ></textarea>
+      </label>
     </div>
   );
 };
