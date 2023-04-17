@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -8,16 +8,16 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { userReducer } from "./user/userSlice";
-import { recipesReducer } from "./recipes/recipesSlice";
-import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { userReducer } from './user/userSlice';
+import { recipesReducer } from './recipes/recipesSlice';
+import { ownRecipesReducer } from './ownRecipes/ownRecipesSlice';
 
 const userConfig = {
-  key: "token",
+  key: 'token',
   storage,
-  whitelist: ["refreshToken"],
+  whitelist: ['refreshToken', 'accessToken'],
 };
 
 export const store = configureStore({
@@ -26,7 +26,7 @@ export const store = configureStore({
     recipes: recipesReducer,
     ownRecipes: ownRecipesReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

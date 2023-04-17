@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export default styled.input`
   width: 279px;
@@ -13,14 +13,14 @@ export default styled.input`
   line-height: 1.5;
   letter-spacing: -0.02em;
   color: white;
-  ${props =>
+  ${(props) =>
     props.$icon &&
     css`
       padding-left: 40px;
     `}
 
-  ${props =>
-    props.$grey &&
+  ${(props) =>
+    props.$colorGrey &&
     css`
       border-color: #f0f0f0;
       color: #3e4462;
@@ -35,7 +35,7 @@ export default styled.input`
     height: 59px;
     font-size: 18px;
     line-height: 1.5;
-    ${props =>
+    ${(props) =>
       props.$icon &&
       css`
         padding-left: 50px;

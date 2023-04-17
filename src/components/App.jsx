@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { SharedLayout } from './SharedLayout/SharedLayout';
@@ -10,6 +10,8 @@ import { RestrictedRoute } from 'routes/RestrictedRoute';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import SigninPage from 'pages/SigninPage/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/user/userOperations';
 
 const CategoriesPage = lazy(() =>
   import('../pages/CategoriesPage/CategoriesPage')
@@ -17,6 +19,12 @@ const CategoriesPage = lazy(() =>
 
 export const App = () => {
   // const isLoggedIn = false;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <div>
       <Theme>
@@ -62,6 +70,15 @@ export const App = () => {
             {/* --- Інші сторінки тут --- */}
             <Route
               path="/search"
+              element={
+                <PrivateRoute // замінить на Private
+                  redirectTo="/login"
+                  component={<Search />}
+                />
+              }
+            />
+            <Route
+              path="/search/:searchParam"
               element={
                 <PrivateRoute // замінить на Private
                   redirectTo="/login"

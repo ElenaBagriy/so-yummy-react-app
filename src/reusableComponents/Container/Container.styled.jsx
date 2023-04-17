@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
   max-width: 375px;
@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
   padding-right: 16px;
   padding-bottom: 100px;
   margin: 0 auto;
-  
+
   @media screen and (min-width: 768px) {
     max-width: 768px;
     padding-left: 32px;
@@ -18,4 +18,4 @@ export const StyledContainer = styled.div`
     padding-left: 100px;
     padding-right: 100px;
   }
-`
+`;
