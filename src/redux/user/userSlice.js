@@ -77,9 +77,9 @@ const userSlice = createSlice({
 
       // ------------ Refresh user ----------------
       .addCase(refreshUser.pending, state => {
-        state.error = null;
-        state.isLoading = true;
         state.isRefreshing = true;
+        state.isLoading = true;
+        state.error = null;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = {
@@ -92,9 +92,9 @@ const userSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, (state, action) => {
+        state.error = action.payload;
         state.isLoading = false;
         state.isRefreshing = false;
-        state.error = action.payload;
       })
 
       // ------------ Update user ----------------

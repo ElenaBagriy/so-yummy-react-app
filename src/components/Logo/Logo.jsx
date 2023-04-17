@@ -4,7 +4,7 @@ import { LogoWrapper, StyledLogoLink, StyledSVG } from './Logo.styled';
 export function Logo({ handleClose = () => {} }) {
   return (
     <LogoWrapper>
-      <StyledLogoLink to="/main" onClick={handleClose}>
+      <StyledLogoLink to="/" onClick={handleClose}>
         <StyledSVG>
           <use href={`${SVG}#icon-logo`}></use>
         </StyledSVG>

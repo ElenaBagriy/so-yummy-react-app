@@ -3,7 +3,7 @@ import { Header } from 'components/Header/Header';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-export function SharedLayout() {
+function SharedLayout() {
   return (
     <>
       <Header />
@@ -13,4 +13,6 @@ export function SharedLayout() {
       <Footer />
     </>
   );
-}
+};
+
+export default SharedLayout;
