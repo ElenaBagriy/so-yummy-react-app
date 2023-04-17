@@ -15,5 +15,5 @@ export const Pagination = ({ onChange, page, totalPages }) => {
             />
         )}
     />}
-        </>
+    </>
 };

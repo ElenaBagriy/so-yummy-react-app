@@ -6,7 +6,6 @@ export const getRecipes = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await RecipesAPI.getRecipes(formData);
-      console.log(response);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -101,11 +100,11 @@ export const getRecipeByCategories = createAsyncThunk(
   }
 );
 
-export const getRecipesByQuery = createAsyncThunk(
-  'recipes/getRecipesByQuery',
+export const getRecipesByTitleQuery = createAsyncThunk(
+  'recipes/getRecipesByTitleQuery',
   async (formData, thunkAPI) => {
     try {
-      const response = await RecipesAPI.getRecipesByQuery(formData);
+      const response = await RecipesAPI.getRecipesByTitleQuery(formData);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -113,11 +112,11 @@ export const getRecipesByQuery = createAsyncThunk(
   }
 );
 
-export const getIngredientsByQuery = createAsyncThunk(
-  'recipes/getIngredientsByQuery',
+export const getRecipesByIngredientsQuery = createAsyncThunk(
+  'recipes/getRecipesByIngredientsQuery',
   async (formData, thunkAPI) => {
     try {
-      const response = await RecipesAPI.getIngredientsByQuery(formData);
+      const response = await RecipesAPI.getRecipesByIngredientsQuery(formData);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

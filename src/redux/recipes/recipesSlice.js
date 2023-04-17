@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   getAllCategories,
-  getIngredients,
-  getIngredientsByQuery,
+  getRecipes,
   getRecipeByCategories,
   getRecipeById,
-  getRecipes,
-  getRecipesByQuery,
   getRecipesFavorite,
   getRecipesMainPage,
+  getRecipesByTitleQuery,
+  getRecipesByIngredientsQuery,
+  getIngredients,
   toggleFavoriteRecipesById,
   toggleLikeRecipesStatusById,
 } from './recipesOperations';
@@ -99,13 +99,17 @@ const recipesSlice = createSlice({
       .addCase(getRecipeByCategories.rejected, handleRejected)
 
       // ------------ Get Recipes ByQuery ----------------
-      .addCase(getRecipesByQuery.pending, handlePending)
-      .addCase(getRecipesByQuery.fulfilled, (state, action) => { })
-      .addCase(getRecipesByQuery.rejected, handleRejected)
+      .addCase(getRecipesByTitleQuery.pending, handlePending)
+      .addCase(getRecipesByTitleQuery.fulfilled, (state, { payload }) => {
+        return { ...state, isLoading: false, ...payload }
+       })
+      .addCase(getRecipesByTitleQuery.rejected, handleRejected)
       // ------------ Get Ingredients By Query ----------------
-      .addCase(getIngredientsByQuery.pending, handlePending)
-      .addCase(getIngredientsByQuery.fulfilled, (state, action) => { })
-      .addCase(getIngredientsByQuery.rejected, handleRejected)
+      .addCase(getRecipesByIngredientsQuery.pending, handlePending)
+      .addCase(getRecipesByIngredientsQuery.fulfilled, (state, { payload }) => {
+        return { ...state, isLoading: false, ...payload };
+      })
+      .addCase(getRecipesByIngredientsQuery.rejected, handleRejected)
       // ------------ Get All Ingredients ----------------
       .addCase(getIngredients.pending, handlePending)
       .addCase(getIngredients.fulfilled, (state, action) => {
