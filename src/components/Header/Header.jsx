@@ -1,17 +1,29 @@
-import { NavLink } from "react-router-dom";
-import { HeaderSection } from "./Header.styled";
+import { useMediaQuery } from '@mui/material';
+
+import { Container } from '../../reusableComponents/Container/Container';
+import { Navigation } from 'components/Navigation/Navigation';
+import { Logo } from 'components/Logo/Logo';
+import { UserLogo } from 'components/UserLogo/UserLogo';
+import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
+
+import { HeaderWrapper, StyledHeader, UserMenuWrapper } from './Header.styled';
+import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 
 export function Header() {
+  const isMobile = useMediaQuery('(max-width: 1439px)');
   return (
-      <HeaderSection>
-        <h2>HEADER</h2>
-        <NavLink to="/main">Logo</NavLink>
-        <NavLink to="/categories/beef">Categories</NavLink>
-        <NavLink to="/add">Add recipes</NavLink>
-        <NavLink to="/my">Favorites</NavLink>
-        <NavLink to="/favorites"></NavLink>
-        <NavLink to="/shopping-list">Shopping list</NavLink>
-        <NavLink to="/search">Search icon</NavLink>
-      </HeaderSection>
+    <StyledHeader>
+      <Container>
+        <HeaderWrapper>
+          <Logo />
+          {!isMobile && <Navigation isMobile={isMobile} />}
+          <UserMenuWrapper>
+            <UserLogo />
+            {isMobile && <BurgerMenu />}
+            {!isMobile && <ThemeToggler />}
+          </UserMenuWrapper>
+        </HeaderWrapper>
+      </Container>
+    </StyledHeader>
   );
 }
