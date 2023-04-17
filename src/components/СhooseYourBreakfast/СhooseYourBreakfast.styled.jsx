@@ -4,7 +4,6 @@ import { ReactComponent as Arrow } from "../../images/mainPage/arrowLink.svg";
 
 export const Hero = styled.section`
     position: relative;
-    border-bottom: 1px solid red;
     text-align: center;
     padding-top: 132px;
     padding-bottom: 83px;

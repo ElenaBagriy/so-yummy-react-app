@@ -21,6 +21,7 @@ import { selectCategoryList } from "redux/selectors";
 
 export const Categories = () => {
     const dispatch = useDispatch();
+    const { categoryName } = useParams();
     const allCategories = useSelector(selectCategoryList);
     
     const [category, setCategory] = useState('');
@@ -29,7 +30,6 @@ export const Categories = () => {
     const [categoryRecipes, setCategoryRecipes] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
     
-    const { categoryName } = useParams();
 
     const navigate = useNavigate();
 
@@ -70,6 +70,7 @@ export const Categories = () => {
             return;
         };
         setCategory(allCategories[0].title);
+
     }, [allCategories, category, categoryName, dispatch]);
 
     
@@ -115,14 +116,14 @@ export const Categories = () => {
                                 value={title}
                                 component='a'
                             />)}
-                   </StyledTabs>
+                    </StyledTabs>
                     {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
                         <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>
                     }
                     <Suspense fallback={<div>...Loading</div>}>
                         <Outlet/>
                     </Suspense>
-                    <Pagination totalPages={totalPages} onChange={handleChangePage} page={page} />
+                    <Pagination page={page} totalPages={totalPages} onChange={handleChangePage} />
                     </Section>
             </Container>
         </Main>

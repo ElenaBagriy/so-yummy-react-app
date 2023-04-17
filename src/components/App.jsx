@@ -18,6 +18,7 @@ const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
+const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -111,12 +112,16 @@ export const App = () => {
                       component={<AddRecipePage />}
                     />
                   }
-                />
-                <Route path="/shopping-list" element={<PrivateRoute
+              />
+              <Route path="/shopping-list" element={<PrivateRoute
                       redirectTo="/"
                       component={<ShoppingListPage />}
                     />} />
-              </Route>
+            <Route path="/favorite" element={<PrivateRoute
+              redirectTo="/"
+              component={<FavoritePage />}
+            />} />
+          </Route>
 
             </Routes>
           </Suspense>
