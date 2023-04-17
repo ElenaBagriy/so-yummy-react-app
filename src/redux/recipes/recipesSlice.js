@@ -14,7 +14,7 @@ import {
 } from './recipesOperations';
 
 const recipesInitialState = {
-  recipes: [
+  allRecipes: [
     {
       _id: '',
       title: '',
@@ -40,11 +40,11 @@ const recipesInitialState = {
 
 const handlePending = state => {
   state.isLoading = true;
-  state.error = false;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
-  state.isLoading = true;
+  state.isLoading = false;
   state.error = action.payload;
 };
 

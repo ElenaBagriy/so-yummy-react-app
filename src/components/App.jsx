@@ -26,7 +26,7 @@ const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'))
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoggedIn } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -37,6 +37,7 @@ export const App = () => {
       <div>
         <Theme>
           <GlobalStyle />
+          {/* {isLoggedIn && } */}
           <WelcomePage />
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>

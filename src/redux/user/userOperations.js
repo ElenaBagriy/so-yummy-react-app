@@ -6,9 +6,8 @@ export const registerUser = createAsyncThunk(
     "user/register",
     async (formData, thunkAPI) => {
       try {
-        const response = await UserAPI.register(formData);
-  
-        return response;
+        const {user} = await UserAPI.register(formData);
+        return user;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }
@@ -20,7 +19,6 @@ export const loginUser = createAsyncThunk(
     async (formData, thunkAPI) => {
       try {
         const response = await UserAPI.login(formData);
-  
         return response;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -56,8 +54,8 @@ export const refreshToken = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
     "user/refreshUser",
     async (_, thunkAPI) => {
-        const state = thunkAPI.getState();
-        const savedToken = state.user.accessToken;
+      const state = thunkAPI.getState();
+      const savedToken = state.auth.accessToken;
         if (!savedToken) {
             return thunkAPI.rejectWithValue('Unable to fetch user');
         };
@@ -83,42 +81,6 @@ export const updateUser = createAsyncThunk(
       }
     }
 );
-
-export const getShoppingList = createAsyncThunk(
-    "user/getShoppingList",
-    async (_, thunkAPI) => {
-      try {
-        const response = await UserAPI.getShoppingList();
-        return response;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    }
-);
-  
-export const addProduct = createAsyncThunk(
-    "user/addProduct",
-    async (formData, thunkAPI) => {
-      try {
-        const response = await UserAPI.addToShoppingList(formData);
-        return response;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    }
-);
-  
-export const updateProduct = createAsyncThunk(
-    "user/updateProduct",
-    async (formData, thunkAPI) => {
-      try {
-        const response = await UserAPI.updateShoppingList(formData);
-        return response;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    }
-  );
 
 export const subscribe = createAsyncThunk(
     "user/subscribe",
