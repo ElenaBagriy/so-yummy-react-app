@@ -5,6 +5,7 @@ import { Search } from "components/Search/Search";
 
 
 export const СhooseYourBreakfast = () => {
+    
 
     return <Hero>
         <HeroBG />
