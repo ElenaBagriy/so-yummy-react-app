@@ -19,7 +19,7 @@ const userInitialState = {
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false,
-  isRefreshing: false,
+  isRefreshing: true,
   isLoading: false,
   error: null,
   subscribeList: [],

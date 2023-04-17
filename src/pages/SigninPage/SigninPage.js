@@ -5,7 +5,6 @@ export default function SigninPage() {
   return (
     <div>
       <SigninForm />
-      {/* <Link to="/register">Registration</Link> */}
     </div>
   );
 }

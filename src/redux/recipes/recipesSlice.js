@@ -15,8 +15,9 @@ import {
 const recipesInitialState = {
   popularRecipes: [],
   categoryList: [],
-  mainPageRecipes: {},
+  mainPageRecipes: [],
   ingredientsList: [],
+  favoriteRecipes: [],
   total: null,
   page: null,
   limit: null,
@@ -51,14 +52,22 @@ const recipesSlice = createSlice({
 
       // ------------ Get Recipes Main Page ----------------
       .addCase(getRecipesMainPage.pending, handlePending)
-      .addCase(getRecipesMainPage.fulfilled, (state, action) => {
-        state.mainPageRecipes = action.payload;
+      .addCase(getRecipesMainPage.fulfilled, (state, { payload }) => {
+        state.mainPageRecipes = Object.entries(payload).reduce((acc, element) => {
+          const obj = {
+            title: element[0],
+            data: element[1],
+          };
+          return acc = [...acc, obj]
+        }, []);
       })
       .addCase(getRecipesMainPage.rejected, handleRejected)
 
       // ------------ Get Recipes Favorite ----------------
       .addCase(getRecipesFavorite.pending, handlePending)
-      .addCase(getRecipesFavorite.fulfilled, (state, action) => { })
+      .addCase(getRecipesFavorite.fulfilled, (state, action) => {
+        state.favoriteRecipes = action.payload.recipes;
+      })
       .addCase(getRecipesFavorite.rejected, handleRejected)
 
       // ------------ Toggle Favorite Recipes By Id ----------------

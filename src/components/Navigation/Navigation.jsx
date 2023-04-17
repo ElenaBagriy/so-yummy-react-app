@@ -2,7 +2,7 @@ import { StyledLink, StyledNav, StyledSVG } from './Navigation.styled';
 import SVG from 'images/svg/sprite.svg';
 
 export function Navigation({ isMobile, handleClose = () => {} }) {
-  console.log(isMobile);
+  // console.log(isMobile);
   return (
     <StyledNav>
       <StyledLink to="/categories/beef" onClick={handleClose}>

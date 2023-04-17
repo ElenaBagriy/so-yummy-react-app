@@ -7,16 +7,20 @@ import { StyledTitle } from "reusableComponents/ManePageTitle/ManePageTitle.styl
 import { useDispatch, useSelector } from "react-redux";
 import { selectMainPageRecipes } from "redux/selectors";
 import { getRecipesMainPage } from "redux/recipes/recipesOperations";
+import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
+
+// const find = [
+//     { title: breakfast,
+//       data: [{}, {}, {}] 
+//     },
+//     { title: dessert,
+//       data: [{}, {}, {}] 
+//     },
+// ];
 
 export const PreviewCategories = () => {
     const dispatch = useDispatch();
     const mainPageRecipes = useSelector(selectMainPageRecipes);
-    
-    const recipes = Object.entries(mainPageRecipes);
-    const categories = Object.keys(mainPageRecipes);
-
-    const x = Object.entries(mainPageRecipes);
-    console.log(x);
 
     const [popularCategories, setPopularCategories] = useState([]);
     const [popularRecipes, setPopularRecipes] = useState([]);
@@ -28,13 +32,12 @@ export const PreviewCategories = () => {
     
     return <section>
         <Container>
-            {/* {popularCategories && popularCategories.map((category) => { */}
-                {/* return <div> */}
-                    {/* <StyledTitle>{onCapitalise(category)}</StyledTitle> */}
-                    {/* {category[1].map((item) => <ItemCard item={item} />)} */}
-                    
-                {/* </div> */}
-            {/* })} */}
+            {mainPageRecipes && mainPageRecipes.map(({title, data}) => {
+                return <div key={title}>
+                    <StyledTitle >{onCapitalise(title)}</StyledTitle>
+                    <CommonItemList list={data} />
+                </div>
+             })}
             
         </Container>
     </section>
