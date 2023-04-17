@@ -8,4 +8,9 @@ export const StyledNav = styled.nav`
 
 export const StyledLink = styled(NavLink)`
   display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  color: ${({ theme }) => theme.text.heroParagraph};
 `;
