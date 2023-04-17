@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 
+
 const lightTheme = {
   colors: {
     bgMain: '#fafafa',
