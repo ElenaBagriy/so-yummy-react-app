@@ -11,8 +11,15 @@ export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 //recipes
+export const selectPopularRecipes = (state) => state.recipes.popularRecipes;
+
 export const selectCategoryList = state => state.recipes.categoryList;
 
+export const selectMainPageRecipes = state => state.recipes.mainPageRecipes;
+
+export const selectTotalRecipes = (state) => state.recipes.total;
+
+export const selectLimitRecipes = (state) => state.recipes.limit;
 
 //ingredients
 export const selectIngredients = state => state.recipes.ingredientsList;

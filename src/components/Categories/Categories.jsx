@@ -15,14 +15,19 @@ import { RecipesAPI } from '../../services/api/API';
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
 import { onCapitalise } from "services/api/onCapitalise";
 import { Main } from "reusableComponents/Main/Main";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "redux/recipes/recipesOperations";
+import { selectCategoryList } from "redux/selectors";
 
 export const Categories = () => {
-    const [allCategories, setAllCategories] = useState([]);
+    const dispatch = useDispatch();
+    const allCategories = useSelector(selectCategoryList);
+    
     const [category, setCategory] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
     const [categoryRecipes, setCategoryRecipes] = useState([]);
+    const [isLoading, setIsLoading] = useState([]);
     
     const { categoryName } = useParams();
 
@@ -30,12 +35,11 @@ export const Categories = () => {
 
     useEffect(() => {
         if (!category) return;
-        setIsLoading(true);
         
         async function getRecipeByCategories(data) {
             try {
+                setIsLoading(true);
                 const results = await RecipesAPI.getRecipeByCategories(data);
-                
                 if (results.length === 0) {
                     return;     ///Прописать ошибку
                 };
@@ -50,7 +54,7 @@ export const Categories = () => {
             } catch (error) {
                 return; ///Прописать ошибку
             } finally {
-                setIsLoading(false);
+                setIsLoading(false)
             };
         };
         const normalisedQuery = onCapitalise(category);
@@ -58,38 +62,15 @@ export const Categories = () => {
     }, [category, page]);
 
     useEffect(() => {
+        if (category) return;
+        dispatch(getAllCategories());
+
         if (categoryName) {
             setCategory(categoryName);
+            return;
         };
-    }, [categoryName]);
-
-    useEffect(() => {
-        if (category) return;
-        setIsLoading(true);
-
-        async function getCategories() {
-            try {
-                const results = await RecipesAPI.getAllCategories();
-                
-                if (results.length === 0) {
-                    return;     ///Прописать ошибку
-                }
-                const categories = results.map(result => ({ id: result._id, title: result.title.toLowerCase() }))
-                    .sort((a, b) => a.title.localeCompare(b.title));
-                setAllCategories(categories);
-                if (categoryName) {
-                    setCategory(categoryName);
-                    return;
-                };
-                setCategory(categories[0].title);
-            } catch (error) {
-                return;  ///Прописать ошибку
-            } finally {
-                setIsLoading(false);
-            }
-        }
-        getCategories();
-    }, [categoryName, category]);
+        setCategory(allCategories[0].title);
+    }, [allCategories, category, categoryName, dispatch]);
 
     
     const handleChange = (event, newValue) => {
@@ -136,7 +117,8 @@ export const Categories = () => {
                             />)}
                    </StyledTabs>
                     {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
-                    <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>}
+                        <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>
+                    }
                     <Suspense fallback={<div>...Loading</div>}>
                         <Outlet/>
                     </Suspense>

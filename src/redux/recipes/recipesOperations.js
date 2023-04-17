@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RecipesAPI } from '../../services/api/API';
 
-export const getRecipes = createAsyncThunk(
-  'recipes/getAll',
-  async (formData, thunkAPI) => {
+export const getPopularRecipes = createAsyncThunk(
+  'recipes/getPopular',
+  async (_, thunkAPI) => {
     try {
-      const response = await RecipesAPI.getRecipes(formData);
+      const response = await RecipesAPI.getPopularRecipes();
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -81,18 +81,6 @@ export const getAllCategories = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await RecipesAPI.getAllCategories();
-      return response;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getRecipeByCategories = createAsyncThunk(
-  'recipes/getRecipeByCategories',
-  async (formData, thunkAPI) => {
-    try {
-      const response = await RecipesAPI.getRecipeByCategories(formData);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
