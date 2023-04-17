@@ -1,4 +1,3 @@
-// import { createSelector } from '@reduxjs/toolkit';
 
 //user
 export const selectUser = state => state.auth.user;
