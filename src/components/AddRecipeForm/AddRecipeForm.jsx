@@ -1,26 +1,22 @@
 import React, { useEffect } from 'react';
-import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
-import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
-import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import {
   getAllCategories,
   getIngredients,
 } from 'redux/recipes/recipesOperations';
 import { selectCategoryList, selectIngredients } from 'redux/selectors';
-// import { useForm } from 'react-hook-form';
+import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
+import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
 
 export const AddRecipeForm = () => {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   watch,
-  //   formState: { errors },
-  // } = useForm();
-
-  const onSubmit = data => {
-    console.log(data);
-  };
+  const {
+    handleSubmit,
+    //   register,
+    //   watch,
+    formState: { errors, isDirty, isValid },
+  } = useForm();
 
   const dispatch = useDispatch();
 
@@ -30,18 +26,20 @@ export const AddRecipeForm = () => {
   }, [dispatch]);
 
   const categories = useSelector(selectCategoryList);
-  console.log(categories);
-
   const ingredients = useSelector(selectIngredients);
-  console.log(ingredients);
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(data => console.log(data))}>
         <RecipeDescriptionFields categories={categories} />
         <RecipeIngredientsFields ingredients={ingredients} />
         <RecipePreparationFields />
-        <button type="submit">Add</button>
+        <button
+          type="submit"
+          // disabled={!isDirty || !isValid}
+        >
+          Add
+        </button>
       </form>
     </>
   );
