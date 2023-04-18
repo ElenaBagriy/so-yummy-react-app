@@ -11,9 +11,12 @@ export const RegisterStyled = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  padding: 305px 20px 118px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 118px;
+  height: 100vh;
   background-color: ${props => props.theme.colors.white};
   background-image: url('${backMob}');
   background-position: 50% 100%;
@@ -30,7 +33,9 @@ export const RegisterStyled = styled.div`
   //tablet
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    padding: 443px 134px 59px;
+    padding-left: 134px;
+    padding-right: 134px;
+    padding-bottom: 59px;
     background-image: url(${backTabl});
   }
 
@@ -44,8 +49,11 @@ export const RegisterStyled = styled.div`
   //desktop
   @media screen and (min-width: 1440px) {
     background-image: url(${backDesktop});
-    padding: 122px 180px 164px 760px;
-    justify-content: right;
+    padding-left: 164px;
+    /* padding-right: 113px; */
+    padding-bottom: 0;
+    justify-content: center;
+    align-items: end;
     align-items: end;
   }
 
@@ -58,7 +66,8 @@ export const RegisterStyled = styled.div`
 
   img {
     position: absolute;
-    top: 87px;
+    /* top: 87px; */
+    top: 11.5%;
     left: auto;
     transform: translateX(-50%);
     z-index: 1;
@@ -66,15 +75,16 @@ export const RegisterStyled = styled.div`
     //tablet
     @media screen and (min-width: 768px) {
       top: 96px;
+      /* top: 8.6%; */
       left: auto;
       transform: translateX(-50%);
     }
 
     //desktop
     @media screen and (min-width: 1440px) {
-      top: 115px;
-      left: 113px;
-      transform: translateX(0);
+      /* top: 115px; */
+      top: 21%;
+      right: 36.5%;
     }
   }
 
@@ -85,7 +95,6 @@ export const RegisterStyled = styled.div`
     margin-bottom: 18px;
     padding: 32px 28px 40px;
     width: 335px;
-    /* height: 419px; */
     border-radius: 30px;
     background-color: #2a2c36;
     color: ${props => props.theme.colors.white};
@@ -139,7 +148,6 @@ export const RegisterStyled = styled.div`
   }
 
   input {
-    /* position: relative; */
     width: 279px;
     height: 45px;
     padding-top: 12px;
