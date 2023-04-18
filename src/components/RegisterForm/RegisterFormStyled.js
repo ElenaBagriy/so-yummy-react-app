@@ -118,7 +118,7 @@ export const RegisterStyled = styled.div`
     }
   }
 
-  label {
+  .wrapperForIcon {
     position: relative;
   }
 
@@ -139,6 +139,7 @@ export const RegisterStyled = styled.div`
   }
 
   input {
+    /* position: relative; */
     width: 279px;
     height: 45px;
     padding-top: 12px;

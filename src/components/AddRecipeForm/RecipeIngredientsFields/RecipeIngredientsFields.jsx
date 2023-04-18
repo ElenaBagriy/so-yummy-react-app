@@ -78,6 +78,7 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                   key={item._id}
                   value={item.ttl}
                   name={`ingredients.${index}.name`}
+                  {...register(`${item.ttl}`)}
                 >
                   {item.ttl}
                 </option>
@@ -100,6 +101,7 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                     key={item}
                     value={item}
                     name={`ingredients.${index}.unit`}
+                    {...register(`${item}`)}
                   >
                     {item}
                   </option>

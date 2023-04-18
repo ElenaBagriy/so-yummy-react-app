@@ -3,11 +3,11 @@ import React from 'react';
 // import { getRecipes } from 'redux/recipes/recipesOperations';
 
 export const PopularRecipe = () => {
-  //   const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //     dispatch(getRecipes());
-  //   }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getRecipes());
+  // }, [dispatch]);
 
   return (
     <div>

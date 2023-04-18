@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RecipeDescStyled } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
@@ -7,21 +7,14 @@ import camera from '../../../images/AddRecipe/preview.svg';
 // const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
 export const RecipeDescriptionFields = ({ categories }) => {
-  const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState();
   const fileInputRef = useRef();
+  const [selectedImage, setSelectedImage] = useState();
 
-  useEffect(() => {
-    if (image) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader);
-      };
-      reader.readAsDataURL(image);
-    } else {
-      setPreview(null);
+  const imageChange = e => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
     }
-  }, [image]);
+  };
 
   const {
     register,
@@ -43,34 +36,34 @@ export const RecipeDescriptionFields = ({ categories }) => {
   return (
     <RecipeDescStyled>
       <label>
-        {preview ? (
-          <img src={preview} alt={'preview'} style={{ objectFit: 'cover' }} />
-        ) : (
-          <button
-            onClick={event => {
-              event.preventDefault();
-              fileInputRef.current.click();
-            }}
-          >
-            <img src={camera} alt="" />
-          </button>
-        )}
+        <button
+          className="uploadBtn"
+          onClick={event => {
+            event.preventDefault();
+            fileInputRef.current.click();
+          }}
+        >
+          {selectedImage ? (
+            <div>
+              <img
+                src={URL.createObjectURL(selectedImage)}
+                className="uploadedImage"
+                alt="Thumb"
+              />
+            </div>
+          ) : (
+            <img src={camera} alt="camera" />
+          )}
+        </button>
 
         <input
+          {...register('image')}
           type="file"
           name="image"
-          {...register('image')}
           className="upload"
           ref={fileInputRef}
           accept="image/*"
-          onChange={event => {
-            const file = event.target.files[0];
-            if (file && file.type.substr(0, 5) === 'image') {
-              setImage(file);
-            } else {
-              setImage(null);
-            }
-          }}
+          onChange={imageChange}
         />
       </label>
       <InputsStyled>
@@ -88,7 +81,11 @@ export const RecipeDescriptionFields = ({ categories }) => {
           Category
           <select {...register('category')}>
             {categories.map(item => (
-              <option key={item._id} value={item.title}>
+              <option
+                key={item.id}
+                value={item.title}
+                {...register(`${item.title}`)}
+              >
                 {item.title}
               </option>
             ))}
@@ -99,7 +96,7 @@ export const RecipeDescriptionFields = ({ categories }) => {
           Cooking time
           <select placeholder="Cooking time" {...register('time')}>
             {timeOptions.map(item => (
-              <option key={item} value={item}>
+              <option key={item} value={item} {...register(`${item}`)}>
                 {item} min
               </option>
             ))}

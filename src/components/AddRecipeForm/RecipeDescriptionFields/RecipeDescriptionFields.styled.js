@@ -8,7 +8,7 @@ export const RecipeDescStyled = styled.div`
     display: none;
   }
 
-  button {
+  .uploadBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,6 +16,16 @@ export const RecipeDescStyled = styled.div`
     height: 344px;
     border: none;
     background: ${props => props.theme.colors.green};
+  }
+
+  .uploadedImage {
+    object-fit: contain;
+  }
+
+  .deleteBtn {
+    border: none;
+    background-color: transparent;
+    color: ${props => props.theme.colors.white};
   }
 `;
 
