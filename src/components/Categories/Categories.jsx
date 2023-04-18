@@ -14,7 +14,6 @@ import { Pagination } from "reusableComponents/Pagination/Pagination";
 import { RecipesAPI } from '../../services/api/API';
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
 import { onCapitalise } from "services/api/onCapitalise";
-import { Main } from "reusableComponents/Main/Main";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "redux/recipes/recipesOperations";
 import { selectCategoryList } from "redux/selectors";
@@ -30,8 +29,18 @@ export const Categories = () => {
     const [categoryRecipes, setCategoryRecipes] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
     
-
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        dispatch(getAllCategories());
+    }, [ dispatch]);
+
+    
+    useEffect(() => {
+        if (categoryName) return;
+        
+        setCategory(allCategories[0].title);
+    }, [allCategories, categoryName]);
 
     useEffect(() => {
         if (!category) return;
@@ -61,19 +70,6 @@ export const Categories = () => {
         getRecipeByCategories({ normalisedQuery, page });
     }, [category, page]);
 
-    useEffect(() => {
-        if (category) return;
-        dispatch(getAllCategories());
-
-        if (categoryName) {
-            setCategory(categoryName);
-            return;
-        };
-        setCategory(allCategories[0].title);
-
-    }, [allCategories, category, categoryName, dispatch]);
-
-    
     const handleChange = (event, newValue) => {
         navigate(`/categories/${newValue}`)
         setCategory(newValue);
@@ -84,19 +80,9 @@ export const Categories = () => {
     const handleChangePage = (event, value) => {
         setPage(value);
     };
-
-    const onRecipeFavoriteChange = (id, favorite) => {
-        const changedRecipes = categoryRecipes.map(recipe => {
-            if (recipe._id === id) {
-                return { ...recipe, favorite };
-            }
-            return recipe;
-        });
-        setCategoryRecipes(changedRecipes);
-    }
     
     return (
-        <Main>
+        <>
             <Background/>
             <Container>
                 <Section>
@@ -118,7 +104,7 @@ export const Categories = () => {
                             />)}
                     </StyledTabs>
                     {isLoading || categoryRecipes.length === 0 ? <>...Loading</> :
-                        <CommonItemList list={categoryRecipes} onChange={onRecipeFavoriteChange}></CommonItemList>
+                        <CommonItemList list={categoryRecipes}></CommonItemList>
                     }
                     <Suspense fallback={<div>...Loading</div>}>
                         <Outlet/>
@@ -126,6 +112,6 @@ export const Categories = () => {
                     <Pagination page={page} totalPages={totalPages} onChange={handleChangePage} />
                     </Section>
             </Container>
-        </Main>
+        </>
   );
 };

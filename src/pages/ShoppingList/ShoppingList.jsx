@@ -6,6 +6,7 @@ import { Container } from 'reusableComponents/Container/Container';
 import { MainPageTitle } from '../../reusableComponents/ManePageTitle/ManePageTitle';
 import { Main } from 'reusableComponents/Main/Main';
 import { Background } from 'reusableComponents/Background/Background';
+import { Section } from './ShoppingList.styled';
 
 
 
@@ -20,8 +21,10 @@ const ShoppingListPage = () => {
     <Main>
       <Background />
       <Container>
-        <MainPageTitle title="Shopping list"></MainPageTitle>
-        <ShoppingListTabl />
+        <Section>
+          <MainPageTitle title="Shopping list"></MainPageTitle>
+          <ShoppingListTabl />
+          </Section>
       </Container>
       </Main>
   );

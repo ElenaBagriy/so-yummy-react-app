@@ -9,21 +9,10 @@ import { selectMainPageRecipes } from "redux/selectors";
 import { getRecipesMainPage } from "redux/recipes/recipesOperations";
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
 
-// const find = [
-//     { title: breakfast,
-//       data: [{}, {}, {}] 
-//     },
-//     { title: dessert,
-//       data: [{}, {}, {}] 
-//     },
-// ];
-
 export const PreviewCategories = () => {
     const dispatch = useDispatch();
     const mainPageRecipes = useSelector(selectMainPageRecipes);
 
-    // const [popularCategories, setPopularCategories] = useState([]);
-    // const [popularRecipes, setPopularRecipes] = useState([]);
     // const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {

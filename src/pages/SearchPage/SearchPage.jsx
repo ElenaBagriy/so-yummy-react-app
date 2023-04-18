@@ -15,6 +15,7 @@ import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList
 import { useRecipes } from "../../components/hooks";
 import Select from "../../reusableComponents/Select/Select";
 import { Main } from 'reusableComponents/Main/Main';
+import { Section } from './SearchPage.styled';
 
 export default function SearchPage() {
   const [search, setSearch] = useState("");
@@ -54,30 +55,32 @@ export default function SearchPage() {
     <Main>
       <Background />
       <Container>
-        <MainPageTitle title="Search" />
-        <Select
-          label="Title"
-          values={["Title", "Ingredients"]}
-          onChange={setRecipesBy}
-        />
-        <Input
-          name="search"
-          type="text"
-          value={search}
-          $colorGrey
-          onChange={setSearch}
-        />
-        <ButtonRound type="button" onClick={onSearch}>
-          Search
-        </ButtonRound>
-        {isRecipes && isRecipes.recipes?.length && (
-          <CommonItemList list={isRecipes.recipes} />
-        )}
-        <Pagination
-          totalPages={isPage}
-          onChange={handleChangePage}
-          page={page}
-        />
+        <Section>
+          <MainPageTitle title="Search" />
+          <Select
+            label="Title"
+            values={["Title", "Ingredients"]}
+            onChange={setRecipesBy}
+          />
+          <Input
+            name="search"
+            type="text"
+            value={search}
+            $colorGrey
+            onChange={setSearch}
+          />
+          <ButtonRound type="button" onClick={onSearch}>
+            Search
+          </ButtonRound>
+          {isRecipes && isRecipes.recipes?.length && (
+            <CommonItemList list={isRecipes.recipes} />
+          )}
+          <Pagination
+            totalPages={isPage}
+            onChange={handleChangePage}
+            page={page}
+          />
+        </Section>
       </Container>
     </Main>
   );

@@ -19,7 +19,7 @@ export const PictureTitle = styled.div`
     font-size: 16px;
     letter-spacing: -0.24px;
     line-height: 1.25;
-    padding: 16px;
+    padding: 16px 6px 16px 16px;
     border-radius: 8px;
     background-color: ${props => props.theme.colors.white};
     color: ${props => props.theme.text.primary};
@@ -34,7 +34,7 @@ export const PictureTitle = styled.div`
     };
 
     @media screen and (min-width: 1280px) {
-        width: 268px;
+        width: calc(100% - 36px);
         bottom: 24px;
     }
 `;
