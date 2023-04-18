@@ -8,6 +8,8 @@ import ShoppingListPage from 'pages/ShoppingList/ShoppingList';
 import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks';
 import { refreshUser } from 'redux/user/userOperations';
+import { Flip, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -133,7 +135,8 @@ export const App = () => {
             />} />
           </Route>
 
-            </Routes>
+          </Routes>
+          <ToastContainer position="top-center" autoClose={3000} theme="light" transition={Flip} hideProgressBar='true'/>
           </Suspense>
         </Theme>
       </div>

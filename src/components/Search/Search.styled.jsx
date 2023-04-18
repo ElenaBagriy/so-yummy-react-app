@@ -1,3 +1,4 @@
+import { FormHelperText } from "@mui/material";
 import styled from "styled-components";
 
 export const Form = styled.form`
@@ -79,3 +80,17 @@ export const Button = styled.button`
     background-color: ${props => props.theme.colors.green};
   }
 `;
+
+export const HelperText = styled(FormHelperText)`
+&.MuiFormHelperText-root {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  position: absolute;
+  padding: 0 38px;
+  margin-left: 14px;
+  color: #E74A3B;
+}
+`
