@@ -34,6 +34,7 @@ export const RecipesList = styled.ul`
 
 export const RecipesItem = styled.li`
   padding: 14px 9px;
+  width: 100%;
   display: flex;
   gap: 14px;
   border-radius: 8px;
