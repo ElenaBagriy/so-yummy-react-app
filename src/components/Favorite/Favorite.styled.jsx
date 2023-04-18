@@ -34,8 +34,10 @@ export const RecipesList = styled.ul`
 
 export const RecipesItem = styled.li`
   padding: 14px 9px;
+  width: 100%;
   display: flex;
   gap: 14px;
+  width: 100%;
   border-radius: 8px;
   background-color: ${props => props.theme.colors.white};
 
@@ -87,7 +89,6 @@ export const Title = styled.h3`
 `;
 
 export const Description = styled.p`
-  /* margin-bottom: 12px; */
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 8px;
@@ -98,13 +99,11 @@ export const Description = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.29;
-    /* margin-bottom: 58px; */
   };
 
   @media screen and (min-width: 1280px) {
     font-size: 18px;
     line-height: 1.33;
-    /* margin-bottom: 62px;   ///?????? */
   };
 `;
 

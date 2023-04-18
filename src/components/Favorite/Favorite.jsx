@@ -1,13 +1,12 @@
 import { Background } from "reusableComponents/Background/Background";
 import { Container } from "reusableComponents/Container/Container";
-import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Button, Link } from "./Favorite.styled";
+import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link } from "./Favorite.styled";
 import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavoriteRecipes, selectFavoriteRecipesTotalPages } from "redux/selectors";
 import { useEffect, useState } from "react";
 import { getRecipesFavorite } from "redux/recipes/recipesOperations";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
-import { NavLink } from "react-router-dom";
 import timeConvert from "services/api/timeConverter";
 
 export const Favorite = () => {
