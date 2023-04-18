@@ -24,7 +24,7 @@ export const Categories = () => {
     const { categoryName } = useParams();
     const allCategories = useSelector(selectCategoryList);
     
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState(categoryName);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(null);
     const [categoryRecipes, setCategoryRecipes] = useState([]);
