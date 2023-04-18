@@ -93,7 +93,7 @@ export const RecipesAPI = {
     const { data } = await axios.get('/recipes/main-page');
     return data;
   },
-  getRecipesFavorite: async ({ page, sort = '' }) => {
+  getRecipesFavorite: async ({ page, sort = 'popular' }) => {
     const { data } = await axios.get(
       `/recipes/favorite?page=${page}&limit=4&sort=${sort}`
     );
