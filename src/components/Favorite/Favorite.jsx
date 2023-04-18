@@ -55,9 +55,6 @@ export const Favorite = () => {
                         })}
                         </RecipesList>
                     }
-                    {/* <Suspense fallback={<div>...Loading</div>}>
-                        <Outlet/>
-                    </Suspense> */}
                     <Pagination page={page} totalPages={totalPages} onChange={handleChangePage} />
                     </Section>
             </Container>
