@@ -118,7 +118,7 @@ export const SigninStyled = styled.div`
     }
   }
 
-  label {
+  .wrapperForIcon {
     position: relative;
   }
 
@@ -133,6 +133,7 @@ export const SigninStyled = styled.div`
 
   svg {
     position: absolute;
+    display: inline-block;
     top: 50%;
     left: 14px;
     transform: translateY(-50%);
@@ -144,6 +145,11 @@ export const SigninStyled = styled.div`
   }
 
   input {
+    /* position: relative; */
+
+    display: block;
+    margin: 0 auto;
+    /* padding: 0; */
     width: 279px;
     height: 45px;
     padding-top: 12px;
@@ -156,6 +162,20 @@ export const SigninStyled = styled.div`
     line-height: 1.5;
     letter-spacing: -0.02em;
     color: ${props => props.theme.colors.white};
+
+    input:invalid {
+      color: red;
+      border-color: red;
+    }
+    input:focus:required:valid,
+    input:focus:required:placeholder-shown {
+      border-color: green;
+    }
+
+    input:valid {
+      background-color: green;
+      border-color: green;
+    }
 
     //tablet
     @media screen and (min-width: 768px) {

@@ -6,7 +6,7 @@ export const RecipePreparationFields = () => {
     register,
     // handleSubmit,
     // watch,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
   // const onSubmit = data => console.log(data);
 

@@ -6,13 +6,15 @@ import imgTabl2x from '../../images/welcomePage/hero-tablet@2x.jpg';
 import imgMob from '../../images/welcomePage/hero-mobile@1x.jpg';
 import imgMob2x from '../../images/welcomePage/hero-mobile@2x.jpg';
 
-// 1280px+
+// 767px
 export const WelcomePageStyled = styled.main`
-  padding: 275px 35px 261px 35px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-right: 35px;
+  padding-left: 35px;
+  height: 100vh;
 
   background-image: url(${imgMob});
   background-position: center;
@@ -29,7 +31,7 @@ export const WelcomePageStyled = styled.main`
 
   //tablet
   @media screen and (min-width: 768px) {
-    padding: 342px 131.5px;
+    padding: 0 131px;
     background-image: url(${imgTabl});
   }
 
@@ -42,7 +44,8 @@ export const WelcomePageStyled = styled.main`
 
   //desktop
   @media screen and (min-width: 1440px) {
-    padding: 214px 450px 216px;
+    padding-left: 450px;
+    padding-right: 450px;
     background-image: url(${imgDesktop});
   }
 
