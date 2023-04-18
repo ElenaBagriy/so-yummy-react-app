@@ -7,8 +7,9 @@ import { StyledTitle } from "reusableComponents/ManePageTitle/ManePageTitle.styl
 import { useDispatch, useSelector } from "react-redux";
 import { selectMainPageRecipes } from "redux/selectors";
 import { getRecipesMainPage } from "redux/recipes/recipesOperations";
-import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
-import { Button, Item, Link, CategoriesList, Section } from "./PreviewCategories.styled";
+import { Button, Link, CategoriesList, Section, RecipesList, RecipesItem, OtherButton, StyledLink } from "./PreviewCategories.styled";
+import { ItemCard } from "reusableComponents/ItemCard/ItemCard";
+import { useMediaQuery } from "@mui/material";
 
 export const PreviewCategories = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,10 @@ export const PreviewCategories = () => {
 
     // const [isLoading, setIsLoading] = useState(false);
 
+    const mobile = useMediaQuery('(max-width: 767px)');
+    const tablet = useMediaQuery('(min-width: 768px)');
+    const desktop = useMediaQuery('(min-width: 1280px)');
+    
     useEffect(() => {
         dispatch(getRecipesMainPage());
     }, [dispatch]);
@@ -24,16 +29,23 @@ export const PreviewCategories = () => {
         <Container>
             <CategoriesList>
             {mainPageRecipes && mainPageRecipes.map(({title, data}) => {
-                return <Item key={title}>
+                return <li key={title}>
                     <StyledTitle >{onCapitalise(title)}</StyledTitle>
-                    
-                    <CommonItemList list={data} />
+                    <RecipesList>
+                        {data.map(item =>
+                            <RecipesItem key={item._id}>
+                                <ItemCard item={item} />
+                            </RecipesItem>)}
+                    </RecipesList>
                     <Button>
                         <Link to={`/categories/${title}`}>See all</Link>
                     </Button>
-                    </Item>
+                    </li>
              })}
             </CategoriesList>
+            <StyledLink to={`/categories/beef`}>
+                Other categories
+            </StyledLink>
         </Container>
     </Section>
 }
