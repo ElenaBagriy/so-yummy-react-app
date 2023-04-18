@@ -11,11 +11,20 @@ export const SigninStyled = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  padding: 305px 20px 153px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 153px;
+  height: 100vh;
   background-color: ${props => props.theme.colors.white};
-  background-image: url(${backMob});
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 58.58%,
+      rgba(0, 0, 0, 0.345172) 78.98%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url(${backMob});
   background-position: 50% 100%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -30,7 +39,9 @@ export const SigninStyled = styled.div`
   //tablet
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    padding: 443px 134px 120px;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 134px;
     background-image: url(${backTabl});
   }
 
@@ -44,8 +55,10 @@ export const SigninStyled = styled.div`
   //desktop
   @media screen and (min-width: 1440px) {
     background-image: url(${backDesktop});
-    padding: 155px 180px 153px 760px;
-    justify-content: right;
+    padding-left: 113px;
+    /* padding-right: 180px; */
+    padding-bottom: 0;
+    justify-content: center;
     align-items: end;
   }
 
@@ -58,13 +71,14 @@ export const SigninStyled = styled.div`
 
   img {
     position: absolute;
-    top: 87px;
+    top: 11.5%;
     left: auto;
     transform: translateX(-50%);
     z-index: 1;
 
     //tablet
     @media screen and (min-width: 768px) {
+      top: 8.2%;
       top: 96px;
       left: auto;
       transform: translateX(-50%);
@@ -72,9 +86,8 @@ export const SigninStyled = styled.div`
 
     //desktop
     @media screen and (min-width: 1440px) {
-      top: 115px;
-      left: 113px;
-      transform: translateX(0);
+      top: 21%;
+      right: 36.5%;
     }
   }
 
@@ -145,11 +158,6 @@ export const SigninStyled = styled.div`
   }
 
   input {
-    /* position: relative; */
-
-    display: block;
-    margin: 0 auto;
-    /* padding: 0; */
     width: 279px;
     height: 45px;
     padding-top: 12px;
