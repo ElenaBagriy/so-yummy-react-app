@@ -66,7 +66,7 @@ const recipesSlice = createSlice({
       // ------------ Get Recipes Favorite ----------------
       .addCase(getRecipesFavorite.pending, handlePending)
       .addCase(getRecipesFavorite.fulfilled, (state, action) => {
-        state.favoriteRecipes = action.payload.recipes;
+        state.favoriteRecipes = action.payload;
       })
       .addCase(getRecipesFavorite.rejected, handleRejected)
 

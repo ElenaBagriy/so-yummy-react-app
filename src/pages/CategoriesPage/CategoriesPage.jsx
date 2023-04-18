@@ -4,7 +4,7 @@ import { Main } from "reusableComponents/Main/Main";
 const CategoriesPage = () => {
   return (
     <Main>
-      <Categories></Categories>
+      <Categories/>
     </Main>
   );
 };
