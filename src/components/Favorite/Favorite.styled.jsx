@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const Section = styled.main`
@@ -86,7 +87,7 @@ export const Title = styled.h3`
 `;
 
 export const Description = styled.p`
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 8px;
@@ -97,13 +98,13 @@ export const Description = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.29;
-    margin-bottom: 58px;
+    /* margin-bottom: 58px; */
   };
 
   @media screen and (min-width: 1280px) {
     font-size: 18px;
     line-height: 1.33;
-    margin-bottom: 62px;   ///??????
+    /* margin-bottom: 62px;   ///?????? */
   };
 `;
 
@@ -124,4 +125,68 @@ export const Time = styled.p`
     font-size: 18px;
     line-height: 1.33;
   };
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    
+  };
+
+  @media screen and (min-width: 1280px) {
+    
+  };
+`;
+
+export const BottomWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    
+  };
+
+  @media screen and (min-width: 1280px) {
+    
+  };
+`;
+
+export const Link = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 87px;
+  height: 27px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.5;
+  background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.bgMain};
+  border-radius: 24px 44px;
+  transition: color ${props => props.theme.hover.transition}, background-color ${props => props.theme.hover.transition};
+
+  &:hover,
+  :focus {
+    background-color: ${props => props.theme.colors.green};
+    color: ${props => props.theme.colors.bgMain};
+  };
+
+    @media screen and (min-width: 768px) {
+        width: 138px;
+        height: 45px;
+        font-size: 14px;
+    };
+
+    @media screen and (min-width: 1280px) {
+        width: 160px;
+        height: 54px;
+        font-size: 16px;
+    }
 `;
