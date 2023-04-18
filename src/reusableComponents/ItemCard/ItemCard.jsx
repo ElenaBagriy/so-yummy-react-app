@@ -4,22 +4,22 @@ import { Checkbox, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
 import { RecipesAPI } from "services/api/API";
 
-export const ItemCard = ({item, onChange}) => {
+export const ItemCard = ({item}) => {
     const { title, _id, preview, favorite } = item;
 
     const [isFavorite, setIsFavorite] = useState(favorite);
     const [anchorEl, setAnchorEl] = useState(null);
     const navigate = useNavigate();
 
-    const maxTextLength = 26;
+    const maxTextLength = 22;
     const shortTitle = title.length < maxTextLength ? title : title.substr(0, maxTextLength).replace(/\s+\S*$/, '') + '...';
 
     const addToFavorite = () => {
         async function toggleFavorite(id) {
             try {
                 const { favorite } = await RecipesAPI.toggleFavoriteRecipesById(id);
-                onChange(id, favorite);
                 setIsFavorite(favorite);
+
                 //         favorite && toast.success(`Added to Favorite!`);
                 //         !favorite && toast.info(`Removed from Favorite!`);
                 //         setMotivation(motivation);
