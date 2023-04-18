@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkso_yummy_react_app=self.webpackChunkso_yummy_react_app||[]).push([[385],{7385:function(e,r,n){n.r(r),n.d(r,{default:function(){return t}});var a=n(6602);n(2791);var c=n.p+"static/media/icon-for-404.09006ba7466e07938b37aec445fc80b9.svg",s=n(184),t=function(){return(0,s.jsxs)(a.Main,{children:[(0,s.jsx)("img",{src:c,alt:"Icon 404"}),(0,s.jsx)("p",{children:"We are sorry,"}),(0,s.jsx)("p",{children:"but the page you were looking for can\u2019t be found.."})]})}}}]);
+//# sourceMappingURL=385.6eae1936.chunk.js.map
