@@ -116,7 +116,7 @@ export const Link = styled(NavLink)`
     margin-top: 4px;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     gap: 4px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;

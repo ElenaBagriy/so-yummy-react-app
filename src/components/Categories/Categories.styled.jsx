@@ -18,19 +18,24 @@ export const Section = styled.main`
 
 export const StyledTabs = styled(Tabs)`
   margin-top: 50px;
+  margin-bottom: 32px;
   padding-left: 19px;
   border-bottom: 1px solid ${props => props.theme.border.grey};
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 50px;
+    };
+
+    @media screen and (min-width: 1280px) {
+        margin-top: 100px;
+        padding-left: 20px;
+    };
 
   .MuiTabs-flexContainer {
     gap: 8px;
 
     @media screen and (min-width: 768px) {
         gap: 35px;
-    };
-
-    @media screen and (min-width: 1280px) {
-        margin-top: 100px;
-        padding-left: 31px;
     };
   };
 
@@ -58,5 +63,4 @@ export const StyledTabs = styled(Tabs)`
   .MuiTabs-indicator {
     background-color: ${props => props.theme.colors.green};
   };
-`
-
+`;

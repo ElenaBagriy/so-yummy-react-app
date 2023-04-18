@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectMainPageRecipes } from "redux/selectors";
 import { getRecipesMainPage } from "redux/recipes/recipesOperations";
 import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
+import { Button, Item, Link, CategoriesList, Section } from "./PreviewCategories.styled";
 
 export const PreviewCategories = () => {
     const dispatch = useDispatch();
@@ -19,15 +20,20 @@ export const PreviewCategories = () => {
         dispatch(getRecipesMainPage());
     }, [dispatch]);
     
-    return <section>
+    return <Section>
         <Container>
+            <CategoriesList>
             {mainPageRecipes && mainPageRecipes.map(({title, data}) => {
-                return <div key={title}>
+                return <Item key={title}>
                     <StyledTitle >{onCapitalise(title)}</StyledTitle>
+                    
                     <CommonItemList list={data} />
-                </div>
+                    <Button>
+                        <Link to={`/categories/${title}`}>See all</Link>
+                    </Button>
+                    </Item>
              })}
-            
+            </CategoriesList>
         </Container>
-    </section>
+    </Section>
 }
