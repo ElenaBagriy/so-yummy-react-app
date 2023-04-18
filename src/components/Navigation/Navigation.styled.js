@@ -16,7 +16,7 @@ export const StyledNav = styled.nav`
 export const StyledLink = styled(NavLink)`
   display: inline-flex;
   align-items: center;
-  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 1;
