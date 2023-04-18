@@ -24,7 +24,7 @@ export const PopularStyled = styled.div`
     object-fit: cover;
   }
 
-  li {
+  .wrapper {
     display: flex;
   }
 
@@ -33,6 +33,7 @@ export const PopularStyled = styled.div`
   }
 
   h4 {
+    margin-bottom: 3.31px;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.25;

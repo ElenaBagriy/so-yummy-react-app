@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPopularRecipes } from 'redux/recipes/recipesOperations';
 import { selectPopularRecipes } from 'redux/selectors';
 import { PopularStyled } from './PopularRecipe.styled';
+import { Link } from 'react-router-dom';
 
 export const PopularRecipe = () => {
   const dispatch = useDispatch();
@@ -19,16 +20,20 @@ export const PopularRecipe = () => {
       <ul>
         {recipies ? (
           recipies.map(({ _id, preview, title, description }) => {
+            const shortTitle = title.split(' ').slice(0, 2).join(' ');
+            const shortDescription = description
+              .split(' ')
+              .slice(0, 15)
+              .join(' ');
             return (
               <li key={_id}>
-                {/* <Link to={`/recipies/${id}`}> */}
-                <img src={preview} alt={title} />
-                <div className="textWrapper">
-                  <h4>{title}</h4>
-                  <p>{description}</p>
-                </div>
-
-                {/* </Link> */}
+                <Link to={`/recipy/${_id}`} className="wrapper">
+                  <img src={preview} alt={title} />
+                  <div className="textWrapper">
+                    <h4>{shortTitle}</h4>
+                    <p>{shortDescription}...</p>
+                  </div>
+                </Link>
               </li>
             );
           })
