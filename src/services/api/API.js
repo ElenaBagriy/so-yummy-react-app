@@ -86,6 +86,7 @@ export const UserAPI = {
 //=========Recipes==============
 export const RecipesAPI = {
   getRecipes: async ({ page, limit = 8, sort = '' }) => {
+    console.log('12312321');
     const { data } = await axios.get(
       `/recipes?page=${page}&limit=${limit}&sort=${sort}`
     );

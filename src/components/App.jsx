@@ -15,6 +15,7 @@ const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage'));
+const RecipePage = lazy(() => import('../pages/Recipe/RecipePage'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
@@ -22,7 +23,7 @@ const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'))
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -68,7 +69,7 @@ export const App = () => {
                       component={<SharedLayout />}
                     />
                   }>
-                
+
                 <Route path="/main" element={
                     <PrivateRoute
                       redirectTo="/"
@@ -81,6 +82,15 @@ export const App = () => {
                     <PrivateRoute
                       redirectTo="/"
                       component={<CategoriesPage />}
+                    />
+                  }
+                />
+                <Route
+                  path="recipe/:id"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/"
+                      component={<RecipePage />}
                     />
                   }
                 />
@@ -122,6 +132,6 @@ export const App = () => {
         </Theme>
       </div>
     )
-  
+
 };
 

@@ -28,8 +28,10 @@ const recipesInitialState = {
     },
   ],
   randomRecipes: [],
+  userFavouritesRecipes: [],
   categoryList: [],
   ingredientsList: [],
+  recipeIsLoading: false,
   total: null,
   page: null,
   limit: null,
@@ -55,12 +57,22 @@ const recipesSlice = createSlice({
     builder
 
       // ------------ Get all recipes ----------------
-      .addCase(getRecipes.pending, handlePending)
-      .addCase(getRecipes.fulfilled, (state, action) => { })
-      .addCase(getRecipes.rejected, handleRejected)
+      .addCase(getRecipes.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.recipe = action.payload;
+      })
+      .addCase(getRecipes.rejected, (state, action) => {
+        state.isLoading = false;
+      })
 
       // ------------ Get Recipes Main Page ----------------
-      .addCase(getRecipesMainPage.pending, handlePending)
+      .addCase(getRecipesMainPage.pending, (state, action) => {
+        state.userFavoritesIsLoading = true;
+      })
       .addCase(getRecipesMainPage.fulfilled, (state, action) => { })
       .addCase(getRecipesMainPage.rejected, handleRejected)
 
@@ -116,6 +128,7 @@ const recipesSlice = createSlice({
         state.ingredientsList = action.payload.ingredients;
       })
       .addCase(getIngredients.rejected, handleRejected)
+
 });
 
 export const recipesReducer = recipesSlice.reducer;
