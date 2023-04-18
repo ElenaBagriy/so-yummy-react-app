@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { Container } from "reusableComponents/Container/Container";
-// import { PreviewCard } from "./PreviewCard/PreviewCard";
 import { onCapitalise } from "services/api/onCapitalise";
-// import { ItemCard } from "reusableComponents/ItemCard/ItemCard";
 import { StyledTitle } from "reusableComponents/ManePageTitle/ManePageTitle.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMainPageRecipes } from "redux/selectors";
 import { getRecipesMainPage } from "redux/recipes/recipesOperations";
-import { Button, Link, CategoriesList, Section, RecipesList, RecipesItem, OtherButton, StyledLink } from "./PreviewCategories.styled";
+import { Button, Link, CategoriesList, Section, RecipesList, RecipesItem, StyledLink } from "./PreviewCategories.styled";
 import { ItemCard } from "reusableComponents/ItemCard/ItemCard";
-import { useMediaQuery } from "@mui/material";
+// import { useMediaQuery } from "@mui/material";
 
 export const PreviewCategories = () => {
     const dispatch = useDispatch();
@@ -17,9 +15,9 @@ export const PreviewCategories = () => {
 
     // const [isLoading, setIsLoading] = useState(false);
 
-    const mobile = useMediaQuery('(max-width: 767px)');
-    const tablet = useMediaQuery('(min-width: 768px)');
-    const desktop = useMediaQuery('(min-width: 1280px)');
+    // const mobile = useMediaQuery('(max-width: 767px)');
+    // const tablet = useMediaQuery('(min-width: 768px)');
+    // const desktop = useMediaQuery('(min-width: 1280px)');
     
     useEffect(() => {
         dispatch(getRecipesMainPage());

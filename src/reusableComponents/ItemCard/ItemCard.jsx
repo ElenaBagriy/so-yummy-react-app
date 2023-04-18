@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { CheckedIcon, Icon, LikeButton, Link, PictureTitle, StyledPopover } from "./ItemCard.styled";
-import { Checkbox, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { RecipesAPI } from "services/api/API";
+import { toast } from 'react-toastify';
+import { Checkbox, Tooltip, Typography } from "@mui/material";
+import { CheckedIcon, Icon, LikeButton, Link, PictureTitle, StyledPopover } from "./ItemCard.styled";
 
 export const ItemCard = ({item}) => {
     const { title, _id, preview, favorite } = item;
@@ -20,14 +21,12 @@ export const ItemCard = ({item}) => {
                 const { favorite } = await RecipesAPI.toggleFavoriteRecipesById(id);
                 setIsFavorite(favorite);
 
-                //         favorite && toast.success(`Added to Favorite!`);
-                //         !favorite && toast.info(`Removed from Favorite!`);
+                favorite && toast.success(`Added to Favorite!`);
+                !favorite && toast.info(`Removed from Favorite!`);
                 //         setMotivation(motivation);
             } catch (error) {
-                // return alert('Something went wrong!')///Прописать ошибку
-            } finally {
-                // setIsLoading(false);
-            }
+                return toast.error(`Something went wrong! Please, try again`);
+            };
         };
         toggleFavorite(_id);
     };

@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateSearchQuery } from "redux/search/searchSlice";
-import { Button, Form, Input } from "./Search.styled";
+import { Button, Form, HelperText, Input } from "./Search.styled";
+import { useState } from "react";
 
 export const Search = () => {
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -11,7 +13,7 @@ export const Search = () => {
         e.preventDefault();
         const query = e.target.search.value.trim();
         if (!query) {
-            //   toast.warning('Type the query for search');
+            setErrorMessage('Please, type something');
             return;
         };
         dispatch(updateSearchQuery(query));
@@ -26,6 +28,7 @@ export const Search = () => {
                 placeholder="Enter the text"
             />
             <Button type="submit">Search</Button>
+            <HelperText>{errorMessage}</HelperText>
         </Form>
     </>
 };
