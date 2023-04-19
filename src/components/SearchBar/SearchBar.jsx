@@ -7,6 +7,7 @@ import {
   getRecipesByIngredientsQuery,
   getRecipesByTitleQuery,
 } from 'redux/recipes/recipesOperations';
+import { Wrapper } from './SearchBar.styled';
 
 export default function SearchBar({ page }) {
   const [sendSearch, setSendSearch] = useState('');
@@ -34,7 +35,7 @@ export default function SearchBar({ page }) {
     setSendSearch(inputQuery);
   };
   return (
-    <>
+    <Wrapper>
       <SearchForm value={sendSearch} onSearchFormSubmit={onSearchFormSubmit} />
 
       <Select
@@ -42,6 +43,8 @@ export default function SearchBar({ page }) {
         values={['Title', 'Ingredients']}
         onChange={setRecipesBy}
       />
-    </>
+    </Wrapper>
   );
 }
+
+

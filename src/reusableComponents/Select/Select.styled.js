@@ -28,6 +28,7 @@ export const SelectLabelButton = styled.button`
 `;
 
 export const DropdownStyle = styled.div`
+  z-index: 99;
   position: absolute;
   top: 100%;
   left: 0;
@@ -50,8 +51,7 @@ export const DropdownStyle = styled.div`
 `;
 
 export const DropdownItem = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   width: 90%;
