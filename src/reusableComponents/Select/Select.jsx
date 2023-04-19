@@ -36,7 +36,7 @@ export default function Select({ label, values, onChange }) {
   };
   return (
     <SelectContainer>
-      <SelectLabelButton ref={selectRef} onClick={handleToggle}>
+      <SelectLabelButton ref={selectRef} isVisible={open} onClick={handleToggle}>
         {currentValue !== "" ? currentValue : label}
         <Arrow />
       </SelectLabelButton>
@@ -44,7 +44,7 @@ export default function Select({ label, values, onChange }) {
         {values.map((value, index) => (
           <DropdownItem
             onClick={() => handleChange(value)}
-            active={value === currentValue}
+            active={value === (currentValue || label)}
             key={index}
           >
             {value}

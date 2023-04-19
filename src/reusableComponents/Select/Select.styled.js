@@ -31,6 +31,17 @@ export const SelectLabelButton = styled.button`
   
   cursor: pointer;
   transition: 0.3s ease;
+
+  &:hover {
+  background-color: ${(props) => props.theme.select.greyHover};
+  }
+
+  ${(p) =>
+    p.isVisible &&
+    css`
+    background-color: ${(props) => props.theme.select.greyHover};
+    `}
+
 `;
 
 export const DropdownStyle = styled.div`
@@ -45,8 +56,7 @@ export const DropdownStyle = styled.div`
   margin-right: 4px;
 
   background-color: ${(props) => props.theme.colors.bgMain};
-
-  transition: max-height 0.2s ease;
+  
   overflow: auto;
   z-index: 199;
 
