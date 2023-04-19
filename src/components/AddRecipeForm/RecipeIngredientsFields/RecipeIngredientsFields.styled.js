@@ -31,11 +31,12 @@ export const RecipeIngredStyled = styled.div`
     border: none;
     background-color: transparent;
     color: rgba(51, 51, 51, 0.3);
-    font-size: 20.5px;
-    line-height: 1.5;
+    font-size: 21.6px;
+    line-height: 1.2;
 
     &:hover {
       color: ${props => props.theme.colors.green};
+      transform: scale(1.5);
     }
   }
 
