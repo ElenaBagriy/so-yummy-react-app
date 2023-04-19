@@ -100,8 +100,7 @@ export const App = () => {
                   }
                 />
                 <Route
-                  path="search"
-                  // path="search/:searchParam"
+                path="search"
                   element={
                     <PrivateRoute redirectTo="/" component={<SearchPage />} />
                   }

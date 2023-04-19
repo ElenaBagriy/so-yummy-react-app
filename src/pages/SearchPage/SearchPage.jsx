@@ -1,54 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container } from 'reusableComponents/Container/Container';
 import { Background } from 'reusableComponents/Background/Background';
 import { MainPageTitle } from 'reusableComponents/ManePageTitle/ManePageTitle';
-import ButtonRound from '../../reusableComponents/Button/ButtonRound';
-import Input from '../../reusableComponents/Input/Input';
-import { useParams } from "react-router";
-import { useDispatch } from "react-redux";
-import {
-  getRecipesByIngredientsQuery,
-  getRecipesByTitleQuery,
-} from "redux/recipes/recipesOperations";
-import { Pagination } from "reusableComponents/Pagination/Pagination";
-import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
-import { useRecipes } from "../../components/hooks";
-import Select from "../../reusableComponents/Select/Select";
+
+import { Pagination } from 'reusableComponents/Pagination/Pagination';
+import { CommonItemList } from 'reusableComponents/CommonItemList/CommonItemList';
+import { useRecipes } from '../../components/hooks';
+
 import { Main } from 'reusableComponents/Main/Main';
 import { Section } from './SearchPage.styled';
+import SearchBar from 'components/SearchBar/SearchBar';
+import NeedSearching from 'components/NeedSearching/NeedSearching';
 
 export default function SearchPage() {
-  const [search, setSearch] = useState("");
-  const [sendSearch, setSendSearch] = useState("");
-  const [recipesBy, setRecipesBy] = useState("title");
   const [page, setPage] = useState(1);
-  const { isRecipes, isPage } = useRecipes();
-
-  const { searchParam } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (searchParam) setSearch(searchParam);
-  }, [searchParam]);
-
-  useEffect(() => {
-    if (sendSearch) {
-      if (recipesBy === "title")
-        dispatch(getRecipesByTitleQuery({ query: sendSearch, page }));
-      else dispatch(getRecipesByIngredientsQuery({ query: sendSearch, page }));
-    }
-  }, [dispatch, page, sendSearch, recipesBy]);
+  const { isRecipes, isPage, isLoading } = useRecipes();
 
   const handleChangePage = (_, value) => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
     setPage(value);
-  };
-
-  const onSearch = () => {
-    if (search && search.length) setSendSearch(search);
   };
 
   return (
@@ -57,24 +30,14 @@ export default function SearchPage() {
       <Container>
         <Section>
           <MainPageTitle title="Search" />
-          <Select
-            label="Title"
-            values={["Title", "Ingredients"]}
-            onChange={setRecipesBy}
-          />
-          <Input
-            name="search"
-            type="text"
-            value={search}
-            $colorGrey
-            onChange={setSearch}
-          />
-          <ButtonRound type="button" onClick={onSearch}>
-            Search
-          </ButtonRound>
-          {isRecipes && isRecipes.recipes?.length && (
+
+          <SearchBar page={page} />
+          {isLoading && <>...Loading</>}
+          {!isLoading && !!isRecipes.recipes?.length && (
             <CommonItemList list={isRecipes.recipes} />
           )}
+          {!isLoading && !isRecipes.recipes?.length && <NeedSearching />}
+
           <Pagination
             totalPages={isPage}
             onChange={handleChangePage}
