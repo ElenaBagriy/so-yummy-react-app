@@ -19,7 +19,7 @@ import { shoppingListReducer } from "./shoplist/shoplistSlice";
 const userConfig = {
   key: "token",
   storage,
-  whitelist: ["refreshToken", "accessToken"],
+  whitelist: ["refreshToken"],
 };
 
 export const store = configureStore({

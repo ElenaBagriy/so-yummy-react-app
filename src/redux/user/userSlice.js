@@ -80,8 +80,8 @@ const userSlice = createSlice({
       // ------------ Refresh token ----------------
       .addCase(refreshToken.pending, handlePending)
       .addCase(refreshToken.fulfilled, (state, action) => {
-        state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+        state.accessToken = action.payload.accessToken;
         state.isLoading = false;
       })
       .addCase(refreshToken.rejected, handleRejected)
