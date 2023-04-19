@@ -1,6 +1,9 @@
 function timeConvert(data) {
     const time = Number(data);
 
+    if (time === 0) {
+        return;
+    }
     if (time < 60) {
         return `${Math.ceil(time / 5) * 5} min`;
     };

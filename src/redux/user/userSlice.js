@@ -9,7 +9,6 @@ import {
   subscribe,
 } from './userOperations';
 
-
 const userInitialState = {
   user: {
     name: null,
@@ -28,6 +27,7 @@ const userInitialState = {
 const handlePending = state => {
   state.isLoading = true;
   state.error = null;
+  state.isRefreshing = false;
 };
 
 const handleRejected = (state, action) => {
@@ -62,7 +62,18 @@ const userSlice = createSlice({
       // ------------ Logout user ----------------
       .addCase(logoutUser.pending, handlePending)
       .addCase(logoutUser.fulfilled, state => {
-        state = userInitialState;
+        state.user = {
+          name: null,
+          email: null,
+          avatarURL: null,
+        };
+        state.accessToken = null;
+        state.refreshToken = null;
+        state.isLoggedIn = false;
+        state.isRefreshing = true;
+        state.isLoading = false;
+        state.error = null;
+        state.subscribeList = [];
       })
       .addCase(logoutUser.rejected, handleRejected)
 

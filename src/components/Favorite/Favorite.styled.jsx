@@ -35,7 +35,7 @@ export const RecipesList = styled.ul`
 
 export const RecipesItem = styled.li`
   position: relative;
-  padding: 14px 9px;
+  padding: 14px 41px 14px 9px;
   width: 100%;
   display: flex;
   gap: 14px;
@@ -44,12 +44,12 @@ export const RecipesItem = styled.li`
   background-color: ${props => props.theme.colors.white};
 
   @media screen and (min-width: 768px) {
-    padding: 28px 24px;
+    padding: 28px 130px 28px 24px;
     gap: 24px;
   };
 
   @media screen and (min-width: 1280px) {
-    padding: 40px;
+    padding: 40px 163px 40px 40px;
     gap: 40px;
   };
 `;
@@ -91,6 +91,7 @@ export const Title = styled.h3`
 `;
 
 export const Description = styled.p`
+  max-height: 57px;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 8px;
@@ -99,11 +100,13 @@ export const Description = styled.p`
   color: ${props => props.theme.text.heroParagraph};
 
   @media screen and (min-width: 768px) {
+    max-height: 73px;
     font-size: 14px;
     line-height: 1.29;
   };
 
   @media screen and (min-width: 1280px) {
+    max-height: 134px;
     font-size: 18px;
     line-height: 1.33;
   };
@@ -145,14 +148,14 @@ export const Wrapper = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  max-width: 155px;
+  /* max-width: 155px; */
 
   @media screen and (min-width: 768px) {
-    max-width: 298px;
+    /* max-width: 298px; */
   };
 
   @media screen and (min-width: 1280px) {
-    max-width: 679px;
+    /* max-width: 679px; */
   };
 `;
 
