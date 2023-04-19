@@ -42,6 +42,7 @@ export const UserAPI = {
     await axios.post('/users/logout');
     clearAuthHeader();
   },
+  
 
   refreshToken: async refreshToken => {
     const { data } = await axios.post('/users/refresh', refreshToken);

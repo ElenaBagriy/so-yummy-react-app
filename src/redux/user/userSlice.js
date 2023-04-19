@@ -18,7 +18,7 @@ const userInitialState = {
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false,
-  isRefreshing: false,
+  isRefreshing: true,
   isLoading: false,
   error: null,
   subscribeList: [],
@@ -27,6 +27,7 @@ const userInitialState = {
 const handlePending = state => {
   state.isLoading = true;
   state.error = null;
+  state.isRefreshing = false;
 };
 
 const handleRejected = (state, action) => {
