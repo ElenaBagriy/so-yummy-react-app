@@ -22,19 +22,21 @@ export const selectFavoriteRecipesTotalPages = state => {
     return Math.round(state.recipes.favoriteRecipes.total / state.recipes.favoriteRecipes.limit);
 };
 
-export const selectRecipes = (state) => state.recipes;
+//Search Page selectors
 
-export const selectTotalRecipes = (state) => state.recipes.total;
+export const selectSearchRecipes = (state) => state.recipes.searchRecipes;
 
-export const selectLimitRecipes = (state) => state.recipes.limit;
+export const selectTotalSearchRecipes = (state) => state.recipes.searchRecipes.total;
+
+export const selectLimitSearchRecipes = (state) => state.recipes.searchRecipes.limit;
+//
+
 
 export const selectLoadingRecipes = (state) => state.recipes.isLoading;
 
+
 //ingredients
 export const selectIngredients = state => state.recipes.ingredientsList;
-
-//search
-export const selectSearchQuery = state => state.search.query;
 
 //shoppingList
 export const selectShoppingList = state => state.shoppingList.products;

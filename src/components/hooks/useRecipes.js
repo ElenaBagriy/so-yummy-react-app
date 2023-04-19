@@ -1,15 +1,15 @@
 import { useSelector } from "react-redux";
 import {
-  selectRecipes,
-  selectTotalRecipes,
-  selectLimitRecipes,
+  selectSearchRecipes,
+  selectTotalSearchRecipes,
+  selectLimitSearchRecipes,
   selectLoadingRecipes,
 } from "redux/selectors";
 
 export const useRecipes = () => {
-  const isRecipes = useSelector(selectRecipes);
-  const isTotal = useSelector(selectTotalRecipes);
-  const isLimit = useSelector(selectLimitRecipes);
+  const isRecipes = useSelector(selectSearchRecipes);
+  const isTotal = useSelector(selectTotalSearchRecipes);
+  const isLimit = useSelector(selectLimitSearchRecipes);
   const isPage = Math.ceil(isTotal / isLimit);
 
   const isLoading = useSelector(selectLoadingRecipes);

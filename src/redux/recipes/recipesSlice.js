@@ -18,11 +18,7 @@ const recipesInitialState = {
   mainPageRecipes: [],
   ingredientsList: [],
   favoriteRecipes: [],
-  total: null,
-  page: null,
-  limit: null,
-  sort: 'title',
-
+  searchRecipes: [],
   isLoading: false,
   error: null,
 };
@@ -99,15 +95,19 @@ const recipesSlice = createSlice({
       // ------------ Get Recipes ByQuery ----------------
       .addCase(getRecipesByTitleQuery.pending, handlePending)
       .addCase(getRecipesByTitleQuery.fulfilled, (state, { payload }) => {
-        return { ...state, isLoading: false, ...payload }
+        state.searchRecipes = payload;
+        state.isLoading = false;
        })
       .addCase(getRecipesByTitleQuery.rejected, handleRejected)
+
       // ------------ Get Ingredients By Query ----------------
       .addCase(getRecipesByIngredientsQuery.pending, handlePending)
       .addCase(getRecipesByIngredientsQuery.fulfilled, (state, { payload }) => {
-        return { ...state, isLoading: false, ...payload };
+        state.searchRecipes = payload;
+        state.isLoading = false;
       })
       .addCase(getRecipesByIngredientsQuery.rejected, handleRejected)
+
       // ------------ Get All Ingredients ----------------
       .addCase(getIngredients.pending, handlePending)
       .addCase(getIngredients.fulfilled, (state, action) => {
