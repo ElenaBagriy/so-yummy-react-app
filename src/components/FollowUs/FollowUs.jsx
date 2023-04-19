@@ -3,10 +3,10 @@ import { StyledFollow } from './FollowUs.styled';
 import sprite from '../../images/FollowUs/symbol-defs.svg';
 import { Link } from 'react-router-dom';
 
-export const FollowUs = () => {
+export const FollowUs = ({title = true}) => {
   return (
     <StyledFollow>
-      <h3>Follow us</h3>
+      {title && <h3>Follow us</h3>}
       <ul>
         <li>
           <Link to="https://www.facebook.com/" target="_blank">

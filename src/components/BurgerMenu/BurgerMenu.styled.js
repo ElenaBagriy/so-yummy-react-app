@@ -64,6 +64,7 @@ export const CloseButton = styled.button`
 `;
 
 export const SpinachBottom = styled.div`
+  pointer-events: none;
   position: absolute;
   right: 0;
   bottom: 0;
