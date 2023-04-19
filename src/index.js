@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter
-        basename="/so-yummy-react-app"
+        // basename="/so-yummy-react-app"
         >
           <App />
         </BrowserRouter>
