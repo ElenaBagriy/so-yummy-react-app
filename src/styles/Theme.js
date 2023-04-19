@@ -26,6 +26,10 @@ const lightTheme = {
     normal: '#F0F0F0',
     active: 'rgba(35, 38, 42, 0.2)',
   },
+  select: {
+    grey: 'rgba(217, 217, 217, 0.16)',
+    color: 'rgba(0, 0, 0, 0.5)'
+  },
   breakPoints: {
     mobile: '375px',
     tablet: '768px',

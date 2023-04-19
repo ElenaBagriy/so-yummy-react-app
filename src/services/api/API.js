@@ -108,13 +108,13 @@ export const RecipesAPI = {
     return data;
   },
 
-  getRecipesByTitleQuery: async ({ query = '', page = 1 }) => {
-    const { data } = await axios.get(`/recipes/title/${query}?page=${page}`);
+  getRecipesByTitleQuery: async ({ query = '', page = 1, limit = 12 }) => {
+    const { data } = await axios.get(`/recipes/title/${query}?page=${page}&limit=${limit}`);
     return data;
   },
 
-  getRecipesByIngredientsQuery: async ({ query = '', page = 1 }) => {
-    const { data } = await axios.get(`/recipes/ingredient/${query}?page=${page}`);
+  getRecipesByIngredientsQuery: async ({ query = '', page = 1, limit = 12 }) => {
+    const { data } = await axios.get(`/recipes/ingredient/${query}?page=${page}&limit=${limit}`);
     return data;
   },
 };

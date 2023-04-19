@@ -5,7 +5,7 @@ export const Pagination = ({ onChange, page, totalPages }) => {
     return  <>{totalPages >1 && <BasicPagination
         count={totalPages}
         page={page}
-        onChange={onChange}
+        onChange={(e, value) => onChange(value)}
         boundaryCount={1}
         siblingCount={0}
         renderItem={(item) => (
