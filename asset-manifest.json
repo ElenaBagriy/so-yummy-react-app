@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-react-app/static/css/main.98ec47ca.css",
-    "main.js": "/so-yummy-react-app/static/js/main.54ad6ea3.js",
+    "main.js": "/so-yummy-react-app/static/js/main.3748622d.js",
     "static/js/540.5e636bf6.chunk.js": "/so-yummy-react-app/static/js/540.5e636bf6.chunk.js",
     "static/js/424.9a6e69ac.chunk.js": "/so-yummy-react-app/static/js/424.9a6e69ac.chunk.js",
     "static/js/335.2ddd64d2.chunk.js": "/so-yummy-react-app/static/js/335.2ddd64d2.chunk.js",
@@ -9,7 +9,7 @@
     "static/js/472.22fcbc8f.chunk.js": "/so-yummy-react-app/static/js/472.22fcbc8f.chunk.js",
     "static/js/994.eca6c6e3.chunk.js": "/so-yummy-react-app/static/js/994.eca6c6e3.chunk.js",
     "static/js/474.cbca7f6d.chunk.js": "/so-yummy-react-app/static/js/474.cbca7f6d.chunk.js",
-    "static/js/535.24c05ba6.chunk.js": "/so-yummy-react-app/static/js/535.24c05ba6.chunk.js",
+    "static/js/635.2959bdcb.chunk.js": "/so-yummy-react-app/static/js/635.2959bdcb.chunk.js",
     "static/js/262.d7d503e1.chunk.js": "/so-yummy-react-app/static/js/262.d7d503e1.chunk.js",
     "static/js/897.6df9d1cf.chunk.js": "/so-yummy-react-app/static/js/897.6df9d1cf.chunk.js",
     "static/js/513.7a8bfc1c.chunk.js": "/so-yummy-react-app/static/js/513.7a8bfc1c.chunk.js",
@@ -40,9 +40,10 @@
     "static/media/plate-mobile@2x.png": "/so-yummy-react-app/static/media/plate-mobile@2x.7aa4aa9138adc4892db2.png",
     "static/media/spinachRight-mobile@2x.png": "/so-yummy-react-app/static/media/spinachRight-mobile@2x.83d2b0992fb12db9360f.png",
     "static/media/spinachMenu-tablet@2x.png": "/so-yummy-react-app/static/media/spinachMenu-tablet@2x.63cee2276a1111ade5e2.png",
-    "static/media/needSearching@1x.png": "/so-yummy-react-app/static/media/needSearching@1x.0d9bea02208e67fc2c82.png",
     "static/media/plate-desktop@1x.png": "/so-yummy-react-app/static/media/plate-desktop@1x.cddd6ead13e25ab38ced.png",
     "static/media/spinachRight-desktop@1x.png": "/so-yummy-react-app/static/media/spinachRight-desktop@1x.3ea393be9330682b8a24.png",
+    "static/media/vegetables-desktop@2x.png": "/so-yummy-react-app/static/media/vegetables-desktop@2x.41acde0966ed8e69043f.png",
+    "static/media/vegetables-tablet@2x.png": "/so-yummy-react-app/static/media/vegetables-tablet@2x.41acde0966ed8e69043f.png",
     "static/media/hero-mobile@2x.jpg": "/so-yummy-react-app/static/media/hero-mobile@2x.3ce7389498e2b655acfb.jpg",
     "static/media/spinachBottom-desktop@2x.png": "/so-yummy-react-app/static/media/spinachBottom-desktop@2x.81b39abcdbfa9f6dcbc9.png",
     "static/media/hero-desktop@1x.jpeg": "/so-yummy-react-app/static/media/hero-desktop@1x.6b7d3c93f40e02ba1da6.jpeg",
@@ -59,11 +60,14 @@
     "static/media/spinachMenu-tablet@1x.png": "/so-yummy-react-app/static/media/spinachMenu-tablet@1x.bbcf80a5495778b08376.png",
     "static/media/spinachRight-mobile@1x.png": "/so-yummy-react-app/static/media/spinachRight-mobile@1x.5ffdc69b719e4224ce89.png",
     "static/media/spinachLeft-desktop@2x.png": "/so-yummy-react-app/static/media/spinachLeft-desktop@2x.3c84a37f6a4e2dcb6f8d.png",
+    "static/media/vegetables-mob@2x.png": "/so-yummy-react-app/static/media/vegetables-mob@2x.d9137c847f2af80f5441.png",
     "static/media/spinachBottom-tablet@2x.png": "/so-yummy-react-app/static/media/spinachBottom-tablet@2x.65d0e79cf99d27332da8.png",
     "static/media/plate-mobile@1x.png": "/so-yummy-react-app/static/media/plate-mobile@1x.bf9fc43355e8b5eaaef3.png",
     "static/media/icon-for-404.svg": "/so-yummy-react-app/static/media/icon-for-404.09006ba7466e07938b37aec445fc80b9.svg",
     "static/media/img-sign-reg-tablet.png": "/so-yummy-react-app/static/media/img-sign-reg-tablet.cdba1e3a414fd34c91e7.png",
     "static/media/img-sign-reg-desktop.png": "/so-yummy-react-app/static/media/img-sign-reg-desktop.d54557d8e0e035486d9b.png",
+    "static/media/vegetables-desktop.png": "/so-yummy-react-app/static/media/vegetables-desktop.8f9bd48b88f7deb506e0.png",
+    "static/media/vegetables-tablet.png": "/so-yummy-react-app/static/media/vegetables-tablet.8f9bd48b88f7deb506e0.png",
     "static/media/spinachBottom-desktop@1x.png": "/so-yummy-react-app/static/media/spinachBottom-desktop@1x.8d6c9c8e378aa329ac63.png",
     "static/media/img-sign-reg-desktop@2x.webp": "/so-yummy-react-app/static/media/img-sign-reg-desktop@2x.b689138213c208f54af5.webp",
     "static/media/hero-mobile@1x.jpg": "/so-yummy-react-app/static/media/hero-mobile@1x.d522cf291736155afc9a.jpg",
@@ -75,6 +79,7 @@
     "static/media/spinachLeft-desktop@1x.png": "/so-yummy-react-app/static/media/spinachLeft-desktop@1x.ed98cf692ef13e84cf89.png",
     "static/media/img-sign-reg-mobile@2x.webp": "/so-yummy-react-app/static/media/img-sign-reg-mobile@2x.8ab6c43da08dbdff27dc.webp",
     "static/media/spinachBottom-mobile@2x.png": "/so-yummy-react-app/static/media/spinachBottom-mobile@2x.1ccc10b1af153ead7ffe.png",
+    "static/media/vegetables-mob.png": "/so-yummy-react-app/static/media/vegetables-mob.5468865a3826ba4e149f.png",
     "static/media/spinachBottom-tablet@1x.png": "/so-yummy-react-app/static/media/spinachBottom-tablet@1x.b4be799b091d1340325a.png",
     "static/media/background-tablet@2x.png": "/so-yummy-react-app/static/media/background-tablet@2x.618c0c7423717191f432.png",
     "static/media/img-sign-reg-desktop.webp": "/so-yummy-react-app/static/media/img-sign-reg-desktop.de3e6c8dc9b9b24975ee.webp",
@@ -100,7 +105,7 @@
     "static/media/greenDot-mobile.svg": "/so-yummy-react-app/static/media/greenDot-mobile.af29d8b1bca94eacaade35b8f1adef72.svg",
     "static/media/blackDot-mobile.svg": "/so-yummy-react-app/static/media/blackDot-mobile.2ccb0a550da4cedb703cea8325e1509c.svg",
     "main.98ec47ca.css.map": "/so-yummy-react-app/static/css/main.98ec47ca.css.map",
-    "main.54ad6ea3.js.map": "/so-yummy-react-app/static/js/main.54ad6ea3.js.map",
+    "main.3748622d.js.map": "/so-yummy-react-app/static/js/main.3748622d.js.map",
     "540.5e636bf6.chunk.js.map": "/so-yummy-react-app/static/js/540.5e636bf6.chunk.js.map",
     "424.9a6e69ac.chunk.js.map": "/so-yummy-react-app/static/js/424.9a6e69ac.chunk.js.map",
     "335.2ddd64d2.chunk.js.map": "/so-yummy-react-app/static/js/335.2ddd64d2.chunk.js.map",
@@ -108,7 +113,7 @@
     "472.22fcbc8f.chunk.js.map": "/so-yummy-react-app/static/js/472.22fcbc8f.chunk.js.map",
     "994.eca6c6e3.chunk.js.map": "/so-yummy-react-app/static/js/994.eca6c6e3.chunk.js.map",
     "474.cbca7f6d.chunk.js.map": "/so-yummy-react-app/static/js/474.cbca7f6d.chunk.js.map",
-    "535.24c05ba6.chunk.js.map": "/so-yummy-react-app/static/js/535.24c05ba6.chunk.js.map",
+    "635.2959bdcb.chunk.js.map": "/so-yummy-react-app/static/js/635.2959bdcb.chunk.js.map",
     "262.d7d503e1.chunk.js.map": "/so-yummy-react-app/static/js/262.d7d503e1.chunk.js.map",
     "897.6df9d1cf.chunk.js.map": "/so-yummy-react-app/static/js/897.6df9d1cf.chunk.js.map",
     "513.7a8bfc1c.chunk.js.map": "/so-yummy-react-app/static/js/513.7a8bfc1c.chunk.js.map",
@@ -127,6 +132,6 @@
   },
   "entrypoints": [
     "static/css/main.98ec47ca.css",
-    "static/js/main.54ad6ea3.js"
+    "static/js/main.3748622d.js"
   ]
 }
