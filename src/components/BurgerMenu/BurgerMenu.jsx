@@ -39,7 +39,7 @@ export function BurgerMenu() {
             </HeadWrapper>
             <Navigation isMobile={isMobile} handleClose={handleClose} />
             <ThemeToggler />
-        <SpinachBottom/>
+            <SpinachBottom />
           </BrgerMenuWrapper>
         </Slide>
       </Modal>

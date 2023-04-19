@@ -6,6 +6,67 @@ import spinachTablet1x from '../../images/commonImages/spinachBottom-tablet@1x.p
 import spinachTablet2x from '../../images/commonImages/spinachBottom-tablet@2x.png';
 import spinachDesktop1x from '../../images/commonImages/spinachBottom-desktop@1x.png';
 import spinachDesktop2x from '../../images/commonImages/spinachBottom-desktop@2x.png';
+import { NavLink } from "react-router-dom";
+
+export const FooterSection = styled.footer`
+  position: relative;
+`;
+
+export const Section = styled.section`
+  background-color: ${props => props.theme.colors.black};
+`;
+
+export const LogoText = styled.h2`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700px;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.015em;
+  color: ${props => props.theme.colors.bgMain};
+
+@media screen and (min-width: 768px) {
+  font-size: 28px;
+  };
+`;
+
+export const DescriptionList = styled.ul`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+  };
+
+  @media screen and (min-width: 1280px) {
+    
+  };
+`;
+
+export const NavList = styled.ul`
+    
+  @media screen and (min-width: 768px) {
+    
+  };
+
+  @media screen and (min-width: 1280px) {
+    
+  };
+`;
+
+export const Link = styled(NavLink)`
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    color: ${props => props.theme.colors.bgMain};
+
+  @media screen and (min-width: 768px) {
+    
+  };
+
+  @media screen and (min-width: 1280px) {
+    
+  };
+`
 
 export const Background = styled.div`
   position: absolute;
