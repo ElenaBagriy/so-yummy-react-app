@@ -5,7 +5,7 @@ import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavoriteRecipes, selectFavoriteRecipesTotalPages } from "redux/selectors";
 import { useEffect, useMemo, useState } from "react";
-import { getRecipesFavorite } from "redux/recipes/recipesOperations";
+import { getRecipesFavorite, toggleFavoriteRecipesById } from "redux/recipes/recipesOperations";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import timeConvert from "services/api/timeConverter";
 import { Tooltip, useMediaQuery } from "@mui/material";
@@ -77,7 +77,11 @@ export const Favorite = () => {
     };
 
     const onDelete = (id) => {
-        console.log(id);
+        console.log('id', id);
+        dispatch(toggleFavoriteRecipesById(id))
+            .then(() => {
+                dispatch(getRecipesFavorite({ page }))
+            });
     };
     
     return         <>

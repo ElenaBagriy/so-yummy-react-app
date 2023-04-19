@@ -71,7 +71,9 @@ const recipesSlice = createSlice({
 
       // ------------ Toggle Favorite Recipes By Id ----------------
       .addCase(toggleFavoriteRecipesById.pending, handlePending)
-      .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => { })
+      .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => {
+        state.isLoading = false;
+       })
       .addCase(toggleFavoriteRecipesById.rejected, handleRejected)
 
       // ------------ Toggle Like Recipes Status By Id ----------------
@@ -82,7 +84,7 @@ const recipesSlice = createSlice({
       // ------------ Get Recipe By Id ----------------
       .addCase(getRecipeById.pending, handlePending)
       .addCase(getRecipeById.fulfilled, (state, action) => {
-        state.recipeId = action.payload._id;
+        // state.recipeId = action.payload._id;
         state.isLoading = false;
       })
       .addCase(getRecipeById.rejected, handleRejected)
