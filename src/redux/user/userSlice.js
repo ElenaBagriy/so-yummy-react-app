@@ -27,7 +27,6 @@ const userInitialState = {
 const handlePending = state => {
   state.isLoading = true;
   state.error = null;
-  state.isRefreshing = false;
 };
 
 const handleRejected = (state, action) => {

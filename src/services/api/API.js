@@ -35,8 +35,8 @@ export const UserAPI = {
     return data;
   },
 
-  refreshUser: async persistedToken => {
-    setAuthHeader(persistedToken);
+  refreshUser: async () => {
+    // setAuthHeader();
     const { data } = await axios.get('/users/current');
     return data;
   },
