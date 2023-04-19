@@ -13,5 +13,12 @@
 <symbol width="32" height="32" id="icon-burger-menu" viewBox="0 0 32 32" fill="none">
 <path d="M4 16H28M4 8H28M4 24H20" stroke="#22252A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
+<symbol  id="icon-edit" viewBox="0 0 14 15" fill="none">
+<path d="M1.6262 11.5323C1.67215 11.1188 1.69512 10.9121 1.75768 10.7188C1.81318 10.5474 1.8916 10.3842 1.9908 10.2338C2.10262 10.0642 2.24971 9.91713 2.54389 9.62295L9.91684 2.25001C10.5612 1.60568 11.6058 1.60568 12.2502 2.25001V2.25001C12.8945 2.89434 12.8945 3.93901 12.2502 4.58334L4.87722 11.9563C4.58304 12.2505 4.43595 12.3976 4.26638 12.5094C4.11594 12.6086 3.95279 12.687 3.78134 12.7425C3.5881 12.8051 3.38135 12.828 2.96786 12.874L1.4585 13.0417L1.6262 11.5323Z" stroke="#23262A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol  id="icon-arrow-right" viewBox="0 0 18 19" fill="none">
+<path d="M2.75 9.5H12.75" stroke="#FAFAFA" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 4.25L14.25 9.5L9 14.75" stroke="#FAFAFA" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
 </defs>
 </svg>

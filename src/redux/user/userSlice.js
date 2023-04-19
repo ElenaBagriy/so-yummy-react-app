@@ -9,7 +9,6 @@ import {
   subscribe,
 } from './userOperations';
 
-
 const userInitialState = {
   user: {
     name: null,
@@ -62,7 +61,7 @@ const userSlice = createSlice({
       // ------------ Logout user ----------------
       .addCase(logoutUser.pending, handlePending)
       .addCase(logoutUser.fulfilled, state => {
-        state = userInitialState;
+        return (state = userInitialState);
       })
       .addCase(logoutUser.rejected, handleRejected)
 
