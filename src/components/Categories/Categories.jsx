@@ -76,10 +76,12 @@ export const Categories = () => {
   };
 
   const handleChangePage = (value) => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    })
     setPage(value);
   };
 
