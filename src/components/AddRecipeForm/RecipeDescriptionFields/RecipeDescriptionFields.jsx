@@ -4,8 +4,6 @@ import { RecipeDescStyled } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
 
-// const imageMimeType = /image\/(png|jpg|jpeg)/i;
-
 export const RecipeDescriptionFields = ({ categories }) => {
   const fileInputRef = useRef();
   const [selectedImage, setSelectedImage] = useState();
