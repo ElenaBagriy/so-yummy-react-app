@@ -6,12 +6,13 @@ export const StyledHeader = styled.header`
   margin-top: 18px;
   width: 100%;
 `;
+
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     justify-content: normal;
   }
 `;
@@ -22,7 +23,7 @@ export const UserMenuWrapper = styled.div`
   @media screen and (min-width: 768px) {
     min-width: 183px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     min-width: 212px;
   }
 `;

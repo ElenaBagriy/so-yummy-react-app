@@ -6,7 +6,7 @@ export const StyledNav = styled.nav`
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: row;
     gap: 30px;
     margin-right: auto;
@@ -25,7 +25,7 @@ export const StyledLink = styled(NavLink)`
     font-size: 24px;
     line-height: 1;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     font-size: 14px;
     line-height: 1.6;
   }
@@ -36,7 +36,7 @@ export const StyledLink = styled(NavLink)`
 `;
 export const StyledSVG = styled.svg`
   margin-right: 8px;
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-right: 0;
   }
 `;
