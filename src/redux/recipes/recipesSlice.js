@@ -43,6 +43,7 @@ const recipesSlice = createSlice({
       .addCase(getPopularRecipes.pending, handlePending)
       .addCase(getPopularRecipes.fulfilled, (state, action) => {
         state.popularRecipes = action.payload.recipes;
+        state.isLoading = false;
       })
       .addCase(getPopularRecipes.rejected, handleRejected)
 
@@ -56,6 +57,7 @@ const recipesSlice = createSlice({
           };
           return acc = [...acc, obj]
         }, []);
+        state.isLoading = false;
       })
       .addCase(getRecipesMainPage.rejected, handleRejected)
 
@@ -63,6 +65,7 @@ const recipesSlice = createSlice({
       .addCase(getRecipesFavorite.pending, handlePending)
       .addCase(getRecipesFavorite.fulfilled, (state, action) => {
         state.favoriteRecipes = action.payload;
+        state.isLoading = false;
       })
       .addCase(getRecipesFavorite.rejected, handleRejected)
 
@@ -80,6 +83,7 @@ const recipesSlice = createSlice({
       .addCase(getRecipeById.pending, handlePending)
       .addCase(getRecipeById.fulfilled, (state, action) => {
         state.recipeId = action.payload._id;
+        state.isLoading = false;
       })
       .addCase(getRecipeById.rejected, handleRejected)
 
@@ -89,6 +93,7 @@ const recipesSlice = createSlice({
         state.categoryList = action.payload
           .map(result => ({ id: result._id, title: result.title.toLowerCase() }))
           .sort((a, b) => a.title.localeCompare(b.title));
+        state.isLoading = false;
       })
       .addCase(getAllCategories.rejected, handleRejected)
 
