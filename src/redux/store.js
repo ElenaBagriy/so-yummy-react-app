@@ -14,6 +14,7 @@ import { userReducer } from "./user/userSlice";
 import { recipesReducer } from "./recipes/recipesSlice";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { shoppingListReducer } from "./shoplist/shoplistSlice";
+import { myRecipesReducer } from "./myRecipes/myRecipesSlice";
 
 
 const userConfig = {
@@ -28,6 +29,7 @@ export const store = configureStore({
     recipes: recipesReducer,
     ownRecipes: ownRecipesReducer,
     shoppingList: shoppingListReducer,
+    myRecipes: myRecipesReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
