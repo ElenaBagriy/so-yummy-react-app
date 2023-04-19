@@ -1,20 +1,5 @@
 import axios from 'axios';
 
-// const $publicHost = axios.create({
-//   baseURL: "https://so-yumi.p.goit.global/api",
-// });
-
-// const $privateHost = axios.create({
-//   baseURL: "https://so-yumi.p.goit.global/api",
-// });
-
-// const authInterceptor = (config) => {
-//   config.headers["Authorization"] = localStorage.getItem("token");
-//   return config;
-// };
-
-// $privateHost.interceptors.request.use(authInterceptor);
-
 axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
 
 const setAuthHeader = token => {
@@ -94,9 +79,7 @@ export const RecipesAPI = {
     return data;
   },
   getRecipesFavorite: async ({ page, sort = 'popular' }) => {
-    const { data } = await axios.get(
-      `/recipes/favorite?page=${page}&limit=4&sort=${sort}`
-    );
+    const { data } = await axios.get(`/recipes/favorite?page=${page}&limit=4&sort=${sort}`);
     return data;
   },
 
@@ -120,15 +103,8 @@ export const RecipesAPI = {
     return data;
   },
 
-  getRecipeByCategories: async ({
-    normalisedQuery,
-    page,
-    limit = 8,
-    sort = 'popular',
-  }) => {
-    const { data } = await axios.get(
-      `/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`
-    );
+  getRecipeByCategories: async ({ normalisedQuery, page, limit = 8, sort = 'popular', }) => {
+    const { data } = await axios.get( `/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`);
     return data;
   },
 
@@ -139,9 +115,6 @@ export const RecipesAPI = {
 
   getRecipesByIngredientsQuery: async ({ query = '', page = 1 }) => {
     const { data } = await axios.get(`/recipes/ingredient/${query}?page=${page}`);
-
-  getIngredients: async () => {
-    const { data } = await axios.get(`/recipes/ingredients`);
     return data;
   },
 };
