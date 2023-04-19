@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { Checkbox, Tooltip, Typography } from "@mui/material";
 import { CheckedIcon, Icon, LikeButton, Link, PictureTitle, StyledPopover } from "./ItemCard.styled";
 
+import defaultImage from '../../images/commonImages/defaultImage@1x.png';
+
 export const ItemCard = ({item}) => {
     const { title, _id, preview, favorite } = item;
 
@@ -49,7 +51,8 @@ export const ItemCard = ({item}) => {
     
   return (
       <Link onClick={onLinkClick}>
-          <img src={preview} alt={title} />
+          {/* <Image src={defaultImage} alt={title} /> */}
+          <img src={preview ? preview : defaultImage} alt={title} />
           <PictureTitle
               aria-owns={open ? 'mouse-over-popover' : undefined}
               aria-haspopup="true"

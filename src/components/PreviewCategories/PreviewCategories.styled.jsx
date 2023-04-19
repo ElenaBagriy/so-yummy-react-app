@@ -18,6 +18,7 @@ export const Section = styled.section`
 export const CategoriesList = styled.ul`
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     gap: 32px;
 
     @media screen and (min-width: 768px) {

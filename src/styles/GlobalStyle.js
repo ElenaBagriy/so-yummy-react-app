@@ -128,27 +128,4 @@ table {
   border-spacing: 0;
 }
 
-.container {
-  max-width: 375px;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin: 0 auto;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1440px;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-}
-
 `
