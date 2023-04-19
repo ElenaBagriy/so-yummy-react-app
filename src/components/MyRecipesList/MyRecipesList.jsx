@@ -72,9 +72,11 @@ export const MyRecipesList = () => {
     }, [dispatch, page]);
 
     const handleChangePage = (_, value) => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
         });
         setPage(value);
     };
