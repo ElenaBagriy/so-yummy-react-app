@@ -43,16 +43,16 @@ export const WelcomePageStyled = styled.main`
   }
 
   //desktop
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     padding-left: 450px;
     padding-right: 450px;
     background-image: url(${imgDesktop});
   }
 
   //1440px+ high-resolution
-  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1440px),
-    screen and (min-resolution: 192dpi) and (min-width: 1440px),
-    screen and (min-resolution: 2dppx) and (min-width: 1440px) {
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px),
+    screen and (min-resolution: 192dpi) and (min-width: 1280px),
+    screen and (min-resolution: 2dppx) and (min-width: 1280px) {
     background-image: url(${imgDesktop2x});
   }
 
@@ -65,7 +65,7 @@ export const WelcomePageStyled = styled.main`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
     }
   }
 
@@ -82,7 +82,7 @@ export const WelcomePageStyled = styled.main`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
     }
   }
 
@@ -103,7 +103,7 @@ export const WelcomePageStyled = styled.main`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
     }
   }
 
@@ -118,7 +118,7 @@ export const WelcomePageStyled = styled.main`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
     }
   }
 `;
@@ -140,7 +140,7 @@ export const BtnStyled = styled.button`
   }
 
   //desktop
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
   }
 
   &:hover,

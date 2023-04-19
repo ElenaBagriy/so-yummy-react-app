@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const LogoWrapper = styled.div`
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-right: 187px;
   }
 `;
