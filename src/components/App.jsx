@@ -16,22 +16,29 @@ const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
-const CategoriesPage = lazy(() => import('../pages/CategoriesPage/CategoriesPage'));
+const CategoriesPage = lazy(() =>
+  import('../pages/CategoriesPage/CategoriesPage')
+);
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
-const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
+const AddRecipePage = lazy(() =>
+  import('../pages/AddRecipePage/AddRecipePage')
+);
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
-const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
+const MyRecipesPage = lazy(() =>
+  import('../pages/MyRecipesPage/MyRecipesPage')
+);
 
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return !isRefreshing && (
+  return (
+    !isRefreshing && (
       <div>
         <Theme>
           <GlobalStyle />
@@ -65,20 +72,18 @@ export const App = () => {
                 }
               />
 
-
-              <Route path="/" element={
-                    <PrivateRoute
-                      redirectTo="/"
-                      component={<SharedLayout />}
-                    />
-                  }>
-                
-                <Route path="/main" element={
-                    <PrivateRoute
-                      redirectTo="/"
-                      component={<MainPage />}
-                    />
-                  } />
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute redirectTo="/" component={<SharedLayout />} />
+                }
+              >
+                <Route
+                  path="/main"
+                  element={
+                    <PrivateRoute redirectTo="/" component={<MainPage />} />
+                  }
+                />
                 <Route
                   path="categories/:categoryName"
                   element={
@@ -91,20 +96,14 @@ export const App = () => {
                 <Route
                   path="*"
                   element={
-                    <PrivateRoute
-                      redirectTo="/"
-                      component={<PageNotFound />}
-                    />
+                    <PrivateRoute redirectTo="/" component={<PageNotFound />} />
                   }
                 />
                 <Route
-                path="search"
-                // path="search/:searchParam"
+                  path="search"
+                  // path="search/:searchParam"
                   element={
-                    <PrivateRoute
-                      redirectTo="/"
-                      component={<SearchPage />}
-                    />
+                    <PrivateRoute redirectTo="/" component={<SearchPage />} />
                   }
                 />
                 <Route
@@ -115,8 +114,8 @@ export const App = () => {
                       component={<AddRecipePage />}
                     />
                   }
-              />
-              <Route
+                />
+                <Route
                   path="/my"
                   element={
                     <PrivateRoute
@@ -124,23 +123,34 @@ export const App = () => {
                       component={<MyRecipesPage />}
                     />
                   }
-              />
-              <Route path="/shopping-list" element={<PrivateRoute
+                />
+                <Route
+                  path="/shopping-list"
+                  element={
+                    <PrivateRoute
                       redirectTo="/"
                       component={<ShoppingListPage />}
-                    />} />
-            <Route path="/favorite" element={<PrivateRoute
-              redirectTo="/"
-              component={<FavoritePage />}
-            />} />
-          </Route>
-
-          </Routes>
-          <ToastContainer position="top-center" autoClose={3000} theme="light" transition={Flip} hideProgressBar='true'/>
+                    />
+                  }
+                />
+                <Route
+                  path="/favorite"
+                  element={
+                    <PrivateRoute redirectTo="/" component={<FavoritePage />} />
+                  }
+                />
+              </Route>
+            </Routes>
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              theme="light"
+              transition={Flip}
+              hideProgressBar="true"
+            />
           </Suspense>
         </Theme>
       </div>
     )
-  
+  );
 };
-

@@ -39,9 +39,8 @@ export const UserAPI = {
   },
 
   logout: async () => {
-    const { data } = await axios.post('/users/logout');
+    await axios.post('/users/logout');
     clearAuthHeader();
-    return data;
   },
 
   refreshToken: async refreshToken => {
@@ -120,19 +119,36 @@ export const RecipesAPI = {
     return data;
   },
 
-  getRecipeByCategories: async ({ normalisedQuery, page, limit = 8, sort = 'popular' }) => {
-    const { data } = await axios.get(`/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`);
+  getRecipeByCategories: async ({
+    normalisedQuery,
+    page,
+    limit = 8,
+    sort = 'popular',
+  }) => {
+    const { data } = await axios.get(
+      `/recipes/category/${normalisedQuery}?page=${page}&limit=${limit}&sort=${sort}`
+    );
     return data;
   },
 
-  getRecipesByTitleQuery: async ({ query = '', page = 1, limit, sort = '' }) => {
+  getRecipesByTitleQuery: async ({
+    query = '',
+    page = 1,
+    limit,
+    sort = '',
+  }) => {
     const { data } = await axios.get(
       `/recipes/title/${query}?page=${page}&limit=${limit}&sort=${sort}`
     );
     return data;
   },
 
-  getRecipesByIngredientsQuery: async ({ query = '', page = 1, limit, sort = '' }) => {
+  getRecipesByIngredientsQuery: async ({
+    query = '',
+    page = 1,
+    limit,
+    sort = '',
+  }) => {
     const { data } = await axios.get(
       `/recipes/ingredient/${query}?page=${page}&limit=${limit}&sort=${sort}`
     );

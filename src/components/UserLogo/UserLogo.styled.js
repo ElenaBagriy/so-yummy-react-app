@@ -1,19 +1,8 @@
+import { Avatar } from '@mui/material';
 import styled from 'styled-components';
 
-export const Avatar = styled.div`
-  display: block;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background-color: red;
-  margin-right: 14px;
-
-  @media screen and (min-width: 768px) {
-    width: 44px;
-    height: 44px;
-  }
-`;
 export const UserLogoWrapper = styled.div`
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +11,20 @@ export const UserLogoWrapper = styled.div`
     margin-right: 50px;
   }
 `;
+
+export const StyledAvatar = styled(Avatar)`
+  &.MuiAvatar-root {
+    width: 34px;
+    height: 34px;
+    margin-right: 14px;
+
+    @media screen and (min-width: 768px) {
+      width: 44px;
+      height: 44px;
+    }
+  }
+`;
+
 export const StyledUserName = styled.p`
   /* font-family: 'Poppins', sans-serif; */
   font-weight: 600;
