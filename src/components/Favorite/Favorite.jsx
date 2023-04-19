@@ -1,14 +1,15 @@
 import { Background } from "reusableComponents/Background/Background";
 import { Container } from "reusableComponents/Container/Container";
-import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Button, Link } from "./Favorite.styled";
+import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link, DeleteButton, DeleteIcon, TextWrapper } from "./Favorite.styled";
 import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavoriteRecipes, selectFavoriteRecipesTotalPages } from "redux/selectors";
 import { useEffect, useState } from "react";
 import { getRecipesFavorite } from "redux/recipes/recipesOperations";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
-import { NavLink } from "react-router-dom";
 import timeConvert from "services/api/timeConverter";
+import { Tooltip } from "@mui/material";
+
 
 export const Favorite = () => {
     const dispatch = useDispatch();
@@ -28,6 +29,10 @@ export const Favorite = () => {
     const handleChangePage = (event, value) => {
         setPage(value);
     };
+
+    const onDelete = (id) => {
+        console.log(id);
+    };
     
     return         <>
             <Background/>
@@ -41,24 +46,26 @@ export const Favorite = () => {
                             return <RecipesItem key={recipe._id}>
                                     <Image src={recipe.preview} alt={recipe.title} />
                                 <Wrapper>
-                                    <div>
+                                    <TextWrapper>
                                         <Title>{recipe.title}</Title>
                                         <Description>{recipe.description}</Description>
-                                    </div>
+                                    </TextWrapper>
                                     <BottomWrapper>
                                         <Time>{timeConvert(recipe.time)}</Time>
                                         <Link to={`/recipe/${recipe._id}`}>
                                             See recipe
                                         </Link>
                                     </BottomWrapper>
-                                </Wrapper> 
+                                </Wrapper>
+                                <Tooltip title="Delete" placement="bottom-start">
+                                    <DeleteButton id={recipe._id} onClick={() => onDelete(recipe._id)}>
+                                        <DeleteIcon/>
+                                    </DeleteButton>
+                                </Tooltip>
                             </RecipesItem>
                         })}
                         </RecipesList>
                     }
-                    {/* <Suspense fallback={<div>...Loading</div>}>
-                        <Outlet/>
-                    </Suspense> */}
                     <Pagination page={page} totalPages={totalPages} onChange={handleChangePage} />
                     </Section>
             </Container>

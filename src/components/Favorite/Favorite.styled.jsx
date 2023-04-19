@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { ReactComponent as TrashIcon } from '../../images/favoritePage/trash-01.svg';
 
 export const Section = styled.main`
     padding-top: 114px;
@@ -33,9 +34,12 @@ export const RecipesList = styled.ul`
 `;
 
 export const RecipesItem = styled.li`
+  position: relative;
   padding: 14px 9px;
+  width: 100%;
   display: flex;
   gap: 14px;
+  width: 100%;
   border-radius: 8px;
   background-color: ${props => props.theme.colors.white};
 
@@ -87,7 +91,6 @@ export const Title = styled.h3`
 `;
 
 export const Description = styled.p`
-  /* margin-bottom: 12px; */
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 8px;
@@ -98,13 +101,11 @@ export const Description = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.29;
-    /* margin-bottom: 58px; */
   };
 
   @media screen and (min-width: 1280px) {
     font-size: 18px;
     line-height: 1.33;
-    /* margin-bottom: 62px;   ///?????? */
   };
 `;
 
@@ -131,6 +132,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  flex-grow: 1;
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
@@ -139,6 +141,18 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     
+  };
+`;
+
+export const TextWrapper = styled.div`
+  max-width: 155px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 298px;
+  };
+
+  @media screen and (min-width: 1280px) {
+    max-width: 679px;
   };
 `;
 
@@ -157,6 +171,9 @@ export const BottomWrapper = styled.div`
 `;
 
 export const Link = styled(NavLink)`
+  position: absolute;
+  bottom: 14px;
+  right: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,14 +196,68 @@ export const Link = styled(NavLink)`
   };
 
     @media screen and (min-width: 768px) {
+        bottom: 28px;
+        right: 24px;
         width: 138px;
         height: 45px;
         font-size: 14px;
     };
 
     @media screen and (min-width: 1280px) {
+        bottom: 40px;
+        right: 40px;
         width: 160px;
         height: 54px;
         font-size: 16px;
     }
+`;
+
+export const DeleteButton = styled.button`
+    position: absolute;
+    top: 14px;
+    right: 9px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 4px;
+    background-color: ${props => props.theme.colors.lightGreen};
+    stroke: ${props => props.theme.colors.black};
+    transition: background-color ${props => props.theme.hover.transition}, stroke ${props => props.theme.hover.transition};
+
+    @media screen and (min-width: 768px) {
+      top: 28px;
+      right: 24px;
+      width: 38px;
+      height: 38px;
+    };
+
+    @media screen and (min-width: 1280px) {
+      top: 40px;
+      right: 40px;
+      width: 44px;
+      height: 44px;
+    }
+
+    &:hover,
+    :focus {
+        background-color: ${props => props.theme.colors.green};
+        stroke: ${props => props.theme.colors.bgMain};
+    }
+`;
+
+export const DeleteIcon = styled(TrashIcon)`
+  width: 14px;
+  height: 14px;
+  display: block;
+  margin: 0 auto;
+  
+  @media screen and (min-width: 768px) {
+    width: 22px;
+    height: 22px;
+  };
+
+  @media screen and (min-width: 1280px) {
+    width: 24px;
+    height: 24px;
+  }
 `;

@@ -1,7 +1,7 @@
 // import ReactDOM from 'react-dom';
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 
 import pictureDesktop from '../../images/welcomePage/img-sign-reg-desktop.png';
 import pictureDesktop2x from '../../images/welcomePage/img-sign-reg-desktop@2x.png';
@@ -21,21 +21,54 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from 'redux/user/userOperations';
 
-const RegisterSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(20, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string()
-    .min(8, 'Password must be at least 8 characters long')
-    .matches(/[0-9]/, 'Password requires a number')
-    .matches(/[a-z]/, 'Your password is little secure')
-    .required('Required'),
-  // .matches(/[0-9]/, 'Password requires a number')
-  // .matches(/[A-Z]/, 'Password requires an uppercase letter')
-  // .matches(/[^\w]/, 'Password requires a symbol'),
-});
+// const RegisterSchema = Yup.object().shape({
+//   name: Yup.string()
+//     .min(2, 'Too Short!')
+//     .max(20, 'Too Long!')
+//     .required('Required'),
+//   email: Yup.string().email('Invalid email').required('Required'),
+//   password: Yup.string()
+//     .min(8, 'Password must be at least 8 characters long')
+//     .matches(/[0-9]/, 'Password requires a number')
+//     .matches(/[a-z]/, 'Your password is little secure')
+//     .required('Required'),
+// .matches(/[0-9]/, 'Password requires a number')
+// .matches(/[A-Z]/, 'Password requires an uppercase letter')
+// .matches(/[^\w]/, 'Password requires a symbol'),
+// });
+
+function validateName(value) {
+  let error;
+  if (!value) {
+    error = 'Required';
+  }
+  // else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+  //   error = 'Invalid name';
+  // }
+  return error;
+}
+
+function validateEmail(value) {
+  let error;
+  if (!value) {
+    error = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    error = 'Invalid email address';
+  }
+  return error;
+}
+
+function validatePassword(value) {
+  let error;
+  if (!value) {
+    error = 'Required!';
+  }
+  // else if (/^\d{10}$/i.test(value)) {
+  //   error = 'Your password is little secure';
+  // }
+
+  return error;
+}
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -88,7 +121,6 @@ export const RegisterForm = () => {
             email: '',
             password: '',
           }}
-          validationSchema={RegisterSchema}
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values, actions) => {
@@ -109,25 +141,43 @@ export const RegisterForm = () => {
           <Form>
             <h2>Registration</h2>
             <label>
-              <svg width="24" height="24">
-                <use href={sprite + '#icon-user'} />
-              </svg>
-              <Field name="name" placeholder="Name" />
+              <div className="wrapperForIcon">
+                <svg width="24" height="24">
+                  <use href={sprite + '#icon-user'} />
+                </svg>
+                <Field name="name" placeholder="Name" validate={validateName} />
+              </div>
+
               <ErrorMessage className="error" name="name" component="div" />
             </label>
 
             <label>
-              <svg width="24" height="24">
-                <use href={sprite + '#icon-mail'} />
-              </svg>
-              <Field name="email" placeholder="Email" />
+              <div className="wrapperForIcon">
+                <svg width="24" height="24">
+                  <use href={sprite + '#icon-mail'} />
+                </svg>
+                <Field
+                  name="email"
+                  placeholder="Email"
+                  validate={validateEmail}
+                />
+              </div>
+
               <ErrorMessage className="error" name="email" component="div" />
             </label>
             <label>
-              <svg width="24" height="24">
-                <use href={sprite + '#icon-lock'} />
-              </svg>
-              <Field name="password" placeholder="Password" type="password" />
+              <div className="wrapperForIcon">
+                <svg width="24" height="24">
+                  <use href={sprite + '#icon-lock'} />
+                </svg>
+                <Field
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                  validate={validatePassword}
+                />
+              </div>
+
               <ErrorMessage className="error" name="password" component="div" />
             </label>
 

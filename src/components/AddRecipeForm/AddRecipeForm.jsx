@@ -15,7 +15,7 @@ export const AddRecipeForm = () => {
     handleSubmit,
     //   register,
     //   watch,
-    formState: { errors, isDirty, isValid },
+    // formState: { errors, isDirty, isValid },
   } = useForm();
 
   const dispatch = useDispatch();
