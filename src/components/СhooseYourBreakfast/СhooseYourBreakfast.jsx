@@ -9,7 +9,7 @@ export const СhooseYourBreakfast = () => {
     const navigate = useNavigate();
 
     const onSearchFormSubmit = query => {
-        navigate(`/search?query=ingredients&value=${query}`);
+        navigate(`/search?query=title&value=${query}`);
     };
     return <Hero>
         <HeroBG />
@@ -20,7 +20,7 @@ export const СhooseYourBreakfast = () => {
                 <Text><Accent>Delicious and healthy</Accent> way to enjoy a variety of fresh ingredients in one satisfying meal</Text>
                 <Link to='/categories/breakfast'>See recipes<ArrowLink/></Link>
             </ProductBlock>
-            <SearchForm onSearchFormSubmit={onSearchFormSubmit} />
+            <SearchForm onSearchFormSubmit={onSearchFormSubmit} color="black" />
         </Container>
     </Hero>
 };

@@ -68,7 +68,7 @@ export const Favorite = () => {
         dispatch(getRecipesFavorite({page}));
     }, [dispatch, page]);
 
-    const handleChangePage = (_, value) => {
+    const handleChangePage = (value) => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',

@@ -19,7 +19,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
     width: 100%;
-    padding: 17px 113px 17px 32px;
+    padding: 15px 113px 15px 32px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 12px;
@@ -40,7 +40,7 @@ export const Input = styled.input`
 
     @media screen and (min-width: 768px) {
         font-size: 16px;
-        padding: 18px 161px 18px 38px;
+        padding: 17px 161px 17px 38px;
     }
 
   //desktop
@@ -52,9 +52,9 @@ export const Input = styled.input`
 export const Button = styled.button`
   position: absolute;
   right: 0;
-  padding: 15.7px 31.72px;
+  padding: 16px 32px;
   border-radius: 24px 44px;
-  background-color: ${props => props.theme.colors.black};
+  background-color: ${props => props.theme.colors[props.$color || 'black']};
   color: ${props => props.theme.colors.bgMain};
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -72,12 +72,12 @@ export const Button = styled.button`
 
   //desktop
   @media screen and (min-width: 1280px) {
-    padding: 23px 52px;
+    padding: 24px 52px;
   }
 
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.colors[props.$color === "green" ? 'black' : "green"]};
   }
 `;
 

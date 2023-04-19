@@ -1,47 +1,71 @@
 import styled, { css } from "styled-components";
 import { ReactComponent as ArrowDown } from "../../images/commonImages/arrowDown.svg";
+
 export const SelectContainer = styled.div`
   position: relative;
-  margin: 0;
+  display: inline-flex;
+
+  z-index: 100;
 `;
 
 export const SelectLabelButton = styled.button`
-  padding: 0.3rem 0.5rem;
-  min-width: 7rem;
-  width: auto;
-  font-size: 0.9rem;
-  font-weight: 500;
-  background-color: #fff;
-  border: none;
-  border-radius: 5px;
-  color: #111;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid slategrey;
+  min-width: 200px;
+  width: auto;
+  padding: 14px;
+  
+  background-color: ${(props) => props.theme.select.grey};
+  border: none;
+  border-radius: 6px;
+  outline: none;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: capitalize;
+  color: ${(props) => props.theme.select.color};
+  
   cursor: pointer;
-  box-shadow: 0 1px 4px 0 #ccc;
   transition: 0.3s ease;
-  &:hover {
-    background-color: #eee;
-  }
 `;
 
 export const DropdownStyle = styled.div`
-  z-index: 99;
   position: absolute;
-  top: 100%;
-  left: 0;
-  max-height: 40vmax;
-  min-width: 10rem;
-  padding: 0.4rem;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
-  background: #fafafa;
-  border: 1.5px solid slategrey;
+  top: 110%;
+  left: 0;
+  max-height: 200px;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-right: 4px;
+
+  background-color: ${(props) => props.theme.colors.bgMain};
+
   transition: max-height 0.2s ease;
-  overflow: scroll;
+  overflow: auto;
+  z-index: 199;
+
+  &::-webkit-scrollbar{
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track{
+    -webkit-box-shadow: none;
+
+    background-color: transparent;
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #E7E5E5;
+    border-radius: 12px;
+  }
+  
   ${(p) =>
     p.isVisible !== true &&
     css`
@@ -51,27 +75,35 @@ export const DropdownStyle = styled.div`
 `;
 
 export const DropdownItem = styled.div`
-  font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
-  width: 90%;
-  margin: 0.15rem 0;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
+  width: 100%;
+  padding: 8px 14px;
+
+  border-radius: 6px;
+
+  font-family: 'Poppins';
+  font-style: normal;
   font-weight: 400;
-  color: #333;
-  border-radius: 0.3rem;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: capitalize;
+  color: ${(props) => props.theme.select.color};
+
   cursor: pointer;
+
   ${(p) =>
     p.active &&
     css`
-      color: #8baa36;
+      color: ${(props) => props.theme.colors.green};
       font-weight: 500;
     `}
   &:hover, :focus, :focus:hover {
-    background-color: #166edc;
-    color: #fafafa;
+    background-color: ${(props) => props.theme.colors.green};
     outline: none;
+
+    color: ${(props) => props.theme.colors.white};
+    
   }
 `;
 

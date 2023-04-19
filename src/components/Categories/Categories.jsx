@@ -75,7 +75,7 @@ export const Categories = () => {
     setPage(1);
   };
 
-  const handleChangePage = (_, value) => {
+  const handleChangePage = (value) => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

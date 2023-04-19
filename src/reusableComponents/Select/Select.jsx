@@ -31,7 +31,7 @@ export default function Select({ label, values, onChange }) {
   };
   const handleChange = (value) => {
     handleValueChange(value);
-    if (onChange) onChange(value.toLowerCase());
+    if (onChange) onChange(value);
     handleClose();
   };
   return (
