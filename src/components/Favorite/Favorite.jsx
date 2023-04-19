@@ -9,6 +9,7 @@ import { getRecipesFavorite } from "redux/recipes/recipesOperations";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import timeConvert from "services/api/timeConverter";
 import { Tooltip } from "@mui/material";
+import EllipsisText from "react-ellipsis-text";
 
 
 export const Favorite = () => {
@@ -21,6 +22,38 @@ export const Favorite = () => {
     // const mobile = useMediaQuery('(max-width: 767px)');
     // const tablet = useMediaQuery('(min-width: 768px)');
     // const desktop = useMediaQuery('(min-width: 1280px)');
+
+    // const options = {
+    //     mobile: {
+    //         title: '20',
+    //         text: '30',
+    //     },
+    //     tablet: {
+    //         title: '20',
+    //         text: '30',
+    //     },
+    //     desktop: {
+    //         title: '20',
+    //         text: '30',
+    //     }
+    // };
+
+    // let textLength;
+
+//     switch(fruits) {
+//   case "Banana":
+//     textLength = "Banana is good!";
+//     break;
+//   case "Orange":
+//     textLength = "I am not a fan of orange.";
+//     break;
+//   case "Apple":
+//     textLength = "How you like them apples?";
+//     break;
+//   default:
+//     textLength = "I have never heard of that fruit...";
+// }
+
     
     useEffect(() => {
         dispatch(getRecipesFavorite({page}));
@@ -47,7 +80,10 @@ export const Favorite = () => {
                                     <Image src={recipe.preview} alt={recipe.title} />
                                 <Wrapper>
                                     <TextWrapper>
-                                        <Title>{recipe.title}</Title>
+                                        <Title>
+                                            <EllipsisText text={recipe.title} length={20} />
+                                        </Title>
+                                        {/* <Title>{recipe.title}</Title> */}
                                         <Description>{recipe.description}</Description>
                                     </TextWrapper>
                                     <BottomWrapper>
