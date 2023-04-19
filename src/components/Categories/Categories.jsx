@@ -68,14 +68,18 @@ export const Categories = () => {
     getRecipeByCategories({ normalisedQuery, page });
   }, [category, page]);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_, newValue) => {
     navigate(`/categories/${newValue}`);
     setCategory(newValue);
     if (page === 1) return;
     setPage(1);
   };
 
-  const handleChangePage = (event, value) => {
+  const handleChangePage = (_, value) => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     setPage(value);
   };
 
