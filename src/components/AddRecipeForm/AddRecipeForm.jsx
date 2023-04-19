@@ -27,6 +27,7 @@ export const AddRecipeForm = () => {
 
   const categories = useSelector(selectCategoryList);
   const ingredients = useSelector(selectIngredients);
+  // console.log(ingredients);
 
   return (
     <>
