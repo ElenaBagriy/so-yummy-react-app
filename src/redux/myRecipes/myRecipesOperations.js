@@ -22,11 +22,7 @@ export const deleteMyRecipes = createAsyncThunk(
       const { data } = await axios.delete(`own-recipes/id/${id}`);
       return data;
     } catch (error) {
-      return {
-        message:
-          'Recipe 640cd5ac2d9fecf12e8898fa has been successfully deleted',
-      };
-      // return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
