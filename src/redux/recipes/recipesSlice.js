@@ -14,20 +14,7 @@ import {
 } from './recipesOperations';
 
 const recipesInitialState = {
-  allRecipes: [
-    {
-      _id: '',
-      title: '',
-      category: '',
-      description: '',
-      preview: '',
-      time: '',
-      popularity: null,
-      like: true,
-      favorite: true,
-    },
-  ],
-  recipes:[],
+  recipe: [],
   randomRecipes: [],
   userFavouritesRecipes: [],
   categoryList: [],
@@ -84,7 +71,8 @@ const recipesSlice = createSlice({
       .addCase(getRecipesFavorite.fulfilled, (state, action) => {  ////check if proper
         state.userFavoritesIsLoading = false;
         state.error = null;
-        state.recipe = action.payload;
+        state.recipes = action.payload;
+        // state.userFavouritesRecipes = action.payload.favorites
       })
       .addCase(getRecipesFavorite.rejected, (state, action) => {
         state.userFavoritesIsLoading = false;
@@ -109,7 +97,7 @@ const recipesSlice = createSlice({
       .addCase(getRecipeById.fulfilled, (state, action) => {
         state.recipeIsLoading = false;
         state.error = null;
-        state.recipeId = action.payload._id;
+        state.recipe = action.payload
       })
       .addCase(getRecipeById.rejected, (state, action) => {
         state.recipeIsLoading = false;

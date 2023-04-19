@@ -38,13 +38,11 @@ const RecipePageHero = ({ title, description, time, id }) => {
       setFirst(true);
       topRef.current.scrollIntoView({ behavior: "smooth" });
     }
-    console.log('id2', first, title, description, time);
   }, [userFavouritesRecipes, id, first]);
 
   const handleFavoriteButton = (id) => {
     if (isFavorite) {
       dispatch(toggleFavoriteRecipesById(id));
-      console.log('toogled favId', id)
     } else {
       dispatch(toggleFavoriteRecipesById(id));
     }
