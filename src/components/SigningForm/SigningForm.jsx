@@ -104,8 +104,6 @@ export const SigninForm = () => {
               .unwrap()
               .then(() => navigate('/main'))
               .catch(() => navigate('/'));
-            // console.log(values);
-            // console.log(actions);
             actions.resetForm();
           }}
         >
