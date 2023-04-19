@@ -15,7 +15,7 @@ import RecipeInngredientsList from "components/Recipe/RecipeInngredientsList/Rec
 import RecipePageHero from "components/Recipe/RecipePageHero/RecipePageHero";
 import RecipePreparation from "components/Recipe/RecipePreparation/RecipePreparation";
 import RecipeSkeleton from "components/Recipe/RecipeSkeleton";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getRecipeById, getRecipesFavorite } from "redux/recipes/recipesOperations";
@@ -31,6 +31,7 @@ import { selectIsLoading } from "redux/shoplist/shoplistSelectors";
 const RecipePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [page, setPage] = useState(1);
   const {
     // area,
     // category,
@@ -52,13 +53,15 @@ const RecipePage = () => {
   } = useSelector(getRecipes);
 
   useEffect(() => {
-    dispatch(fetchShoppingList());
-    dispatch(getRecipeById(id));
-    dispatch(getRecipesFavorite);
+    dispatch(fetchShoppingList()); //returns []
+    dispatch(getRecipeById(id)); //OK
+    dispatch(getRecipesFavorite({page})); //OK
   }, [dispatch, id]);
 
-  const isLoading = useSelector(selectRecipeLoading);
+  console.log('title', title, 'description', description, 'time', time, '_id', _id);
+
   const isLoadingShopping = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectRecipeLoading);
   const favoriteIsLoading = useSelector(selectUserFavoritesIsLoading);
 
   return (

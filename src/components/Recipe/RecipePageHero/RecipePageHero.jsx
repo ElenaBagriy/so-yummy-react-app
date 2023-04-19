@@ -21,6 +21,7 @@ import { useEffect, useRef, useState } from "react";
 import ButtonLoader from "components/ButtonLoader/ButtonLoader";
 
 const RecipePageHero = ({ title, description, time, id }) => {
+  const [page, setPage] = useState(1);
   const userFavouritesRecipes = useSelector(getRecipesFavorite);
   const [first, setFirst] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -37,12 +38,13 @@ const RecipePageHero = ({ title, description, time, id }) => {
       setFirst(true);
       topRef.current.scrollIntoView({ behavior: "smooth" });
     }
-    console.log('id', id);
+    console.log('id2', first, title, description, time);
   }, [userFavouritesRecipes, id, first]);
 
   const handleFavoriteButton = (id) => {
     if (isFavorite) {
       dispatch(toggleFavoriteRecipesById(id));
+      console.log('toogled favId', id)
     } else {
       dispatch(toggleFavoriteRecipesById(id));
     }

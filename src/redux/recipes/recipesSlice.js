@@ -27,11 +27,13 @@ const recipesInitialState = {
       favorite: true,
     },
   ],
+  recipes:[],
   randomRecipes: [],
   userFavouritesRecipes: [],
   categoryList: [],
   ingredientsList: [],
   recipeIsLoading: false,
+  userFavoritesIsLoading: false,
   total: null,
   page: null,
   limit: null,
@@ -63,23 +65,31 @@ const recipesSlice = createSlice({
       .addCase(getRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.recipe = action.payload;
+        state.recipes = action.payload;
       })
       .addCase(getRecipes.rejected, (state, action) => {
         state.isLoading = false;
       })
 
       // ------------ Get Recipes Main Page ----------------
-      .addCase(getRecipesMainPage.pending, (state, action) => {
-        state.userFavoritesIsLoading = true;
-      })
+      .addCase(getRecipesMainPage.pending, handlePending)
       .addCase(getRecipesMainPage.fulfilled, (state, action) => { })
       .addCase(getRecipesMainPage.rejected, handleRejected)
 
       // ------------ Get Recipes Favorite ----------------
-      .addCase(getRecipesFavorite.pending, handlePending)
-      .addCase(getRecipesFavorite.fulfilled, (state, action) => { })
-      .addCase(getRecipesFavorite.rejected, handleRejected)
+      .addCase(getRecipesFavorite.pending, (state, action) => {
+        state.userFavoritesIsLoading = true;
+        state.error = action.payload;
+      })
+      .addCase(getRecipesFavorite.fulfilled, (state, action) => {  ////check if proper
+        state.userFavoritesIsLoading = false;
+        state.error = null;
+        state.recipe = action.payload;
+      })
+      .addCase(getRecipesFavorite.rejected, (state, action) => {
+        state.userFavoritesIsLoading = false;
+        state.error = action.payload;
+      })
 
       // ------------ Toggle Favorite Recipes By Id ----------------
       .addCase(toggleFavoriteRecipesById.pending, handlePending)
@@ -92,11 +102,19 @@ const recipesSlice = createSlice({
       .addCase(toggleLikeRecipesStatusById.rejected, handleRejected)
 
       // ------------ Get Recipe By Id ----------------
-      .addCase(getRecipeById.pending, handlePending)
+      .addCase(getRecipeById.pending, (state, action) => {
+        state.recipeIsLoading = true;
+        state.error = action.payload;
+      })
       .addCase(getRecipeById.fulfilled, (state, action) => {
+        state.recipeIsLoading = false;
+        state.error = null;
         state.recipeId = action.payload._id;
       })
-      .addCase(getRecipeById.rejected, handleRejected)
+      .addCase(getRecipeById.rejected, (state, action) => {
+        state.recipeIsLoading = false;
+        state.error = action.payload;
+      })
 
       // ------------ Get All Categories ----------------
       .addCase(getAllCategories.pending, handlePending)
