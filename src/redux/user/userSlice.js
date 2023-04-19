@@ -18,7 +18,7 @@ const userInitialState = {
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false,
-  isRefreshing: true,
+  isRefreshing: false,
   isLoading: false,
   error: null,
   subscribeList: [],
