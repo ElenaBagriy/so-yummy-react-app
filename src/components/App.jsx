@@ -34,7 +34,14 @@ export const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshToken()).unwrap().then(() => dispatch(refreshUser()));
+
+    dispatch(refreshToken())
+      .then(() => dispatch(refreshUser()))
+    .catch(() => dispatch(refreshUser()))
+    
+
+    // dispatch(refreshUser())
+
   }, [dispatch]);
 
   return (
