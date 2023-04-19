@@ -7,6 +7,7 @@ import { Background } from 'reusableComponents/Background/Background';
 import { Container } from 'reusableComponents/Container/Container';
 import { Section, WrapperStyled } from './AddRecipePage.styled';
 import { Main } from 'reusableComponents/Main/Main';
+import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 
 const AddRecipePage = () => {
   return (
@@ -26,6 +27,7 @@ const AddRecipePage = () => {
           </WrapperStyled>
           </Section>
       </Container>
+      <GoToTop/>
     </Main>
   );
 };

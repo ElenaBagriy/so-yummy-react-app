@@ -7,6 +7,7 @@ import { MainPageTitle } from '../../reusableComponents/ManePageTitle/ManePageTi
 import { Main } from 'reusableComponents/Main/Main';
 import { Background } from 'reusableComponents/Background/Background';
 import { Section } from './ShoppingList.styled';
+import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 
 
 
@@ -26,6 +27,7 @@ const ShoppingListPage = () => {
           <ShoppingListTabl />
           </Section>
       </Container>
+      <GoToTop/>
       </Main>
   );
 };
