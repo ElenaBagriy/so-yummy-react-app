@@ -22,10 +22,13 @@ export const selectFavoriteRecipesTotalPages = state => {
     return Math.round(state.recipes.favoriteRecipes.total / state.recipes.favoriteRecipes.limit);
 };
 
+export const selectRecipes = (state) => state.recipes;
 
 export const selectTotalRecipes = (state) => state.recipes.total;
 
 export const selectLimitRecipes = (state) => state.recipes.limit;
+
+export const selectLoadingRecipes = (state) => state.recipes.isLoading;
 
 //ingredients
 export const selectIngredients = state => state.recipes.ingredientsList;

@@ -99,7 +99,6 @@ export const App = () => {
                 />
                 <Route
                 path="search"
-                // path="search/:searchParam"
                   element={
                     <PrivateRoute
                       redirectTo="/"

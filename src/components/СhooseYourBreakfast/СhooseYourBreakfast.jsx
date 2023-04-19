@@ -1,12 +1,16 @@
 import { Container } from "reusableComponents/Container/Container";
 import { Accent, ArrowLink, Hero, Link, Paragraph, ProductBlock, Text, Title } from "./СhooseYourBreakfast.styled";
 import { HeroBG } from "components/HeroBG/HeroBG";
-import { Search } from "components/Search/Search";
+import { SearchForm } from "components/SearchForm/SearchForm";
+import { useNavigate } from "react-router-dom";
 
 
 export const СhooseYourBreakfast = () => {
-    
+    const navigate = useNavigate();
 
+    const onSearchFormSubmit = query => {
+        navigate(`/search?query=ingredients&value=${query}`);
+    };
     return <Hero>
         <HeroBG />
         <Container>
@@ -16,7 +20,7 @@ export const СhooseYourBreakfast = () => {
                 <Text><Accent>Delicious and healthy</Accent> way to enjoy a variety of fresh ingredients in one satisfying meal</Text>
                 <Link to='/categories/breakfast'>See recipes<ArrowLink/></Link>
             </ProductBlock>
-            <Search/>
+            <SearchForm onSearchFormSubmit={onSearchFormSubmit} />
         </Container>
     </Hero>
 };
