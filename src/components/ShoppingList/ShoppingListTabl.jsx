@@ -20,6 +20,10 @@ export default function IngredientsShoppingList() {
   const products = useSelector(selectShoppingList);
 
   // console.log(products);
+  const deleteProduct = ({ productId, measure }) => {
+    console.log('id', productId); 
+    dispatch(removeProductFromShoppingList({ productId, measure }))
+  };
 
   return (
     <div>
@@ -41,7 +45,7 @@ export default function IngredientsShoppingList() {
               {measure}
             </IngredientsShoppingListMeasure>
               <DeleteBtn type='button'
-                onClick={() => dispatch(removeProductFromShoppingList({ productId, measure }))}>
+                onClick={() => deleteProduct({ productId, measure })}>
                 <DelIconStyled />
               </DeleteBtn>
           </IngredientsShoppingListItem>
