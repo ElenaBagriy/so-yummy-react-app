@@ -9,6 +9,8 @@ import { selectCategoryList, selectIngredients } from 'redux/selectors';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
+import Button from 'reusableComponents/Button/ButtonRound';
+import { StyledAddRecipyContainer } from './AddRecipeForm.styled';
 
 export const AddRecipeForm = () => {
   const {
@@ -17,6 +19,8 @@ export const AddRecipeForm = () => {
     //   watch,
     // formState: { errors, isDirty, isValid },
   } = useForm();
+
+  const onSubmit = (data, e) => console.log(data, e);
 
   const dispatch = useDispatch();
 
@@ -30,18 +34,19 @@ export const AddRecipeForm = () => {
   // console.log(ingredients);
 
   return (
-    <>
-      <form onSubmit={handleSubmit(data => console.log(data))}>
+    <StyledAddRecipyContainer>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <RecipeDescriptionFields categories={categories} />
         <RecipeIngredientsFields ingredients={ingredients} />
         <RecipePreparationFields />
-        <button
+        <Button
           type="submit"
+          className="btn"
           // disabled={!isDirty || !isValid}
         >
           Add
-        </button>
+        </Button>
       </form>
-    </>
+    </StyledAddRecipyContainer>
   );
 };
