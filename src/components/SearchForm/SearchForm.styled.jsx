@@ -52,9 +52,9 @@ export const Input = styled.input`
 export const Button = styled.button`
   position: absolute;
   right: 0;
-  padding: 15.7px 31.72px;
+  padding: 16px 32px;
   border-radius: 24px 44px;
-  background-color: ${props => props.theme.colors.black};
+  background-color: ${props => props.theme.colors[props.$color || 'black']};
   color: ${props => props.theme.colors.bgMain};
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -77,7 +77,7 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.colors[props.$color === "green" ? 'black' : "green"]};
   }
 `;
 

@@ -16,11 +16,13 @@ export default function SearchPage() {
   const [page, setPage] = useState(1);
   const { isRecipes, isPage, isLoading } = useRecipes();
 
-  const handleChangePage = (_, value) => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+  const handleChangePage = (value) => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    })
     setPage(value);
   };
 
@@ -31,11 +33,13 @@ export default function SearchPage() {
         <Section>
           <MainPageTitle title="Search" />
 
-          <SearchBar page={page} />
+          <SearchBar page={page} handleChangePage={handleChangePage} />
           {isLoading && <>...Loading</>}
+
           {!isLoading && !!isRecipes.recipes?.length && (
             <CommonItemList list={isRecipes.recipes} />
           )}
+
           {!isLoading && !isRecipes.recipes?.length && <NeedSearching />}
 
           <Pagination

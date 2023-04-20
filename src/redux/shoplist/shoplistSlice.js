@@ -10,7 +10,8 @@ const initialState = {
     "measure": [
       "400g"
     ]
-  }],
+  },
+  ],
   isLoading: false,
   error: null,
 };

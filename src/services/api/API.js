@@ -34,8 +34,8 @@ export const UserAPI = {
     return data;
   },
 
-  refreshUser: async persistedToken => {
-    setAuthHeader(persistedToken);
+  refreshUser: async () => {
+    // setAuthHeader();
     const { data } = await axios.get('/users/current');
     return data;
   },
@@ -116,19 +116,16 @@ export const RecipesAPI = {
     return data;
   },
 
-  getRecipesByTitleQuery: async ({ query = '', page = 1 }) => {
-    const { data } = await axios.get(`/recipes/title/${query}?page=${page}`);
+  getRecipesByTitleQuery: async ({ query = '', page = 1, limit = 12 }) => {
+    const { data } = await axios.get(`/recipes/title/${query}?page=${page}&limit=${limit}`);
     return data;
   },
 
-  getRecipesByIngredientsQuery: async ({ query = '', page = 1 }) => {
-    const { data } = await axios.get(
-      `/recipes/ingredient/${query}?page=${page}`
-    );
-    return data;
-  },
   getIngredients: async () => {
     const { data } = await axios.get(`/recipes/ingredients`);
+
+  getRecipesByIngredientsQuery: async ({ query = '', page = 1, limit = 12 }) => {
+    const { data } = await axios.get(`/recipes/ingredient/${query}?page=${page}&limit=${limit}`);
     return data;
   },
 };

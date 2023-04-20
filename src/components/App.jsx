@@ -7,7 +7,7 @@ import { PrivateRoute } from 'routes/PrivateRoute';
 import ShoppingListPage from 'pages/ShoppingList/ShoppingList';
 import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks';
-import { refreshUser } from 'redux/user/userOperations';
+import { refreshToken, refreshUser } from 'redux/user/userOperations';
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,7 +34,14 @@ export const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshUser());
+
+    dispatch(refreshToken())
+      .then(() => dispatch(refreshUser()))
+    .catch(() => dispatch(refreshUser()))
+    
+
+    // dispatch(refreshUser())
+
   }, [dispatch]);
 
   return (

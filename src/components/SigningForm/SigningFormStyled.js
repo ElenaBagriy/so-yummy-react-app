@@ -53,7 +53,7 @@ export const SigninStyled = styled.div`
   }
 
   //desktop
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     background-image: url(${backDesktop});
     padding-left: 113px;
     /* padding-right: 180px; */
@@ -63,9 +63,9 @@ export const SigninStyled = styled.div`
   }
 
   //1440px+ high-resolution
-  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1440px),
-    screen and (min-resolution: 192dpi) and (min-width: 1440px),
-    screen and (min-resolution: 2dppx) and (min-width: 1440px) {
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px),
+    screen and (min-resolution: 192dpi) and (min-width: 1280px),
+    screen and (min-resolution: 2dppx) and (min-width: 1280px) {
     background-image: url(${backDesktop2x});
   }
 
@@ -85,7 +85,7 @@ export const SigninStyled = styled.div`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
       top: 21%;
       right: 36.5%;
     }
@@ -113,7 +113,7 @@ export const SigninStyled = styled.div`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
     }
   }
 
@@ -197,7 +197,7 @@ export const SigninStyled = styled.div`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
     }
   }
 
@@ -224,7 +224,7 @@ export const SigninStyled = styled.div`
     }
 
     //desktop
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
       height: 59px;
     }
   }
@@ -259,7 +259,7 @@ export const LinkStyled = styled(Link)`
   }
 
   //desktop
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
   }
 
   &:hover,

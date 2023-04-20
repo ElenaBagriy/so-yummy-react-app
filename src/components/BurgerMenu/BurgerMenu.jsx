@@ -4,6 +4,7 @@ import {
   BurgerMenuButton,
   CloseButton,
   HeadWrapper,
+  SpinachBottom,
   StyledBackdrop,
 } from './BurgerMenu.styled';
 import { useState } from 'react';
@@ -12,7 +13,7 @@ import { Navigation } from 'components/Navigation/Navigation';
 import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 
 export function BurgerMenu() {
-  const isMobile = useMediaQuery('(max-width: 1439px)');
+  const isMobile = useMediaQuery('(max-width: 1279px)');
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,6 +39,7 @@ export function BurgerMenu() {
             </HeadWrapper>
             <Navigation isMobile={isMobile} handleClose={handleClose} />
             <ThemeToggler />
+            <SpinachBottom />
           </BrgerMenuWrapper>
         </Slide>
       </Modal>

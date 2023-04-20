@@ -18,6 +18,7 @@ const lightTheme = {
     paginationText: '#656565',
     primary: '#3E4462',
     accent: '#8BAA36',
+    black: '#000000',
   },
   border: {
     grey: '#E0E0E0',
@@ -25,6 +26,11 @@ const lightTheme = {
   input: {
     normal: '#F0F0F0',
     active: 'rgba(35, 38, 42, 0.2)',
+  },
+  select: {
+    grey: 'rgba(217, 217, 217, 0.16)',
+    greyHover: 'rgba(217, 217, 217, 0.3)',
+    color: 'rgba(0, 0, 0, 0.5)'
   },
   breakPoints: {
     mobile: '375px',

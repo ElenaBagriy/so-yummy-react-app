@@ -10,7 +10,7 @@ import { HeaderWrapper, StyledHeader, UserMenuWrapper } from './Header.styled';
 import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 
 export function Header() {
-  const isMobile = useMediaQuery('(max-width: 1439px)');
+  const isMobile = useMediaQuery('(max-width: 1279px)');
   return (
     <StyledHeader>
       <Container>

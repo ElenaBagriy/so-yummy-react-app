@@ -56,12 +56,12 @@ export const SigninForm = () => {
         {/* desktop */}
         <source
           srcSet={`${pictureDesktop} 1x, ${pictureDesktop2x} 2x`}
-          media="(min-width: 1440px)"
+          media="(min-width: 1280px)"
           type="image/png"
         />
         <source
           srcSet={`${pictureDesktopWebP} 1x, ${pictureDesktopWebP2x} 2x`}
-          media="(min-width: 1440px)"
+          media="(min-width: 1280px)"
           type="image/webp"
         />
 
@@ -104,8 +104,6 @@ export const SigninForm = () => {
               .unwrap()
               .then(() => navigate('/main'))
               .catch(() => navigate('/'));
-            // console.log(values);
-            // console.log(actions);
             actions.resetForm();
           }}
         >
