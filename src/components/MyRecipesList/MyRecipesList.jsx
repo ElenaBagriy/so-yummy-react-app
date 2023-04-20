@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 // import { getRecipesFavorite, toggleFavoriteRecipesById } from "redux/recipes/recipesOperations";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
-import timeConvert from "services/api/timeConverter";
+import timeConvert from "services/timeConverter";
 import { Tooltip, useMediaQuery } from "@mui/material";
 import EllipsisText from "react-ellipsis-text";
 import { selectMyRecipes } from "redux/myRecipes/myRecipesSelectors";

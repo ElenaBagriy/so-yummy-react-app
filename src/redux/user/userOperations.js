@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { UserAPI } from '../../services/api/API';
+import { UserAPI, onAuthorise } from '../../services/api/API';
 
 export const registerUser = createAsyncThunk(
   'user/register',
@@ -64,8 +64,9 @@ export const refreshUser = createAsyncThunk(
   'user/refreshUser',
   async (_, thunkAPI) => {
     // const state = thunkAPI.getState();
-    // const savedToken = state.auth.accessToken;
+    // const savedToken = state.auth.refreshToken;
 
+    
     // if (!savedToken) {
     //   return thunkAPI.rejectWithValue('Unable to fetch user');
     // }
@@ -74,6 +75,9 @@ export const refreshUser = createAsyncThunk(
       const response = await UserAPI.refreshUser();
       return response;
     } catch (error) {
+      // if (error.response.status === 401) {
+      //   onAuthorise(error, savedToken);
+      // };
       return thunkAPI.rejectWithValue(error.message);
     }
   }

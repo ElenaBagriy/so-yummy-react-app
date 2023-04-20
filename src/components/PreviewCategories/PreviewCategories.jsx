@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Container } from "reusableComponents/Container/Container";
-import { onCapitalise } from "services/api/onCapitalise";
+import { onCapitalise } from "services/onCapitalise";
 import { StyledTitle } from "reusableComponents/ManePageTitle/ManePageTitle.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMainPageRecipes } from "redux/selectors";

@@ -38,7 +38,8 @@ export const App = () => {
 
     dispatch(refreshToken())
       .then(() => dispatch(refreshUser()))
-    .catch(() => dispatch(refreshUser()))
+      .catch(() => dispatch(refreshUser()))
+    // dispatch(refreshUser())
 
   }, [dispatch]);
 
