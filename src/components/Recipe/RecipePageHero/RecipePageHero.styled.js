@@ -13,7 +13,7 @@ export const ImgBox = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center center;
-
+background-size: cover;
   width: 100%;
   height: 455px;
 
@@ -21,9 +21,12 @@ export const ImgBox = styled.div`
 
   @media screen and (min-width: 555px) {
     background-image: url(${backgroundTablet});
+    background-size: cover;
+height: 455px;
   }
   ${(p) => p.theme.sizes.tablet} {
     height: 495px;
+    background-size: cover;
     background-image: url(${backgroundTablet});
   }
   ${(p) => p.theme.sizes.desktop} {
@@ -36,21 +39,20 @@ export const ImgBox = styled.div`
 export const MainPageTitle = styled.h1`
   position: relative;
   z-index: 3;
-
-  padding-top: 30px;
-  color: ${(p) => p.theme.colors.accentColor};
+  color: ${(p) => p.theme.colors.green};
   text-align: center;
   font-size: ${(p) => p.theme.fontSizes.m};
   line-height: 1;
-
+padding-top: 144px;
   letter-spacing: ${(p) => p.theme.letterSpacings.base};
 
   ${(p) => p.theme.sizes.tablet} {
+    padding-top: 136px;
     font-size: ${(p) => p.theme.fontSizes.xl};
   }
 
   ${(p) => p.theme.sizes.desktop} {
-    padding-top: 0;
+    padding-top: 164px;
     font-size: ${(p) => p.theme.fontSizes.xl};
 
     ${(p) =>

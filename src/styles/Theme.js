@@ -9,6 +9,9 @@ const lightTheme = {
     green: '#8BAA36',
     black: '#22252A',
     white: '#ffffff',
+    recipeDescriptionText: "#23262A",
+    recipePreparationTextColor: "rgba(0, 0, 0, 0.8)",
+    recipeHeaderTextColor: "#22252A",
   },
   text: {
     hero: '#22252A',

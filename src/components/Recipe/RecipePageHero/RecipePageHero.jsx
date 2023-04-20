@@ -57,8 +57,8 @@ const RecipePageHero = ({ title, description, time, id }) => {
       <Button
         disabled={isLoading}
         whileHover={{
-          backgroundColor: theme.colors.accentColor,
-          borderColor: theme.colors.accentColor,
+          backgroundColor: theme.colors.green,
+          borderColor: theme.colors.green,
         }}
         onClick={() => handleFavoriteButton(id)}
       >

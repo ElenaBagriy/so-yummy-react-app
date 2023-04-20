@@ -22,7 +22,7 @@ const RecipeInngredientsList = ({ ingredients, recipeId }) => {
     <Box>
       <List>
         <ListItemHeader>
-          <ListHeaderText>Product</ListHeaderText>
+          <ListHeaderText>Ingredients</ListHeaderText>
           <div>
             <ListHeaderText>Number</ListHeaderText>
             <ListHeaderText>Add to list</ListHeaderText>
