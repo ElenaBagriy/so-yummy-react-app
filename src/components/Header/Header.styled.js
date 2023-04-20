@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-  position: absolute;
+  position: relative;
   z-index: 200;
   margin-top: 18px;
-  width: 100%;
+  margin-bottom: -58px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: -62px;
+  }
 `;
 
 export const HeaderWrapper = styled.div`

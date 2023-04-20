@@ -7,6 +7,8 @@ import {
 import spriteSVG from 'images/svg/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/user/userOperations';
+import { useState } from 'react';
+import { EditProfileModal } from 'components/EditProfileModal/EditProfileModal';
 
 export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
   const setOffset = [
@@ -17,13 +19,20 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
       },
     },
   ];
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  const handleOpenEditModal = () => setIsOpenEditModal(true);
+  const handleCloseEditModal = (setAvatar, setName) => {
+    setIsOpenEditModal(false);
+    setAvatar(null);
+    setName(null);
+  };
   const dispatch = useDispatch();
 
   function EditProfileBtnHandle() {
-    console.log('EDIT');
+    handleOpenEditModal();
+    popoverTogler();
   }
   function logoutBtnHandle() {
-    console.log('EXIT');
     dispatch(logoutUser());
   }
   return (
@@ -53,6 +62,10 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
           </Grow>
         )}
       </Popper>
+      <EditProfileModal
+        isOpenEditModal={isOpenEditModal}
+        handleCloseEditModal={handleCloseEditModal}
+      />
     </>
   );
 }
