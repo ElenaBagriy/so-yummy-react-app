@@ -4,7 +4,10 @@ import { IconButton, Tooltip } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import {
   IngredFieldsStyled,
+  Label,
+  MeasureLabel,
   RecipeIngredStyled,
+  StyledSelect,
 } from './RecipeIngredientFields.styled';
 import Select from 'react-select';
 
@@ -87,27 +90,42 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
       {fields.map(({ id }, index) => {
         return (
           <IngredFieldsStyled key={id}>
+            <Label>
+              <Controller
+                name={`ingredients.${index}.ingredients`}
+                control={control}
+                render={({ field }) => (
+                  <StyledSelect
+                    {...field}
+                    options={selectIngredients}
+                    classNamePrefix="custom-select"
+                    className="сustom-select-container"
+                  />
+                )}
+              />
+            </Label>
             <Controller
-              name={`ingredients.${index}.ingredients`}
-              control={control}
-              render={({ field }) => (
-                <Select {...field} options={selectIngredients} />
-              )}
-            />
-
-            <Controller
+              className="amountField"
               name={`ingredients.${index}.amount`}
               control={control}
+              defaultValue={0}
               render={({ field }) => <input {...field} />}
             />
+            <MeasureLabel>
+              <Controller
+                name={`ingredients.${index}.measure`}
+                control={control}
+                render={({ field }) => (
+                  <StyledSelect
+                    {...field}
+                    options={selectMeasure}
+                    classNamePrefix="custom-select"
+                    className="сustom-select-container"
+                  />
+                )}
+              />
+            </MeasureLabel>
 
-            <Controller
-              name={`ingredients.${index}.measure`}
-              control={control}
-              render={({ field }) => (
-                <Select {...field} options={selectMeasure} />
-              )}
-            />
             <Tooltip title="Delete field" className="deleteBtn">
               <IconButton
                 onClick={e => {
