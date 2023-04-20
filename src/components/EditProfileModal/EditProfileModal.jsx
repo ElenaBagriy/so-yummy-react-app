@@ -19,18 +19,20 @@ import {
   UserSVG,
 } from './EditProfileModal.styled';
 
-import { updateUser } from 'redux/user/userOperations';
+import { refreshUser, updateUser } from 'redux/user/userOperations';
 
 export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const [avatar, setAvatar] = useState(null);
+  const [prevue, setPrevue] = useState(null);
   const [name, setName] = useState(user.name);
 
   const handleFileInputChange = e => {
     // setAvatar(URL.createObjectURL(e.target.files[0]));
     setAvatar(e.target.files[0]);
     // console.dir(e.target.files[0]);
+    setPrevue(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleNameInputChange = e => {
@@ -46,15 +48,16 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
     if (avatar) {
       formData.append('avatar', avatar);
     }
-    dispatch(updateUser(formData));
-    console.log(formData);
+    dispatch(updateUser(formData)).then(() => dispatch(refreshUser()));
+
+    // console.log(formData);
   };
 
   return (
     <>
       <Modal
         open={isOpenEditModal}
-        onClose={() => handleCloseEditModal(setAvatar, setName)}
+        onClose={() => handleCloseEditModal(setPrevue, setName)}
         slots={{ backdrop: StyledBackdrop }}
       >
         <EditProfileWrapper>
@@ -62,7 +65,7 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
             <StyledAvatarLabel>
               <StyledAvatar
                 alt={user.name}
-                src={avatar?.length > 0 ? avatar : user.avatarURL}
+                src={prevue?.length > 0 ? prevue : user.avatarURL}
               />
               <PlusSVG>
                 <use href={`${sprite}#icon-plus`} />

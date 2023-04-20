@@ -21,9 +21,9 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
   ];
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const handleOpenEditModal = () => setIsOpenEditModal(true);
-  const handleCloseEditModal = (setAvatar, setName) => {
+  const handleCloseEditModal = (setPrevue, setName) => {
     setIsOpenEditModal(false);
-    setAvatar(null);
+    setPrevue(null);
     setName(null);
   };
   const dispatch = useDispatch();
