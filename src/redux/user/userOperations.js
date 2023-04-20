@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { UserAPI, onAuthorise } from '../../services/api/API';
+import { UserAPI } from '../../services/api/API';
 
 export const registerUser = createAsyncThunk(
   'user/register',
@@ -36,21 +36,13 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-
+/// Новая версия
 export const refreshToken = createAsyncThunk(
   'user/refreshToken',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const refreshToken = {
-      "refreshToken": state.auth.refreshToken
-    };
-
-    if (!refreshToken.refreshToken) {
-      return thunkAPI.rejectWithValue('Unable to refresh token');
-    }
 
     try {
-      const response = await UserAPI.refreshToken(refreshToken);
+      const response = await UserAPI.refreshToken();
       
       return response;
     } catch (error) {
@@ -58,6 +50,30 @@ export const refreshToken = createAsyncThunk(
     }
   }
 );
+
+/// Старая рабочая версия
+
+// export const refreshToken = createAsyncThunk(
+//   'user/refreshToken',
+//   async (_, thunkAPI) => {
+//     const state = thunkAPI.getState();
+//     const refreshToken = {
+//       "refreshToken": state.auth.refreshToken
+//     };
+//     console.log(refreshToken);
+//     if (!refreshToken.refreshToken) {
+//       return thunkAPI.rejectWithValue('Unable to refresh token');
+//     }
+
+//     try {
+//       const response = await UserAPI.refreshToken(refreshToken);
+      
+//       return response;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 
 export const refreshUser = createAsyncThunk(
