@@ -1,5 +1,5 @@
 // import ReactDOM from 'react-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 // import * as Yup from 'yup';
 
@@ -38,44 +38,48 @@ import { toast } from 'react-toastify';
 // .matches(/[^\w]/, 'Password requires a symbol'),
 // });
 
-function validateName(value) {
-  let error;
-  const lettersOnly = /^[a-zA-Z]+$/.test(value);
-  if (!value) {
-    error = 'Required';
-  } else if (!lettersOnly) {
-    error = 'Invalid name';
-  }
-  return error;
-}
-
-function validateEmail(value) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'Invalid email address';
-  }
-  return error;
-}
-
-function validatePassword(value) {
-  let error;
-  const digitsOnly = string => [...string].every(c => '0123456789'.includes(c));
-  if (!value) {
-    error = 'Required!';
-  } else if (value.length < 8) {
-    error = 'Password must be at least 8 digits';
-  } else if (digitsOnly && value.length === 8) {
-    error = 'Your password is little secure';
-  }
-
-  return error;
-}
-
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const [warning, setWarning] = useState(null);
+  // const [error, setError] = useState(null);
+  // const [success, setSuccess] = useState(null);
+
+  function validateName(value) {
+    let error;
+    const lettersOnly = /^[a-zA-Z]+$/.test(value);
+    if (!value) {
+      error = 'Required';
+    } else if (!lettersOnly) {
+      error = 'Invalid name';
+    }
+    return error;
+  }
+
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = 'Invalid email address';
+    }
+    return error;
+  }
+
+  function validatePassword(value) {
+    let error;
+    const digitsOnly = string =>
+      [...string].every(c => '0123456789'.includes(c));
+    if (!value) {
+      error = 'Required!';
+    } else if (value.length < 8) {
+      error = 'Password must be at least 8 digits';
+    } else if (digitsOnly && value.length === 8) {
+      error = 'Your password is little secure';
+    }
+
+    return error;
+  }
 
   return (
     <RegisterStyled>
