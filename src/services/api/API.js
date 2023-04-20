@@ -1,32 +1,11 @@
 import axios from 'axios';
 
-// import localStorage from 'redux-persist/es/storage';
-
-// const get = key => {
-//   try {
-//     return JSON.parse(localStorage.getItem(key));
-//   } catch (error) {
-//     return null;
-//   }
-// };
-
-// console.log(get('persist:token'))
-
-
-
-// export const onAuthorise = (error, savedToken) => {
-//   if (error.response.status === 401) {
-//     console.log(error.response.status);
-//     // store.dispatch(refreshToken());
-//     UserAPI.refreshToken(savedToken);
-//   }
-// }
-
-
 
 
 axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
 // const dispatch = useDispatch();
+
+// const refreshToken = localStorage.getItem('refreshToken');
 
 // axios.interceptors.request.use(
 //   function (config) {
@@ -43,7 +22,7 @@ axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
 //   },
 //   function (error) {
 //     if (error.response.status === 401) {
-//       store.dispatch(refreshToken());
+//       UserAPI.refreshToken(refreshToken);
 //     }
 
 //     return Promise.reject(error);
@@ -78,7 +57,9 @@ export const UserAPI = {
   },
 
   refreshToken: async refreshToken => {
+    console.log("refreshToken", refreshToken);
     const { data } = await axios.post('/users/refresh', refreshToken);
+    
     setAuthHeader(data.accessToken);
     return data;
   },
