@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledAddRecipyContainer = styled.div`
+export const StyledAddRecipeContainer = styled.div`
   .submitBtn {
     padding: 14px 64px;
     border: transparent;

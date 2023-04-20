@@ -7,9 +7,9 @@ import {
 } from 'redux/recipes/recipesOperations';
 import { selectCategoryList, selectIngredients } from 'redux/selectors';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
-import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
-import { StyledAddRecipyContainer } from './AddRecipeForm.styled';
+import { StyledAddRecipeContainer } from './AddRecipeForm.styled';
+import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientFields';
 
 export const AddRecipeForm = () => {
   const {
@@ -17,9 +17,21 @@ export const AddRecipeForm = () => {
     //   register,
     //   watch,
     // formState: { errors, isDirty, isValid },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      image: '',
+      title: '',
+      about: '',
+      category: 'breakfast',
+      time: '40',
+      ingredients: [{ quantity: '', measure: 'tbs', id: '' }],
+      preparation: [],
+    },
+  });
 
-  const onSubmit = (data, e) => console.log(data);
+  const onSubmit = data => {
+    console.log('data', data);
+  };
 
   const dispatch = useDispatch();
 
@@ -29,12 +41,14 @@ export const AddRecipeForm = () => {
   }, [dispatch]);
 
   const categories = useSelector(selectCategoryList);
+  // console.log(categories);
+
   const ingredients = useSelector(selectIngredients);
   // console.log(ingredients);
 
   return (
-    <StyledAddRecipyContainer>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <StyledAddRecipeContainer>
+      <form onSubmit={() => handleSubmit(onSubmit)}>
         <RecipeDescriptionFields categories={categories} />
         <RecipeIngredientsFields ingredients={ingredients} />
         <RecipePreparationFields />
@@ -46,6 +60,6 @@ export const AddRecipeForm = () => {
           Add
         </button>
       </form>
-    </StyledAddRecipyContainer>
+    </StyledAddRecipeContainer>
   );
 };
