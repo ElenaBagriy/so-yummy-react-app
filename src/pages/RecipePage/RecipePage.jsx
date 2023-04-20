@@ -12,6 +12,7 @@ import { Main } from "reusableComponents/Main/Main";
 import { GoToTop } from "reusableComponents/ScrollToTop/ScrollToTop";
 import { Background } from "reusableComponents/Background/Background";
 import { Container } from "reusableComponents/Container/Container";
+import { ImgBox, Section } from "./RecipePage.styled";
 
 const RecipePage = () => {
   const dispatch = useDispatch();
@@ -40,28 +41,30 @@ const RecipePage = () => {
   return (
     <Main>
       <Background noDots />
-      <RecipePageHero
-        title={title}
-        description={description}
-        time={time}
-        id={_id}
-        favorite={favorite}
-        />
-      <Container>
-        <RecipeSkeleton />
-      {isLoading ? (
-        <RecipeSkeleton />
-      ) : (<>
-          <RecipeIngredientsList ingredients={ingredients} />
-          <RecipePreparation
-            preview={previewImg}
+          <RecipePageHero
             title={title}
-            instructions={instructions}
-            tags={tags}
-        />
-        </>)}
+            description={description}
+            time={time}
+            id={_id}
+            favorite={favorite}
+            />
+            <Section>
+            <Container>
+          {/* <RecipeSkeleton /> */}
+          {isLoading ? (
+            <RecipeSkeleton />
+          ) : (<>
+              <RecipeIngredientsList ingredients={ingredients} />
+              <RecipePreparation
+                preview={previewImg}
+                title={title}
+                instructions={instructions}
+                tags={tags}
+            />
+          </>)}
         </Container>
-      <GoToTop/>
+      </Section>
+      <GoToTop />
     </Main>
   );
 };

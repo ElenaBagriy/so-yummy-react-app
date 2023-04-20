@@ -90,7 +90,7 @@ export const Favorite = () => {
             <Background/>
             <Container>
                 <Section>
-                    <MainPageTitle title='Favorites' />
+                    <MainPageTitle title='Favorites'/>
                     
                     {!favoriteRecipes ? <>...Loading</> :
                     <RecipesList>
