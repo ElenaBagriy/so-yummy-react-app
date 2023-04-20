@@ -14,12 +14,13 @@ import { userReducer } from "./user/userSlice";
 import { recipesReducer } from "./recipes/recipesSlice";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { shoppingListReducer } from "./shoplist/shoplistSlice";
+import { myRecipesReducer } from "./myRecipes/myRecipesSlice";
 
 
 const userConfig = {
   key: "token",
   storage,
-  whitelist: ["refreshToken", "accessToken"],
+  whitelist: ["refreshToken"],
 };
 
 export const store = configureStore({
@@ -28,6 +29,7 @@ export const store = configureStore({
     recipes: recipesReducer,
     ownRecipes: ownRecipesReducer,
     shoppingList: shoppingListReducer,
+    myRecipes: myRecipesReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -38,12 +40,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-
-//   інформацію про юзера,
-//   список популярных рецептов
-//   список категорій,
-//   список всіх інгрідієнтів,
-//   список улюблених рецептів і 
-//   список інгрідієнтів з шопінг - лист
 

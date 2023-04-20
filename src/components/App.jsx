@@ -7,7 +7,7 @@ import { PrivateRoute } from 'routes/PrivateRoute';
 import ShoppingListPage from 'pages/ShoppingList/ShoppingList';
 import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks';
-import { refreshUser } from 'redux/user/userOperations';
+import { refreshToken, refreshUser } from 'redux/user/userOperations';
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,6 +16,7 @@ const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
+const RecipePage = lazy(() => import('../pages/RecipePage/RecipePage'));
 const CategoriesPage = lazy(() =>
   import('../pages/CategoriesPage/CategoriesPage')
 );
@@ -34,7 +35,14 @@ export const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshUser());
+
+    dispatch(refreshToken())
+      .then(() => dispatch(refreshUser()))
+    .catch(() => dispatch(refreshUser()))
+    
+
+    // dispatch(refreshUser())
+
   }, [dispatch]);
 
   return (
@@ -120,6 +128,15 @@ export const App = () => {
                     <PrivateRoute
                       redirectTo="/"
                       component={<MyRecipesPage />}
+                    />
+                  }
+                />
+                <Route
+                  path="recipe/:id"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/"
+                      component={<RecipePage />}
                     />
                   }
                 />

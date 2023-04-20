@@ -2,6 +2,7 @@ import { PreviewCategories } from "components/PreviewCategories/PreviewCategorie
 import { СhooseYourBreakfast } from "components/СhooseYourBreakfast/СhooseYourBreakfast";
 import { Background } from "reusableComponents/Background/Background";
 import { Main } from "reusableComponents/Main/Main";
+import { GoToTop } from "reusableComponents/ScrollToTop/ScrollToTop";
 
 const MainPage = () => {
 
@@ -9,6 +10,7 @@ const MainPage = () => {
         <Background noDots/>
         <СhooseYourBreakfast/>
         <PreviewCategories />
+        <GoToTop/>
     </Main>
 };
 

@@ -22,7 +22,7 @@ export const IngredientsShoppingListHead = styled.div`
     font-size: 18px;
     gap: 38px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-bottom: 50px;
     max-width: 1240px;
     padding: 21px 40px;
@@ -45,22 +45,23 @@ export const IngredientsShoppingListItem = styled.li`
   display: flex;
   align-items: start;
   max-width: 343px;
-  padding: 10px;
+  padding: 0px 10px 23px 10px; //10px;
   font-size: 12px;
   font-weight: 500;
-  background: #ffffff;
+  background: #fafafa;
   border-bottom: 1px solid rgb(224, 224, 224);
-  border-radius: 8px;
+  /* border-radius: 8px; */
   @media screen and (min-width: 768px) {
     max-width: 704px;
-    padding: 16px 24px;
+    padding: 0px 24px 42px 16px; // 16px 24px;
     font-size: 24px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     max-width: 1240px;
-    padding: 0px 70px 0px 32px;
+    padding: 0px 70px 42px 32px;
   }
   img {
+    border-radius: 8px;
     width: 65px;
     height: 100%;
     margin: 0px 8px 0px 0px;
@@ -68,7 +69,7 @@ export const IngredientsShoppingListItem = styled.li`
       width: 144px;
       margin-right: 24px;
     }
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
       width: 180px;
       margin-right: 40px;
     }
@@ -100,7 +101,7 @@ export const IngredientsShoppingListMeasure = styled.p`
     font-size: 18px;
     margin-right: 78px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-right: 151px;
   }
 `;

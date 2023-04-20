@@ -7,16 +7,18 @@ import {
   getRecipesByIngredientsQuery,
   getRecipesByTitleQuery,
 } from 'redux/recipes/recipesOperations';
-import { Wrapper } from './SearchBar.styled';
+import { Wrapper, SelectBar, SelectText } from './SearchBar.styled';
 
-export default function SearchBar({ page }) {
+export default function SearchBar({ page, handleChangePage }) {
   const [sendSearch, setSendSearch] = useState('');
-  const [recipesBy, setRecipesBy] = useState('Title');
+  const [recipesBy, setRecipesBy] = useState('title');
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
 
+  const isTablet = window.innerWidth <= 768;
+
   useEffect(() => {
-    if (searchParams.get('query') && searchParams.get('value')) {
+    if (searchParams.get('query') || searchParams.get('value')) {
         setSendSearch(searchParams.get('value'))
         setRecipesBy(searchParams.get('query'))
     };
@@ -24,25 +26,36 @@ export default function SearchBar({ page }) {
 
   useEffect(() => {
     if (sendSearch) {
-      if (recipesBy.toLowerCase() === 'title')
-        dispatch(getRecipesByTitleQuery({ query: sendSearch, page }));
-      else dispatch(getRecipesByIngredientsQuery({ query: sendSearch, page }));
+      if (recipesBy === 'title')
+        dispatch(getRecipesByTitleQuery({ query: sendSearch, page, limit: isTablet ? 6 : 12 }));
+      else dispatch(getRecipesByIngredientsQuery({ query: sendSearch, page, limit: isTablet ? 6 : 12}));
     }
-  }, [dispatch, page, sendSearch, recipesBy]);
+  }, [dispatch, page, sendSearch, recipesBy, isTablet]);
 
   const onSearchFormSubmit = inputQuery => {
-    setSearchParams({query: inputQuery})
+    setSearchParams({query: recipesBy, value: inputQuery })
     setSendSearch(inputQuery);
+    handleChangePage(1);
   };
+
+  const changeSelect = (type) => {
+    setRecipesBy(type);
+    setSearchParams({query: type, value: sendSearch })
+    handleChangePage(1);
+  }
   return (
     <Wrapper>
-      <SearchForm value={sendSearch} onSearchFormSubmit={onSearchFormSubmit} />
+      <SearchForm value={sendSearch} onSearchFormSubmit={onSearchFormSubmit} color="green" />
 
+      <SelectBar>
+        <SelectText>Search by:</SelectText>
       <Select
         label={recipesBy}
-        values={['Title', 'Ingredients']}
-        onChange={setRecipesBy}
+        values={['title', 'ingredients']}
+        onChange={changeSelect}
       />
+      </SelectBar>
+      
     </Wrapper>
   );
 }

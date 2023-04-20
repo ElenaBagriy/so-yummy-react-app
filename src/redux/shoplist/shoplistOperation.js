@@ -1,12 +1,6 @@
-// import axios from 'axios';
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { UserAPI } from "../../services/api/API";
-
-// axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
-
-// const setAuthHeader = token => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
 
 export const fetchShoppingList = createAsyncThunk(
   'shopping-list/all',
@@ -25,14 +19,8 @@ export const addProductToShoppingList = createAsyncThunk(
 
   async (product, thunkAPI) => {
     try {
-      console.log(product);
-      const response = await UserAPI.addToShoppingList(product);
-
-      console.log(response);
-      console.log(response.data);
-
-      return response.data;
-
+      const {shoppingList} = await UserAPI.addToShoppingList(product);
+      return shoppingList;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -42,15 +30,11 @@ export const addProductToShoppingList = createAsyncThunk(
 export const removeProductFromShoppingList = createAsyncThunk(
   'shopping-list/remove',
   async (product, thunkAPI) => {
+    const measure = product.measure.join();
+    const productId = product.productId;
     try {
-      const response = await UserAPI.updateShoppingList(product);
-
-      console.log(response);
-      console.log(response.data);
-
-      return response.data;
-
-    
+      const {shoppingList} = await UserAPI.updateShoppingList({productId, measure});
+      return shoppingList;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

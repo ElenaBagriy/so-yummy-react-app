@@ -19,6 +19,7 @@ const recipesInitialState = {
   ingredientsList: [],
   favoriteRecipes: [],
   searchRecipes: [],
+  choosedRecipe: {},
   isLoading: false,
   error: null,
 };
@@ -87,7 +88,7 @@ const recipesSlice = createSlice({
       // ------------ Get Recipe By Id ----------------
       .addCase(getRecipeById.pending, handlePending)
       .addCase(getRecipeById.fulfilled, (state, action) => {
-        // state.recipeId = action.payload._id;
+        state.choosedRecipe = action.payload;
         state.isLoading = false;
       })
       .addCase(getRecipeById.rejected, handleRejected)
