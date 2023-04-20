@@ -110,7 +110,7 @@ export const SigninForm = () => {
               })
               .catch(error => {
                 if (error === 'Request failed with status code 403') {
-                  return toast.error('Password is wrong');
+                  return toast.error('Email or password is wrong');
                 }
                 if (error === 'Request failed with status code 401') {
                   return toast.error('Email is not verified');
