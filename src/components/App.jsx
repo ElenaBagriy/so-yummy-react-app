@@ -16,6 +16,7 @@ const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
+const RecipePage = lazy(() => import('../pages/RecipePage/RecipePage'));
 const CategoriesPage = lazy(() =>
   import('../pages/CategoriesPage/CategoriesPage')
 );
@@ -127,6 +128,15 @@ export const App = () => {
                     <PrivateRoute
                       redirectTo="/"
                       component={<MyRecipesPage />}
+                    />
+                  }
+                />
+                <Route
+                  path="recipe/:id"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/"
+                      component={<RecipePage />}
                     />
                   }
                 />

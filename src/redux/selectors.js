@@ -40,3 +40,9 @@ export const selectIngredients = state => state.recipes.ingredientsList;
 
 //shoppingList
 export const selectShoppingList = state => state.shoppingList.products;
+
+export const selectShoppingIsLoading = state => state.shoppingList.isLoading;
+
+
+//choosed recipe
+export const selectChoosedRecipe = state => state.recipes.choosedRecipe;
