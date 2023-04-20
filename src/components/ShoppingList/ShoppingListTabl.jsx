@@ -19,7 +19,6 @@ export default function IngredientsShoppingList() {
   const dispatch = useDispatch();
   const products = useSelector(selectShoppingList);
 
-  console.log(products);
   const deleteProduct = ({ productId, measure }) => {
     dispatch(removeProductFromShoppingList({ productId, measure }))
   };
