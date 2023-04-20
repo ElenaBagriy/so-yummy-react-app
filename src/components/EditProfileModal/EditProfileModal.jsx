@@ -4,6 +4,7 @@ import { Modal } from '@mui/material';
 import { selectUser } from 'redux/selectors';
 import sprite from 'images/svg/sprite.svg';
 import {
+  EditProfileCloseButton,
   EditProfileWrapper,
   EditSVG,
   PlusSVG,
@@ -61,6 +62,9 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
         slots={{ backdrop: StyledBackdrop }}
       >
         <EditProfileWrapper>
+          <EditProfileCloseButton
+            onClick={() => handleCloseEditModal(setPrevue, setName)}
+          />
           <StyledEditProfileForm onSubmit={handleFormSubmit}>
             <StyledAvatarLabel>
               <StyledAvatar

@@ -1,5 +1,6 @@
 import { Avatar, Backdrop } from '@mui/material';
 import styled from 'styled-components';
+import closeIcon from 'images/svg/x.svg';
 
 export const StyledBackdrop = styled(Backdrop)`
   &.MuiBackdrop-root {
@@ -31,6 +32,27 @@ export const EditProfileWrapper = styled.div`
     width: 500px;
     height: 425px;
     padding: 60px 50px;
+  }
+`;
+
+export const EditProfileCloseButton = styled.button`
+  display: block;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${closeIcon});
+  @media screen and (min-width: 768px) {
+    top: 24px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
