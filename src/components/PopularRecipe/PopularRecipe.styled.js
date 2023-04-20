@@ -14,6 +14,8 @@ export const PopularStyled = styled.div`
 
   li {
     margin-bottom: 37px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgb(112, 112, 112, 0.17);
   }
 
   img {

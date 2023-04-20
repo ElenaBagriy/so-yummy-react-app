@@ -1,5 +1,5 @@
 // import ReactDOM from 'react-dom';
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 // import * as Yup from 'yup';
 import { SigninStyled, LinkStyled, FormWrapper } from './SigningFormStyled';
@@ -37,7 +37,6 @@ export const SigninForm = () => {
 
   function validatePassword(value) {
     let error;
-
     if (!value) {
       error = 'Required!';
     }

@@ -6,10 +6,12 @@ export const RecipePreparationFields = () => {
   const {
     register,
     // handleSubmit,
-    // watch,
     // formState: { errors },
-  } = useForm();
-  // const onSubmit = data => console.log(data);
+  } = useForm({
+    defaultValues: {
+      preparation: [],
+    },
+  });
 
   return (
     <StyledPreparation>

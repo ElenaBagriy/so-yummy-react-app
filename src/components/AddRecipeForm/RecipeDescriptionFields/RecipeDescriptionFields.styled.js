@@ -21,6 +21,7 @@ export const RecipeDescStyled = styled.div`
   .uploadedImage {
     object-fit: cover;
   }
+
   .deleteBtn {
     border: none;
     background-color: transparent;

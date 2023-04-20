@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { RecipeDescStyled } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
+import Select from 'react-select';
 
 export const RecipeDescriptionFields = ({ categories }) => {
   const fileInputRef = useRef();
@@ -16,20 +17,42 @@ export const RecipeDescriptionFields = ({ categories }) => {
 
   const {
     register,
-    // handleSubmit,
-    // watch,
+    control,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      image: '',
+      title: '',
+      about: '',
+      category: 'breakfast',
+      time: '40',
+    },
+  });
 
-  let timeOptions = [];
+  let timeArray = [];
 
   const timeGenerator = (min, max) => {
     for (let i = min; i <= max; i += 5) {
-      timeOptions.push(i);
+      timeArray.push(i);
     }
-    return timeOptions;
+    return timeArray;
   };
+
   timeGenerator(5, 120);
+  const timeOptions = timeGenerator(5, 120).map(item => {
+    return {
+      value: item.toString(),
+      label: `${item} min`,
+    };
+  });
+  // console.log(timeOptions);
+
+  const categoriesOptions = categories.map(option => ({
+    id: option.id,
+    title: option.title,
+    label: option.title,
+  }));
+  // console.log(categoriesOptions);
 
   return (
     <RecipeDescStyled>
@@ -47,6 +70,8 @@ export const RecipeDescriptionFields = ({ categories }) => {
                 src={URL.createObjectURL(selectedImage)}
                 className="uploadedImage"
                 alt="Thumb"
+                width="357"
+                height="344"
               />
             </div>
           ) : (
@@ -73,12 +98,21 @@ export const RecipeDescriptionFields = ({ categories }) => {
         <label>
           {' '}
           <span>Enter about recipe</span>
-          <input {...register('description')} />
+          <input {...register('about')} />
         </label>
         {errors.exampleRequired && <span>This field is required</span>}
         <label className="wrapperCategory">
           <span>Category</span>
-          <select {...register('category')}>
+
+          <Controller
+            name="categories"
+            control={control}
+            render={({ field }) => (
+              <Select {...field} options={categoriesOptions} />
+            )}
+          />
+
+          {/* <select {...register('category')}>
             {categories.map(item => (
               <option
                 key={item.id}
@@ -88,18 +122,23 @@ export const RecipeDescriptionFields = ({ categories }) => {
                 {item.title}
               </option>
             ))}
-          </select>
+          </select> */}
         </label>
         <label className="wrapperCategory">
           {' '}
           <span>Cooking time</span>
-          <select placeholder="Cooking time" {...register('time')}>
-            {timeOptions.map(item => (
+          <Controller
+            name="time"
+            control={control}
+            render={({ field }) => <Select {...field} options={timeOptions} />}
+          />
+          {/* <select placeholder="Cooking time" {...register('time')}>
+            {timeArray.map(item => (
               <option key={item} value={item} {...register(`${item}`)}>
                 {item} min
               </option>
             ))}
-          </select>
+          </select> */}
         </label>
       </InputsStyled>
     </RecipeDescStyled>
