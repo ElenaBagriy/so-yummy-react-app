@@ -56,12 +56,11 @@ export const IngredFieldsStyled = styled.div`
     background-color: #d9d9d9;
     border: none;
     height: 59px;
-    color: #000000;
-    opacity: 0.5;
+    color: #23262a;
   }
 
   select {
-    margin-right: 35px;
+    margin-right: 32px;
 
     &:hover,
     &:focus {
@@ -81,6 +80,7 @@ export const IngredFieldsStyled = styled.div`
   .numberInput {
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
+    text-align: center;
   }
 
   .measureSelect {
