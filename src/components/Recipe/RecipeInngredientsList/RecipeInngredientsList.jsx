@@ -17,6 +17,7 @@ import { selectShoppingList } from "redux/shoplist/shoplistSelectors";
 const RecipeInngredientsList = ({ ingredients, recipeId }) => {
   const list = useSelector(selectShoppingList);
 
+
   return (
     <Box>
       <List>
@@ -27,7 +28,7 @@ const RecipeInngredientsList = ({ ingredients, recipeId }) => {
             <ListHeaderText>Add to list</ListHeaderText>
           </div>
         </ListItemHeader>
-        {ingredients?.map(({ _id, ttl, thb, measure }) => {
+        {ingredients?.map(({ _id, title, thumb, measure }) => {
           const recipe = list.find((recipe) => recipe.recipeId === recipeId);
           const isChecked = recipe?.ingredients?.some(
             (item) => item.id === _id
@@ -38,8 +39,8 @@ const RecipeInngredientsList = ({ ingredients, recipeId }) => {
           return (
             <ListItem key={_id}>
               <Wrapper>
-                <Img alt={ttl} src={thb} width={48} height={48} />
-                <Title>{ttl}</Title>
+                <Img alt={title} src={thumb} width={48} height={48} />
+                <Title>{title}</Title>
               </Wrapper>
               <ButtonWrapper>
                 <Measure>{measure}</Measure>
@@ -47,6 +48,7 @@ const RecipeInngredientsList = ({ ingredients, recipeId }) => {
                   recipeId={recipeId}
                   ingredientId={_id}
                   isChecked={isChecked}
+                  measure={measure} //fix str in arr
                 />
               </ButtonWrapper>
             </ListItem>

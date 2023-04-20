@@ -25,10 +25,10 @@ export const addProductToShoppingList = createAsyncThunk(
 
   async (product, thunkAPI) => {
     try {
-      console.log(product);
+      console.log('prod',product);
       const response = await UserAPI.addToShoppingList(product);
 
-      console.log(response);
+      console.log('resp',response);
       console.log(response.data);
 
       return response.data;
@@ -50,7 +50,7 @@ export const removeProductFromShoppingList = createAsyncThunk(
 
       return response.data;
 
-    
+
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
