@@ -13,7 +13,7 @@ import { Section, StyledTabs } from './Categories.styled';
 import { Pagination } from 'reusableComponents/Pagination/Pagination';
 import { RecipesAPI } from '../../services/api/API';
 import { CommonItemList } from 'reusableComponents/CommonItemList/CommonItemList';
-import { onCapitalise } from 'services/api/onCapitalise';
+import { onCapitalise } from 'services/onCapitalise';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategories } from 'redux/recipes/recipesOperations';
 import { selectCategoryList } from 'redux/selectors';
