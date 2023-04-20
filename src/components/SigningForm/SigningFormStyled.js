@@ -18,13 +18,7 @@ export const SigninStyled = styled.div`
   padding-bottom: 153px;
   height: 100vh;
   background-color: ${props => props.theme.colors.white};
-  background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.6) 58.58%,
-      rgba(0, 0, 0, 0.345172) 78.98%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    url(${backMob});
+  background-image: url(${backMob});
   background-position: 50% 100%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -71,15 +65,14 @@ export const SigninStyled = styled.div`
 
   img {
     position: absolute;
-    top: 11.5%;
+    top: 24.5%;
     left: auto;
     transform: translateX(-50%);
     z-index: 1;
 
     //tablet
     @media screen and (min-width: 768px) {
-      top: 8.2%;
-      top: 96px;
+      top: 2%;
       left: auto;
       transform: translateX(-50%);
     }

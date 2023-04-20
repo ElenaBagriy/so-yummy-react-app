@@ -67,15 +67,15 @@ export const RegisterStyled = styled.div`
   img {
     position: absolute;
     /* top: 87px; */
-    top: 11.5%;
+    top: 24.5%;
     left: auto;
     transform: translateX(-50%);
     z-index: 1;
 
     //tablet
     @media screen and (min-width: 768px) {
-      top: 96px;
-      /* top: 8.6%; */
+      /* top: 96px; */
+      top: 3%;
       left: auto;
       transform: translateX(-50%);
     }

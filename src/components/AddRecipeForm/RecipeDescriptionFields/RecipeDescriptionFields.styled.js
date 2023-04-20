@@ -18,6 +18,9 @@ export const RecipeDescStyled = styled.div`
     background: ${props => props.theme.colors.green};
   }
 
+  .uploadedImage {
+    object-fit: cover;
+  }
   .deleteBtn {
     border: none;
     background-color: transparent;

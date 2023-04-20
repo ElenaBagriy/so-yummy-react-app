@@ -1,5 +1,5 @@
 // import ReactDOM from 'react-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 // import * as Yup from 'yup';
 import { SigninStyled, LinkStyled, FormWrapper } from './SigningFormStyled';
@@ -21,35 +21,28 @@ import { loginUser } from 'redux/user/userOperations';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-// const SigninSchema = Yup.object().shape({
-//   email: Yup.string().email('Invalid email').required('Required'),
-//   password: Yup.string().min(8, 'Enter a valid password').required('Required'),
-// });
-
-function validateEmail(value) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'Invalid email address';
-  }
-  return error;
-}
-
-function validatePassword(value) {
-  let error;
-  if (!value) {
-    error = 'Required!';
-  } else if (/^\d{10}$/i.test(value)) {
-    error = 'Your password is little secure';
-  }
-
-  return error;
-}
-
 export const SigninForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = 'Invalid email address';
+    }
+    return error;
+  }
+
+  function validatePassword(value) {
+    let error;
+
+    if (!value) {
+      error = 'Required!';
+    }
+    return error;
+  }
 
   return (
     <SigninStyled>
