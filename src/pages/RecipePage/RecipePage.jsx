@@ -42,6 +42,7 @@ const RecipePage = () => {
         id={_id}
         favorite={favorite}
       />
+      <RecipeSkeleton />
       {isLoadingShoppingList || isLoading ? (
         <RecipeSkeleton />
       ) : (<>

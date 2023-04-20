@@ -16,7 +16,6 @@ import { selectShoppingList } from "../../../redux/selectors";
 
 export const RecipeIngredientsList = ({ ingredients }) => {
   const list = useSelector(selectShoppingList);
-  console.log(list);
 
   return (
     <Box>

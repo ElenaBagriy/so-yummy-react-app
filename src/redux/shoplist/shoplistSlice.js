@@ -3,13 +3,7 @@ import { addProductToShoppingList, fetchShoppingList, removeProductFromShoppingL
 
 
 const initialState = {
-  products: [    {
-    "productId": "640cd5ac2d9fecf12e8897fc",
-    "title": "Meat",
-    "thumb": "https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg",
-    "measure": "400g",
-  },
-  ],
+  products: [],
   isLoading: false,
   error: null,
 };
