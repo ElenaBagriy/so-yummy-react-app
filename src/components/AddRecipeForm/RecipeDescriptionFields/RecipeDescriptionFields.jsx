@@ -66,17 +66,18 @@ export const RecipeDescriptionFields = ({ categories }) => {
       </label>
       <InputsStyled>
         <label>
-          <input placeholder="Enter item title" {...register('title')} />
+          {' '}
+          <span>Enter item title</span>
+          <input {...register('title')} />
         </label>
         <label>
-          <input
-            placeholder="Enter about recipe"
-            {...register('description')}
-          />
+          {' '}
+          <span>Enter about recipe</span>
+          <input {...register('description')} />
         </label>
         {errors.exampleRequired && <span>This field is required</span>}
-        <label>
-          Category
+        <label className="wrapperCategory">
+          <span>Category</span>
           <select {...register('category')}>
             {categories.map(item => (
               <option
@@ -89,9 +90,9 @@ export const RecipeDescriptionFields = ({ categories }) => {
             ))}
           </select>
         </label>
-        <label>
+        <label className="wrapperCategory">
           {' '}
-          Cooking time
+          <span>Cooking time</span>
           <select placeholder="Cooking time" {...register('time')}>
             {timeOptions.map(item => (
               <option key={item} value={item} {...register(`${item}`)}>

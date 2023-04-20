@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { StyledPreparation } from './RecipePreparationFields.styled';
 
 export const RecipePreparationFields = () => {
   const {
@@ -11,18 +12,15 @@ export const RecipePreparationFields = () => {
   // const onSubmit = data => console.log(data);
 
   return (
-    <div>
+    <StyledPreparation>
       <h3>Recipe Preparation</h3>
       <label>
         <textarea
           placeholder="Enter recipe"
           name="preparation"
-          // id=""
-          // cols="30"
-          // rows="10"
-          {...register('recipe', {})}
+          {...register('preparation')}
         ></textarea>
       </label>
-    </div>
+    </StyledPreparation>
   );
 };

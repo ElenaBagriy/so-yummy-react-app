@@ -50,13 +50,16 @@ const recipesSlice = createSlice({
       // ------------ Get Recipes Main Page ----------------
       .addCase(getRecipesMainPage.pending, handlePending)
       .addCase(getRecipesMainPage.fulfilled, (state, { payload }) => {
-        state.mainPageRecipes = Object.entries(payload).reduce((acc, element) => {
-          const obj = {
-            title: element[0],
-            data: element[1],
-          };
-          return acc = [...acc, obj]
-        }, []);
+        state.mainPageRecipes = Object.entries(payload).reduce(
+          (acc, element) => {
+            const obj = {
+              title: element[0],
+              data: element[1],
+            };
+            return (acc = [...acc, obj]);
+          },
+          []
+        );
         state.isLoading = false;
       })
       .addCase(getRecipesMainPage.rejected, handleRejected)
@@ -73,12 +76,12 @@ const recipesSlice = createSlice({
       .addCase(toggleFavoriteRecipesById.pending, handlePending)
       .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => {
         state.isLoading = false;
-       })
+      })
       .addCase(toggleFavoriteRecipesById.rejected, handleRejected)
 
       // ------------ Toggle Like Recipes Status By Id ----------------
       .addCase(toggleLikeRecipesStatusById.pending, handlePending)
-      .addCase(toggleLikeRecipesStatusById.fulfilled, (state, action) => { })
+      .addCase(toggleLikeRecipesStatusById.fulfilled, (state, action) => {})
       .addCase(toggleLikeRecipesStatusById.rejected, handleRejected)
 
       // ------------ Get Recipe By Id ----------------
@@ -93,7 +96,10 @@ const recipesSlice = createSlice({
       .addCase(getAllCategories.pending, handlePending)
       .addCase(getAllCategories.fulfilled, (state, action) => {
         state.categoryList = action.payload
-          .map(result => ({ id: result._id, title: result.title.toLowerCase() }))
+          .map(result => ({
+            id: result._id,
+            title: result.title.toLowerCase(),
+          }))
           .sort((a, b) => a.title.localeCompare(b.title));
         state.isLoading = false;
       })
@@ -104,7 +110,7 @@ const recipesSlice = createSlice({
       .addCase(getRecipesByTitleQuery.fulfilled, (state, { payload }) => {
         state.searchRecipes = payload;
         state.isLoading = false;
-       })
+      })
       .addCase(getRecipesByTitleQuery.rejected, handleRejected)
 
       // ------------ Get Ingredients By Query ----------------
@@ -119,9 +125,10 @@ const recipesSlice = createSlice({
       .addCase(getIngredients.pending, handlePending)
       .addCase(getIngredients.fulfilled, (state, action) => {
         state.ingredientsList = action.payload.ingredients;
+
         state.isLoading = false;
       })
-      .addCase(getIngredients.rejected, handleRejected)
+      .addCase(getIngredients.rejected, handleRejected),
 });
 
 export const recipesReducer = recipesSlice.reducer;
