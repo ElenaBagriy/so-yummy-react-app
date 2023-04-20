@@ -12,12 +12,12 @@ import {
 } from "./RecipeIngredientsList.styled";
 import { CustomCheckbox } from "../Checkbox/Checkbox";
 import { useSelector } from "react-redux";
-import { selectShoppingList } from "redux/shoplist/shoplistSelectors";
+import { selectShoppingList } from "../../../redux/selectors";
 
 export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   const list = useSelector(selectShoppingList);
-
-
+  console.log('ingredients',ingredients);
+  console.log('list', list);
   return (
     <Box>
       <List>
@@ -28,15 +28,17 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
             <ListHeaderText>Add to list</ListHeaderText>
           </div>
         </ListItemHeader>
-        {ingredients?.map(({ _id, title, thumb, measure }) => {
-          const recipe = list.find((recipe) => recipe.recipeId === recipeId);   /// в списке покупок ищем номер рецепта????
-          const isChecked = recipe?.ingredients?.some(
-            (item) => item.id === _id  //заменить по 
-          );
+        {ingredients && ingredients.map(({ _id, title, thumb, measure }) => {
+          const isChecked = list.some((item) => item.productId === _id && item.measure[0] === measure );
+          console.log(isChecked);
+          // const recipe = list.find((recipe) => recipe.recipeId === recipeId);   /// в списке покупок ищем номер рецепта????
+          // const isChecked = recipe?.ingredients?.some(
+          //   (item) => item.id === _id  //заменить по 
+          // );
           if (!_id) {
             return null;
           }
-                      return (
+          return (
             <ListItem key={_id}>
               <Wrapper>
                 <Img alt={title} src={thumb} width={48} height={48} />

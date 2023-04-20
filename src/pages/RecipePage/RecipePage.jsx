@@ -5,25 +5,17 @@ import { RecipeIngredientsList } from "../../components/Recipe/RecipeIngredients
 import { RecipePageHero } from "../../components/Recipe/RecipePageHero/RecipePageHero";
 import { RecipePreparation } from "../../components/Recipe/RecipePreparation/RecipePreparation";
 import { RecipeSkeleton } from "../../components/Recipe/RecipeSceleton";
-import {
-  getRecipeById,
-  // getRecipesFavorite      //проверить
-} from "redux/recipes/recipesOperations";
-import {
-  selectChoosedRecipe,
-  selectLoadingRecipes,
-  // selectUserFavoritesIsLoading,
-} from "../../redux/selectors";
-import { fetchShoppingList } from "redux/shoplist/shoplistOperation";
-import { selectShoppingIsLoading } from "../../redux/selectors";
+import { getRecipeById } from "redux/recipes/recipesOperations";
+import { selectChoosedRecipe, selectLoadingRecipes, selectShoppingIsLoading } from "../../redux/selectors";
+import { fetchShoppingList } from "../../redux/shoplist/shoplistOperation";
 
 const RecipePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  // const {page} = useState(1);
+ 
   const {
     description,
-    ingredients,    //в документации ingridients
+    ingredients,
     instructions,
     previewImg,
     time,
@@ -36,7 +28,6 @@ const RecipePage = () => {
   useEffect(() => {
     dispatch(fetchShoppingList());
     dispatch(getRecipeById(id));
-    // dispatch(getRecipesFavorite({page}));    // getRecipesFavorite      //проверить
   }, [dispatch, id]);
     
   const isLoadingShoppingList = useSelector(selectShoppingIsLoading);
@@ -51,17 +42,17 @@ const RecipePage = () => {
         id={_id}
         favorite={favorite}
       />
-      {isLoadingShoppingList || isLoading  ? (
+      {isLoadingShoppingList || isLoading ? (
         <RecipeSkeleton />
       ) : (<>
-      <RecipeIngredientsList ingredients={ingredients} recipeId={_id} />
-            <RecipePreparation
-              preview={previewImg}
-              title={title}
-              instructions={instructions}
-              tags={tags}
-          />
-     </> )}
+          <RecipeIngredientsList ingredients={ingredients} recipeId={_id} />
+          <RecipePreparation
+            preview={previewImg}
+            title={title}
+            instructions={instructions}
+            tags={tags}
+        />
+      </>)}
     </>
   );
 };
