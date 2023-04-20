@@ -1,5 +1,6 @@
 import { Avatar, Backdrop } from '@mui/material';
 import styled from 'styled-components';
+import closeIcon from 'images/svg/x.svg';
 
 export const StyledBackdrop = styled(Backdrop)`
   &.MuiBackdrop-root {
@@ -13,13 +14,46 @@ export const EditProfileWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 500px;
-  height: 425px;
-  padding: 60px 50px;
+  width: 330px;
+  height: 327px;
+  padding: 32px 24px;
 
   background-color: #fafafa;
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
+
+  @media screen and (min-width: 768px) {
+    width: 480px;
+    height: 402px;
+    padding: 50px 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 500px;
+    height: 425px;
+    padding: 60px 50px;
+  }
+`;
+
+export const EditProfileCloseButton = styled.button`
+  display: block;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${closeIcon});
+  @media screen and (min-width: 768px) {
+    top: 24px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const StyledEditProfileForm = styled.form`
@@ -36,20 +70,21 @@ export const StyledAvatarLabel = styled.label`
 
 export const StyledAvatar = styled(Avatar)`
   &.MuiAvatar-root {
-    width: 103px;
-    height: 103px;
+    width: 88px;
+    height: 88px;
     cursor: pointer;
-    /* margin-right: 14px; */
 
-    /* @media screen and (min-width: 768px) {
-      width: 44px;
-      height: 44px;
-    } */
+    @media screen and (min-width: 768px) {
+      width: 103px;
+      height: 103px;
+    }
   }
 `;
+
 export const StyledFileInput = styled.input`
   display: none;
 `;
+
 export const PlusSVG = styled.svg`
   position: absolute;
   bottom: 0;
@@ -66,16 +101,22 @@ export const SimpleDiv = styled.div`
   flex-direction: column;
   /* align-items: center; */
   width: 100%;
-  gap: 32px;
+  gap: 24px;
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
 `;
 
 export const StyledNameInput = styled.input`
   display: inline-block;
   width: 100%;
-  padding: 16px 51px;
+  padding: 14px 40px;
   background-color: transparent;
   border: 1px solid #23262a;
   border-radius: 6px;
+  @media screen and (min-width: 768px) {
+    padding: 16px 51px;
+  }
 `;
 
 export const StyledNameLabel = styled.label`
@@ -85,30 +126,45 @@ export const StyledNameLabel = styled.label`
 export const UserSVG = styled.svg`
   position: absolute;
   top: 50%;
-  left: 19px;
+  left: 14px;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    left: 19px;
+  }
 `;
 
 export const EditSVG = styled.svg`
   position: absolute;
   top: 50%;
-  right: 19px;
+  right: 14px;
   transform: translateY(-50%);
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    right: 19px;
+  }
 `;
 
 export const SaveChangesBtn = styled.button`
   text-align: center;
-  padding: 18px;
+  padding: 14px;
   background: #8baa36;
   border: none;
   border-radius: 6px;
 
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.12;
+  font-size: 14px;
+  line-height: 1.29;
   color: #fafafa;
+  @media screen and (min-width: 768px) {
+    padding: 18px;
+    font-size: 16px;
+    line-height: 1.12;
+  }
 `;
