@@ -5,20 +5,18 @@ import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect, useMemo, useState } from "react";
-// import { getRecipesFavorite, toggleFavoriteRecipesById } from "redux/recipes/recipesOperations";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import timeConvert from "services/timeConverter";
 import { Tooltip, useMediaQuery } from "@mui/material";
 import EllipsisText from "react-ellipsis-text";
-import { selectMyRecipes } from "redux/myRecipes/myRecipesSelectors";
-import { deleteMyRecipes, fetchMyRecipes } from "redux/myRecipes/myRecipesOperations";
-import { selectFavoriteRecipesTotalPages } from "redux/selectors";
+import { selectMyRecipes, selectTotalPageRecipe } from "redux/selectors";
+import { deleteOwnRecipe, getAllOwnRecipes } from "redux/ownRecipes/ownRecipesOperations";
 
 
 export const MyRecipesList = () => {
     const dispatch = useDispatch();
     const myRecipes = useSelector(selectMyRecipes);
-    const totalPages = useSelector(selectFavoriteRecipesTotalPages); //изменить
+    const totalPages = useSelector(selectTotalPageRecipe); //изменить?
     
     const [page, setPage] = useState(1);
     const [deviceType, setDeviceType] = useState('');
@@ -68,7 +66,7 @@ export const MyRecipesList = () => {
     }, [mobile, tablet, desktop, deviceType, length]);
     
     useEffect(() => {
-        dispatch(fetchMyRecipes({page}));
+        dispatch(getAllOwnRecipes({page}));
     }, [dispatch, page]);
 
     const handleChangePage = (_, value) => {
@@ -83,7 +81,10 @@ export const MyRecipesList = () => {
 
     const onDelete = (id) => {
         console.log('id', id);
-        dispatch(deleteMyRecipes(id))
+        dispatch(deleteOwnRecipe(id))
+        .then(() => {
+            dispatch(getAllOwnRecipes({ page }))
+        });
     };
     
     return         <>
