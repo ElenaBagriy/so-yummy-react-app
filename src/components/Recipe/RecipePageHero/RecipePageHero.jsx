@@ -5,15 +5,16 @@ import {
   Box,
   Button,
   ClockSvg,
-  ImgBox,
+  Hero,
   MainPageTitle,
   Text,
+  TextWrapper,
   Time,
 } from "./RecipePageHero.styled";
 import { toggleFavoriteRecipesById } from "../../../redux/recipes/recipesOperations";
 import { selectLoadingRecipes } from "../../../redux/selectors";
 import ButtonLoader from "../../ButtonLoader/ButtonLoader";
-import { Container } from "reusableComponents/Container/Container";
+import timeConvert from "services/timeConverter";
 
 export const RecipePageHero = ({ title, description, time, id, favorite }) => {
   const [first, setFirst] = useState(false);
@@ -28,10 +29,10 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
 
   useEffect(() => {
     setIsFavorite(favorite);
-    if (!first) {
-      setFirst(true);
-      topRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    // if (!first) {
+    //   setFirst(true);
+    //   topRef.current.scrollIntoView({ behavior: "smooth" });
+    // }
   }, [ favorite, first]);
 
   const handleFavoriteButton = (id) => {
@@ -40,34 +41,35 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
       };
 
       return (
-    <>
-          <ImgBox />
-          <Container>
-      <MainPageTitle $isBig={title?.split(" ").length > 6} ref={topRef}>
-        {title}
-      </MainPageTitle>
-      <Text $isBig={title?.split(" ").length > 6}>{description}</Text>
-      <Button
-        disabled={isLoading}
-        whileHover={{
-          backgroundColor: theme.colors.green,
-          borderColor: theme.colors.green,
-        }}
-        onClick={() => handleFavoriteButton(id)}
-      >
-        {isLoading ? (
-          <ButtonLoader color="white" width={25} />
-        ) : isFavorite ? (
-          "Remove from favorite recipes"
-        ) : (
-          "Add to favorite recipes"
-        )}
-      </Button>
-      <Box>
-        <ClockSvg />
-        <Time>{time} min</Time>
-            </Box>
-            </Container>
-    </>
+        <Hero>
+          <TextWrapper>
+          <MainPageTitle
+            // $isBig={title?.split(" ").length > 6}
+          >
+            {title}
+          </MainPageTitle>
+            <Text $isBig={title?.split(" ").length > 6}>{description}</Text>
+            </TextWrapper>
+          <Button
+            disabled={isLoading}
+            whileHover={{
+              backgroundColor: theme.colors.green,
+              borderColor: theme.colors.green,
+            }}
+            onClick={() => handleFavoriteButton(id)}
+          >
+            {isLoading ? (
+              <ButtonLoader color="white" width={25} />
+            ) : isFavorite ? (
+                "Remove from favorite recipes"
+              ) : (
+              "Add to favorite recipes"
+            )}
+          </Button>
+          <Box>
+            <ClockSvg />
+            <Time>{timeConvert(time)}</Time>
+          </Box>
+    </Hero>
   );
 };

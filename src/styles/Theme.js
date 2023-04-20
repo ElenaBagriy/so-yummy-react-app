@@ -9,6 +9,7 @@ const lightTheme = {
     green: '#8BAA36',
     black: '#22252A',
     white: '#ffffff',
+    title: '#001833',
   },
   text: {
     hero: '#22252A',
