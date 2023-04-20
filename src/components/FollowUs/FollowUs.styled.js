@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledFollow = styled.div`
@@ -16,9 +15,11 @@ export const StyledFollow = styled.div`
   }
 `;
 
-export const StyledLink = styled(Link)`
+export const SocialSVG = styled.svg`
+  transition: fill 0.5s;
+
   &:hover,
   &:focus {
-    color: #1e1f28;
+    fill: #ffffff;
   }
 `;
