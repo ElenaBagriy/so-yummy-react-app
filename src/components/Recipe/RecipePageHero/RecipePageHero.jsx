@@ -10,36 +10,28 @@ import {
   Text,
   Time,
 } from "./RecipePageHero.styled";
-import {
-  toggleFavoriteRecipesById,
-} from "redux/recipes/recipesOperations";
-import {
-  selectLoadingRecipes,
-  // selectUserFavouritesRecipes,    //проверить
-} from "../../../redux/selectors";
-import ButtonLoader from "components/ButtonLoader/ButtonLoader";
+import { toggleFavoriteRecipesById } from "../../../redux/recipes/recipesOperations";
+import { selectLoadingRecipes } from "../../../redux/selectors";
+import ButtonLoader from "../../ButtonLoader/ButtonLoader";
 
 export const RecipePageHero = ({ title, description, time, id, favorite }) => {
-  // const userFavouritesRecipes = useSelector(selectUserFavouritesRecipes);    //проверить
   const [first, setFirst] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(favorite);
+  const [isFavorite, setIsFavorite] = useState(null);
+
   const dispatch = useDispatch();
   const theme = useTheme();
 
   const isLoading = useSelector(selectLoadingRecipes);
-  console.log(isLoading);
 
   const topRef = useRef();
 
   useEffect(() => {
-
+    setIsFavorite(favorite);
     if (!first) {
-      // console.log(first);
-      // setIsFavorite(userFavouritesRecipes.some((recipe) => recipe._id === id));    //проверить заменить селектором isFavorite
       setFirst(true);
       topRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [ id, first]);
+  }, [ id, first, favorite]);
     
   const handleFavoriteButton = (id) => {
     dispatch(toggleFavoriteRecipesById(id));
@@ -64,7 +56,7 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
         {isLoading ? (
           <ButtonLoader color="white" width={25} />
         ) : isFavorite ? (
-          "Remove to favorite recipes"
+          "Remove from favorite recipes"
         ) : (
           "Add to favorite recipes"
         )}

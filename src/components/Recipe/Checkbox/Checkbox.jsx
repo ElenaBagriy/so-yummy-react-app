@@ -3,17 +3,17 @@ import { removeProductFromShoppingList, addProductToShoppingList } from "redux/s
 import { useState } from "react";
 import { SvgCheck, Box } from "./Checkbox.styled";
 
-export const CustomCheckbox = ({ ingredientId, isChecked, measure }) => {
+export const CustomCheckbox = ({ ingredientId: productId, isChecked, measure }) => {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(isChecked);
 
   const handleChange = () => {
     if (!checked) {
-      // const productId = ingredientId
-      dispatch(addProductToShoppingList({ ingredientId, measure }));
+      dispatch(addProductToShoppingList({ productId, measure }));
+      setChecked(true);
     } else {
-      // const id = ingredientId;
-      dispatch(removeProductFromShoppingList({ ingredientId, measure }));
+      dispatch(removeProductFromShoppingList({ productId, measure }));
+      setChecked(false);
     }
     setChecked(!checked);
   };
