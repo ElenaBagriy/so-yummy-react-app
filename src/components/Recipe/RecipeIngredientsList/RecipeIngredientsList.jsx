@@ -22,7 +22,7 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
     <Box>
       <List>
         <ListItemHeader>
-          <ListHeaderText>Product</ListHeaderText>
+          <ListHeaderText>Ingredients</ListHeaderText>
           <div>
             <ListHeaderText>Number</ListHeaderText>
             <ListHeaderText>Add to list</ListHeaderText>
@@ -33,7 +33,7 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
           console.log(isChecked);
           // const recipe = list.find((recipe) => recipe.recipeId === recipeId);   /// в списке покупок ищем номер рецепта????
           // const isChecked = recipe?.ingredients?.some(
-          //   (item) => item.id === _id  //заменить по 
+          //   (item) => item.id === _id  //заменить по
           // );
           if (!_id) {
             return null;

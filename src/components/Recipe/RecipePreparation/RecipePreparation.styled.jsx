@@ -10,12 +10,10 @@ export const MainBox = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-top: 50px;
   font-size: ${(p) => p.theme.fontSizes.m};
   line-height: 1;
   letter-spacing: -0.24px;
   ${(p) => p.theme.sizes.tablet} {
-    margin-top: 96px;
   }
 `;
 
@@ -41,6 +39,7 @@ export const Box = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 260px;
   }
 `;
 
@@ -53,17 +52,16 @@ export const Item = styled.li`
 
 export const SpanBox = styled.div`
   color: white;
-  min-width: 25px;
-  min-height: 25px;
-  max-height: 25px;
-  border-radius: 50%;
-  background: ${(p) => p.theme.colors.accentColor};
-  ${(p) => p.theme.flexCentered};
 `;
 export const Span = styled.span`
   font-weight: ${(p) => p.theme.fontWeights.semiBold};
   font-size: ${(p) => p.theme.fontSizes.xxs};
   line-height: 1.3;
+  border-radius: 50%;
+  display: block;
+  padding: 5px 10px;
+  background: ${(p) => p.theme.colors.green};
+  ${(p) => p.theme.flexCentered};
 `;
 
 export const Img = styled.img`

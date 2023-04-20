@@ -1,9 +1,19 @@
 import styled from "styled-components";
 
 export const Box = styled.div`
-  margin-top: 144px;
+  margin: 120px auto ;
+  width: 95%;
+  @media screen and (min-width: 555px) {
+margin: 140px auto ;
+  width: 95%;
+  }
   ${(p) => p.theme.sizes.tablet} {
-    margin-top: 80px;
+    width: 95%;
+    margin: 80px auto;
+  }
+  ${(p) => p.theme.sizes.desktop} {
+    width: 95%;
+    margin: 50px auto;
   }
 `;
 
@@ -15,9 +25,9 @@ export const ListItemHeader = styled.li`
   justify-content: space-between;
   padding: 10px 10px;
   width: 100%;
-  height: 38px;
   max-width: 1240px;
-  background-color: ${(p) => p.theme.colors.accentColor};
+    min-width: 100%;
+  background-color: ${(p) => p.theme.colors.green};
   border-radius: 8px;
   ${(p) => p.theme.sizes.tablet} {
     padding: 20px 20px;
@@ -52,7 +62,7 @@ export const ListItem = styled.li`
   align-items: center;
   justify-content: space-between;
   padding: 14.5px 29px 14px 14px;
-  background: ${(p) => p.theme.colors.secondaryBackground};
+  background: ${(p) => p.theme.colors.lightGreen};
   border-radius: 8px;
   :nth-of-type(2) {
     margin-top: 24px;
@@ -98,7 +108,7 @@ export const Title = styled.h2`
 export const Measure = styled.span`
   color: ${(p) => p.theme.colors.secondaryText};
   padding: 4px 10px;
-  background-color: ${(p) => p.theme.colors.accentColor};
+  background-color: ${(p) => p.theme.colors.green};
   border-radius: 4px;
   font-size: ${(p) => p.theme.fontSizes.xxs};
   line-height: 1.2;

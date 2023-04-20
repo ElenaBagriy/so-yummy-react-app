@@ -32,12 +32,12 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
       topRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [ id, first, favorite]);
-    
+
   const handleFavoriteButton = (id) => {
     dispatch(toggleFavoriteRecipesById(id));
     setIsFavorite(!isFavorite);
       };
-    
+
       return (
     <>
       <ImgBox />
@@ -48,8 +48,8 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
       <Button
         disabled={isLoading}
         whileHover={{
-          backgroundColor: theme.colors.accentColor,
-          borderColor: theme.colors.accentColor,
+          backgroundColor: theme.colors.green,
+          borderColor: theme.colors.green,
         }}
         onClick={() => handleFavoriteButton(id)}
       >
@@ -62,7 +62,7 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
         )}
       </Button>
       <Box>
-        {/* <ClockSvg /> */}
+        <ClockSvg />
         <Time>{time} min</Time>
       </Box>
     </>
