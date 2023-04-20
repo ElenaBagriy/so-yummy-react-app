@@ -123,6 +123,8 @@ export const RecipesAPI = {
 
   getIngredients: async () => {
     const { data } = await axios.get(`/recipes/ingredients`);
+    return data;
+  },
 
   getRecipesByIngredientsQuery: async ({ query = '', page = 1, limit = 12 }) => {
     const { data } = await axios.get(`/recipes/ingredient/${query}?page=${page}&limit=${limit}`);
