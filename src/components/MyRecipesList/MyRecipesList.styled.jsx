@@ -194,7 +194,7 @@ export const Link = styled(NavLink)`
 
   &:hover,
   :focus {
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.colors.black};
     color: ${props => props.theme.colors.bgMain};
   };
 
@@ -243,7 +243,7 @@ export const DeleteButton = styled.button`
 
     &:hover,
     :focus {
-        background-color: ${props => props.theme.colors.green};
+        background-color: ${props => props.theme.colors.black};
         stroke: ${props => props.theme.colors.bgMain};
     }
 `;

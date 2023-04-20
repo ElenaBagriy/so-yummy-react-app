@@ -2,30 +2,24 @@ import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { IconButton, Tooltip } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-// import Select from 'react-select';
+// import AddIcon from '@mui/icons-material/Add';
+// import RemoveIcon from '@mui/icons-material/Remove';
+import {
+  IngredFieldsStyled,
+  RecipeIngredStyled,
+} from './RecipeIngredientsFields.styled';
 
 export const RecipeIngredientsFields = ({ ingredients }) => {
   const {
     register,
     control,
     // formState: { errors },
-  } = useForm({
-    defaultValues: {
-      ingredients: { name: 'Chicken', amount: 0, measure: 'tbs' },
-    },
-  });
+  } = useForm();
 
   const { fields, append, remove } = useFieldArray({
     name: 'ingredients',
     control,
   });
-
-  const addField = data => {
-    setNumberOfFields(prevState => prevState + 1);
-    append(data);
-  };
 
   const deleteField = index => {
     if (!numberOfFields) return;
@@ -45,79 +39,100 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
 
   return (
     <>
-      <div>
-        <h3>Ingredients</h3>
+      <RecipeIngredStyled>
         <div>
+          <h3>Ingredients</h3>
+        </div>
+        <div className="counterWrapper">
           <Tooltip title="Remove one field">
-            <IconButton onClick={index => deleteField(index)}>
-              <RemoveIcon />
-            </IconButton>
+            <button onClick={index => deleteField(index)}>
+              -{/* <RemoveIcon /> */}
+            </button>
           </Tooltip>
 
-          <span>{numberOfFields > 0 ? numberOfFields : 0}</span>
+          <span className="counter">
+            {numberOfFields > 0 ? numberOfFields : 0}
+          </span>
           <Tooltip title="Add one field">
             <span>
-              <IconButton onClick={() => addField()}>
-                <AddIcon />
-              </IconButton>
+              <button
+                onClick={() => {
+                  setNumberOfFields(prevState => prevState + 1);
+                  append({});
+                }}
+              >
+                {' '}
+                +{/* <AddIcon /> */}
+              </button>
             </span>
           </Tooltip>
         </div>
-      </div>
+      </RecipeIngredStyled>
 
-      {fields.map((field, index) => {
+      {fields.map(({ id, name, amount, measure }, index) => {
         return (
-          <div key={field.id}>
-            <select
-              name={`ingredients.${index}.name`}
-              {...register('ingredients')}
-            >
-              <option value="" name={`ingredients.${index}.default`}></option>
-              {ingredients?.map(item => (
-                <option
-                  key={item._id}
-                  value={item.ttl}
-                  name={`ingredients.${index}.name`}
-                  {...register(`${item.ttl}`)}
+          <>
+            <IngredFieldsStyled key={id}>
+              <label>
+                <select
+                  {...register('ingredients')}
+                  name={`ingredients[${index}].name`}
+                  defaultValue={name}
+                  className="selectIngredients"
                 >
-                  {item.ttl}
-                </option>
-              ))}
-            </select>
+                  {/* <option value="" name={`ingredients[${index}].default`}></option> */}
+                  {ingredients?.map((item, index) => (
+                    <option
+                      key={item._id}
+                      value={item.ttl}
+                      name={`ingredients[${index}].name`}
+                      {...register(`${item.ttl}`)}
+                    >
+                      {item.ttl}
+                    </option>
+                  ))}
+                </select>
+              </label>
 
-            <label>
-              <input
-                type="number"
-                {...register('amount')}
-                name={`ingredients.${index}.amount`}
-              />
+              <label>
+                <input
+                  type="number"
+                  min="0"
+                  {...register('amount')}
+                  name={`ingredients[${index}].amount`}
+                  defaultValue={amount}
+                  className="numberInput"
+                />
 
-              <select
-                {...register('measure')}
-                name={`ingredients.${index}.measure`}
-              >
-                {measurement?.map((item, index) => (
-                  <option
-                    key={item}
-                    value={item}
-                    name={`ingredients.${index}.unit`}
-                    {...register(`${item}`)}
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <Tooltip title="Delete field">
-              <IconButton
-                onClick={index => {
-                  deleteField(index);
-                }}
-              >
-                <ClearIcon />
-              </IconButton>
-            </Tooltip>
-          </div>
+                <select
+                  {...register('measure')}
+                  name={`ingredients[${index}].measure`}
+                  defaultValue={measure}
+                  className="measureSelect"
+                >
+                  {measurement?.map((item, index) => (
+                    <option
+                      key={item}
+                      value={item}
+                      name={`ingredients[${index}].unit`}
+                      {...register(`${item}`)}
+                    >
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <Tooltip title="Delete field" className="deleteBtn">
+                <IconButton
+                  onClick={index => {
+                    deleteField(index);
+                  }}
+                >
+                  <ClearIcon />
+                </IconButton>
+              </Tooltip>
+            </IngredFieldsStyled>
+          </>
         );
       })}
     </>
