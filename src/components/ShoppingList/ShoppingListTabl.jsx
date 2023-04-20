@@ -19,8 +19,8 @@ export default function IngredientsShoppingList() {
   const dispatch = useDispatch();
   const products = useSelector(selectShoppingList);
 
-  const deleteProduct = ({ productId, measure }) => {
-    dispatch(removeProductFromShoppingList({ productId, measure }))
+  const deleteProduct = ({ productId, measureString }) => {
+    dispatch(removeProductFromShoppingList({ productId, measure: measureString }))
   };
 
   return (
@@ -31,10 +31,12 @@ export default function IngredientsShoppingList() {
         <p>Remove</p>
       </IngredientsShoppingListHead>
       <IngredientsShoppingListStyled>
-        {products.map(({ productId, title, thumb, measure }) => (
-          <IngredientsShoppingListItem key={productId}>
+        {products.map(({ productId, title, thumb, measure }) => {
+          const measureString = measure.toString();
+
+          return (<IngredientsShoppingListItem key={productId}>
             <BoxForImage>
-            <IngredientsShoppingListImg src={thumb} alt={title} />
+              <IngredientsShoppingListImg src={thumb} alt={title} />
             </BoxForImage>
             
             <p>{title}</p>
@@ -42,12 +44,12 @@ export default function IngredientsShoppingList() {
             <IngredientsShoppingListMeasure>
               {measure}
             </IngredientsShoppingListMeasure>
-              <DeleteBtn type='button'
-                onClick={() => deleteProduct({ productId, measure })}>
-                <DelIconStyled />
-              </DeleteBtn>
-          </IngredientsShoppingListItem>
-        ))}
+            <DeleteBtn type='button'
+              onClick={() => deleteProduct({ productId, measureString })}>
+              <DelIconStyled />
+            </DeleteBtn>
+          </IngredientsShoppingListItem>)
+        })}
       </IngredientsShoppingListStyled>
     </div>
   );
