@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
-// import { ReactComponent as ClockIcon } from "../../../svg/clock.svg";
+import { ReactComponent as ClockIcon } from "../../../images/svg/clock.svg";
 import backgroundDesktop from "../../../images/recipePage/vegetables@1x.jpg";
 import backgroundMobile from "../../../images/recipePage/vegetables@3x.jpg";
 import backgroundTablet from "../../../images/recipePage/vegetables@2x.jpg";
@@ -13,14 +13,18 @@ export const ImgBox = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center center;
+  background-size: cover;
   width: 100%;
   height: 455px;
   background-image: url(${backgroundMobile});
   @media screen and (min-width: 555px) {
+    background-size: cover;
+    height: 455px;
     background-image: url(${backgroundTablet});
   }
   ${(p) => p.theme.sizes.tablet} {
     height: 495px;
+    background-size: cover;
     background-image: url(${backgroundTablet});
   }
   ${(p) => p.theme.sizes.desktop} {
@@ -33,17 +37,18 @@ export const ImgBox = styled.div`
 export const MainPageTitle = styled.h1`
   position: relative;
   z-index: 3;
-  padding-top: 30px;
-  color: ${(p) => p.theme.colors.accentColor};
+  color: ${(p) => p.theme.colors.green};
   text-align: center;
   font-size: ${(p) => p.theme.fontSizes.m};
   line-height: 1;
+  padding-top: 144px;
   letter-spacing: ${(p) => p.theme.letterSpacings.base};
   ${(p) => p.theme.sizes.tablet} {
     font-size: ${(p) => p.theme.fontSizes.xl};
+    padding-top: 136px;
   }
   ${(p) => p.theme.sizes.desktop} {
-    padding-top: 0;
+    padding-top: 164px;
     font-size: ${(p) => p.theme.fontSizes.xl};
     ${(p) =>
       p.$isBig &&
@@ -112,14 +117,14 @@ export const Box = styled.div`
   }
 `;
 
-// export const ClockSvg = styled(ClockIcon)`
-//   width: 18px;
-//   height: 18px;
-//   ${(p) => p.theme.sizes.tablet} {
-//     width: 24px;
-//     height: 24px;
-//   }
-// `;
+export const ClockSvg = styled(ClockIcon)`
+  width: 18px;
+  height: 18px;
+  ${(p) => p.theme.sizes.tablet} {
+    width: 24px;
+    height: 24px;
+  }
+`;
 
 export const Time = styled.span`
   margin-left: 5px;

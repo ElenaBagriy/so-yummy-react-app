@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { ReactComponent as CheckIcon } from "svg/checkbox.svg";
+import { ReactComponent as CheckIcon } from "images/svg/checkbox.svg";
 
 export const Box = styled.div`
   display: flex;
@@ -23,12 +23,12 @@ export const Box = styled.div`
   }
 `;
 
-// export const SvgCheck = styled(CheckIcon)`
-//   width: 8.7px;
-//   height: 8.7px;
-//   margin: 0 auto;
-//   ${(p) => p.theme.sizes.tablet} {
-//     width: 17px;
-//     height: 17px;
-//   }
-// `;
+export const SvgCheck = styled(CheckIcon)`
+  width: 8.7px;
+  height: 8.7px;
+  margin: 0 auto;
+  ${(p) => p.theme.sizes.tablet} {
+    width: 17px;
+    height: 17px;
+  }
+`;
