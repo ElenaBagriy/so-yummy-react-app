@@ -71,8 +71,7 @@ const recipesSlice = createSlice({
       .addCase(getRecipesFavorite.fulfilled, (state, action) => {  ////check if proper
         state.userFavoritesIsLoading = false;
         state.error = null;
-        state.recipes = action.payload;
-        // state.userFavouritesRecipes = action.payload.favorites
+        state.userFavouritesRecipes = action.payload.recipes
       })
       .addCase(getRecipesFavorite.rejected, (state, action) => {
         state.userFavoritesIsLoading = false;
@@ -81,7 +80,9 @@ const recipesSlice = createSlice({
 
       // ------------ Toggle Favorite Recipes By Id ----------------
       .addCase(toggleFavoriteRecipesById.pending, handlePending)
-      .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => { })
+      .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => {  ////check if proper
+        state.isLoading = false;
+      })
       .addCase(toggleFavoriteRecipesById.rejected, handleRejected)
 
       // ------------ Toggle Like Recipes Status By Id ----------------

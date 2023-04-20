@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleFavoriteRecipesById,
-} from "redux/recipes/recipesOperations"; //make sure status change behaviour is correct
+} from "redux/recipes/recipesOperations";
 import {
   selectIsLoading,
   selectUserFavouritesRecipes,
@@ -20,7 +20,6 @@ import { useEffect, useRef, useState } from "react";
 import ButtonLoader from "components/ButtonLoader/ButtonLoader";
 
 const RecipePageHero = ({ title, description, time, id }) => {
-  const [page, setPage] = useState(1);
   const userFavouritesRecipes = useSelector(selectUserFavouritesRecipes);
   const [first, setFirst] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -45,7 +44,6 @@ const RecipePageHero = ({ title, description, time, id }) => {
     } else {
       dispatch(toggleFavoriteRecipesById(id));
     }
-
     setIsFavorite(!isFavorite);
   };
 
