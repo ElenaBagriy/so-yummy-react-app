@@ -20,6 +20,7 @@ import sprite from '../../images/welcomePage/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from 'redux/user/userOperations';
+import { toast } from 'react-toastify';
 
 // const RegisterSchema = Yup.object().shape({
 //   name: Yup.string()
@@ -39,12 +40,12 @@ import { loginUser, registerUser } from 'redux/user/userOperations';
 
 function validateName(value) {
   let error;
+  const lettersOnly = /^[a-zA-Z]+$/.test(value);
   if (!value) {
     error = 'Required';
+  } else if (!lettersOnly) {
+    error = 'Invalid name';
   }
-  // else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-  //   error = 'Invalid name';
-  // }
   return error;
 }
 
@@ -60,12 +61,14 @@ function validateEmail(value) {
 
 function validatePassword(value) {
   let error;
+  const digitsOnly = string => [...string].every(c => '0123456789'.includes(c));
   if (!value) {
     error = 'Required!';
+  } else if (value.length < 8) {
+    error = 'Password must be at least 8 digits';
+  } else if (digitsOnly && value.length === 8) {
+    error = 'Your password is little secure';
   }
-  // else if (/^\d{10}$/i.test(value)) {
-  //   error = 'Your password is little secure';
-  // }
 
   return error;
 }
@@ -130,9 +133,23 @@ export const RegisterForm = () => {
               dispatch(registerUser(values)).then(() => {
                 dispatch(loginUser({ email, password }))
                   // .unwrap()
-                  .then(() => navigate('/main'))
-                  .catch(() => navigate('/'));
-                actions.resetForm();
+                  .then(() => {
+                    toast.success(
+                      `User ${values.name} email ${values.email} successfully registered`
+                    );
+                    navigate('/main');
+                  })
+                  .catch(error => {
+                    if (error === 'Request failed with status code 409') {
+                      return toast.error(
+                        'User already exists. Try another email'
+                      );
+                    }
+                    if (error === 'Request failed with status code 400') {
+                      actions.resetForm();
+                      return toast.error('Oops something went wrong');
+                    }
+                  });
               }),
               2000
             );

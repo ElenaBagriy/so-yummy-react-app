@@ -19,6 +19,7 @@ import sprite from '../../images/welcomePage/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/user/userOperations';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // const SigninSchema = Yup.object().shape({
 //   email: Yup.string().email('Invalid email').required('Required'),
@@ -102,11 +103,22 @@ export const SigninForm = () => {
           onSubmit={(values, actions) => {
             dispatch(loginUser(values))
               .unwrap()
-              .then(() => navigate('/main'))
-              .catch(() => navigate('/'));
+              .then(() => {
+                toast.success(`User ${values.email} succesfully logged in`);
+                actions.resetForm();
+                navigate('/main');
+              })
+              .catch(error => {
+                if (error === 'Request failed with status code 403') {
+                  return toast.error('Password is wrong');
+                }
+                if (error === 'Request failed with status code 401') {
+                  return toast.error('Email is not verified');
+                }
+              });
+
             // console.log(values);
             // console.log(actions);
-            actions.resetForm();
           }}
         >
           {({ errors, touched }) => (
