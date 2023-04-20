@@ -46,3 +46,11 @@ export const selectShoppingIsLoading = state => state.shoppingList.isLoading;
 
 //choosed recipe
 export const selectChoosedRecipe = state => state.recipes.choosedRecipe;
+
+// myRecipe
+
+export const selectMyRecipes = state => state.myRecipes.recipes;
+
+export const selectTotalPageRecipe = state => {
+    return Math.round(state.myRecipes.total / state.myRecipes.limit);
+};

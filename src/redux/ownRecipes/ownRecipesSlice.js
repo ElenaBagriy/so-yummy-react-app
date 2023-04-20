@@ -4,13 +4,13 @@ import { addOwnRecipe, deleteOwnRecipe, getAllOwnRecipes, getOwnRecipeById } fro
 const ownRecipesInitialState = {
     recipes: [
         {
-            "_id": "",
-            "title": "",
-            "category": "",
-            "description": "",
-            "preview": "",
-            "time": "",
-        }
+            _id: "640cd5ac2d9fecf12e8897fc",
+            title: "Spaghetti Bolognese",
+            category: "Beef",
+            description: "Recipe's description",
+            preview: "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560401/huqdxgwkvbhsfjqtexsm.jpg",
+            time: "40"
+        },
     ],
     randomRecipes: [],
     total: null,
@@ -29,13 +29,18 @@ const ownRecipesSlice = createSlice({
             
             // ------------ Get all own recipes ----------------
             .addCase(getAllOwnRecipes.pending, (state) => {
-
+                state.isLoading = true;
+                state.error = false;
             })
             .addCase(getAllOwnRecipes.fulfilled, (state, action) => {
-
+                state.isLoading = false;
+                state.error = false;
+                // state.recipes = action.payload.recipes;
+                state.total = action.payload.total;
             })
             .addCase(getAllOwnRecipes.rejected, (state, action) => {
-
+                state.isLoading = false;
+                state.error = true;
             })
     
             // ------------ Add Own Recipe ----------------
@@ -51,13 +56,24 @@ const ownRecipesSlice = createSlice({
 
             // ------------ Delete Own Recipe ----------------
             .addCase(deleteOwnRecipe.pending, (state) => {
-
+                state.isLoading = true;
+                state.error = false;
             })
             .addCase(deleteOwnRecipe.fulfilled, (state, action) => {
-
+                console.log('action.payload', action.payload.message);
+                const message = action.payload.message;
+                const responceId = message.split(' ')[1];
+                console.log('responceId', responceId);
+        
+                state.recipes = state.recipes.filter(
+                  recipes => recipes._id !== responceId
+                );
+                state.isLoading = false;
+                state.error = false;
             })
             .addCase(deleteOwnRecipe.rejected, (state, action) => {
-
+                state.error = true;
+                state.isLoading = false;
             })
 
             // ------------ Get Own Recipe By Id ----------------
