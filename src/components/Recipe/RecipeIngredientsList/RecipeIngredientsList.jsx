@@ -16,6 +16,7 @@ import { selectShoppingList } from "../../../redux/selectors";
 
 export const RecipeIngredientsList = ({ ingredients }) => {
   const list = useSelector(selectShoppingList);
+  console.log(list);
 
   return (
     <Box>
@@ -28,11 +29,11 @@ export const RecipeIngredientsList = ({ ingredients }) => {
           </div>
         </ListItemHeader>
         {ingredients && ingredients.map(({ _id, title, thumb, measure }) => {
-          const isChecked = list.some((item) => item.productId === _id && item.measure[0] === measure );
-          
           if (!_id) {
             return null;
           }
+          const isChecked = list.some((item) => item.productId === _id && item.measure[0] === measure );
+          
           return (
             <ListItem key={_id}>
               <Wrapper>
@@ -44,7 +45,7 @@ export const RecipeIngredientsList = ({ ingredients }) => {
                 <CustomCheckbox
                   ingredientId={_id}
                   isChecked={isChecked}
-                  measure={measure} //fix str in arr
+                  measure={measure}
                 />
               </ButtonWrapper>
             </ListItem>

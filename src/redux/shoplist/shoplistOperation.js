@@ -30,10 +30,8 @@ export const addProductToShoppingList = createAsyncThunk(
 export const removeProductFromShoppingList = createAsyncThunk(
   'shopping-list/remove',
   async (product, thunkAPI) => {
-    const measure = product.measure.join();
-    const productId = product.productId;
     try {
-      const {shoppingList} = await UserAPI.updateShoppingList({productId, measure});
+      const {shoppingList} = await UserAPI.updateShoppingList(product);
       return shoppingList;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

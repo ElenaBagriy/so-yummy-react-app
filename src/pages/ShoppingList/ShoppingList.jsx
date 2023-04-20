@@ -10,7 +10,6 @@ import { Section } from './ShoppingList.styled';
 import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 
 
-
 const ShoppingListPage = () => {
   const dispatch = useDispatch();
 
