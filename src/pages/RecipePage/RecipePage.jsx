@@ -6,8 +6,12 @@ import { RecipePageHero } from "../../components/Recipe/RecipePageHero/RecipePag
 import { RecipePreparation } from "../../components/Recipe/RecipePreparation/RecipePreparation";
 import { RecipeSkeleton } from "../../components/Recipe/RecipeSceleton";
 import { getRecipeById } from "redux/recipes/recipesOperations";
-import { selectChoosedRecipe, selectLoadingRecipes, selectShoppingIsLoading } from "../../redux/selectors";
+import { selectChoosedRecipe, selectLoadingRecipes } from "../../redux/selectors";
 import { fetchShoppingList } from "../../redux/shoplist/shoplistOperation";
+import { Main } from "reusableComponents/Main/Main";
+import { GoToTop } from "reusableComponents/ScrollToTop/ScrollToTop";
+import { Background } from "reusableComponents/Background/Background";
+import { Container } from "reusableComponents/Container/Container";
 
 const RecipePage = () => {
   const dispatch = useDispatch();
@@ -30,20 +34,22 @@ const RecipePage = () => {
     dispatch(getRecipeById(id));
   }, [dispatch, id]);
     
-  const isLoadingShoppingList = useSelector(selectShoppingIsLoading);
+  
   const isLoading = useSelector(selectLoadingRecipes);
 
   return (
-    <>
+    <Main>
+      <Background noDots />
       <RecipePageHero
         title={title}
         description={description}
         time={time}
         id={_id}
         favorite={favorite}
-      />
-      <RecipeSkeleton />
-      {isLoadingShoppingList || isLoading ? (
+        />
+      <Container>
+        <RecipeSkeleton />
+      {isLoading ? (
         <RecipeSkeleton />
       ) : (<>
           <RecipeIngredientsList ingredients={ingredients} />
@@ -53,8 +59,10 @@ const RecipePage = () => {
             instructions={instructions}
             tags={tags}
         />
-      </>)}
-    </>
+        </>)}
+        </Container>
+      <GoToTop/>
+    </Main>
   );
 };
 

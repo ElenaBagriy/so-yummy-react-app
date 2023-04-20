@@ -1,12 +1,11 @@
 import { MyRecipesList } from "components/MyRecipesList/MyRecipesList";
 import { GoToTop } from "reusableComponents/ScrollToTop/ScrollToTop";
-
-const { Main } = require("reusableComponents/Main/Main")
+import { Main } from "reusableComponents/Main/Main";
 
 const MyRecipesPage = () => {
 
     return <Main>
-        <MyRecipesList></MyRecipesList>
+        <MyRecipesList/>
         <GoToTop/>
     </Main>
 };

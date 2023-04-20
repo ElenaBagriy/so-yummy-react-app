@@ -11,6 +11,7 @@ import { Main } from 'reusableComponents/Main/Main';
 import { Section } from './SearchPage.styled';
 import SearchBar from 'components/SearchBar/SearchBar';
 import NeedSearching from 'components/NeedSearching/NeedSearching';
+import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 
 export default function SearchPage() {
   const [page, setPage] = useState(1);
@@ -49,6 +50,7 @@ export default function SearchPage() {
           />
         </Section>
       </Container>
+      <GoToTop/>
     </Main>
   );
 }
