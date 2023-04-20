@@ -13,9 +13,10 @@ import {
 import { toggleFavoriteRecipesById } from "../../../redux/recipes/recipesOperations";
 import { selectLoadingRecipes } from "../../../redux/selectors";
 import ButtonLoader from "../../ButtonLoader/ButtonLoader";
+import { Container } from "reusableComponents/Container/Container";
 
 export const RecipePageHero = ({ title, description, time, id, favorite }) => {
-  // const [first, setFirst] = useState(false);
+  const [first, setFirst] = useState(false);
   const [isFavorite, setIsFavorite] = useState(null);
 
   const dispatch = useDispatch();
@@ -27,11 +28,11 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
 
   useEffect(() => {
     setIsFavorite(favorite);
-    // if (!first) {
-    //   setFirst(true);
-    //   topRef.current.scrollIntoView({ behavior: "smooth" });
-    // }
-  }, [ favorite]);
+    if (!first) {
+      setFirst(true);
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [ favorite, first]);
 
   const handleFavoriteButton = (id) => {
     dispatch(toggleFavoriteRecipesById(id));
@@ -40,7 +41,8 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
 
       return (
     <>
-      <ImgBox />
+          <ImgBox />
+          <Container>
       <MainPageTitle $isBig={title?.split(" ").length > 6} ref={topRef}>
         {title}
       </MainPageTitle>
@@ -64,7 +66,8 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
       <Box>
         <ClockSvg />
         <Time>{time} min</Time>
-      </Box>
+            </Box>
+            </Container>
     </>
   );
 };
