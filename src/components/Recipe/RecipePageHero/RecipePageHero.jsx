@@ -27,23 +27,22 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
   const theme = useTheme();
 
   const isLoading = useSelector(selectLoadingRecipes);
+  console.log(isLoading);
 
   const topRef = useRef();
 
   useEffect(() => {
+
     if (!first) {
+      // console.log(first);
       // setIsFavorite(userFavouritesRecipes.some((recipe) => recipe._id === id));    //проверить заменить селектором isFavorite
       setFirst(true);
       topRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [ id, first]);
     
-      const handleFavoriteButton = (id) => {
-    if (isFavorite) {
-      dispatch(toggleFavoriteRecipesById(id));
-    } else {
-      dispatch(toggleFavoriteRecipesById(id));
-    }
+  const handleFavoriteButton = (id) => {
+    dispatch(toggleFavoriteRecipesById(id));
     setIsFavorite(!isFavorite);
       };
     

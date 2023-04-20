@@ -44,26 +44,24 @@ const RecipePage = () => {
 
   return (
     <>
+      <RecipePageHero
+        title={title}
+        description={description}
+        time={time}
+        id={_id}
+        favorite={favorite}
+      />
       {isLoadingShoppingList || isLoading  ? (
         <RecipeSkeleton />
-      ) : (
-        <>
-            <RecipePageHero
-              title={title}
-              description={description}
-              time={time}
-              id={_id}
-              favorite={favorite}
-          />
-          <RecipeIngredientsList ingredients={ingredients} recipeId={_id} />
+      ) : (<>
+      <RecipeIngredientsList ingredients={ingredients} recipeId={_id} />
             <RecipePreparation
               preview={previewImg}
               title={title}
               instructions={instructions}
               tags={tags}
           />
-        </>
-      )}
+     </> )}
     </>
   );
 };
