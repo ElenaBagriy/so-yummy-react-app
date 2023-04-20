@@ -104,7 +104,7 @@ export const SigninForm = () => {
             dispatch(loginUser(values))
               .unwrap()
               .then(() => {
-                toast.success(`User ${values.email} succesfully logged in`);
+                toast.success(`User ${values.email} is succesfully logged in`);
                 actions.resetForm();
                 navigate('/main');
               })
