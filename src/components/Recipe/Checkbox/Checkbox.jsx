@@ -12,20 +12,16 @@ export const CustomCheckbox = ({ ingredientId: productId, isChecked, measure }) 
   }, [isChecked])
   
   const handleChange = () => {
-    console.log(checked);
     if (!checked) {
       dispatch(addProductToShoppingList({ productId, measure }));
-      console.log('add');
       setChecked(true);
     } else {
       dispatch(removeProductFromShoppingList({ productId, measure }));
-      console.log('remove');
       setChecked(false);
     }
-    // setChecked(!checked);
   };
 
-  return <Box onClick={handleChange}>{checked && <>1</>
-    // <SvgCheck />
+  return <Box onClick={handleChange}>{checked && 
+    <SvgCheck />
   }</Box>;
 };
