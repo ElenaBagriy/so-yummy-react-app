@@ -14,10 +14,9 @@ import { CustomCheckbox } from "../Checkbox/Checkbox";
 import { useSelector } from "react-redux";
 import { selectShoppingList } from "../../../redux/selectors";
 
-export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
+export const RecipeIngredientsList = ({ ingredients }) => {
   const list = useSelector(selectShoppingList);
-  console.log('ingredients',ingredients);
-  console.log('list', list);
+
   return (
     <Box>
       <List>
@@ -30,11 +29,7 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
         </ListItemHeader>
         {ingredients && ingredients.map(({ _id, title, thumb, measure }) => {
           const isChecked = list.some((item) => item.productId === _id && item.measure[0] === measure );
-          console.log(isChecked);
-          // const recipe = list.find((recipe) => recipe.recipeId === recipeId);   /// в списке покупок ищем номер рецепта????
-          // const isChecked = recipe?.ingredients?.some(
-          //   (item) => item.id === _id  //заменить по 
-          // );
+          
           if (!_id) {
             return null;
           }
@@ -47,7 +42,6 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
               <ButtonWrapper>
                 <Measure>{measure}</Measure>
                 <CustomCheckbox
-                  // recipeId={recipeId}
                   ingredientId={_id}
                   isChecked={isChecked}
                   measure={measure} //fix str in arr

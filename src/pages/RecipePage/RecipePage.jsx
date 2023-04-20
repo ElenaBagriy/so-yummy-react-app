@@ -45,7 +45,7 @@ const RecipePage = () => {
       {isLoadingShoppingList || isLoading ? (
         <RecipeSkeleton />
       ) : (<>
-          <RecipeIngredientsList ingredients={ingredients} recipeId={_id} />
+          <RecipeIngredientsList ingredients={ingredients} />
           <RecipePreparation
             preview={previewImg}
             title={title}
