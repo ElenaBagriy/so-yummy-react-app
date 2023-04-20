@@ -1,33 +1,31 @@
 import axios from 'axios';
-
-
+// import { store } from 'redux/store';    ///ошибка, невозможно объвить до инициализации.
 
 axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
-// const dispatch = useDispatch();
 
-// const refreshToken = localStorage.getItem('refreshToken');
 
-// axios.interceptors.request.use(
-//   function (config) {
-//     return config;
-//   },
-//   function (error) {
-//     return Promise.reject(error);
-//   },
-// );
+axios.interceptors.request.use(
+  function (config) {
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  },
+);
 
-// axios.interceptors.response.use(
-//   function (response) {
-//     return response;
-//   },
-//   function (error) {
-//     if (error.response.status === 401) {
-//       UserAPI.refreshToken(refreshToken);
-//     }
+axios.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    if (error.response.status === 401) {
+      UserAPI.refreshToken();
+      // store.dispatch(refreshToken());
+    }
 
-//     return Promise.reject(error);
-//   },
-// );
+    return Promise.reject(error);
+  },
+);
 
 
 const setAuthHeader = token => {
@@ -56,13 +54,41 @@ export const UserAPI = {
     clearAuthHeader();
   },
 
-  refreshToken: async refreshToken => {
-    console.log("refreshToken", refreshToken);
+  // Новая версия
+
+  refreshToken: async () => {
+    const token = JSON.parse(localStorage.getItem('persist:token'));
+    const parsedToken = JSON.parse(token.refreshToken);
+
+    const refreshToken = {
+      "refreshToken": parsedToken,
+    };
+    console.log(refreshToken);
+    
+
     const { data } = await axios.post('/users/refresh', refreshToken);
     
     setAuthHeader(data.accessToken);
     return data;
   },
+
+
+  // Старая версия
+
+
+//  refreshToken: async refreshToken => {
+
+//     console.log("refreshToken", refreshToken);
+    
+
+//     const { data } = await axios.post('/users/refresh', refreshToken);
+    
+//     setAuthHeader(data.accessToken);
+//     return data;
+//   },
+
+
+
 
   refreshUser: async () => {
     const { data } = await axios.get('/users/current');
