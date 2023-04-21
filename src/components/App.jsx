@@ -11,6 +11,7 @@ import { refreshUser } from 'redux/user/userOperations';
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosInterceptor from './hooks/interceptors';
+import { Loader } from './Loader/Loader';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -39,8 +40,7 @@ export const App = () => {
   const { accessToken } = useSelector(state => state.auth);
 
   useEffect(() => {
-   
-      dispatch(refreshUser())
+    dispatch(refreshUser());
   }, [dispatch, accessToken]);
 
   return (
@@ -48,7 +48,7 @@ export const App = () => {
       <div>
         <Theme>
           <GlobalStyle />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <Routes>
               <Route
                 path="/"
@@ -106,7 +106,7 @@ export const App = () => {
                   }
                 />
                 <Route
-                path="search"
+                  path="search"
                   element={
                     <PrivateRoute redirectTo="/" component={<SearchPage />} />
                   }
@@ -132,10 +132,7 @@ export const App = () => {
                 <Route
                   path="recipe/:id"
                   element={
-                    <PrivateRoute
-                      redirectTo="/"
-                      component={<RecipePage />}
-                    />
+                    <PrivateRoute redirectTo="/" component={<RecipePage />} />
                   }
                 />
                 <Route
