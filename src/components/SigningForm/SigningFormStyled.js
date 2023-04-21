@@ -228,6 +228,7 @@ export const SigninStyled = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
+    position: absolute;
     color: #e74a3b;
   }
 `;

@@ -1,18 +1,33 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { RecipeDescStyled } from './RecipeDescriptionFields.styled';
+import {
+  Wrapper,
+  RecipeDescStyled,
+  RemoveFileBtn,
+  StyledImg,
+  InputHidden,
+  StyledSelect,
+} from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
 import Select from 'react-select';
+import { GrClose } from 'react-icons/gr';
 
 export const RecipeDescriptionFields = ({ categories }) => {
-  const fileInputRef = useRef();
-  const [selectedImage, setSelectedImage] = useState();
+  const [preview, setPreview] = useState(null);
 
-  const imageChange = e => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-    }
+  const imageChange = async e => {
+    const selectedFile = e.target.files[0];
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreview(reader.result);
+    };
+    reader.readAsDataURL(selectedFile);
+  };
+
+  const removeFileUpload = () => {
+    setPreview(null);
   };
 
   const {
@@ -47,48 +62,45 @@ export const RecipeDescriptionFields = ({ categories }) => {
   });
   // console.log(timeOptions);
 
-  const categoriesOptions = categories.map(option => ({
-    id: option.id,
-    title: option.title,
-    label: option.title,
-  }));
+  const categoriesOptions = categories.map(option => {
+    return { id: option.id, value: option.title, label: option.title };
+  });
   // console.log(categoriesOptions);
 
   return (
     <RecipeDescStyled>
-      <label>
-        <button
-          className="uploadBtn"
-          onClick={event => {
-            event.preventDefault();
-            fileInputRef.current.click();
-          }}
-        >
-          {selectedImage ? (
-            <div>
-              <img
-                src={URL.createObjectURL(selectedImage)}
-                className="uploadedImage"
-                alt="Thumb"
-                width="357"
-                height="344"
-              />
-            </div>
-          ) : (
-            <img src={camera} alt="camera" />
-          )}
-        </button>
+      <Wrapper>
+        {' '}
+        <label className="imageBox">
+          <div width="280" height="270">
+            <img
+              className="default"
+              src={camera}
+              alt="preview"
+              width="64"
+              height="64"
+            />
+          </div>
 
-        <input
-          {...register('image')}
-          type="file"
-          name="image"
-          className="upload"
-          ref={fileInputRef}
-          accept="image/*"
-          onChange={imageChange}
-        />
-      </label>
+          {preview && (
+            <div>
+              <StyledImg src={preview} width="280" height="270" alt="preview" />
+              <RemoveFileBtn onClick={removeFileUpload}>
+                <GrClose />
+              </RemoveFileBtn>
+            </div>
+          )}
+          <InputHidden
+            {...register('image')}
+            type="file"
+            name="image"
+            className="upload"
+            accept="image/*,.png, .jpeg,.gif,.web"
+            onChange={imageChange}
+          />
+        </label>
+      </Wrapper>
+
       <InputsStyled>
         <label>
           {' '}
@@ -103,12 +115,18 @@ export const RecipeDescriptionFields = ({ categories }) => {
         {errors.exampleRequired && <span>This field is required</span>}
         <label className="wrapperCategory">
           <span>Category</span>
-
           <Controller
             name="categories"
             control={control}
             render={({ field }) => (
-              <Select {...field} options={categoriesOptions} />
+              <StyledSelect
+                {...field}
+                options={categoriesOptions}
+                defaultValue={{ value: 'breakfast', label: 'breakfast' }}
+                classNamePrefix="custom-select"
+                className="сustom-select-container"
+                zIndex={110}
+              />
             )}
           />
 
@@ -130,7 +148,16 @@ export const RecipeDescriptionFields = ({ categories }) => {
           <Controller
             name="time"
             control={control}
-            render={({ field }) => <Select {...field} options={timeOptions} />}
+            render={({ field }) => (
+              <StyledSelect
+                {...field}
+                options={timeOptions}
+                classNamePrefix="custom-select"
+                className="сustom-select-container"
+                defaultValue={{ value: '40', label: '40 min' }}
+                zIndex={105}
+              />
+            )}
           />
           {/* <select placeholder="Cooking time" {...register('time')}>
             {timeArray.map(item => (

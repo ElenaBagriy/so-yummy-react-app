@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import Select from 'react-select';
 
 export const RecipeIngredStyled = styled.div`
   display: flex;
   justify-content: start;
-  align-items: center;
   gap: 362px;
   margin-top: 104px;
   margin-bottom: 36px;
@@ -47,47 +47,110 @@ export const RecipeIngredStyled = styled.div`
 
 export const IngredFieldsStyled = styled.div`
   display: flex;
-  justify-content: start;
-  align-items: center;
-
-  select,
-  input {
-    margin-bottom: 24px;
-    background-color: #d9d9d9;
-    border: none;
-    height: 59px;
-    color: #23262a;
+  margin-bottom: 20px;
+  label,
+  .deleteBtn {
+    display: flex;
   }
+`;
 
-  select {
-    margin-right: 32px;
-
-    &:hover,
-    &:focus {
-      background: #ffffff;
-      box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+export const Label = styled.label`
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  @media screen and (min-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 32px;
     }
   }
+`;
 
-  .selectIngredients {
-    border-radius: 6px;
+export const MeasureLabel = styled.label`
+  /* display: flex; */
+`;
+
+export const StyledSelect = styled(Select)`
+  width: 123px;
+  font-size: 14px;
+  line-height: 1;
+  svg {
+    fill: ${props => props.theme.colors.green};
+  }
+  &.сustom-select-container {
+    /* position: absolute;
+    right: 0;
+    top: -8px;
+    z-index: 5; */
+    border: none;
+    background-color: transparent;
+  }
+  .сustom-select__control {
+    border-style: none !important;
+    border: none !important;
+    background-color: transparent !important;
+  }
+  .сustom-select__control--menu-is-open {
+    box-shadow: 0 0 0 3px red;
+  }
+  .сustom-select__control--is-focused {
+    box-shadow: 0 0 0 3px red;
   }
 
-  input {
-    height: 59px;
+  .сustom-select__indicator-separator {
+    width: 0;
   }
-
-  .numberInput {
-    border-bottom-left-radius: 6px;
-    border-top-left-radius: 6px;
-    text-align: center;
+  .сustom-select__value-container {
+    padding: 2px 0px 2px 14px;
   }
-
-  .measureSelect {
-    border-bottom-right-radius: 6px;
-    border-top-right-radius: 6px;
+  .сustom-select__single-value {
+    color: ${props => props.theme.colors.green};
+    text-align: right;
   }
-  input {
-    width: 40px;
+  .сustom-select__menu {
+    background-color: ${props => props.theme.colors.green};
+  }
+  .сustom-select__menu-list {
+    max-height: 210px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: red;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: red;
+      border-radius: 5px;
+    }
+  }
+  .сustom-select__option {
+    font-size: 14px;
+    line-height: 1.5;
+    color: red;
+    opacity: 0.5;
+    &:hover,
+    &:focus {
+      background-color: ${props => props.theme.colors.green};
+      color: red;
+      opacity: 1;
+    }
+  }
+  .сustom-select__option--is-selected {
+    background-color: ${props => props.theme.colors.green};
+    color: red;
+    opacity: 1;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    .сustom-select__option {
+      font-size: 14px;
+    }
   }
 `;
