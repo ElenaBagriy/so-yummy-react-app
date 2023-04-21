@@ -1,11 +1,13 @@
+import { useParams } from 'react-router-dom';
 import { StyledLink, StyledNav, StyledSVG } from './Navigation.styled';
 import SVG from 'images/svg/sprite.svg';
 
-export function Navigation({ isMobile, handleClose = () => {} }) {
-  // console.log(isMobile);
+export function Navigation({ isMobile, handleClose = () => { } }) {
+  const { categoryName } = useParams();
+
   return (
     <StyledNav>
-      <StyledLink to="/categories/beef" onClick={handleClose}>
+      <StyledLink to={!categoryName ? `/categories/beef` : `/categories/${categoryName}`} onClick={handleClose}>
         Categories
       </StyledLink>
       <StyledLink to="/add" onClick={handleClose}>

@@ -7,7 +7,7 @@ import { UserLogo } from 'components/UserLogo/UserLogo';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 
 import { HeaderWrapper, StyledHeader, UserMenuWrapper } from './Header.styled';
-import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
+// import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 
 export function Header() {
   const isMobile = useMediaQuery('(max-width: 1279px)');
@@ -20,7 +20,7 @@ export function Header() {
           <UserMenuWrapper>
             <UserLogo />
             {isMobile && <BurgerMenu />}
-            {!isMobile && <ThemeToggler />}
+            {/* {!isMobile && <ThemeToggler />} */}
           </UserMenuWrapper>
         </HeaderWrapper>
       </Container>
