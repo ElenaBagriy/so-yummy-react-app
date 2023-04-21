@@ -10,6 +10,7 @@ import { Pagination } from "reusableComponents/Pagination/Pagination";
 import timeConvert from "services/timeConverter";
 import { Tooltip, useMediaQuery } from "@mui/material";
 import EllipsisText from "react-ellipsis-text";
+import { Loader } from "components/Loader/Loader";
 
 
 export const Favorite = () => {
@@ -91,7 +92,7 @@ export const Favorite = () => {
                 <Section>
                     <MainPageTitle title='Favorites'/>
                     
-                    {!favoriteRecipes ? <>...Loading</> :
+                    {!favoriteRecipes ? <Loader/> :
                     <RecipesList>
                         {favoriteRecipes.map((recipe) => {
                             return <RecipesItem key={recipe._id}>

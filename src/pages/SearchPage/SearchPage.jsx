@@ -13,6 +13,7 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import NeedSearching from 'components/NeedSearching/NeedSearching';
 import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 import { useSearchParams } from 'react-router-dom';
+import { Loader } from 'components/Loader/Loader';
 
 export default function SearchPage() {
   const [page, setPage] = useState(1);
@@ -61,7 +62,7 @@ export default function SearchPage() {
             queryParam={query}
             handleChangePage={handleChangePage}
           />
-          {isLoading && <>...Loading</>}
+          {isLoading && <Loader/>}
 
           {!isLoading && !!localState.recipes?.length && (
             <CommonItemList list={localState.recipes} />

@@ -100,7 +100,6 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
                 src={prevue?.length > 0 ? prevue : user.avatarURL}
               />
               <PlusSVG>
-                {/* <use href={`${sprite}#icon-plus`} /> */}
               </PlusSVG>
               <StyledFileInput type="file" onChange={handleFileInputChange} />
             </StyledAvatarLabel>

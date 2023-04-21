@@ -11,6 +11,7 @@ import { Tooltip, useMediaQuery } from "@mui/material";
 import EllipsisText from "react-ellipsis-text";
 import { selectMyRecipes, selectTotalPageRecipe } from "redux/selectors";
 import { deleteOwnRecipe, getAllOwnRecipes } from "redux/ownRecipes/ownRecipesOperations";
+import { Loader } from "components/Loader/Loader";
 
 
 export const MyRecipesList = () => {
@@ -93,7 +94,7 @@ export const MyRecipesList = () => {
                 <Section>
                     <MainPageTitle title='My recipes' />
                     
-                    {!myRecipes ? <>...Loading</> :
+                    {!myRecipes ? <Loader/> :
                     <RecipesList>
                         {myRecipes.map((recipe) => {
                             return <RecipesItem key={recipe._id}>
