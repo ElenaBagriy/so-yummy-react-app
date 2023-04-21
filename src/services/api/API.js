@@ -45,24 +45,6 @@ export const UserAPI = {
     return data;
   },
 
-
-  // Старая версия
-
-
-//  refreshToken: async refreshToken => {
-
-//     console.log("refreshToken", refreshToken);
-    
-
-//     const { data } = await axios.post('/users/refresh', refreshToken);
-    
-//     setAuthHeader(data.accessToken);
-//     return data;
-//   },
-
-
-
-
   refreshUser: async credentials => {
     setAuthHeader(credentials.accessToken)
     const { data } = await axios.get('/users/current');
@@ -90,8 +72,8 @@ export const UserAPI = {
     return data;
   },
 
-  updateUserInfoForSubscribe: async info => {
-    const { data } = await axios.patch('users/subscribe', info);
+  subscribe: async info => {
+    const { data } = await axios.post('users/subscribe', info);
     return data;
   },
 };
