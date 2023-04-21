@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import {
@@ -12,6 +12,30 @@ import { StyledAddRecipeContainer } from './AddRecipeForm.styled';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientFields';
 
 export const AddRecipeForm = () => {
+  const [categoryValue, setCategoryValue] = useState('Breakfast');
+  const [timeValue, setTimeValue] = useState('5 min');
+  const [selectedImgFile, setSelectedImgFile] = useState();
+  const [ingredientsValue, setIngredientsValue] = useState([]);
+  const [amountValue, setAmountValue] = useState(0);
+  const [measureValue, setMeasureValue] = useState('tbs');
+
+  const handleCategoryInputChange = value => {
+    setCategoryValue(value);
+  };
+  const handleTimeInputChange = value => {
+    setTimeValue(value);
+  };
+
+  const handleIngredientsValueChange = value => {
+    setIngredientsValue(value);
+  };
+  const handleAmountInputChange = value => {
+    setAmountValue(value);
+  };
+  const handleMeasureInputChange = value => {
+    setMeasureValue(value);
+  };
+
   const {
     handleSubmit,
     //   register,
@@ -24,12 +48,23 @@ export const AddRecipeForm = () => {
       about: '',
       category: 'breakfast',
       time: '40',
-      ingredients: [{ quantity: '', measure: 'tbs', id: '' }],
+      ingredients: [],
+      amount: 0,
+      measure: 'tbs',
       preparation: [],
     },
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    const descFieldsValues = {
+      ...data,
+      category: categoryValue,
+      time: timeValue,
+      image: selectedImgFile,
+    };
+    console.log(descFieldsValues);
+
     console.log('data', data);
   };
 
@@ -49,14 +84,25 @@ export const AddRecipeForm = () => {
   return (
     <StyledAddRecipeContainer>
       <form onSubmit={() => handleSubmit(onSubmit)}>
-        <RecipeDescriptionFields categories={categories} />
-        <RecipeIngredientsFields ingredients={ingredients} />
+        <RecipeDescriptionFields
+          categories={categories}
+          selectedImgFile={selectedImgFile}
+          handleCategoryInputChange={handleCategoryInputChange}
+          handleTimeInputChange={handleTimeInputChange}
+          categoryValue={categoryValue}
+          timeValue={timeValue}
+        />
+        <RecipeIngredientsFields
+          ingredients={ingredients}
+          ingredientsValue={ingredientsValue}
+          amountValue={amountValue}
+          measureValue={measureValue}
+          handleIngredientsValueChange={handleIngredientsValueChange}
+          handleAmountInputChange={handleAmountInputChange}
+          handleMeasureInputChange={handleMeasureInputChange}
+        />
         <RecipePreparationFields />
-        <button
-          type="submit"
-          className="submitBtn"
-          // disabled={!isDirty || !isValid}
-        >
+        <button type="submit" className="submitBtn">
           Add
         </button>
       </form>

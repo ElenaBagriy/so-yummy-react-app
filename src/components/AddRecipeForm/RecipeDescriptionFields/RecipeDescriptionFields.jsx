@@ -13,7 +13,14 @@ import camera from '../../../images/AddRecipe/preview.svg';
 // import Select from 'react-select';
 import { GrClose } from 'react-icons/gr';
 
-export const RecipeDescriptionFields = ({ categories }) => {
+export const RecipeDescriptionFields = ({
+  categories,
+  selectedImgFile,
+  handleCategoryInputChange,
+  handleTimeInputChange,
+  categoryValue,
+  timeValue,
+}) => {
   const [preview, setPreview] = useState(null);
 
   const imageChange = async e => {
@@ -96,6 +103,7 @@ export const RecipeDescriptionFields = ({ categories }) => {
             name="image"
             className="upload"
             accept="image/*,.png, .jpeg,.gif,.web"
+            value={selectedImgFile}
             onChange={imageChange}
           />
         </label>
@@ -107,7 +115,12 @@ export const RecipeDescriptionFields = ({ categories }) => {
           <Controller
             name="title"
             control={control}
-            render={({ field }) => <input {...field} />}
+            render={({ field }) => (
+              <input
+                {...field}
+                onChange={e => field.onChange(e.target.value)}
+              />
+            )}
           />
         </label>
         <label>
@@ -115,7 +128,12 @@ export const RecipeDescriptionFields = ({ categories }) => {
           <Controller
             name="about"
             control={control}
-            render={({ field }) => <input {...field} />}
+            render={({ field }) => (
+              <input
+                {...field}
+                onChange={e => field.onChange(e.target.value)}
+              />
+            )}
           />
         </label>
         {errors.exampleRequired && <span>This field is required</span>}
@@ -132,9 +150,11 @@ export const RecipeDescriptionFields = ({ categories }) => {
                 classNamePrefix="custom-select"
                 className="сustom-select-container"
                 zIndex={110}
-                onChange={e => {
-                  console.log(e.value);
-                }}
+                // value={categoryValue}
+                // onChange={e => {
+                //   handleCategoryInputChange(e.value);
+                //   console.log(e.value);
+                // }}
               />
             )}
           />
@@ -165,9 +185,11 @@ export const RecipeDescriptionFields = ({ categories }) => {
                 className="сustom-select-container"
                 defaultValue={{ value: '40', label: '40 min' }}
                 zIndex={105}
-                onChange={e => {
-                  console.log(e.value);
-                }}
+                // value={timeValue}
+                // onChange={e => {
+                //   handleTimeInputChange(e.value);
+                //   console.log(e.value);
+                // }}
               />
             )}
           />
