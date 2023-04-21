@@ -46,11 +46,11 @@ export const StyledLink = styled(NavLink)`
 export const StyledSVG = styled.svg`
   margin-right: 8px;
   transition: all ${props => props.theme.hover.transition};
-
+  stroke: #22252a;
   &:hover,
-    :focus,
-    :active {
-    fill: ${props => props.theme.colors.green};
+  :focus,
+  :active {
+    stroke: ${props => props.theme.colors.green};
   }
 
   @media screen and (min-width: 1280px) {

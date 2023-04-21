@@ -4,10 +4,11 @@ import { NavLink } from 'react-router-dom';
 export const FooterLogoLink = styled(NavLink)`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   margin-bottom: 32px;
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;
+    gap: 12px;
   }
   @media screen and (min-width: 1440px) {
     margin-bottom: 40px;
@@ -15,8 +16,8 @@ export const FooterLogoLink = styled(NavLink)`
 `;
 
 export const FooterLogoSVG = styled.svg`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 
   @media screen and (min-width: 768px) {
     width: 44px;

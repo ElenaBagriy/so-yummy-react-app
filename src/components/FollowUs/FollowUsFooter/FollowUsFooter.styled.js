@@ -5,6 +5,7 @@ export const FollowWrapper = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  bottom: 21px;
 
   @media screen and (min-width: 768px) {
     bottom: 24px;
@@ -15,7 +16,10 @@ export const FollowWrapper = styled.div`
   ul {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
+    @media screen and (min-width: 768px) {
+      gap: 18px;
+    }
   }
 `;
 
@@ -28,7 +32,20 @@ export const StyledLink = styled(Link)`
     fill: ${props => props.theme.colors.white};
   }
 `;
-export const StyledSVG = styled.svg`
+
+export const FacebookSVG = styled.svg`
+  width: 20px;
+  height: 20px;
+`;
+export const YoutubeSVG = styled.svg`
+  width: 20px;
+  height: 15px;
+`;
+export const TwitterbeSVG = styled.svg`
+  width: 20px;
+  height: 16px;
+`;
+export const InstagrambeSVG = styled.svg`
   width: 20px;
   height: 20px;
 `;

@@ -16,34 +16,35 @@ export const StyledSubscribeForm = styled.form`
   }
 
   h3 {
+    display: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 14px;
     @media screen and (min-width: 768px) {
-      display: none;
     }
     @media screen and (min-width: 1440px) {
       display: block;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 1.5;
-      margin-bottom: 14px;
     }
   }
   p {
+    display: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
     @media screen and (min-width: 768px) {
-      display: none;
     }
     @media screen and (min-width: 1440px) {
       display: block;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 1.29;
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
     }
   }
 `;
 export const SubscribeInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -62,23 +63,33 @@ export const StyledEmailLabel = styled.label`
 export const StyledEmailInput = styled.input`
   display: inline-block;
   width: 100%;
-  /* padding: 18px 50px; */
+  padding: 11.5px 42px;
+
   background-color: transparent;
   border: 1px solid rgba(250, 250, 250, 0.16);
   border-radius: 6px;
   color: ${({ theme }) => theme.colors.bgMain};
+  transition: border-color ${props => props.theme.hover.transition};
+
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.bgMain};
+  }
   &:hover,
   :focus {
     border-color: rgb(250, 250, 250);
   }
+
   @media screen and (min-width: 768px) {
     padding: 14.5px 40px 14.5px 50px;
     min-width: 259px;
-    font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    letter-spacing: -0.02em;
   }
+
   @media screen and (min-width: 1440px) {
     padding: 18px 50px;
     min-width: 259px;
@@ -89,8 +100,9 @@ export const EmailSVG = styled.svg`
   top: 50%;
   left: 14px;
   transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 20px;
+
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 16px;
@@ -99,20 +111,28 @@ export const EmailSVG = styled.svg`
 `;
 export const SubscribeBtn = styled.button`
   text-align: center;
-  padding: 14px;
+  padding: 11px;
   background: #8baa36;
   border: none;
   border-radius: 6px;
 
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.29;
+  line-height: 1.14;
   color: #fafafa;
+  transition: color ${props => props.theme.hover.transition};
+
+  &:hover,
+  :focus {
+    color: ${({ theme }) => theme.text.hero};
+  }
 
   @media screen and (min-width: 768px) {
-    padding: 18px;
     font-size: 16px;
     line-height: 1.12;
     padding: 16px 50px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 21px;
   }
 `;
