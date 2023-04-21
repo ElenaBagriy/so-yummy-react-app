@@ -33,7 +33,7 @@ export default function NeedSearching({text}) {
         />
         <img src={pictureMob} alt="Try looking else" />
       </picture>
-      <Text>Try looking for something else...</Text>
+      <Text>{text}</Text>
     </Wrapp>
   );
 }
