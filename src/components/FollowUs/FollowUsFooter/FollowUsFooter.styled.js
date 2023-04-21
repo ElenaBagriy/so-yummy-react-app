@@ -22,5 +22,7 @@ export const StyledLink = styled(Link)`
     fill: ${props => props.theme.colors.white};
   }
 `;
-// add dark: '#1E1F28' to theme
-// треба через пропси відображати різні заливки (у футері один, на додаванні рецепту інший)
+export const StyledSVG = styled.svg`
+  width: 20px;
+  height: 20px;
+`;

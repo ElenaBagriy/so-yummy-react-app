@@ -1,5 +1,5 @@
 import React from 'react';
-import { FollowWrapper, StyledLink } from './FollowUsFooter.styled';
+import { FollowWrapper, StyledLink, StyledSVG } from './FollowUsFooter.styled';
 import sprite from 'images/svg/sprite.svg';
 
 export const FollowUsFooter = () => {
@@ -8,30 +8,30 @@ export const FollowUsFooter = () => {
       <ul>
         <li>
           <StyledLink to="https://www.facebook.com/" target="_blank">
-            <svg width="26" height="26">
+            <StyledSVG>
               <use href={`${sprite}#icon-facebook`} />
-            </svg>
+            </StyledSVG>
           </StyledLink>
         </li>
         <li>
           <StyledLink to="https://www.youtube.com/" target="_blank">
-            <svg width="28" height="22">
+            <StyledSVG>
               <use href={`${sprite}#icon-youtube`} />
-            </svg>
+            </StyledSVG>
           </StyledLink>
         </li>
         <li>
           <StyledLink to="https://www.twitter.com/" target="_blank">
-            <svg width="25" height="22">
+            <StyledSVG>
               <use href={`${sprite}#icon-twitter`} />
-            </svg>
+            </StyledSVG>
           </StyledLink>
         </li>
         <li>
           <StyledLink to="https://www.instagram.com" target="_blank">
-            <svg width="24" height="24">
+            <StyledSVG>
               <use href={`${sprite}#icon-instagram`} />
-            </svg>
+            </StyledSVG>
           </StyledLink>
         </li>
       </ul>

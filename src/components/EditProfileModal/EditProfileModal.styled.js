@@ -235,8 +235,9 @@ export const SaveChangesBtn = styled.button`
   color: #fafafa;
   transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition};
   &:disabled {
-    background-color: grey;
+    background-color: ${props => props.theme.colors.grey};
   }
+
   @media screen and (min-width: 768px) {
     padding: 18px;
     font-size: 16px;
