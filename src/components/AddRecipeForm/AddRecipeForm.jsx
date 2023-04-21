@@ -14,7 +14,7 @@ import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredi
 export const AddRecipeForm = () => {
   const [categoryValue, setCategoryValue] = useState('Breakfast');
   const [timeValue, setTimeValue] = useState('5 min');
-  const [selectedImgFile, setSelectedImgFile] = useState();
+  // const [selectedImgFile, setSelectedImgFile] = useState();
   const [ingredientsValue, setIngredientsValue] = useState([]);
   const [amountValue, setAmountValue] = useState(0);
   const [measureValue, setMeasureValue] = useState('tbs');
@@ -61,7 +61,7 @@ export const AddRecipeForm = () => {
       ...data,
       category: categoryValue,
       time: timeValue,
-      image: selectedImgFile,
+      // image: selectedImgFile,
     };
     console.log(descFieldsValues);
 
@@ -86,7 +86,7 @@ export const AddRecipeForm = () => {
       <form onSubmit={() => handleSubmit(onSubmit)}>
         <RecipeDescriptionFields
           categories={categories}
-          selectedImgFile={selectedImgFile}
+          // selectedImgFile={selectedImgFile}
           handleCategoryInputChange={handleCategoryInputChange}
           handleTimeInputChange={handleTimeInputChange}
           categoryValue={categoryValue}

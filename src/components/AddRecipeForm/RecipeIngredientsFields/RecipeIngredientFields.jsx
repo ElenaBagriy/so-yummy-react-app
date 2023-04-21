@@ -19,13 +19,24 @@ export const RecipeIngredientsFields = ({
   handleAmountInputChange,
   handleMeasureInputChange,
 }) => {
-  const { register, control } = useForm({
+  const { control } = useForm({
     defaultValues: {
       ingredients: [],
       amount: 0,
       measure: 'tbs',
     },
   });
+
+  //Закомитила для деплоя, верхний кусок кода неверный, верный ниже:
+
+  // const { register, control } = useForm({
+  //   defaultValues: {
+  //     ingredients: [],
+  //     amount: 0,
+  //     measure: 'tbs',
+  //   },
+  // });
+  
   const { fields, append, remove } = useFieldArray({
     name: 'ingredients',
     control,
