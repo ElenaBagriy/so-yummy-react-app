@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "reusableComponents/Container/Container";
-import { Background } from "reusableComponents/Background/Background";
-import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
+import React, { useEffect, useState } from 'react';
+import { Container } from 'reusableComponents/Container/Container';
+import { Background } from 'reusableComponents/Background/Background';
+import { MainPageTitle } from 'reusableComponents/ManePageTitle/ManePageTitle';
 
-import { Pagination } from "reusableComponents/Pagination/Pagination";
-import { CommonItemList } from "reusableComponents/CommonItemList/CommonItemList";
-import { useRecipes } from "../../components/hooks";
+import { Pagination } from 'reusableComponents/Pagination/Pagination';
+import { CommonItemList } from 'reusableComponents/CommonItemList/CommonItemList';
+import { useRecipes } from '../../components/hooks';
 
-import { Main } from "reusableComponents/Main/Main";
-import { Section } from "./SearchPage.styled";
-import SearchBar from "components/SearchBar/SearchBar";
-import NeedSearching from "components/NeedSearching/NeedSearching";
-import { GoToTop } from "reusableComponents/ScrollToTop/ScrollToTop";
-import { useSearchParams } from "react-router-dom";
+import { Main } from 'reusableComponents/Main/Main';
+import { Section } from './SearchPage.styled';
+import SearchBar from 'components/SearchBar/SearchBar';
+import NeedSearching from 'components/NeedSearching/NeedSearching';
+import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
+import { useSearchParams } from 'react-router-dom';
 
 export default function SearchPage() {
   const [page, setPage] = useState(1);
@@ -20,24 +20,24 @@ export default function SearchPage() {
 
   const [localState, setLocalState] = useState({});
   const [totalPage, setTotalPage] = useState(1);
-  const [value, setValue] = useState("");
-  const [query, setQuery] = useState("");
+  const [value, setValue] = useState('');
+  const [query, setQuery] = useState('');
   const [searchParams] = useSearchParams();
 
-  const handleChangePage = (value) => {
+  const handleChangePage = value => {
     setTimeout(() => {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     });
     setPage(value);
   };
 
   useEffect(() => {
-    if (searchParams.get("query") || searchParams.get("value")) {
-      setValue(searchParams.get("value"));
-      setQuery(searchParams.get("query"));
+    if (searchParams.get('query') || searchParams.get('value')) {
+      setValue(searchParams.get('value'));
+      setQuery(searchParams.get('query'));
     }
   }, [searchParams]);
 
