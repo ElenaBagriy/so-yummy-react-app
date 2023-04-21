@@ -1,14 +1,11 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const StyledFollow = styled.div`
-  h3 {
-    margin-bottom: 40px;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: -0.24px;
-    color: ${props => props.theme.text.primary};
-  }
-
+export const FollowWrapper = styled.div`
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   ul {
     display: flex;
     align-items: center;
@@ -16,13 +13,13 @@ export const StyledFollow = styled.div`
   }
 `;
 
-export const SocialSVG = styled.svg`
+export const StyledLink = styled(Link)`
+  display: flex;
   transition: fill 0.5s;
-
+  fill: #8baa36;
   &:hover,
   &:focus {
-    fill: ${props =>
-      props.theme.colors[props.$color === 'white' ? 'black' : 'dark']};
+    fill: ${props => props.theme.colors.white};
   }
 `;
 // add dark: '#1E1F28' to theme

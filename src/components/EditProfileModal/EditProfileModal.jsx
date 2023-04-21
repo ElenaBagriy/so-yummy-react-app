@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@mui/material';
 import { selectUser } from 'redux/selectors';
@@ -21,13 +21,15 @@ import {
 } from './EditProfileModal.styled';
 
 import { refreshUser, updateUser } from 'redux/user/userOperations';
+import { toast } from 'react-toastify';
 
 export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const [avatar, setAvatar] = useState(null);
-  const [prevue, setPrevue] = useState(null);
+  const [avatar, setAvatar] = useState('');
+  const [prevue, setPrevue] = useState('');
   const [name, setName] = useState(user.name);
+  const [isDisable, setIsDisable] = useState(false);
 
   const handleFileInputChange = e => {
     // setAvatar(URL.createObjectURL(e.target.files[0]));
@@ -42,6 +44,19 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
 
   const handleFormSubmit = e => {
     e.preventDefault();
+
+    if (isDisable) {
+      return toast.warn('🦄 To save you need to make changes', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    }
     const formData = new FormData();
     if (name) {
       formData.append('name', name);
@@ -53,6 +68,18 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
 
     // console.log(formData);
   };
+  useEffect(() => {
+    if (name === user.name && !avatar) {
+      setIsDisable(true);
+    } else {
+      setIsDisable(false);
+    }
+  }, [user.name, avatar, name]);
+  useEffect(() => {
+    if (isOpenEditModal) {
+      setName(user.name);
+    }
+  }, [isOpenEditModal, user.name]);
 
   return (
     <>
@@ -81,7 +108,7 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
               <StyledNameLabel>
                 <StyledNameInput
                   type="text"
-                  value={name?.length >= 0 ? name : user.name}
+                  value={name}
                   onChange={handleNameInputChange}
                 />
                 <UserSVG>

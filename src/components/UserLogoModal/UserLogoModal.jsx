@@ -23,8 +23,8 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
   const handleOpenEditModal = () => setIsOpenEditModal(true);
   const handleCloseEditModal = (setPrevue, setName) => {
     setIsOpenEditModal(false);
-    setPrevue(null);
-    setName(null);
+    setPrevue('');
+    setName('');
   };
   const dispatch = useDispatch();
 
