@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 import spinachMobile1x from '../../images/commonImages/spinachBottom-mobile@1x.png';
 import spinachMobile2x from '../../images/commonImages/spinachBottom-mobile@2x.png';
@@ -19,40 +18,77 @@ export const MainWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  height: 435px;
+  padding-top: 28px;
+  padding-bottom: 81px;
 
-  height: 414px;
-  padding-top: 64px;
-  padding-bottom: 110px;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 423px;
+    padding-top: 50px;
+    padding-bottom: 81px;
+  }
+  @media screen and (min-width: 1440px) {
+    flex-direction: column;
+    justify-content: start;
+    height: 414px;
+    padding-top: 64px;
+    padding-bottom: 110px;
+  }
 `;
 export const BenefitsWrapper = styled.div`
-  width: 418px;
-  margin-right: 159px;
+  @media screen and (min-width: 768px) {
+    min-width: 380px;
+    /* margin-right: 175px; */
+    margin-right: auto;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 418px;
+    margin-right: 159px;
+  }
 `;
 
 export const BenefitsList = styled.ul`
   display: none;
   color: ${({ theme }) => theme.colors.bgMain};
   list-style: disc;
-  padding-left: 28px;
+
+  letter-spacing: -0.02em;
 
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    padding-left: 28px;
+    font-size: 14px;
+    line-height: 1.29;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
+    gap: 12px;
+    font-size: 18px;
+    line-height: 1.33;
   } ;
 `;
 
 export const SecondaryWrapper = styled.div`
   display: flex;
   justify-content: center;
-  gap: 40px;
 
-  padding-top: 50px;
-  padding-bottom: 50px;
+  @media screen and (min-width: 768px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    gap: 28px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    gap: 40px;
+  }
   p {
     font-weight: 500;
     font-size: 14px;
@@ -61,31 +97,6 @@ export const SecondaryWrapper = styled.div`
     color: #22252a;
     opacity: 0.5;
   }
-`;
-export const StyledNav = styled.nav`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1280px) {
-  } ;
-`;
-
-export const Link = styled(NavLink)`
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.02em;
-  color: ${props => props.theme.colors.bgMain};
-
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1280px) {
-  } ;
 `;
 
 export const Background = styled.div`
