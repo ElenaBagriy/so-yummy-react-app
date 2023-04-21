@@ -12,11 +12,8 @@ const ownRecipesInitialState = {
             time: "40"
         },
     ],
-    randomRecipes: [],
     total: null,
     page: null,
-    limit: null,
-    sort: "title",
     isLoading: false,
     error: null,
 };
