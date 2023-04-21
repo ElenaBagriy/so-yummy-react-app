@@ -5,11 +5,12 @@ import { Theme } from 'styles/Theme';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
 import { PrivateRoute } from 'routes/PrivateRoute';
 import ShoppingListPage from 'pages/ShoppingList/ShoppingList';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from './hooks';
-import { refreshToken, refreshUser } from 'redux/user/userOperations';
+import { refreshUser } from 'redux/user/userOperations';
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAxiosInterceptor from './hooks/interceptors';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -31,17 +32,16 @@ const MyRecipesPage = lazy(() =>
 );
 
 export const App = () => {
+  useAxiosInterceptor();
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
+  const { accessToken } = useSelector(state => state.auth);
+
   useEffect(() => {
-
-    dispatch(refreshToken())
-      .then(() => dispatch(refreshUser()))
-      .catch(() => dispatch(refreshUser()))
-    // dispatch(refreshUser())
-
-  }, [dispatch]);
+   
+      dispatch(refreshUser())
+  }, [dispatch, accessToken]);
 
   return (
     !isRefreshing && (

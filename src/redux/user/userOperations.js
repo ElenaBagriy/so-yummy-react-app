@@ -37,36 +37,12 @@ export const logoutUser = createAsyncThunk(
 );
 
 /// Новая версия
-export const refreshToken = createAsyncThunk(
-  'user/refreshToken',
-  async (_, thunkAPI) => {
-
-    try {
-      const response = await UserAPI.refreshToken();
-      
-      return response;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-/// Старая рабочая версия
-
 // export const refreshToken = createAsyncThunk(
 //   'user/refreshToken',
 //   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const refreshToken = {
-//       "refreshToken": state.auth.refreshToken
-//     };
-//     console.log(refreshToken);
-//     if (!refreshToken.refreshToken) {
-//       return thunkAPI.rejectWithValue('Unable to refresh token');
-//     }
 
 //     try {
-//       const response = await UserAPI.refreshToken(refreshToken);
+//       const response = await UserAPI.refreshToken();
       
 //       return response;
 //     } catch (error) {
@@ -79,21 +55,12 @@ export const refreshToken = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'user/refreshUser',
   async (_, thunkAPI) => {
-    // const state = thunkAPI.getState();
-    // const savedToken = state.auth.refreshToken;
-
-    
-    // if (!savedToken) {
-    //   return thunkAPI.rejectWithValue('Unable to fetch user');
-    // }
+    const state = thunkAPI.getState();
 
     try {
-      const response = await UserAPI.refreshUser();
+      const response = await UserAPI.refreshUser(state.auth);
       return response;
     } catch (error) {
-      // if (error.response.status === 401) {
-      //   onAuthorise(error, savedToken);
-      // };
       return thunkAPI.rejectWithValue(error.message);
     }
   }

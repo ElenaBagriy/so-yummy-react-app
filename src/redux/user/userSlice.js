@@ -3,7 +3,6 @@ import {
   loginUser,
   logoutUser,
   refreshUser,
-  refreshToken,
   registerUser,
   updateUser,
   subscribe,
@@ -37,6 +36,14 @@ const handleRejected = (state, action) => {
 const userSlice = createSlice({
   name: 'user',
   initialState: userInitialState,
+   reducers: {
+    setData: (state, action) => {
+      state.refreshToken = action.payload.refreshToken;
+      state.accessToken = action.payload.accessToken;
+      state.isLoading = false;
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: builder =>
     builder
 
@@ -77,13 +84,13 @@ const userSlice = createSlice({
       .addCase(logoutUser.rejected, handleRejected)
 
       // ------------ Refresh token ----------------
-      .addCase(refreshToken.pending, handlePending)
-      .addCase(refreshToken.fulfilled, (state, action) => {
-        state.refreshToken = action.payload.refreshToken;
-        state.accessToken = action.payload.accessToken;
-        state.isLoading = false;
-      })
-      .addCase(refreshToken.rejected, handleRejected)
+      // .addCase(refreshToken.pending, handlePending)
+      // .addCase(refreshToken.fulfilled, (state, action) => {
+      //   state.refreshToken = action.payload.refreshToken;
+      //   state.accessToken = action.payload.accessToken;
+      //   state.isLoading = false;
+      // })
+      // .addCase(refreshToken.rejected, handleRejected)
 
       // ------------ Refresh user ----------------
       .addCase(refreshUser.pending, state => {
@@ -125,4 +132,6 @@ const userSlice = createSlice({
       .addCase(subscribe.rejected, handleRejected),
 });
 
+
 export const userReducer = userSlice.reducer;
+export const { setData } = userSlice.actions;
