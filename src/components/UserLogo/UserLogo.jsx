@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { UserLogoModal } from 'components/UserLogoModal/UserLogoModal';
-import { selectUser } from 'redux/selectors';
+import { selectUserAvatar, selectUserName } from 'redux/selectors';
 import {
   StyledAvatar,
   StyledUserName,
@@ -9,17 +9,39 @@ import {
 } from './UserLogo.styled';
 
 export function UserLogo() {
-  const user = useSelector(selectUser);
+  const userName = useSelector(selectUserName);
+  const userAvatar = useSelector(selectUserAvatar);
+
   const userLogoRef = useRef();
   const [isOpen, setOpen] = useState(false);
-  function popoverTogler() {
+
+  function popoverTogler(e) {
     setOpen(!isOpen);
-  }
+  };
+
+  
+  useEffect(() => {
+    const onCloseModal = (e) => {
+      if (
+        !e.target.closest('.modal') &&
+        !e.target.closest("#simple-popover") &&
+        !e.target.closest(".user") &&
+        !e.target.classList.contains('.modal') &&
+        !e.target.classList.contains('.user')
+      ) {
+        setOpen(false);
+      };
+      return;
+    }
+    window.addEventListener('click', onCloseModal)
+  }, [])
+  
+
   return (
     <>
-      <UserLogoWrapper ref={userLogoRef} onClick={popoverTogler}>
-        <StyledAvatar alt={user.name} src={user.avatarURL} />
-        <StyledUserName>{user.name}</StyledUserName>
+      <UserLogoWrapper ref={userLogoRef} onClick={popoverTogler} className='user'>
+        <StyledAvatar alt={userName} src={userAvatar} />
+        <StyledUserName>{userName}</StyledUserName>
       </UserLogoWrapper>
       <UserLogoModal
         userLogoRef={userLogoRef}

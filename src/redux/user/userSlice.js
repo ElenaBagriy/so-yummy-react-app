@@ -109,7 +109,7 @@ const userSlice = createSlice({
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
-        state.user.avatarURL = action.payload.avatar;
+        state.user.avatarURL = action.payload.avatarURL;
         state.isLoading = false;
       })
       .addCase(updateUser.rejected, handleRejected)

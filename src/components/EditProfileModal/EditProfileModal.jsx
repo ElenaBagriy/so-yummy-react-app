@@ -21,7 +21,7 @@ import {
   UserSVG,
 } from './EditProfileModal.styled';
 
-import { refreshUser, updateUser } from 'redux/user/userOperations';
+import { updateUser } from 'redux/user/userOperations';
 import { toast } from 'react-toastify';
 
 export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
@@ -63,8 +63,7 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
     if (avatar) {
       formData.append('avatar', avatar);
     }
-    dispatch(updateUser(formData))
-      .then(() => dispatch(refreshUser()));
+    dispatch(updateUser(formData));
   };
 
   useEffect(() => {
@@ -83,12 +82,12 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
 
   return (
     <>
-      <Modal
+      <Modal className='modal'
         open={isOpenEditModal}
         onClose={() => handleCloseEditModal(setPrevue, setName)}
         slots={{ backdrop: StyledBackdrop }}
       >
-        <EditProfileWrapper>
+        <EditProfileWrapper className='modal'>
           <EditProfileCloseButton
             onClick={() => handleCloseEditModal(setPrevue, setName)}>
             <IconClose />

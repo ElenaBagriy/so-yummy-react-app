@@ -2,6 +2,12 @@
 //user
 export const selectUser = state => state.auth.user;
 
+export const selectUserName = state => state.auth.user.name;
+
+export const selectUserAvatar = state => state.auth.user.avatarURL;
+
+export const selectUserEmail = state => state.auth.user.email;
+
 export const selectAccessToken = state => state.auth.accessToken;
 
 export const selectRefreshToken = state => state.auth.refreshToken;

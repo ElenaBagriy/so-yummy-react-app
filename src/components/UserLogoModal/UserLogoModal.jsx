@@ -22,7 +22,9 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
   ];
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   // const [isOpenPopper, setIsOpenPopper] = useState(false);
+
   const handleOpenEditModal = () => setIsOpenEditModal(true);
+
   const handleCloseEditModal = (setPrevue, setName) => {
     setIsOpenEditModal(false);
     setPrevue('');
@@ -33,10 +35,12 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
   function EditProfileBtnHandle() {
     handleOpenEditModal();
     popoverTogler();
-  }
+  };
+
   function logoutBtnHandle() {
     dispatch(logoutUser());
-  }
+  };
+  
   return (
     <>
       <Popper
