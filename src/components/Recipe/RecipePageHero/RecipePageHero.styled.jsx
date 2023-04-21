@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { ReactComponent as ClockIcon } from "../../../images/svg/clock.svg";
-import backgroundDesktop from "../../../images/recipePage/vegetables@1x.jpg";
-import webP from "../../../images/recipePage/vegetables@1x.webp";
 import backgroundMobile1x from "../../../images/recipePage/vegetables-mobile@1x-min.jpg";
 import backgroundMobile2x from "../../../images/recipePage/vegetables-mobile@2x-min.jpg";
 import backgroundTablet1x from "../../../images/recipePage/vegetables-tablet@1x-min.jpg";

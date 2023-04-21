@@ -10,7 +10,7 @@ import {
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
-import Select from 'react-select';
+// import Select from 'react-select';
 import { GrClose } from 'react-icons/gr';
 
 export const RecipeDescriptionFields = ({ categories }) => {

@@ -17,13 +17,14 @@ export const StyledFollow = styled.div`
 `;
 
 export const SocialSVG = styled.svg`
-  transition: fill 0.5s;
+  transition: fill ${props => props.theme.hover.transition}, background-color ${props => props.theme.hover.transition};
 
   &:hover,
   &:focus {
-    fill: ${props =>
-      props.theme.colors[props.$color === 'white' ? 'black' : 'dark']};
+    fill: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.colors.green}
   }
 `;
+
 // add dark: '#1E1F28' to theme
 // треба через пропси відображати різні заливки (у футері один, на додаванні рецепту інший)

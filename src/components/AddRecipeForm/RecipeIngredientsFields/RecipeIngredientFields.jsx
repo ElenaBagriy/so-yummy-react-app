@@ -4,15 +4,15 @@ import { IconButton, Tooltip } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import {
   IngredFieldsStyled,
-  Label,
+  // Label,
   MeasureLabel,
   RecipeIngredStyled,
   StyledSelect,
 } from './RecipeIngredientFields.styled';
-import Select from 'react-select';
+// import Select from 'react-select';
 
 export const RecipeIngredientsFields = ({ ingredients }) => {
-  const { register, control } = useForm({
+  const { control } = useForm({
     defaultValues: {
       ingredients: [],
       amount: 0,
