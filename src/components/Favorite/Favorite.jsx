@@ -79,7 +79,6 @@ export const Favorite = () => {
     };
 
     const onDelete = (id) => {
-        console.log('id', id);
         dispatch(toggleFavoriteRecipesById(id))
             .then(() => {
                 dispatch(getRecipesFavorite({ page }))

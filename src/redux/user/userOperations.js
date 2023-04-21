@@ -67,9 +67,7 @@ export const subscribe = createAsyncThunk(
   'user/subscribe',
   async (formData, thunkAPI) => {
     try {
-      console.log(formData);
       const response = await UserAPI.subscribe(formData);
-      console.log(response);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
