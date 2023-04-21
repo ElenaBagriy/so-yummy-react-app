@@ -7,6 +7,7 @@ export const RecipeIngredStyled = styled.div`
   gap: 362px;
   margin-top: 104px;
   margin-bottom: 36px;
+  max-width: 609px;
 
   h3 {
     font-size: 24px;
@@ -48,17 +49,27 @@ export const RecipeIngredStyled = styled.div`
 export const IngredFieldsStyled = styled.div`
   display: flex;
   margin-bottom: 20px;
-  label,
-  .deleteBtn {
+
+  label {
     display: flex;
+  }
+
+  input {
+    border: 1px solid hsl(0, 0%, 80%);
+    border-right: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    width: 30px;
+    margin-left: 32px;
   }
 `;
 
 export const Label = styled.label`
-  position: relative;
+  /* position: relative;
   display: flex;
   flex-grow: 1;
-  width: 100%;
+  width: 100%; */
+
   &:not(:last-child) {
     margin-bottom: 24px;
   }
@@ -74,34 +85,45 @@ export const MeasureLabel = styled.label`
 `;
 
 export const StyledSelect = styled(Select)`
-  width: 123px;
+  width: 398px;
   font-size: 14px;
   line-height: 1;
+  min-height: 59px !important;
+
   svg {
     fill: ${props => props.theme.colors.green};
   }
-  &.сustom-select-container {
-    /* position: absolute;
+
+  .сustom-select-container {
+    position: absolute;
     right: 0;
     top: -8px;
-    z-index: 5; */
-    border: none;
-    background-color: transparent;
-  }
-  .сustom-select__control {
-    border-style: none !important;
+    z-index: 5;
     border: none !important;
     background-color: transparent !important;
   }
-  .сustom-select__control--menu-is-open {
+
+  .custom-select__input-container {
+    display: flex;
+    min-height: 59px !important;
+    border: none !important;
+  }
+
+  .сustom-select__control .css-13cymwt-control {
+    border-style: none !important;
+    border: none !important;
+    background-color: transparent !important;
+    height: 100%;
+  }
+  /* .сustom-select__control--menu-is-open {
     box-shadow: 0 0 0 3px red;
   }
   .сustom-select__control--is-focused {
     box-shadow: 0 0 0 3px red;
-  }
+  } */
 
   .сustom-select__indicator-separator {
-    width: 0;
+    width: 0 !important;
   }
   .сustom-select__value-container {
     padding: 2px 0px 2px 14px;

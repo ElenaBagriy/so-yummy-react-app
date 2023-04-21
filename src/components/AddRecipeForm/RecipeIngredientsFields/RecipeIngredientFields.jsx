@@ -90,7 +90,7 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
       {fields.map(({ id }, index) => {
         return (
           <IngredFieldsStyled key={id}>
-            <Label>
+            <label>
               <Controller
                 name={`ingredients.${index}.ingredients`}
                 control={control}
@@ -99,18 +99,31 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                     {...field}
                     options={selectIngredients}
                     classNamePrefix="custom-select"
-                    className="сustom-select-container"
+                    className="сustom-select-container second"
+                    placeholder="Choose an ingredient..."
+                    onChange={e => {
+                      console.log(e.value);
+                    }}
                   />
                 )}
               />
-            </Label>
-            <Controller
-              className="amountField"
-              name={`ingredients.${index}.amount`}
-              control={control}
-              defaultValue={0}
-              render={({ field }) => <input {...field} />}
-            />
+            </label>
+
+            <label>
+              <Controller
+                className="amountField"
+                name={`ingredients.${index}.amount`}
+                control={control}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    onChange={e => {
+                      console.log(e.target.value);
+                    }}
+                  />
+                )}
+              />
+            </label>
             <MeasureLabel>
               <Controller
                 name={`ingredients.${index}.measure`}
@@ -121,6 +134,9 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                     options={selectMeasure}
                     classNamePrefix="custom-select"
                     className="сustom-select-container"
+                    onChange={e => {
+                      console.log(e.value);
+                    }}
                   />
                 )}
               />
