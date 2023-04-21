@@ -1,4 +1,23 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+
+export const Link = styled(NavLink)`
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 6px;
+
+transition: fill ${props => props.theme.hover.transition}, background-color ${props => props.theme.hover.transition};
+
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colors.green};
+
+    & svg {
+      fill: ${props => props.theme.colors.white};
+    }
+  }
+`;
 
 export const StyledFollow = styled.div`
   h3 {
@@ -14,6 +33,7 @@ export const StyledFollow = styled.div`
     align-items: center;
     gap: 20px;
   }
+
 `;
 
 export const SocialSVG = styled.svg`
