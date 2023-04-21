@@ -20,8 +20,8 @@ export const RecipePreparation = ({ preview, title, instructions }) => {
     
       return (
     <MainBox>
-      <Title>Recipe Preparation</Title>
       <Box>
+      <Title>Recipe Preparation</Title>
         <List>
           {steps?.map((el, idx) => (
             <Item key={nanoid()}>
@@ -32,8 +32,8 @@ export const RecipePreparation = ({ preview, title, instructions }) => {
             </Item>
           ))}
         </List>
-        <Img alt={title} src={preview} width={343} />
       </Box>
+        <Img alt={title} src={preview} width={343} />
     </MainBox>
   );
 };

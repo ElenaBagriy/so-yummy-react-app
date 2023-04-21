@@ -1,5 +1,4 @@
 import {
-  Box,
   ButtonWrapper,
   Img,
   List,
@@ -7,6 +6,7 @@ import {
   ListItem,
   ListItemHeader,
   Measure,
+  RightWrapper,
   Title,
   Wrapper,
 } from "./RecipeIngredientsList.styled";
@@ -18,14 +18,13 @@ export const RecipeIngredientsList = ({ ingredients }) => {
   const list = useSelector(selectShoppingList);
 
   return (
-    <Box>
       <List>
         <ListItemHeader>
           <ListHeaderText>Ingredients</ListHeaderText>
-          <div>
+          <RightWrapper>
             <ListHeaderText>Number</ListHeaderText>
             <ListHeaderText>Add to list</ListHeaderText>
-          </div>
+          </RightWrapper>
         </ListItemHeader>
         {ingredients && ingredients.map(({ _id, title, thumb, measure }) => {
           if (!_id) {
@@ -51,6 +50,5 @@ export const RecipeIngredientsList = ({ ingredients }) => {
           );
         })}
       </List>
-    </Box>
   );
 };
