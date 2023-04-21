@@ -12,7 +12,7 @@ import {
 import { useState } from 'react';
 import { Logo } from 'components/Logo/Logo';
 import { Navigation } from 'components/Navigation/Navigation';
-import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
+// import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 
 export function BurgerMenu() {
   const isMobile = useMediaQuery('(max-width: 1279px)');
