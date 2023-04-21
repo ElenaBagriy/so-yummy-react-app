@@ -38,9 +38,7 @@ export default function IngredientsShoppingList() {
             <BoxForImage>
               <IngredientsShoppingListImg src={thumb} alt={title} />
             </BoxForImage>
-            
             <p>{title}</p>
-            {/* <p>{desc}</p> */}
             <IngredientsShoppingListMeasure>
               {measure}
             </IngredientsShoppingListMeasure>

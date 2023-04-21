@@ -86,9 +86,9 @@ export const Favorite = () => {
             });
     };
     
-    return         <>
-            <Background/>
-            <Container>
+    return <>
+        <Background />
+        <Container>
                 <Section>
                     <MainPageTitle title='Favorites'/>
                     

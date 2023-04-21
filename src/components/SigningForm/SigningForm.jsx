@@ -1,7 +1,5 @@
-// import ReactDOM from 'react-dom';
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
-// import * as Yup from 'yup';
 import { SigninStyled, LinkStyled, FormWrapper } from './SigningFormStyled';
 import pictureDesktop from '../../images/welcomePage/img-sign-reg-desktop.png';
 import pictureDesktop2x from '../../images/welcomePage/img-sign-reg-desktop@2x.png';
