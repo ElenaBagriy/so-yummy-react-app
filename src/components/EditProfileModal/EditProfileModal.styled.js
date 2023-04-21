@@ -162,9 +162,7 @@ export const SaveChangesBtn = styled.button`
   font-size: 14px;
   line-height: 1.29;
   color: #fafafa;
-  &:disabled {
-    background-color: grey;
-  }
+
   @media screen and (min-width: 768px) {
     padding: 18px;
     font-size: 16px;

@@ -20,15 +20,22 @@ export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
   height: 414px;
   padding-top: 64px;
   padding-bottom: 110px;
 `;
+export const BenefitsWrapper = styled.div`
+  width: 418px;
+  margin-right: 159px;
+`;
 
 export const BenefitsList = styled.ul`
   display: none;
-  color: white;
+  color: ${({ theme }) => theme.colors.bgMain};
   list-style: disc;
+  padding-left: 28px;
+
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -39,6 +46,22 @@ export const BenefitsList = styled.ul`
   } ;
 `;
 
+export const SecondaryWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: #22252a;
+    opacity: 0.5;
+  }
+`;
 export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;

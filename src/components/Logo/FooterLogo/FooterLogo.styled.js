@@ -24,7 +24,6 @@ export const FooterLogoSVG = styled.svg`
   }
 `;
 export const LogoText = styled.h2`
-  font-family: 'Poppins', sans-serif;
   font-weight: 700px;
   font-size: 18px;
   line-height: 1;

@@ -25,6 +25,10 @@
 <path d="M20 21.5C20 20.1044 20 19.4067 19.8278 18.8389C19.44 17.5605 18.4395 16.56 17.1611 16.1722C16.5933 16 15.8956 16 14.5 16H9.5C8.10444 16 7.40665 16 6.83886 16.1722C5.56045 16.56 4.56004 17.5605 4.17224 18.8389C4 19.4067 4 20.1044 4 21.5M16.5 8C16.5 10.4853 14.4853 12.5 12 12.5C9.51472 12.5 7.5 10.4853 7.5 8C7.5 5.51472 9.51472 3.5 12 3.5C14.4853 3.5 16.5 5.51472 16.5 8Z" stroke="#23262A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </symbol>
+<symbol  id="icon-mail" viewBox="0 0 22 19" fill="none">
+<path d="M3 1.49976H19C19.5299 1.50134 20.0377 1.71256 20.4125 2.08729C20.7872 2.46202 20.9984 2.96981 21 3.49976V15.4998C20.9984 16.0297 20.7872 16.5375 20.4125 16.9122C20.0377 17.287 19.5299 17.4982 19 17.4998H3C2.47005 17.4982 1.96227 17.287 1.58753 16.9122C1.2128 16.5375 1.00158 16.0297 1 15.4998V3.49976C1.00158 2.96981 1.2128 2.46202 1.58753 2.08729C1.96227 1.71256 2.47005 1.50134 3 1.49976V1.49976Z" stroke="#FAFAFA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 3.49976L11 10.4998L1 3.49976" stroke="#FAFAFA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
 <symbol  id="icon-plus" viewBox="0 0 24 24" fill="none">
 <circle cx="12" cy="12" r="12" fill="#8BAA36"/>
 <path d="M12 6.75V17.25" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
