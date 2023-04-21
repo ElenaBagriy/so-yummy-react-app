@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -6,11 +6,9 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 50px;
-  margin-bottom: 42px;
 
   @media screen and (min-width: 768px) {
     margin-top: 40px;
-    margin-bottom: 40px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -36,7 +34,7 @@ export const SelectBar = styled.div`
 export const SelectText = styled.div`
   margin-right: 18px;
 
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -44,7 +42,7 @@ export const SelectText = styled.div`
 
   letter-spacing: -0.24px;
 
-  color: ${props => props.theme.text.title};
+  color: ${(props) => props.theme.text.title};
 
   @media screen and (min-width: 768px) {
   }
