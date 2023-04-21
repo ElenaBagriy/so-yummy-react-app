@@ -103,14 +103,20 @@ export const RecipeDescriptionFields = ({ categories }) => {
 
       <InputsStyled>
         <label>
-          {' '}
           <span>Enter item title</span>
-          <input {...register('title')} />
+          <Controller
+            name="title"
+            control={control}
+            render={({ field }) => <input {...field} />}
+          />
         </label>
         <label>
-          {' '}
           <span>Enter about recipe</span>
-          <input {...register('about')} />
+          <Controller
+            name="about"
+            control={control}
+            render={({ field }) => <input {...field} />}
+          />
         </label>
         {errors.exampleRequired && <span>This field is required</span>}
         <label className="wrapperCategory">
@@ -126,6 +132,9 @@ export const RecipeDescriptionFields = ({ categories }) => {
                 classNamePrefix="custom-select"
                 className="сustom-select-container"
                 zIndex={110}
+                onChange={e => {
+                  console.log(e.value);
+                }}
               />
             )}
           />
@@ -156,6 +165,9 @@ export const RecipeDescriptionFields = ({ categories }) => {
                 className="сustom-select-container"
                 defaultValue={{ value: '40', label: '40 min' }}
                 zIndex={105}
+                onChange={e => {
+                  console.log(e.value);
+                }}
               />
             )}
           />
