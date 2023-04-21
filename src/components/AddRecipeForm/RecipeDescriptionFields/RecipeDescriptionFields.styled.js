@@ -132,9 +132,9 @@ export const StyledSelect = styled(Select)`
   }
 
   &.сustom-select-container {
-    position: absolute;
-    right: 0;
-    top: -8px;
+    /* position: absolute; */
+    /* right: 0;
+    top: -8px; */
     /* z-index: 5; */
   }
 

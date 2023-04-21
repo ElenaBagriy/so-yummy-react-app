@@ -1,31 +1,6 @@
 import axios from 'axios';
-// import { store } from 'redux/store';    ///ошибка, невозможно объвить до инициализации.
 
 axios.defaults.baseURL = 'https://so-yumi.p.goit.global/api';
-
-
-axios.interceptors.request.use(
-  function (config) {
-    return config;
-  },
-  function (error) {
-    return Promise.reject(error);
-  },
-);
-
-axios.interceptors.response.use(
-  function (response) {
-    return response;
-  },
-  function (error) {
-    if (error.response.status === 401) {
-      UserAPI.refreshToken();
-      // store.dispatch(refreshToken());
-    }
-
-    return Promise.reject(error);
-  },
-);
 
 
 const setAuthHeader = token => {
@@ -63,9 +38,7 @@ export const UserAPI = {
     const refreshToken = {
       "refreshToken": parsedToken,
     };
-    console.log(refreshToken);
     
-
     const { data } = await axios.post('/users/refresh', refreshToken);
     
     setAuthHeader(data.accessToken);
@@ -90,7 +63,8 @@ export const UserAPI = {
 
 
 
-  refreshUser: async () => {
+  refreshUser: async credentials => {
+    setAuthHeader(credentials.accessToken)
     const { data } = await axios.get('/users/current');
     return data;
   },

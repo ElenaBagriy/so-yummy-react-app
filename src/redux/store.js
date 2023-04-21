@@ -16,11 +16,10 @@ import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { shoppingListReducer } from "./shoplist/shoplistSlice";
 
 
-
 const userConfig = {
   key: "token",
   storage,
-  whitelist: ["refreshToken"],
+  whitelist: ["refreshToken", "accessToken"],
 };
 
 export const store = configureStore({
@@ -28,8 +27,7 @@ export const store = configureStore({
     auth: persistReducer(userConfig, userReducer),
     recipes: recipesReducer,
     ownRecipes: ownRecipesReducer,
-    shoppingList: shoppingListReducer,
-    myRecipes: ownRecipesReducer,
+    shoppingList: shoppingListReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

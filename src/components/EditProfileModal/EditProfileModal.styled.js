@@ -1,6 +1,7 @@
 import { Avatar, Backdrop } from '@mui/material';
 import styled from 'styled-components';
-import closeIcon from 'images/svg/x.svg';
+import { ReactComponent as CloseIcon } from "../../images/svg/x.svg";
+import { ReactComponent as PlusIcon } from "../../images/svg/plus.svg";
 
 export const StyledBackdrop = styled(Backdrop)`
   &.MuiBackdrop-root {
@@ -45,12 +46,42 @@ export const EditProfileCloseButton = styled.button`
 
   border: none;
   background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(${closeIcon});
+    & svg path{
+    transition: stroke ${props => props.theme.hover.transition};
+    stroke: ${props => props.theme.text.primary};
+    box-shadow: ${props => props.theme.hover.boxShadow};
+  }
+
+    &:hover,
+     :focus {
+      & svg path{
+      stroke: ${props => props.theme.text.accent};
+    }}
+
   @media screen and (min-width: 768px) {
     top: 24px;
     right: 24px;
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const IconClose = styled(CloseIcon)`
+  display: block;
+  width: 20px;
+  height: 20px;
+
+    & path {
+    transition: stroke ${props => props.theme.hover.transition};
+    stroke: ${props => props.theme.text.primary};
+
+    &:hover,
+     :focus {
+      stroke: ${props => props.theme.text.accent};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
   }
@@ -85,15 +116,21 @@ export const StyledFileInput = styled.input`
   display: none;
 `;
 
-export const PlusSVG = styled.svg`
+export const PlusSVG = styled(PlusIcon)`
   position: absolute;
   bottom: 0;
   right: 10px;
-
   cursor: pointer;
-
   width: 24px;
   height: 24px;
+  fill: ${props => props.theme.colors.green};
+  transition: fill ${props => props.theme.hover.transition};
+
+    &:hover,
+     :focus {
+      fill: ${props => props.theme.colors.black};
+    }
+
 `;
 
 export const SimpleDiv = styled.div`
@@ -108,19 +145,37 @@ export const SimpleDiv = styled.div`
 `;
 
 export const StyledNameInput = styled.input`
+  color: ${props => props.theme.text.primary};
   display: inline-block;
   width: 100%;
   padding: 14px 40px;
   background-color: transparent;
   border: 1px solid #23262a;
   border-radius: 6px;
+  transition: border-color ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition};
   @media screen and (min-width: 768px) {
     padding: 16px 51px;
   }
+
+  &:focus-visible {
+    outline: 2px solid ${props => props.theme.text.accent};
+    border: 1px solid ${props => props.theme.colors.white};
+}
 `;
 
 export const StyledNameLabel = styled.label`
   position: relative;
+
+      &:hover,
+     :focus {
+      svg{
+        stroke: ${props => props.theme.text.accent};
+      }
+      input {
+        border-color: ${props => props.theme.text.accent};
+        /* color: ${props => props.theme.text.accent}; */
+      }
+    }
 `;
 
 export const UserSVG = styled.svg`
@@ -130,11 +185,19 @@ export const UserSVG = styled.svg`
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
+  stroke: ${props => props.theme.text.primary};
+  transition: stroke ${props => props.theme.hover.transition};
+
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
     left: 19px;
   }
+
+    &:hover,
+     :focus {
+      stroke: ${props => props.theme.text.accent};
+    }
 `;
 
 export const EditSVG = styled.svg`
@@ -144,11 +207,19 @@ export const EditSVG = styled.svg`
   transform: translateY(-50%);
   width: 17px;
   height: 17px;
+  stroke: ${props => props.theme.text.primary};
+  transition: stroke ${props => props.theme.hover.transition};
+
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
     right: 19px;
   }
+
+      &:hover,
+     :focus {
+      stroke: ${props => props.theme.text.accent};
+    }
 `;
 
 export const SaveChangesBtn = styled.button`
@@ -162,10 +233,20 @@ export const SaveChangesBtn = styled.button`
   font-size: 14px;
   line-height: 1.29;
   color: #fafafa;
+  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition};
+  &:disabled {
+    background-color: ${props => props.theme.colors.grey};
+  }
 
   @media screen and (min-width: 768px) {
     padding: 18px;
     font-size: 16px;
     line-height: 1.12;
   }
+
+      &:hover,
+     :focus {
+      background-color: ${props => props.theme.colors.black};
+      box-shadow: ${props => props.theme.hover.boxShadow};
+    }
 `;

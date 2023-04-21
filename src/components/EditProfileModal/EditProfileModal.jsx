@@ -7,6 +7,7 @@ import {
   EditProfileCloseButton,
   EditProfileWrapper,
   EditSVG,
+  IconClose,
   PlusSVG,
   SaveChangesBtn,
   SimpleDiv,
@@ -32,9 +33,7 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
   const [isDisable, setIsDisable] = useState(false);
 
   const handleFileInputChange = e => {
-    // setAvatar(URL.createObjectURL(e.target.files[0]));
     setAvatar(e.target.files[0]);
-    // console.dir(e.target.files[0]);
     setPrevue(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -64,10 +63,10 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
     if (avatar) {
       formData.append('avatar', avatar);
     }
-    dispatch(updateUser(formData)).then(() => dispatch(refreshUser()));
-
-    // console.log(formData);
+    dispatch(updateUser(formData))
+      .then(() => dispatch(refreshUser()));
   };
+
   useEffect(() => {
     if (name === user.name && !avatar) {
       setIsDisable(true);
@@ -75,6 +74,7 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
       setIsDisable(false);
     }
   }, [user.name, avatar, name]);
+
   useEffect(() => {
     if (isOpenEditModal) {
       setName(user.name);
@@ -90,8 +90,9 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
       >
         <EditProfileWrapper>
           <EditProfileCloseButton
-            onClick={() => handleCloseEditModal(setPrevue, setName)}
-          />
+            onClick={() => handleCloseEditModal(setPrevue, setName)}>
+            <IconClose />
+          </EditProfileCloseButton>
           <StyledEditProfileForm onSubmit={handleFormSubmit}>
             <StyledAvatarLabel>
               <StyledAvatar
@@ -99,7 +100,7 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
                 src={prevue?.length > 0 ? prevue : user.avatarURL}
               />
               <PlusSVG>
-                <use href={`${sprite}#icon-plus`} />
+                {/* <use href={`${sprite}#icon-plus`} /> */}
               </PlusSVG>
               <StyledFileInput type="file" onChange={handleFileInputChange} />
             </StyledAvatarLabel>
