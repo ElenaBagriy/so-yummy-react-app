@@ -4,19 +4,26 @@ import { IconButton, Tooltip } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import {
   IngredFieldsStyled,
-  Label,
   MeasureLabel,
   RecipeIngredStyled,
   StyledSelect,
 } from './RecipeIngredientFields.styled';
-import Select from 'react-select';
+// import Select from 'react-select';
 
-export const RecipeIngredientsFields = ({ ingredients }) => {
+export const RecipeIngredientsFields = ({
+  ingredients,
+  ingredientsValue,
+  amountValue,
+  measureValue,
+  handleIngredientsValueChange,
+  handleAmountInputChange,
+  handleMeasureInputChange,
+}) => {
   const { register, control } = useForm({
     defaultValues: {
       ingredients: [],
       amount: 0,
-      measure: null,
+      measure: 'tbs',
     },
   });
   const { fields, append, remove } = useFieldArray({
@@ -101,9 +108,12 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                     classNamePrefix="custom-select"
                     className="сustom-select-container second"
                     placeholder="Choose an ingredient..."
-                    onChange={e => {
-                      console.log(e.value);
-                    }}
+                    defaultValue={{ value: '', label: '' }}
+                    // value={ingredientsValue}
+                    // onChange={e => {
+                    //   handleIngredientsValueChange(e.value);
+                    //   console.log(e.value);
+                    // }}
                   />
                 )}
               />
@@ -117,7 +127,9 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                 render={({ field }) => (
                   <input
                     {...field}
+                    value={amountValue}
                     onChange={e => {
+                      handleAmountInputChange(e.target.value);
                       console.log(e.target.value);
                     }}
                   />
@@ -134,9 +146,11 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                     options={selectMeasure}
                     classNamePrefix="custom-select"
                     className="сustom-select-container"
-                    onChange={e => {
-                      console.log(e.value);
-                    }}
+                    // value={measureValue}
+                    // onChange={e => {
+                    //   handleMeasureInputChange(e.value);
+                    //   console.log(e.value);
+                    // }}
                   />
                 )}
               />
