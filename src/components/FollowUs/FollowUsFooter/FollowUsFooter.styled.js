@@ -3,9 +3,15 @@ import styled from 'styled-components';
 
 export const FollowWrapper = styled.div`
   position: absolute;
-  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    bottom: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    bottom: 50px;
+  }
   ul {
     display: flex;
     align-items: center;

@@ -3,26 +3,56 @@ import styled from 'styled-components';
 export const StyledSubscribeForm = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 339px;
+
   color: ${({ theme }) => theme.colors.bgMain};
+  @media screen and (min-width: 768px) {
+    max-width: 442px;
+    margin: 0 133px;
+    margin-top: 72px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 339px;
+    margin: 0;
+  }
+
   h3 {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 14px;
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    @media screen and (min-width: 1440px) {
+      display: block;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
   }
   p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.29;
-    letter-spacing: -0.02em;
-    margin-bottom: 28px;
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    @media screen and (min-width: 1440px) {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.29;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
   }
 `;
 export const SubscribeInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 12px;
+  }
+  @media screen and (min-width: 1440px) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 export const StyledEmailLabel = styled.label`
@@ -32,14 +62,26 @@ export const StyledEmailLabel = styled.label`
 export const StyledEmailInput = styled.input`
   display: inline-block;
   width: 100%;
-  padding: 18px 50px;
+  /* padding: 18px 50px; */
   background-color: transparent;
-  /* border: 1px solid ${({ theme }) => theme.colors.bgMain}; */
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(250, 250, 250, 0.16);
   border-radius: 6px;
   color: ${({ theme }) => theme.colors.bgMain};
+  &:hover,
+  :focus {
+    border-color: rgb(250, 250, 250);
+  }
   @media screen and (min-width: 768px) {
+    padding: 14.5px 40px 14.5px 50px;
+    min-width: 259px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+  }
+  @media screen and (min-width: 1440px) {
     padding: 18px 50px;
+    min-width: 259px;
   }
 `;
 export const EmailSVG = styled.svg`
@@ -50,9 +92,9 @@ export const EmailSVG = styled.svg`
   width: 18px;
   height: 18px;
   @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    left: 19px;
+    width: 20px;
+    height: 16px;
+    left: 15px;
   }
 `;
 export const SubscribeBtn = styled.button`
@@ -71,5 +113,6 @@ export const SubscribeBtn = styled.button`
     padding: 18px;
     font-size: 16px;
     line-height: 1.12;
+    padding: 16px 50px;
   }
 `;
