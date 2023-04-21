@@ -128,3 +128,7 @@ export const SpinachBottom = styled.div`
       }
   }
 `;
+
+export const Div = styled.div`
+color: ${props => props.theme.colors.lightGreen};
+`

@@ -7,6 +7,7 @@ import {
   SpinachBottom,
   StyledBackdrop,
   IconClose,
+  Div,
 } from './BurgerMenu.styled';
 import { useState } from 'react';
 import { Logo } from 'components/Logo/Logo';
@@ -40,7 +41,8 @@ export function BurgerMenu() {
               <CloseButton onClick={handleClose}><IconClose/></CloseButton>
             </HeadWrapper>
             <Navigation isMobile={isMobile} handleClose={handleClose} />
-            <ThemeToggler />
+            {/* <ThemeToggler /> */}
+            <Div>ThemeToggler</Div>
             <SpinachBottom />
           </BurgerMenuWrapper>
         </Slide>
