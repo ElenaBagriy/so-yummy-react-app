@@ -78,6 +78,9 @@ export const BenefitsList = styled.ul`
 export const SecondaryWrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  gap: 14px;
 
   @media screen and (min-width: 768px) {
     padding-top: 32px;
@@ -91,11 +94,16 @@ export const SecondaryWrapper = styled.div`
   }
   p {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 1;
     letter-spacing: -0.01em;
+
     color: #22252a;
     opacity: 0.5;
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+      line-height: 1;
+    }
   }
 `;
 
