@@ -49,8 +49,8 @@ export const selectChoosedRecipe = state => state.recipes.choosedRecipe;
 
 // myRecipe
 
-export const selectMyRecipes = state => state.myRecipes.recipes;
+export const selectMyRecipes = state => state.ownRecipes.recipes;
 
 export const selectTotalPageRecipe = state => {
-    return Math.round(state.myRecipes.total / state.myRecipes.limit);
+    return Math.round(state.ownRecipes.total / state.ownRecipes.limit);
 };
