@@ -10,7 +10,7 @@ export const FollowWrapper = styled.div`
   @media screen and (min-width: 768px) {
     bottom: 24px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     bottom: 50px;
   }
   ul {

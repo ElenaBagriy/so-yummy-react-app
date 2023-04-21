@@ -12,7 +12,7 @@ export const StyledSubscribeForm = styled(Form)`
     margin: 0 133px;
     margin-top: 72px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     max-width: 339px;
     margin: 0;
   }
@@ -25,7 +25,7 @@ export const StyledSubscribeForm = styled(Form)`
     margin-bottom: 14px;
     @media screen and (min-width: 768px) {
     }
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
       display: block;
     }
   }
@@ -38,7 +38,7 @@ export const StyledSubscribeForm = styled(Form)`
     margin-bottom: 28px;
     @media screen and (min-width: 768px) {
     }
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1280px) {
       display: block;
     }
   }
@@ -52,7 +52,7 @@ export const SubscribeInputWrapper = styled.div`
     flex-direction: row;
     gap: 12px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: column;
     gap: 16px;
   }
@@ -92,7 +92,7 @@ export const StyledEmailInput = styled(Field)`
     line-height: 1.5;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     padding: 18px 50px;
     min-width: 259px;
   }
@@ -139,7 +139,7 @@ export const SubscribeBtn = styled.button`
     line-height: 1.12;
     padding: 16px 50px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     padding: 21px;
   }
 `;

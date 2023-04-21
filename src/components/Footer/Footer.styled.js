@@ -32,7 +32,7 @@ export const MainWrapper = styled.div`
     padding-top: 50px;
     padding-bottom: 81px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: column;
     justify-content: start;
     height: 414px;
@@ -46,7 +46,7 @@ export const BenefitsWrapper = styled.div`
     /* margin-right: 175px; */
     margin-right: auto;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     max-width: 418px;
     margin-right: 159px;
   }
@@ -68,7 +68,7 @@ export const BenefitsList = styled.ul`
     line-height: 1.29;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     gap: 12px;
     font-size: 18px;
     line-height: 1.33;
@@ -87,7 +87,7 @@ export const SecondaryWrapper = styled.div`
     padding-bottom: 32px;
     gap: 28px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     padding-top: 50px;
     padding-bottom: 50px;
     gap: 40px;

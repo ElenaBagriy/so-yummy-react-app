@@ -18,7 +18,7 @@ export const StyledNav = styled.nav`
     text-align: start;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     margin-right: 235px;
     gap: 24px;
   } ;
