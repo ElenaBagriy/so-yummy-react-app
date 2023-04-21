@@ -2,34 +2,47 @@ import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { ReactComponent as ClockIcon } from "../../../images/svg/clock.svg";
 import backgroundDesktop from "../../../images/recipePage/vegetables@1x.jpg";
-import backgroundMobile from "../../../images/recipePage/vegetables@3x.jpg";
-import backgroundTablet from "../../../images/recipePage/vegetables@2x.jpg";
+import webP from "../../../images/recipePage/vegetables@1x.webp";
+import backgroundMobile1x from "../../../images/recipePage/vegetables-mobile@1x-min.jpg";
+import backgroundMobile2x from "../../../images/recipePage/vegetables-mobile@2x-min.jpg";
+import backgroundTablet1x from "../../../images/recipePage/vegetables-tablet@1x-min.jpg";
+import backgroundTablet2x from "../../../images/recipePage/vegetables-tablet@2x-min.jpg";
+import backgroundDesktop1x from "../../../images/recipePage/vegetables-desktop@1x-min.jpg";
+import backgroundDesktop2x from "../../../images/recipePage/vegetables-desktop@2x-min.jpg";
+
+
 
 export const Hero = styled.section`
-
-  background-image: url(${backgroundDesktop});
+  padding-top: 144px;
+  padding-bottom: 90px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-image: url(${backgroundMobile1x});
   background-repeat: no-repeat;
-  background-position: center top;
-  /* background-size: auto | значение | cover | contain */
+  background-position: center center;
   background-size: cover;
 
 
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
-    background-image: url(${backgroundTablet});
+    background-image: url(${backgroundMobile2x});
   }
 
-    padding-top: 144px;
-    padding-bottom: 90px;
-    padding-left: 16px;
-    padding-right: 16px;
+
 
     @media screen and (min-width: 768px) {
       padding-top: 136px;
       padding-bottom: 32px;
       padding-left: 32px;
       padding-right: 32px;
+      background-image: url(${backgroundTablet1x});
+
+      @media screen and (min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+          background-image: url(${backgroundTablet2x});
+      }
     };
 
     @media screen and (min-width: 1280px) {
@@ -37,6 +50,13 @@ export const Hero = styled.section`
       padding-bottom: 32px;
       padding-left: 100px;
       padding-right: 100px;
+      background-image: url(${backgroundDesktop1x});
+
+      @media screen and (min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+          background-image: url(${backgroundDesktop2x});
+      }
     };
 `;
 
