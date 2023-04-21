@@ -2,7 +2,7 @@ import Regular from '../fonts/Poppins-Regular.ttf';
 import Medium from '../fonts/Poppins-Medium.ttf';
 import SemiBold from '../fonts/Poppins-SemiBold.ttf';
 import Bold from '../fonts/Poppins-Bold.ttf';
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 export const GlobalStyle = createGlobalStyle`
@@ -128,4 +128,15 @@ table {
   border-spacing: 0;
 }
 
-`
+.loader-wrapper {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1440px;
+  height: 100vh;
+   margin-left: auto;
+  margin-right: auto;
+  
+ 
+}
+`;

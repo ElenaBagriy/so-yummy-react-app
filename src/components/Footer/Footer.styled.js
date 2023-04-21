@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 import spinachMobile1x from '../../images/commonImages/spinachBottom-mobile@1x.png';
 import spinachMobile2x from '../../images/commonImages/spinachBottom-mobile@2x.png';
@@ -19,50 +18,93 @@ export const MainWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  height: 414px;
-  padding-top: 64px;
-  padding-bottom: 110px;
+  height: 435px;
+  padding-top: 28px;
+  padding-bottom: 81px;
+
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 423px;
+    padding-top: 50px;
+    padding-bottom: 81px;
+  }
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+    justify-content: start;
+    height: 414px;
+    padding-top: 64px;
+    padding-bottom: 110px;
+  }
+`;
+export const BenefitsWrapper = styled.div`
+  @media screen and (min-width: 768px) {
+    min-width: 380px;
+    /* margin-right: 175px; */
+    margin-right: auto;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 418px;
+    margin-right: 159px;
+  }
 `;
 
 export const BenefitsList = styled.ul`
   display: none;
-  color: white;
+  color: ${({ theme }) => theme.colors.bgMain};
   list-style: disc;
+
+  letter-spacing: -0.02em;
+
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    padding-left: 28px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  @media screen and (min-width: 1280px) {
     gap: 12px;
-  }
-
-  @media screen and (min-width: 1280px) {
+    font-size: 18px;
+    line-height: 1.33;
   } ;
 `;
 
-export const StyledNav = styled.nav`
+export const SecondaryWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1280px) {
-  } ;
-`;
-
-export const Link = styled(NavLink)`
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.02em;
-  color: ${props => props.theme.colors.bgMain};
+  justify-content: center;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  gap: 14px;
 
   @media screen and (min-width: 768px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    gap: 28px;
   }
-
   @media screen and (min-width: 1280px) {
-  } ;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    gap: 40px;
+  }
+  p {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+
+    color: #22252a;
+    opacity: 0.5;
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+      line-height: 1;
+    }
+  }
 `;
 
 export const Background = styled.div`

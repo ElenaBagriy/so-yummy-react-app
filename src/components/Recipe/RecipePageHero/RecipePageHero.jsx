@@ -1,5 +1,5 @@
 import { useTheme } from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
@@ -17,7 +17,6 @@ import ButtonLoader from "../../ButtonLoader/ButtonLoader";
 import timeConvert from "services/timeConverter";
 
 export const RecipePageHero = ({ title, description, time, id, favorite }) => {
-  const [first, setFirst] = useState(false);
   const [isFavorite, setIsFavorite] = useState(null);
 
   const dispatch = useDispatch();
@@ -25,15 +24,9 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
 
   const isLoading = useSelector(selectLoadingRecipes);
 
-  const topRef = useRef();
-
   useEffect(() => {
     setIsFavorite(favorite);
-    // if (!first) {
-    //   setFirst(true);
-    //   topRef.current.scrollIntoView({ behavior: "smooth" });
-    // }
-  }, [ favorite, first]);
+  }, [ favorite]);
 
   const handleFavoriteButton = (id) => {
     dispatch(toggleFavoriteRecipesById(id));

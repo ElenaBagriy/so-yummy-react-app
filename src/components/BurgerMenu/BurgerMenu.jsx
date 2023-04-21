@@ -1,22 +1,25 @@
 import { Modal, Slide, useMediaQuery } from '@mui/material';
 import {
-  BrgerMenuWrapper,
+  BurgerMenuWrapper,
   BurgerMenuButton,
   CloseButton,
   HeadWrapper,
   SpinachBottom,
   StyledBackdrop,
+  IconClose,
+  Div,
 } from './BurgerMenu.styled';
 import { useState } from 'react';
 import { Logo } from 'components/Logo/Logo';
 import { Navigation } from 'components/Navigation/Navigation';
-import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
+// import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 
 export function BurgerMenu() {
   const isMobile = useMediaQuery('(max-width: 1279px)');
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   return (
     <>
       <BurgerMenuButton onClick={handleOpen} />
@@ -32,15 +35,16 @@ export function BurgerMenu() {
         }}
       >
         <Slide in={open}>
-          <BrgerMenuWrapper>
+          <BurgerMenuWrapper>
             <HeadWrapper>
               <Logo handleClose={handleClose} />
-              <CloseButton onClick={handleClose} />
+              <CloseButton onClick={handleClose}><IconClose/></CloseButton>
             </HeadWrapper>
             <Navigation isMobile={isMobile} handleClose={handleClose} />
-            <ThemeToggler />
+            {/* <ThemeToggler /> */}
+            <Div>ThemeToggler</Div>
             <SpinachBottom />
-          </BrgerMenuWrapper>
+          </BurgerMenuWrapper>
         </Slide>
       </Modal>
     </>

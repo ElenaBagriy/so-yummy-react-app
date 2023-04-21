@@ -10,10 +10,6 @@ export const BasicPagination = styled(Pagination)`
         margin-top: 50px;
     };
 
-    @media screen and (min-width: 1280px) {
-        /* padding-bottom: 100px; */
-    };
-
     .MuiPagination-ul {
         justify-content: space-between;
         align-items: center;

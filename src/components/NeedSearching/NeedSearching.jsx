@@ -7,7 +7,7 @@ import pictureMob from '../../images/Search/vegetables-mob.png';
 import pictureMob2x from '../../images/Search/vegetables-mob@2x.png';
 import { Text, Wrapp } from './NeedSearching.styled';
 
-export default function NeedSearching() {
+export default function NeedSearching({text}) {
   return (
     <Wrapp>
       <picture>

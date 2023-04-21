@@ -10,6 +10,7 @@ import { Pagination } from "reusableComponents/Pagination/Pagination";
 import timeConvert from "services/timeConverter";
 import { Tooltip, useMediaQuery } from "@mui/material";
 import EllipsisText from "react-ellipsis-text";
+import { Loader } from "components/Loader/Loader";
 
 
 export const Favorite = () => {
@@ -79,20 +80,19 @@ export const Favorite = () => {
     };
 
     const onDelete = (id) => {
-        console.log('id', id);
         dispatch(toggleFavoriteRecipesById(id))
             .then(() => {
                 dispatch(getRecipesFavorite({ page }))
             });
     };
     
-    return         <>
-            <Background/>
-            <Container>
+    return <>
+        <Background />
+        <Container>
                 <Section>
                     <MainPageTitle title='Favorites'/>
                     
-                    {!favoriteRecipes ? <>...Loading</> :
+                    {!favoriteRecipes ? <Loader/> :
                     <RecipesList>
                         {favoriteRecipes.map((recipe) => {
                             return <RecipesItem key={recipe._id}>

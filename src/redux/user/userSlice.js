@@ -3,7 +3,6 @@ import {
   loginUser,
   logoutUser,
   refreshUser,
-  refreshToken,
   registerUser,
   updateUser,
   subscribe,
@@ -37,6 +36,14 @@ const handleRejected = (state, action) => {
 const userSlice = createSlice({
   name: 'user',
   initialState: userInitialState,
+   reducers: {
+    setData: (state, action) => {
+      state.refreshToken = action.payload.refreshToken;
+      state.accessToken = action.payload.accessToken;
+      state.isLoading = false;
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: builder =>
     builder
 
@@ -76,15 +83,6 @@ const userSlice = createSlice({
       })
       .addCase(logoutUser.rejected, handleRejected)
 
-      // ------------ Refresh token ----------------
-      .addCase(refreshToken.pending, handlePending)
-      .addCase(refreshToken.fulfilled, (state, action) => {
-        state.refreshToken = action.payload.refreshToken;
-        state.accessToken = action.payload.accessToken;
-        state.isLoading = false;
-      })
-      .addCase(refreshToken.rejected, handleRejected)
-
       // ------------ Refresh user ----------------
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
@@ -119,10 +117,12 @@ const userSlice = createSlice({
       // ------------ Subscribe ----------------
       .addCase(subscribe.pending, handlePending)
       .addCase(subscribe.fulfilled, (state, action) => {
-        state.subscribeList = action.payload.email;
+        state.subscribeList = action.payload.subscribeList;
         state.isLoading = false;
       })
       .addCase(subscribe.rejected, handleRejected),
 });
 
+
 export const userReducer = userSlice.reducer;
+export const { setData } = userSlice.actions;

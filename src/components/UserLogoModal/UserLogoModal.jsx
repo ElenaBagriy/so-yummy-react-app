@@ -1,5 +1,6 @@
 import { Grow, Popper } from '@mui/material';
 import {
+  EditIcon,
   EditProfileButton,
   LogoutButton,
   UserModalWrapper,
@@ -20,6 +21,7 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
     },
   ];
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  // const [isOpenPopper, setIsOpenPopper] = useState(false);
   const handleOpenEditModal = () => setIsOpenEditModal(true);
   const handleCloseEditModal = (setPrevue, setName) => {
     setIsOpenEditModal(false);
@@ -51,6 +53,7 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
             <UserModalWrapper>
               <EditProfileButton onClick={EditProfileBtnHandle}>
                 Edit profile
+                <EditIcon/>
               </EditProfileButton>
               <LogoutButton onClick={logoutBtnHandle}>
                 Log out
@@ -62,6 +65,7 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
           </Grow>
         )}
       </Popper>
+
       <EditProfileModal
         isOpenEditModal={isOpenEditModal}
         handleCloseEditModal={handleCloseEditModal}

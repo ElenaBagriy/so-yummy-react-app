@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyledFollow, SocialSVG } from './FollowUs.styled';
+import { StyledFollow, SocialSVG, Link } from './FollowUs.styled';
 import sprite from '../../images/FollowUs/symbol-defs.svg';
-import { Link } from 'react-router-dom';
 
 export const FollowUs = ({title = true}) => {
   return (

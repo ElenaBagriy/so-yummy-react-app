@@ -17,6 +17,7 @@ import { onCapitalise } from 'services/onCapitalise';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategories } from 'redux/recipes/recipesOperations';
 import { selectCategoryList } from 'redux/selectors';
+import { Loader } from 'components/Loader/Loader';
 
 export const Categories = () => {
   const dispatch = useDispatch();
@@ -105,7 +106,7 @@ export const Categories = () => {
               ))}
           </StyledTabs>
           {isLoading || categoryRecipes.length === 0 ? (
-            <>...Loading</>
+            <Loader/>
           ) : (
             <CommonItemList list={categoryRecipes}></CommonItemList>
           )}

@@ -3,13 +3,23 @@ import styled from 'styled-components';
 
 export const FollowWrapper = styled.div`
   position: absolute;
-  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
+  bottom: 21px;
+
+  @media screen and (min-width: 768px) {
+    bottom: 24px;
+  }
+  @media screen and (min-width: 1280px) {
+    bottom: 50px;
+  }
   ul {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
+    @media screen and (min-width: 768px) {
+      gap: 18px;
+    }
   }
 `;
 
@@ -22,5 +32,20 @@ export const StyledLink = styled(Link)`
     fill: ${props => props.theme.colors.white};
   }
 `;
-// add dark: '#1E1F28' to theme
-// треба через пропси відображати різні заливки (у футері один, на додаванні рецепту інший)
+
+export const FacebookSVG = styled.svg`
+  width: 20px;
+  height: 20px;
+`;
+export const YoutubeSVG = styled.svg`
+  width: 20px;
+  height: 15px;
+`;
+export const TwitterbeSVG = styled.svg`
+  width: 20px;
+  height: 16px;
+`;
+export const InstagrambeSVG = styled.svg`
+  width: 20px;
+  height: 20px;
+`;
