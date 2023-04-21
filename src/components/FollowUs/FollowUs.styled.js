@@ -20,6 +20,9 @@ export const SocialSVG = styled.svg`
 
   &:hover,
   &:focus {
-    fill: #ffffff;
+    fill: ${props =>
+      props.theme.colors[props.$color === 'white' ? 'black' : 'dark']};
   }
 `;
+// add dark: '#1E1F28' to theme
+// треба через пропси відображати різні заливки (у футері один, на додаванні рецепту інший)
