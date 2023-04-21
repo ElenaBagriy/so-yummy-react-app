@@ -15,33 +15,32 @@ export const SelectLabelButton = styled.button`
   min-width: 200px;
   width: auto;
   padding: 14px;
-  
+
   background-color: ${(props) => props.theme.select.grey};
   border: none;
   border-radius: 6px;
   outline: none;
 
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
   text-transform: capitalize;
   color: ${(props) => props.theme.select.color};
-  
+
   cursor: pointer;
   transition: 0.3s ease;
 
   &:hover {
-  background-color: ${(props) => props.theme.select.greyHover};
+    background-color: ${(props) => props.theme.select.greyHover};
   }
 
   ${(p) =>
     p.isVisible &&
     css`
-    background-color: ${(props) => props.theme.select.greyHover};
+      background-color: ${(props) => props.theme.select.greyHover};
     `}
-
 `;
 
 export const DropdownStyle = styled.div`
@@ -56,15 +55,16 @@ export const DropdownStyle = styled.div`
   margin-right: 4px;
 
   background-color: ${(props) => props.theme.colors.bgMain};
-  
+  border-radius: 0px 0px 6px 6px;
+
   overflow: auto;
   z-index: 199;
 
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     width: 4px;
   }
 
-  &::-webkit-scrollbar-track{
+  &::-webkit-scrollbar-track {
     -webkit-box-shadow: none;
 
     background-color: transparent;
@@ -72,10 +72,10 @@ export const DropdownStyle = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #E7E5E5;
+    background-color: #e7e5e5;
     border-radius: 12px;
   }
-  
+
   ${(p) =>
     p.isVisible !== true &&
     css`
@@ -92,7 +92,7 @@ export const DropdownItem = styled.div`
 
   border-radius: 6px;
 
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -113,7 +113,6 @@ export const DropdownItem = styled.div`
     outline: none;
 
     color: ${(props) => props.theme.colors.white};
-    
   }
 `;
 
