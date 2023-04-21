@@ -26,7 +26,7 @@ export const StyledAvatar = styled(Avatar)`
 `;
 
 export const StyledUserName = styled.p`
-  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 1.7;

@@ -127,7 +127,6 @@ export const IngredientsShoppingListImg = styled.img`
 export const DeleteBtn = styled.button`
   width: 20px;
   height: 20px;
-  /* padding: 0 20px; */
   stroke: #3E4462;
   outline: none;
   background-color: transparent;
@@ -137,7 +136,6 @@ export const DeleteBtn = styled.button`
   @media screen and (min-width: 769px) {
     width: 20px;
     height: 20px;
-    /* padding: 0 30px; */
     &:hover {
       stroke: #8BAA36;
     }
