@@ -1,6 +1,8 @@
+import { FormHelperText } from '@mui/material';
+import { Field, Form } from 'formik';
 import styled from 'styled-components';
 
-export const StyledSubscribeForm = styled.form`
+export const StyledSubscribeForm = styled(Form)`
   display: flex;
   flex-direction: column;
 
@@ -59,7 +61,7 @@ export const StyledEmailLabel = styled.label`
   position: relative;
 `;
 
-export const StyledEmailInput = styled.input`
+export const StyledEmailInput = styled(Field)`
   display: inline-block;
   width: 100%;
   /* padding: 18px 50px; */
@@ -100,7 +102,7 @@ export const EmailSVG = styled.svg`
 export const SubscribeBtn = styled.button`
   text-align: center;
   padding: 14px;
-  background: #8baa36;
+  background-color: ${props => props.theme.colors.green};
   border: none;
   border-radius: 6px;
 
@@ -114,5 +116,25 @@ export const SubscribeBtn = styled.button`
     font-size: 16px;
     line-height: 1.12;
     padding: 16px 50px;
+  }
+
+  &:disabled {
+    background-color: ${props => props.theme.colors.grey};
+    color: ${props => props.theme.text.heroParagraph};
+  }
+`;
+
+export const HelperText = styled(FormHelperText)`
+  &.MuiFormHelperText-root {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    position: absolute;
+    padding: 0 38px;
+    margin-left: 14px;
+    color: #e74a3b;
   }
 `;

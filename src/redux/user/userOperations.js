@@ -36,22 +36,6 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-/// Новая версия
-// export const refreshToken = createAsyncThunk(
-//   'user/refreshToken',
-//   async (_, thunkAPI) => {
-
-//     try {
-//       const response = await UserAPI.refreshToken();
-      
-//       return response;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-
 export const refreshUser = createAsyncThunk(
   'user/refreshUser',
   async (_, thunkAPI) => {
@@ -83,7 +67,9 @@ export const subscribe = createAsyncThunk(
   'user/subscribe',
   async (formData, thunkAPI) => {
     try {
-      const response = await UserAPI.updateUserInfoForSubscribe(formData);
+      console.log(formData);
+      const response = await UserAPI.subscribe(formData);
+      console.log(response);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
