@@ -49,6 +49,7 @@ export default function SearchBar({
   }, [dispatch, page, sendSearch, recipesBy, isTablet]);
 
   const onSearchFormSubmit = (inputQuery) => {
+    console.log(searchParams);
     setSearchParams({ query: recipesBy, value: inputQuery });
     setSendSearch(inputQuery);
     handleChangePage(1);
