@@ -67,7 +67,7 @@ export default function SearchPage() {
             <CommonItemList list={localState.recipes} />
           )}
 
-          {!isLoading && !localState.recipes?.length && <NeedSearching />}
+          {!isLoading && !localState.recipes?.length && <NeedSearching text="Try looking for something else..."/>}
 
           {!isLoading && (
             <Pagination
