@@ -24,7 +24,7 @@ export function Navigation({ isMobile, handleClose = () => { } }) {
       </StyledLink>
       <StyledLink to="/search" onClick={handleClose}>
         <StyledSVG width="24" height="24">
-          <use href={`${SVG}#icon-search`} />
+          {/* <use href={`${SVG}#icon-search`} /> */}
         </StyledSVG>
         {isMobile && 'Search'}
       </StyledLink>
