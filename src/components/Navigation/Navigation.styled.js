@@ -21,6 +21,8 @@ export const StyledLink = styled(NavLink)`
   font-size: 18px;
   line-height: 1;
   color: ${({ theme }) => theme.text.heroParagraph};
+  transition: color ${props => props.theme.hover.transition};
+
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 1;
@@ -33,9 +35,24 @@ export const StyledLink = styled(NavLink)`
     font-weight: 600;
     color: ${({ theme }) => theme.text.accent};
   }
+
+  &:hover,
+  :focus,
+  :active {
+    color: ${({ theme }) => theme.text.accent};
+  }
 `;
+
 export const StyledSVG = styled.svg`
   margin-right: 8px;
+  transition: all ${props => props.theme.hover.transition};
+
+  &:hover,
+    :focus,
+    :active {
+    fill: ${props => props.theme.colors.green};
+  }
+
   @media screen and (min-width: 1280px) {
     margin-right: 0;
   }

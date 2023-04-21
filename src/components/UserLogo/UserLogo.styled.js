@@ -7,6 +7,15 @@ export const UserLogoWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 24px;
+  color: ${({ theme }) => theme.text.hero};
+  transition: color ${props => props.theme.hover.transition};
+
+  &:hover,
+    :focus,
+    :active {
+    color: ${props => props.theme.colors.green};
+  }
+
   @media screen and (min-width: 768px) {
     margin-right: 50px;
   }
@@ -30,7 +39,7 @@ export const StyledUserName = styled.p`
   font-weight: 600;
   font-size: 12px;
   line-height: 1.7;
-  color: ${({ theme }) => theme.text.hero};
+  color: inherit;
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
