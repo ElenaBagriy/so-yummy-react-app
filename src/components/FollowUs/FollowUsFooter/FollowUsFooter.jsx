@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   FacebookSVG,
+  FollowList,
   FollowWrapper,
   InstagrambeSVG,
   StyledLink,
@@ -12,7 +13,7 @@ import sprite from 'images/svg/sprite.svg';
 export const FollowUsFooter = () => {
   return (
     <FollowWrapper>
-      <ul>
+      <FollowList>
         <li>
           <StyledLink to="https://www.facebook.com/" target="_blank">
             <FacebookSVG>
@@ -41,7 +42,7 @@ export const FollowUsFooter = () => {
             </InstagrambeSVG>
           </StyledLink>
         </li>
-      </ul>
+      </FollowList>
     </FollowWrapper>
   );
 };

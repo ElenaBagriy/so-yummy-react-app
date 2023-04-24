@@ -1,32 +1,41 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FollowWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 21px;
+  /* margin: 0 auto; */
+  /* position: absolute; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* bottom: 21px; */
 
   @media screen and (min-width: 768px) {
-    bottom: 24px;
+    /* bottom: 24px; */
   }
   @media screen and (min-width: 1280px) {
-    bottom: 50px;
-  }
-  ul {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    @media screen and (min-width: 768px) {
-      gap: 18px;
-    }
+    /* bottom: 50px; */
   }
 `;
 
-export const StyledLink = styled(Link)`
+export const FollowList = styled.ul`
   display: flex;
-  transition: fill 0.5s;
-  fill: #8baa36;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; // 2x4 for padding
+
+    @media screen and (min-width: 768px) {
+      gap: 18px;
+    }
+`;
+
+export const StyledLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: fill ${props => props.theme.hover.transition};
+  fill: ${props => props.theme.colors.green};
+
   &:hover,
   &:focus {
     fill: ${props => props.theme.colors.white};

@@ -1,15 +1,15 @@
 import { useDispatch } from 'react-redux';
 import {
-  EmailSVG,
+  CallToAction,
+  EmailIcon,
   HelperText,
   StyledEmailInput,
   StyledEmailLabel,
   StyledSubscribeForm,
   SubscribeBtn,
   SubscribeInputWrapper,
+  SubscribeText,
 } from './SubscribeForm.styled';
-
-import spriteSVG from 'images/svg/sprite.svg';
 import { Formik } from 'formik';
 import { subscribe } from 'redux/user/userOperations';
 import { toast } from 'react-toastify';
@@ -52,38 +52,34 @@ export function SubscribeForm() {
   };
 
   return (
-      <Formik
-          initialValues={{
-            email: ''
-          }}
-          validateOnChange={true}
-          validateOnBlur={false}
-          onSubmit={onSubmit}
-      >
-        {({ errors, touched }) => (
-          <StyledSubscribeForm>
-            <h3>Subscribe to our Newsletter</h3>
-            <p>
-              Subscribe up to our newsletter. Be in touch with latest news and
-              special offers, etc.
-            </p>
-            <SubscribeInputWrapper>
-              <StyledEmailLabel>
-                <StyledEmailInput
-                  name="email"
-                  placeholder="Enter your email address"
-                  validate={validateEmail} />
-            <EmailSVG>
-              <use href={`${spriteSVG}#icon-mail`} />
-                </EmailSVG>
-                {errors.email && touched.email && (
-                  <HelperText>{errors.email}</HelperText>
-                )}
-          </StyledEmailLabel>
-          <SubscribeBtn type="submit" disabled={disabled}>Subcribe</SubscribeBtn>
-        </SubscribeInputWrapper>
-          </StyledSubscribeForm>
-          )}
-        </Formik>
+    <Formik
+      initialValues={{ email: '' }}
+      validateOnChange={true}
+      validateOnBlur={false}
+      onSubmit={onSubmit}
+    >
+      {({ errors, touched }) => (
+        <StyledSubscribeForm>
+          <CallToAction>Subscribe to our Newsletter</CallToAction>
+          <SubscribeText>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</SubscribeText>
+          <SubscribeInputWrapper>
+            <StyledEmailLabel>
+              <StyledEmailInput
+                name="email"
+                placeholder="Enter your email address"
+                validate={validateEmail}
+                error={errors.email}
+                touched={touched.email}
+              />
+              <EmailIcon error={errors.email} />
+              {errors.email && touched.email && (
+                <HelperText>{errors.email}</HelperText>
+              )}
+            </StyledEmailLabel>
+            <SubscribeBtn type="submit" disabled={disabled}>Subcribe</SubscribeBtn>
+          </SubscribeInputWrapper>
+        </StyledSubscribeForm>
+      )}
+    </Formik>
   );
 }

@@ -5,10 +5,13 @@ import {
   Background,
   BenefitsList,
   BenefitsWrapper,
+  CopyrightInfo,
   FooterSection,
   MainWrapper,
+  NavWrapper,
   SecondaryWrapper,
   Section,
+  TermsInfo,
 } from './Footer.styled';
 
 import { FollowUsFooter } from 'components/FollowUs/FollowUsFooter/FollowUsFooter';
@@ -21,26 +24,28 @@ export function Footer() {
       <Section>
         <Container>
           <MainWrapper>
-            <BenefitsWrapper>
-              <FooterLogo />
-              <BenefitsList>
-                <li>Database of recipes that can be replenished </li>
-                <li>Flexible search for desired and unwanted ingredients</li>
-                <li>Ability to add your own recipes with photos</li>
-                <li>Convenient and easy to use</li>
-              </BenefitsList>
-            </BenefitsWrapper>
-            <Nav />
+            <NavWrapper>
+              <BenefitsWrapper>
+                <FooterLogo />
+                <BenefitsList>
+                  <li>Database of recipes that can be replenished </li>
+                  <li>Flexible search for desired and unwanted ingredients</li>
+                  <li>Ability to add your own recipes with photos</li>
+                  <li>Convenient and easy to use</li>
+                </BenefitsList>
+              </BenefitsWrapper>
+              <Nav />
+            </NavWrapper>
             <SubscribeForm />
-            <FollowUsFooter />
           </MainWrapper>
+          <FollowUsFooter />
         </Container>
       </Section>
 
       <Container>
         <SecondaryWrapper>
-          <p>© 2023 All Rights Reserved.</p>
-          <p>Terms of Service</p>
+          <CopyrightInfo>© 2023 All Rights Reserved.</CopyrightInfo>
+          <TermsInfo>Terms of Service</TermsInfo>
         </SecondaryWrapper>
       </Container>
       <Background />
