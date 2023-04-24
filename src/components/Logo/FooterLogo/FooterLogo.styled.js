@@ -4,15 +4,13 @@ import { NavLink } from 'react-router-dom';
 export const FooterLogoLink = styled(NavLink)`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 32px;
+
   @media screen and (min-width: 768px) {
-    margin-bottom: 24px;
+    justify-content: flex-start;
     gap: 12px;
   }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 40px;
-  } ;
 `;
 
 export const FooterLogoSVG = styled.svg`
@@ -24,7 +22,9 @@ export const FooterLogoSVG = styled.svg`
     height: 44px;
   }
 `;
+
 export const LogoText = styled.h2`
+  font-family: 'Poppins', sans-serif;
   font-weight: 700px;
   font-size: 18px;
   line-height: 1;
@@ -33,5 +33,5 @@ export const LogoText = styled.h2`
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
-  } ;
+  }
 `;
