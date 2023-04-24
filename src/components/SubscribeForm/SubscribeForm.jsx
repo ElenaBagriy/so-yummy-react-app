@@ -52,7 +52,6 @@ export function SubscribeForm() {
   };
 
   return (
-    <>
       <Formik
           initialValues={{
             email: ''
@@ -86,6 +85,5 @@ export function SubscribeForm() {
           </StyledSubscribeForm>
           )}
         </Formik>
-    </>
   );
 }

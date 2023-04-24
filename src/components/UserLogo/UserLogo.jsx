@@ -13,13 +13,13 @@ export function UserLogo() {
   const userAvatar = useSelector(selectUserAvatar);
 
   const userLogoRef = useRef();
+
   const [isOpen, setOpen] = useState(false);
 
   function popoverTogler(e) {
     setOpen(!isOpen);
   };
 
-  
   useEffect(() => {
     const onCloseModal = (e) => {
       if (

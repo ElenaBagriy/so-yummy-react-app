@@ -106,9 +106,6 @@ export const SigninForm = () => {
                   return toast.error('Email is not verified');
                 }
               });
-
-            // console.log(values);
-            // console.log(actions);
           }}
         >
           {({ errors, touched }) => (

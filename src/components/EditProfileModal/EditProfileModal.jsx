@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@mui/material';
-import { selectUser } from 'redux/selectors';
+import { selectUserAvatar, selectUserName } from 'redux/selectors';
 import sprite from 'images/svg/sprite.svg';
 import {
   EditProfileCloseButton,
@@ -25,27 +25,29 @@ import { updateUser } from 'redux/user/userOperations';
 import { toast } from 'react-toastify';
 
 export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
-  const user = useSelector(selectUser);
+  const userName = useSelector(selectUserName);
+  const userAvatar = useSelector(selectUserAvatar);
   const dispatch = useDispatch();
-  const [avatar, setAvatar] = useState('');
-  const [prevue, setPrevue] = useState('');
-  const [name, setName] = useState(user.name);
-  const [isDisable, setIsDisable] = useState(false);
 
+  const [isDisable, setIsDisable] = useState(false);
+  const [newName, setNewName] = useState(userName);
+  const [newAvatar, setNewAvatar] = useState('');
+  const [fileAvatar, setNewFileAvatar] = useState('');
+  
   const handleFileInputChange = e => {
-    setAvatar(e.target.files[0]);
-    setPrevue(URL.createObjectURL(e.target.files[0]));
+    setNewAvatar(URL.createObjectURL(e.currentTarget.files[0]));
+    setNewFileAvatar(e.currentTarget.files[0]);
   };
 
   const handleNameInputChange = e => {
-    setName(e.target.value);
+    setNewName(e.target.value);
   };
 
   const handleFormSubmit = e => {
     e.preventDefault();
 
     if (isDisable) {
-      return toast.warn('🦄 To save you need to make changes', {
+      return toast.warn('To save you need to make changes', {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
@@ -56,58 +58,59 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
         theme: 'light',
       });
     }
+
     const formData = new FormData();
-    if (name) {
-      formData.append('name', name);
-    }
-    if (avatar) {
-      formData.append('avatar', avatar);
-    }
-    dispatch(updateUser(formData));
+    fileAvatar && formData.append('avatar', fileAvatar);
+    newName ? formData.append('name', newName) : formData.append('name', userName);
+
+     dispatch(updateUser(formData))
+      .unwrap()
+      .then(res => handleCloseEditModal())
+      .catch(e => toast.error('Something went wrong. Please, try again later'));
   };
 
   useEffect(() => {
-    if (name === user.name && !avatar) {
+    if (newName === userName && !newAvatar) {
       setIsDisable(true);
     } else {
       setIsDisable(false);
     }
-  }, [user.name, avatar, name]);
-
-  useEffect(() => {
-    if (isOpenEditModal) {
-      setName(user.name);
-    }
-  }, [isOpenEditModal, user.name]);
+  }, [userName, newAvatar, newName, userAvatar]);
 
   return (
     <>
       <Modal className='modal'
         open={isOpenEditModal}
-        onClose={() => handleCloseEditModal(setPrevue, setName)}
+        onClose={() => handleCloseEditModal()}
         slots={{ backdrop: StyledBackdrop }}
       >
         <EditProfileWrapper className='modal'>
           <EditProfileCloseButton
-            onClick={() => handleCloseEditModal(setPrevue, setName)}>
+            onClick={() => handleCloseEditModal()}>
             <IconClose />
           </EditProfileCloseButton>
           <StyledEditProfileForm onSubmit={handleFormSubmit}>
             <StyledAvatarLabel>
               <StyledAvatar
-                alt={user.name}
-                src={prevue?.length > 0 ? prevue : user.avatarURL}
+                alt={userName}
+                src={newAvatar ? newAvatar : userAvatar}
               />
               <PlusSVG>
               </PlusSVG>
-              <StyledFileInput type="file" onChange={handleFileInputChange} />
+              <StyledFileInput
+                name="image"
+                type="file"
+                accept={'image/jpeg,image/png,image/gif'}
+                onChange={handleFileInputChange}
+              />
             </StyledAvatarLabel>
 
             <SimpleDiv>
               <StyledNameLabel>
                 <StyledNameInput
                   type="text"
-                  value={name}
+                  name='name'
+                  value={newName ? newName : userName}
                   onChange={handleNameInputChange}
                 />
                 <UserSVG>
