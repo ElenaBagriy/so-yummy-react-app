@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
-import { Controller } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Wrapper,
   RecipeDescStyled,
   RemoveFileBtn,
   StyledImg,
   InputHidden,
-  // StyledSelect,
+  StyledSelect,
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
 // import Select from 'react-select';
 import { GrClose } from 'react-icons/gr';
-import { timeGenerator } from 'services/timeGenerator';
+import { useFormikContext } from 'formik';
 
 export const RecipeDescriptionFields = ({
-  register,
   categories,
-  control,
+  selectedImgFile,
+  handleCategoryInputChange,
+  handleTimeInputChange,
+  categoryValue,
+  timeValue,
 }) => {
-  const [preview, setPreview] = useState(null);
 
-  const imageChange = e => {
+  const [preview, setPreview] = useState(null);
+  const { errors, touched, setFieldValue } = useFormikContext();
+
+  const imageChange = async e => {
     const selectedFile = e.target.files[0];
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -35,11 +40,28 @@ export const RecipeDescriptionFields = ({
     setPreview(null);
   };
 
-  const timeOptions = timeGenerator(5, 120);
+  let timeArray = [];
+
+  const timeGenerator = (min, max) => {
+    for (let i = min; i <= max; i += 5) {
+      timeArray.push(i);
+    }
+    return timeArray;
+  };
+
+  timeGenerator(5, 120);
+  const timeOptions = timeGenerator(5, 120).map(item => {
+    return {
+      value: item.toString(),
+      label: `${item} min`,
+    };
+  });
+  // console.log(timeOptions);
 
   const categoriesOptions = categories.map(option => {
     return { id: option.id, value: option.title, label: option.title };
   });
+  // console.log(categoriesOptions);
 
   return (
     <RecipeDescStyled>
@@ -64,13 +86,12 @@ export const RecipeDescriptionFields = ({
             </div>
           )}
           <InputHidden
-            {...register('fullImage', {
-              onChange: (e) => imageChange(e)
-            })}
             type="file"
-            name="fullImage"
+            name="image"
             className="upload"
             accept="image/*,.png, .jpeg,.gif,.web"
+            value={selectedImgFile}
+            onChange={imageChange}
           />
         </label>
       </Wrapper>
@@ -80,7 +101,6 @@ export const RecipeDescriptionFields = ({
           <span>Enter item title</span>
           <Controller
             name="title"
-            control={control}
             render={({ field }) => (
               <input
                 {...field}
@@ -89,12 +109,10 @@ export const RecipeDescriptionFields = ({
             )}
           />
         </label>
-
         <label>
           <span>Enter about recipe</span>
           <Controller
-            name="description"
-            control={control}
+            name="about"
             render={({ field }) => (
               <input
                 {...field}
@@ -103,41 +121,68 @@ export const RecipeDescriptionFields = ({
             )}
           />
         </label>
-        {/* {errors.exampleRequired && <span>This field is required</span>} */}
+        {errors.exampleRequired && <span>This field is required</span>}
         <label className="wrapperCategory">
           <span>Category</span>
           <Controller
-            name="category"
-            control={control}
+            name="categories"
             render={({ field }) => (
-              <select
+              <StyledSelect
                 {...field}
+                options={categoriesOptions}
+                defaultValue={{ value: 'breakfast', label: 'breakfast' }}
+                classNamePrefix="custom-select"
                 className="сustom-select-container"
-              > 
-                {categoriesOptions && categoriesOptions.map(option => {
-                  return <option key={option.id} value={option.value}>{option.value}</option>
-                })}
-                </select>
+                zIndex={110}
+                // value={categoryValue}
+                // onChange={e => {
+                //   handleCategoryInputChange(e.value);
+                //   console.log(e.value);
+                // }}
+              />
             )}
           />
-        </label>
 
+          {/* <select {...register('category')}>
+            {categories.map(item => (
+              <option
+                key={item.id}
+                value={item.title}
+                {...register(`${item.title}`)}
+              >
+                {item.title}
+              </option>
+            ))}
+          </select> */}
+        </label>
         <label className="wrapperCategory">
+          {' '}
           <span>Cooking time</span>
           <Controller
             name="time"
-            control={control}
             render={({ field }) => (
-              <select
+              <StyledSelect
                 {...field}
+                options={timeOptions}
+                classNamePrefix="custom-select"
                 className="сustom-select-container"
-              >
-                {timeOptions && timeOptions.map(option => {
-                  return <option key={option.id} value={option.value}>{option.value}</option>
-                })}
-              </select>
+                defaultValue={{ value: '40', label: '40 min' }}
+                zIndex={105}
+                // value={timeValue}
+                // onChange={e => {
+                //   handleTimeInputChange(e.value);
+                //   console.log(e.value);
+                // }}
+              />
             )}
           />
+          {/* <select placeholder="Cooking time" {...register('time')}>
+            {timeArray.map(item => (
+              <option key={item} value={item} {...register(`${item}`)}>
+                {item} min
+              </option>
+            ))}
+          </select> */}
         </label>
       </InputsStyled>
     </RecipeDescStyled>

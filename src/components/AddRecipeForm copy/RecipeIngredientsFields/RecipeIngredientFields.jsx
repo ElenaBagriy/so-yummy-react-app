@@ -1,38 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { useFieldArray, Controller } from 'react-hook-form';
+import { useForm, useFieldArray, Controller } from 'react-hook-form';
 import { IconButton, Tooltip } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import {
   IngredFieldsStyled,
-  // MeasureLabel,
+  MeasureLabel,
   RecipeIngredStyled,
-  // StyledSelect,
+  StyledSelect,
 } from './RecipeIngredientFields.styled';
 // import Select from 'react-select';
 
 export const RecipeIngredientsFields = ({
   ingredients,
-  register,
-  control,
-  watch,
+  ingredientsValue,
+  amountValue,
+  measureValue,
+  handleIngredientsValueChange,
+  handleAmountInputChange,
+  handleMeasureInputChange,
 }) => {
+  const { control } = useForm({
+    defaultValues: {
+      ingredients: [],
+      amount: 0,
+      measure: 'tbs',
+    },
+  });
 
+  //Закомитила для деплоя, верхний кусок кода неверный, верный ниже:
+
+  // const { register, control } = useForm({
+  //   defaultValues: {
+  //     ingredients: [],
+  //     amount: 0,
+  //     measure: 'tbs',
+  //   },
+  // });
+  
   const { fields, append, remove } = useFieldArray({
     name: 'ingredients',
     control,
     defaultValues: ingredients,
   });
 
-  const watchFieldArray = watch("ingredients");
-
-  const controlledFields = fields.map((field, index) => {
-    return {
-      ...field,
-      ...watchFieldArray[index]
-    };
-    });
-  
-  
   const deleteField = index => {
     if (!fields.length) return;
     remove(index);
@@ -41,6 +51,21 @@ export const RecipeIngredientsFields = ({
   const [numberOfFields, setNumberOfFields] = useState(fields.length);
 
   const measurement = ['tbs', 'tsp', 'kg', 'g', 'l', 'ml', 'lbs', 'oz'];
+  const selectMeasure = measurement.map(measure => {
+    return {
+      value: measure,
+      label: measure,
+    };
+  });
+  // console.log(selectMeasure);
+
+  const selectIngredients = ingredients.map(option => {
+    return {
+      id: option.id,
+      value: option.ttl,
+      label: option.ttl,
+    };
+  });
 
   useEffect(() => {
     setNumberOfFields(fields.length);
@@ -79,56 +104,8 @@ export const RecipeIngredientsFields = ({
             </span>
           </Tooltip>
         </div>
-
       </RecipeIngredStyled>
-      
-
-      {controlledFields.map((field, index) => {
-        return (
-          <IngredFieldsStyled key={field.id}>
-            <label>
-              <select
-                {...field}
-                {...register(`ingredients.${index}._id`)}
-                className="сustom-select-container"
-              >
-                {ingredients && ingredients.map(ingredient => {
-                  return <option key={ingredient._id} value={ingredient._id}>{ingredient.ttl}</option>
-                })}
-              </select>
-            </label>
-
-            <label>
-              <input {...register(`ingredients.${index}.measure[0]`)}/>
-              <select
-                {...field}
-                {...register(`ingredients.${index}.measure[1]`)}
-                className="сustom-select-container"
-              >
-                {measurement && measurement.map(measure => {
-                  return <option key={measure} value={measure}>{measure}</option>
-                })}
-              </select>
-            </label>
-
-
-            <Tooltip title="Delete field" className="deleteBtn">
-              <IconButton
-                onClick={e => {
-                  e.preventDefault();
-                  remove(index);
-                }}
-              >
-                <ClearIcon />
-              </IconButton>
-            </Tooltip>
-          </IngredFieldsStyled>
-        );
-      })}
-
-      
-      {/* {fields.map(({ id }, index) => {
-        console.log(fields);
+      {fields.map(({ id }, index) => {
         return (
           <IngredFieldsStyled key={id}>
             <label>
@@ -142,7 +119,7 @@ export const RecipeIngredientsFields = ({
                     classNamePrefix="custom-select"
                     className="сustom-select-container second"
                     placeholder="Choose an ingredient..."
-                    // defaultValue={{ value: '', label: '' }}
+                    defaultValue={{ value: '', label: '' }}
                     // value={ingredientsValue}
                     // onChange={e => {
                     //   handleIngredientsValueChange(e.value);
@@ -202,8 +179,57 @@ export const RecipeIngredientsFields = ({
             </Tooltip>
           </IngredFieldsStyled>
         );
-      })} */}
+      })}
 
+      {/* {fields.map(({ id, name, amount, measure }, index) => {
+        return (
+          <IngredFieldsStyled key={id}>
+            <label>
+              <select
+                {...register(`ingredients.${index}.ingredients`)}
+                defaultValue={name}
+                className="selectIngredients"
+              >
+                <option value="Select ingredients">Select ingredients</option>
+                {ingredients?.map(item => (
+                  <option key={item._id} value={item.ttl}>
+                    {item.ttl}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <input
+                type="number"
+                min="0"
+                {...register(`ingredients.${index}.amount`)}
+                defaultValue={amount}
+                className="numberInput"
+              />
+              <select
+                {...register(`ingredients.${index}.measure`)}
+                defaultValue={measure}
+                className="measureSelect"
+              >
+                {measurement?.map(item => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <Tooltip title="Delete field" className="deleteBtn">
+              <IconButton
+                onClick={() => {
+                  deleteField(index);
+                }}
+              >
+                <ClearIcon />
+              </IconButton>
+            </Tooltip>
+          </IngredFieldsStyled>
+        );
+      })} */}
     </>
   );
 };
