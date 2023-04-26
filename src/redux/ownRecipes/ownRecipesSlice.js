@@ -18,6 +18,16 @@ const ownRecipesInitialState = {
     error: null,
 };
 
+const handlePending = state => {
+  state.isLoading = true;
+  state.error = null;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 const ownRecipesSlice = createSlice({
     name: 'ownRecipes',
     initialState: ownRecipesInitialState,
@@ -35,32 +45,24 @@ const ownRecipesSlice = createSlice({
                 // state.recipes = action.payload.recipes;
                 state.total = action.payload.total;
             })
-            .addCase(getAllOwnRecipes.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = true;
-            })
+            .addCase(getAllOwnRecipes.rejected, handleRejected)
     
+
             // ------------ Add Own Recipe ----------------
-            .addCase(addOwnRecipe.pending, (state) => {
-
-            })
+            .addCase(addOwnRecipe.pending, handlePending)
             .addCase(addOwnRecipe.fulfilled, (state, action) => {
-
+                state.isLoading = false;
+                state.error = false;
+                state.recipes = action.payload;
             })
-            .addCase(addOwnRecipe.rejected, (state, action) => {
+            .addCase(addOwnRecipe.rejected, handleRejected)
 
-            })
 
             // ------------ Delete Own Recipe ----------------
-            .addCase(deleteOwnRecipe.pending, (state) => {
-                state.isLoading = true;
-                state.error = false;
-            })
+            .addCase(deleteOwnRecipe.pending, handlePending)
             .addCase(deleteOwnRecipe.fulfilled, (state, action) => {
-                console.log('action.payload', action.payload.message);
                 const message = action.payload.message;
                 const responceId = message.split(' ')[1];
-                console.log('responceId', responceId);
         
                 state.recipes = state.recipes.filter(
                   recipes => recipes._id !== responceId
@@ -68,22 +70,14 @@ const ownRecipesSlice = createSlice({
                 state.isLoading = false;
                 state.error = false;
             })
-            .addCase(deleteOwnRecipe.rejected, (state, action) => {
-                state.error = true;
-                state.isLoading = false;
-            })
+            .addCase(deleteOwnRecipe.rejected, handleRejected)
 
             // ------------ Get Own Recipe By Id ----------------
-            .addCase(getOwnRecipeById.pending, (state) => {
-
-            })
+            .addCase(getOwnRecipeById.pending, handlePending)
             .addCase(getOwnRecipeById.fulfilled, (state, action) => {
 
             })
-            .addCase(getOwnRecipeById.rejected, (state, action) => {
-
-            })
-
+            .addCase(getOwnRecipeById.rejected, handleRejected)
 });
 
 

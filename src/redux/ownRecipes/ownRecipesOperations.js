@@ -17,10 +17,9 @@ export const getAllOwnRecipes = createAsyncThunk(
 
 export const addOwnRecipe = createAsyncThunk(
     "ownRecipes/addOwnRecipe",
-    async (formData, thunkAPI) => {
+  async (formData, thunkAPI) => {
       try {
         const response = await OwnRecipesAPI.addOwnRecipe(formData);
-  
         return response;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);

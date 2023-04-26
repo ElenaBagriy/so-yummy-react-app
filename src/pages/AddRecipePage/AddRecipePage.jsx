@@ -9,7 +9,6 @@ import { Container } from 'reusableComponents/Container/Container';
 import { Section, WrapperStyled } from './AddRecipePage.styled';
 import { Main } from 'reusableComponents/Main/Main';
 import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
-// import { AddRecipeForm } from 'components/AddRecipeForm copy/AddRecipeForm';
 
 const AddRecipePage = () => {
   return (
@@ -21,7 +20,6 @@ const AddRecipePage = () => {
         <WrapperStyled>
           <div>
               <AddRecipeForm />
-              {/* <AddRecipeForm /> */}
           </div>
           <div>
             <FollowUs />

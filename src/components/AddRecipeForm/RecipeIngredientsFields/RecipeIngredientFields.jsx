@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useFieldArray, Controller } from 'react-hook-form';
+import { useFieldArray } from 'react-hook-form';
 import { IconButton, Tooltip } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import {
   IngredFieldsStyled,
-  // MeasureLabel,
   RecipeIngredStyled,
-  // StyledSelect,
 } from './RecipeIngredientFields.styled';
-// import Select from 'react-select';
 
 export const RecipeIngredientsFields = ({
   ingredients,
@@ -31,7 +28,6 @@ export const RecipeIngredientsFields = ({
       ...watchFieldArray[index]
     };
     });
-  
   
   const deleteField = index => {
     if (!fields.length) return;
@@ -125,84 +121,6 @@ export const RecipeIngredientsFields = ({
           </IngredFieldsStyled>
         );
       })}
-
-      
-      {/* {fields.map(({ id }, index) => {
-        console.log(fields);
-        return (
-          <IngredFieldsStyled key={id}>
-            <label>
-              <Controller
-                name={`ingredients.${index}.ingredients`}
-                control={control}
-                render={({ field }) => (
-                  <StyledSelect
-                    {...field}
-                    options={selectIngredients}
-                    classNamePrefix="custom-select"
-                    className="сustom-select-container second"
-                    placeholder="Choose an ingredient..."
-                    // defaultValue={{ value: '', label: '' }}
-                    // value={ingredientsValue}
-                    // onChange={e => {
-                    //   handleIngredientsValueChange(e.value);
-                    //   console.log(e.value);
-                    // }}
-                  />
-                )}
-              />
-            </label>
-
-            <label>
-              <Controller
-                className="amountField"
-                name={`ingredients.${index}.amount`}
-                control={control}
-                render={({ field }) => (
-                  <input
-                    {...field}
-                    value={amountValue}
-                    onChange={e => {
-                      handleAmountInputChange(e.target.value);
-                      console.log(e.target.value);
-                    }}
-                  />
-                )}
-              />
-            </label>
-            <MeasureLabel>
-              <Controller
-                name={`ingredients.${index}.measure`}
-                control={control}
-                render={({ field }) => (
-                  <StyledSelect
-                    {...field}
-                    options={selectMeasure}
-                    classNamePrefix="custom-select"
-                    className="сustom-select-container"
-                    // value={measureValue}
-                    // onChange={e => {
-                    //   handleMeasureInputChange(e.value);
-                    //   console.log(e.value);
-                    // }}
-                  />
-                )}
-              />
-            </MeasureLabel>
-
-            <Tooltip title="Delete field" className="deleteBtn">
-              <IconButton
-                onClick={e => {
-                  e.preventDefault();
-                  remove(index);
-                }}
-              >
-                <ClearIcon />
-              </IconButton>
-            </Tooltip>
-          </IngredFieldsStyled>
-        );
-      })} */}
 
     </>
   );

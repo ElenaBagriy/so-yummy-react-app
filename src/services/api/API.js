@@ -152,7 +152,9 @@ export const OwnRecipesAPI = {
     return data;
   },
   addOwnRecipe: async recipeData => {
+    console.log('recipeData', recipeData);
     const { data } = await axios.post('/own-recipes', recipeData);
+    console.log('data', data);
     return data;
   },
   deleteOwnRecipe: async recipeId => {
