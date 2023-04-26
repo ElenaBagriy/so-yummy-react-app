@@ -19,7 +19,8 @@ export const RecipeDescriptionFields = ({
   categories,
   control,
 }) => {
-  const [preview, setPreview] = useState(null);
+
+  const [preview, setPreview] = useState('');
 
   const imageChange = e => {
     const selectedFile = e.target.files[0];
@@ -44,8 +45,10 @@ export const RecipeDescriptionFields = ({
   return (
     <RecipeDescStyled>
       <Wrapper>
-        <label className="imageBox">
-          <div width="280" height="270">
+        <label
+          className="imageBox"
+        >
+          <div width="279" height="268">
             <img
               className="default"
               src={camera}

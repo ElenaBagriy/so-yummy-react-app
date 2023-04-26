@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledPreparation } from './RecipePreparationFields.styled';
+import { StyledPreparation, Textarea, Title } from './RecipePreparationFields.styled';
 
 export const RecipePreparationFields = ({
   register,
@@ -8,14 +8,14 @@ export const RecipePreparationFields = ({
 
   return (
     <StyledPreparation>
-      <h3>Recipe Preparation</h3>
+      <Title>Recipe Preparation</Title>
       <label>
-        <textarea
+        <Textarea
           placeholder="Enter recipe"
           name="instructions"
           control={control}
           {...register('instructions')}
-        ></textarea>
+        ></Textarea>
       </label>
     </StyledPreparation>
   );

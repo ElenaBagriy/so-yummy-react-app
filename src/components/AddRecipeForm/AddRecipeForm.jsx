@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import {
-  getAllCategories,
-  getIngredients,
-} from 'redux/recipes/recipesOperations';
+import { getAllCategories, getIngredients } from 'redux/recipes/recipesOperations';
 import { selectCategoryList, selectIngredients } from 'redux/selectors';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
-import { StyledAddRecipeContainer } from './AddRecipeForm.styled';
+import { SubmitButton } from './AddRecipeForm.styled';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientFields';
 import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 // import { useNavigate } from 'react-router-dom';
@@ -42,7 +39,7 @@ export const AddRecipeForm = () => {
     const recipe = {
       ...data,
       fullImage: fullImage[0],
-      instructions: instructions.split('\n'),
+      instructions: instructions.split('\n').join(', '),
       ingredients: JSON.stringify(
             ingredients.map(({ _id, measure }) => {
               return {
@@ -54,7 +51,7 @@ export const AddRecipeForm = () => {
     };
 
     const formData = new FormData();
-        Object.keys(recipe).forEach(key => {
+    Object.keys(recipe).forEach(key => {
           formData.append(key, recipe[key]);
         });
     
@@ -71,27 +68,25 @@ export const AddRecipeForm = () => {
 
 
   return (
-    <StyledAddRecipeContainer>
-      <form onSubmit={handleSubmit(onSubmit)}>
-          <RecipeDescriptionFields
-            register={register}
-            categories={categories}
-            control={control}
-        />
-        <RecipeIngredientsFields
-          register={register}
-          control={control}
-          ingredients={ingredients}
-          watch={watch}
-        />
-        <RecipePreparationFields
-          register={register}
-          control={control}
-        />
-        <button type="submit" className="submitBtn">
-          Add
-        </button>
-        </form>
-    </StyledAddRecipeContainer>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <RecipeDescriptionFields
+        register={register}
+        categories={categories}
+        control={control}
+      />
+      <RecipeIngredientsFields
+        register={register}
+        control={control}
+        ingredients={ingredients}
+        watch={watch}
+      />
+      <RecipePreparationFields
+        register={register}
+        control={control}
+      />
+      <SubmitButton type="submit" className="submitBtn">
+        Add
+      </SubmitButton>
+    </form>
   );
 };

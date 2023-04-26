@@ -69,8 +69,8 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 280px;
-  height: 270px;
+  width: 279px;
+  height: 268px;
   border-radius: 8px;
   overflow: hidden;
 

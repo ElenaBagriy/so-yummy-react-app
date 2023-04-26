@@ -17,6 +17,17 @@ export const Section = styled.section`
 
 export const WrapperStyled = styled.div`
   display: flex;
-  gap: 121px;
-  margin-top: 100px;
+  flex-direction: column;
+  gap: 72px;
+  margin-top: 72px;
+  
+  @media screen and (min-width: 768px) {
+    gap: 100px;
+    margin-top: 100px;
+  };
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+    gap: 121px;
+  }
 `;
