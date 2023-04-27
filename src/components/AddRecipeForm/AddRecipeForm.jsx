@@ -8,10 +8,11 @@ import { RecipePreparationFields } from './RecipePreparationFields/RecipePrepara
 import { SubmitButton } from './AddRecipeForm.styled';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientFields';
 import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
-// import { useNavigate } from 'react-router-dom';
+import { onCapitalise } from 'services/onCapitalise';
+import { useNavigate } from 'react-router-dom';
 
 export const AddRecipeForm = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const categories = useSelector(selectCategoryList);
   const ingredients = useSelector(selectIngredients);
@@ -21,7 +22,10 @@ export const AddRecipeForm = () => {
     register,
     control,
     watch,
-    // formState: { errors, isDirty, isValid },
+    setValue,
+    formState: { errors,
+      // isDirty, isValid
+    },
   } = useForm({
     defaultValues: {
       fullImage: '',
@@ -35,9 +39,10 @@ export const AddRecipeForm = () => {
   });
 
   const onSubmit = data => {
-    const { ingredients, instructions, fullImage } = data;
+    const { category, ingredients, instructions, fullImage } = data;
     const recipe = {
       ...data,
+      category: onCapitalise(category.value),
       fullImage: fullImage[0],
       instructions: instructions.split('\n').join(', '),
       ingredients: JSON.stringify(
@@ -50,14 +55,15 @@ export const AddRecipeForm = () => {
           ),
     };
 
+    console.log(recipe);
     const formData = new FormData();
     Object.keys(recipe).forEach(key => {
           formData.append(key, recipe[key]);
         });
     
-    dispatch(addOwnRecipe(formData));
-      // .unwrap()
-      // .then(res => navigate('/my'));
+    dispatch(addOwnRecipe(formData))
+      .unwrap()
+      .then(res => navigate('/my'));
   };
 
 
@@ -70,9 +76,11 @@ export const AddRecipeForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <RecipeDescriptionFields
+        errors={errors}
         register={register}
         categories={categories}
         control={control}
+        setValue={setValue}
       />
       <RecipeIngredientsFields
         register={register}

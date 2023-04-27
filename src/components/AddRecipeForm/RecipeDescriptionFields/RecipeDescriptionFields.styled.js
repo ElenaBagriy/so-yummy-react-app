@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import Select from 'react-select';
+import { ReactComponent as CloseIcon } from "../../../images/svg/x.svg";
+import { ErrorMessage } from '@hookform/error-message';
 
 export const RecipeDescStyled = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 14px;
+  gap: 32px;
   margin-bottom: 67.07px;
 
   @media screen and (min-width: 768px) {
+    align-items: flex-start;
     flex-direction: row;
-    gap: 32px;
     margin-bottom: 104px;
   }
 
@@ -58,18 +60,76 @@ export const StyledImg = styled.img`
   object-position: center;
 `;
 
+export const RemoveFileBtn = styled.button`
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  z-index: 200;
+
+  & svg path {
+    transition: stroke ${props => props.theme.hover.transition};
+    stroke: ${props => props.theme.text.primary};
+    box-shadow: ${props => props.theme.hover.boxShadow};
+  }
+
+  &:hover,
+  :focus {
+    & svg path{
+      stroke: ${props => props.theme.text.accent};
+    }
+  }
+`;
+
+export const IconClose = styled(CloseIcon)`
+  display: block;
+  width: 20px;
+  height: 20px;
+
+    & path {
+    transition: stroke ${props => props.theme.hover.transition};
+    stroke: ${props => props.theme.text.primary};
+
+    &:hover,
+     :focus {
+      stroke: ${props => props.theme.text.accent};
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const InputHidden = styled.input`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  opacity: 0;
+  cursor: pointer;
+`;
+
+
 export const InputsStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
 
-  label {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: -0.02em;
-    width: 393px;
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 40px;
   }
 
   .wrapperCategory {
@@ -79,11 +139,6 @@ export const InputsStyled = styled.div`
     justify-content: space-between;
     padding-bottom: 18px;
     border-bottom: 1px solid #e0e0e0;
-  }
-
-  span {
-    color: #000000;
-    opacity: 0.5;
   }
 
   input {
@@ -99,34 +154,43 @@ export const InputsStyled = styled.div`
   }
 `;
 
-export const RemoveFileBtn = styled.button`
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  background-color: transparent;
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  width: 343px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    width: 393px;
+  }
+`;
+
+export const Input = styled.input`
+  padding-bottom: 18px;
   border: none;
-  z-index: 5;
-  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: transparent;
+  color: ${props => props.theme.text.heroParagraph};
+
+  &::placeholder {
+    color: #000000;
+    opacity: 0.5;
+  }
 `;
 
 
 
-
-export const InputHidden = styled.input`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 0;
-  opacity: 0;
-  cursor: pointer;
-`;
 
 export const StyledSelect = styled(Select)`
   width: 123px;
   font-size: 20px;
   line-height: 1;
+
   svg {
     fill: ${props => props.theme.colors.green};
   }
@@ -214,4 +278,48 @@ export const StyledSelect = styled(Select)`
       font-size: 14px;
     }
   }
+`;
+
+// ------ERROR ------
+export const Error = styled(ErrorMessage)`
+  position: absolute;
+  top: ${props => {
+    switch (props.type) {
+      case 'input':
+        return 0;
+      case 'select':
+        return '20px';
+      
+      case 'file':
+        return '-20px';
+      default:
+        return;
+    }
+  }};
+  right: ${props => {
+    switch (props.type) {
+      case 'input':
+        return 0;
+      default:
+        return;
+    }
+  }};
+  left: ${props => {
+    switch (props.type) {
+      case 'input':
+        return;
+      case 'select':
+        return 0;
+      
+       case 'file':
+        return 0;
+      default:
+        return;
+    }
+  }};
+  font-family: 'Poppins';
+  font-weight: 400;
+  color: red;
+  font-size: 14px;
+  line-height: 1.5;
 `;

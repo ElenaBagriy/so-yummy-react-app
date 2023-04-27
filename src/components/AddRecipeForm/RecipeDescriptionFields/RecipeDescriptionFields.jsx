@@ -7,18 +7,24 @@ import {
   StyledImg,
   InputHidden,
   DefaultImage,
+  IconClose,
+  Error,
+  Label,
+  Input,
   // StyledSelect,
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
 // import Select from 'react-select';
-import { GrClose } from 'react-icons/gr';
 import { timeGenerator } from 'services/timeGenerator';
+import Select from 'react-select'
 
 export const RecipeDescriptionFields = ({
   register,
   categories,
   control,
+  errors,
+  setValue
 }) => {
 
   const [preview, setPreview] = useState('');
@@ -42,7 +48,7 @@ export const RecipeDescriptionFields = ({
   const categoriesOptions = categories.map(option => {
     return { id: option.id, value: option.title, label: option.title };
   });
-
+  
   return (
     <RecipeDescStyled>
       <ImageLabel>
@@ -50,7 +56,7 @@ export const RecipeDescriptionFields = ({
           <div>
             <StyledImg src={preview} width="279" height="268" alt="recipe preview" />
             <RemoveFileBtn onClick={removeFileUpload}>
-              <GrClose />
+              <IconClose />
             </RemoveFileBtn>
           </div>) :
           (<div width="279" height="268">
@@ -62,65 +68,89 @@ export const RecipeDescriptionFields = ({
             />
           </div>)
         }
+        {errors.fullImage && (
+          <Error name="fullImage">
+            {errors.fullImage}
+          </Error>
+        )}
         <InputHidden
           {...register('fullImage', {
             onChange: (e) => imageChange(e)
           })}
           type="file"
           name="fullImage"
-          className="upload"
           accept="image/*,.png, .jpeg,.gif,.web"
         />
       </ImageLabel>
 
       <InputsStyled>
-        <label>
-          <span>Enter item title</span>
+        <Label>
+          {/* <span>Enter item title</span> */}
           <Controller
             name="title"
             control={control}
             render={({ field }) => (
-              <input
+              <Input
                 {...field}
+                type='text'
+                placeholder='Enter item title'
                 onChange={e => field.onChange(e.target.value)}
+                isError={errors.title}
               />
             )}
           />
-        </label>
+            <Error errors={errors} name="title"/>
+        </Label>
 
-        <label>
-          <span>Enter about recipe</span>
+        <Label>
+          {/* <span>Enter about recipe</span> */}
           <Controller
             name="description"
             control={control}
             render={({ field }) => (
-              <input
+              <Input
                 {...field}
+                type='text'
+                placeholder='Enter about recipe'
                 onChange={e => field.onChange(e.target.value)}
               />
             )}
           />
-        </label>
+          <Error errors={errors} name="description"/>
+        </Label>
+
         {/* {errors.exampleRequired && <span>This field is required</span>} */}
-        <label className="wrapperCategory">
+
+        <Label className="wrapperCategory">
           <span>Category</span>
           <Controller
             name="category"
             control={control}
-            render={({ field }) => (
-              <select
+            render={({ field, form }) => (
+              <Select
                 {...field}
-                className="сustom-select-container"
-              > 
-                {categoriesOptions && categoriesOptions.map(option => {
-                  return <option key={option.id} value={option.value}>{option.value}</option>
-                })}
-                </select>
+                defaultValue={categoriesOptions[0]}
+                isLoading={false}
+                isClearable={false}
+                isSearchable={false}
+                options={categoriesOptions}
+                // onChange={option => setValue(field.name, option.value)}
+              />
+              
+
+              // <select
+              //   {...field}
+              //   className="сustom-select-container"
+              // > 
+              //   {categoriesOptions && categoriesOptions.map(option => {
+              //     return <option key={option.id} value={option.value}>{option.value}</option>
+              //   })}
+              //   </select>
             )}
           />
-        </label>
+        </Label>
 
-        <label className="wrapperCategory">
+        <Label className="wrapperCategory">
           <span>Cooking time</span>
           <Controller
             name="time"
@@ -136,7 +166,8 @@ export const RecipeDescriptionFields = ({
               </select>
             )}
           />
-        </label>
+        </Label>
+
       </InputsStyled>
     </RecipeDescStyled>
   );
