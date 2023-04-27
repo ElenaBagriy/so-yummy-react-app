@@ -3,7 +3,59 @@ import Select from 'react-select';
 
 export const RecipeDescStyled = styled.div`
   display: flex;
-  gap: 50px;
+  align-items: center;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 67.07px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 104px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 50px;
+  }
+`;
+
+export const ImageLabel = styled.label`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 279px;
+  height: 268px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: ${props => props.theme.colors.green};
+  transition: background-color ${props => props.theme.hover.transition};
+  
+  &:hover,
+  &:focus {
+    background-color: #8baa36db;
+  }
+  
+  @media screen and (min-width: 1280px) {
+    width: 357px;
+    height: 344px;
+  }
+`;
+
+export const DefaultImage = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  cursor: pointer;
+`;
+
+export const StyledImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 `;
 
 export const InputsStyled = styled.div`
@@ -57,60 +109,8 @@ export const RemoveFileBtn = styled.button`
   cursor: pointer;
 `;
 
-export const StyledImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-`;
 
-export const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 279px;
-  height: 268px;
-  border-radius: 8px;
-  overflow: hidden;
 
-  @media screen and (min-width: 1280px) {
-    width: 357px;
-    height: 344px;
-  }
-
-  .imageBox {
-    position: relative;
-    display: block;
-    width: 279px;
-    height: 268px;
-    border-radius: 8px;
-    background-color: ${props => props.theme.colors.green};
-
-    &:hover,
-    &:focus {
-      background-color: #8baa36db;
-    }
-
-    @media screen and (max-width: 768px) {
-      margin-bottom: 32px;
-    }
-    @media screen and (min-width: 1280px) {
-      width: 357px;
-      height: 344px;
-    }
-
-    img {
-      position: absolute;
-    }
-
-    .default {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-`;
 
 export const InputHidden = styled.input`
   position: absolute;

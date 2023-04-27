@@ -19,17 +19,15 @@ const AddRecipePage = () => {
       <Background />
       <Container>
         <Section>
-        <MainPageTitle title="Add recipe" />
-        <WrapperStyled>
-          <div>
-              <AddRecipeForm />
-          </div>
+          <MainPageTitle title="Add recipe" />
+          <WrapperStyled>
+            <AddRecipeForm />
             <SecondaryWrapper>
               {desktop && <FollowUs />}
-            <PopularRecipe />
-          </SecondaryWrapper>
+              <PopularRecipe />
+            </SecondaryWrapper>
           </WrapperStyled>
-          </Section>
+        </Section>
       </Container>
       <GoToTop/>
     </Main>

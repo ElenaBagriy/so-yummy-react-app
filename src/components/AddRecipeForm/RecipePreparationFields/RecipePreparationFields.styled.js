@@ -4,11 +4,9 @@ export const StyledPreparation = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 44px;
   margin-bottom: 18px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 100px;
     margin-bottom: 32px;
     gap: 32px;
   }

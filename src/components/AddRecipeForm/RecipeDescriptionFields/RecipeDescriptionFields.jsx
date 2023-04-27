@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import {
-  Wrapper,
+  ImageLabel,
   RecipeDescStyled,
   RemoveFileBtn,
   StyledImg,
   InputHidden,
+  DefaultImage,
   // StyledSelect,
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
@@ -44,39 +45,33 @@ export const RecipeDescriptionFields = ({
 
   return (
     <RecipeDescStyled>
-      <Wrapper>
-        <label
-          className="imageBox"
-        >
-          <div width="279" height="268">
-            <img
-              className="default"
+      <ImageLabel>
+        {preview ? (
+          <div>
+            <StyledImg src={preview} width="279" height="268" alt="recipe preview" />
+            <RemoveFileBtn onClick={removeFileUpload}>
+              <GrClose />
+            </RemoveFileBtn>
+          </div>) :
+          (<div width="279" height="268">
+            <DefaultImage
               src={camera}
-              alt="preview"
+              alt="set image"
               width="64"
               height="64"
             />
-          </div>
-
-          {preview && (
-            <div>
-              <StyledImg src={preview} width="280" height="270" alt="preview" />
-              <RemoveFileBtn onClick={removeFileUpload}>
-                <GrClose />
-              </RemoveFileBtn>
-            </div>
-          )}
-          <InputHidden
-            {...register('fullImage', {
-              onChange: (e) => imageChange(e)
-            })}
-            type="file"
-            name="fullImage"
-            className="upload"
-            accept="image/*,.png, .jpeg,.gif,.web"
-          />
-        </label>
-      </Wrapper>
+          </div>)
+        }
+        <InputHidden
+          {...register('fullImage', {
+            onChange: (e) => imageChange(e)
+          })}
+          type="file"
+          name="fullImage"
+          className="upload"
+          accept="image/*,.png, .jpeg,.gif,.web"
+        />
+      </ImageLabel>
 
       <InputsStyled>
         <label>
