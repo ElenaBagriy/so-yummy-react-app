@@ -28,6 +28,19 @@ export const WrapperStyled = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
-    gap: 121px;
+    gap: normal;
+    justify-content: space-between;
+  }
+`;
+
+export const SecondaryWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1280px) {
+    width: 318px;
+    flex-basis: 318px;
+    gap: 96px;
   }
 `;

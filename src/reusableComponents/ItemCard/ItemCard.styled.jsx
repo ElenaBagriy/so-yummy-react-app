@@ -6,7 +6,6 @@ import { Popover } from "@mui/material";
 export const Link = styled.a`
     display: block;
     height: 100%;
-    
 `;
 
 export const PictureTitle = styled.div`

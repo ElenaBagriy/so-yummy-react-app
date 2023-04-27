@@ -6,7 +6,7 @@ import { AddRecipeForm } from 'components/AddRecipeForm/AddRecipeForm';
 
 import { Background } from 'reusableComponents/Background/Background';
 import { Container } from 'reusableComponents/Container/Container';
-import { Section, WrapperStyled } from './AddRecipePage.styled';
+import { SecondaryWrapper, Section, WrapperStyled } from './AddRecipePage.styled';
 import { Main } from 'reusableComponents/Main/Main';
 import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 
@@ -21,10 +21,10 @@ const AddRecipePage = () => {
           <div>
               <AddRecipeForm />
           </div>
-          <div>
+          <SecondaryWrapper>
             <FollowUs />
             <PopularRecipe />
-          </div>
+          </SecondaryWrapper>
           </WrapperStyled>
           </Section>
       </Container>

@@ -18,6 +18,7 @@ const lightTheme = {
     grey: '#BDBDBD',
     paginationText: '#656565',
     primary: '#3E4462',
+    popular: '#7E7E7E',
     accent: '#8BAA36',
     black: '#000000',
   },
