@@ -11,13 +11,14 @@ import {
   Error,
   Label,
   Input,
-  // StyledSelect,
+  WrapperCategory,
+  PlaceHolder,
+  StyledSelect,
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
-// import Select from 'react-select';
 import { timeGenerator } from 'services/timeGenerator';
-import Select from 'react-select'
+import { onCapitalise } from 'services/onCapitalise';
 
 export const RecipeDescriptionFields = ({
   register,
@@ -44,9 +45,9 @@ export const RecipeDescriptionFields = ({
   };
 
   const timeOptions = timeGenerator(5, 120);
-
+  
   const categoriesOptions = categories.map(option => {
-    return { id: option.id, value: option.title, label: option.title };
+    return { id: option.id, value: onCapitalise(option.title), label: onCapitalise(option.title) };
   });
   
   return (
@@ -121,52 +122,48 @@ export const RecipeDescriptionFields = ({
 
         {/* {errors.exampleRequired && <span>This field is required</span>} */}
 
-        <Label className="wrapperCategory">
-          <span>Category</span>
+        <WrapperCategory>
+          <PlaceHolder>Category</PlaceHolder>
           <Controller
             name="category"
             control={control}
             render={({ field, form }) => (
-              <Select
+              <StyledSelect
                 {...field}
                 defaultValue={categoriesOptions[0]}
-                isLoading={false}
-                isClearable={false}
+                placeholder={categoriesOptions[0]?.value}
+                classNamePrefix="react-select"
+                className="react-select-container"
+                // isLoading={false}
                 isSearchable={false}
                 options={categoriesOptions}
                 // onChange={option => setValue(field.name, option.value)}
               />
-              
-
-              // <select
-              //   {...field}
-              //   className="сustom-select-container"
-              // > 
-              //   {categoriesOptions && categoriesOptions.map(option => {
-              //     return <option key={option.id} value={option.value}>{option.value}</option>
-              //   })}
-              //   </select>
             )}
           />
-        </Label>
+        </WrapperCategory>
 
-        <Label className="wrapperCategory">
-          <span>Cooking time</span>
+        <WrapperCategory>
+          <PlaceHolder>Cooking time</PlaceHolder>
           <Controller
             name="time"
             control={control}
             render={({ field }) => (
-              <select
+
+              <StyledSelect
                 {...field}
-                className="сustom-select-container"
-              >
-                {timeOptions && timeOptions.map(option => {
-                  return <option key={option.id} value={option.value}>{option.value}</option>
-                })}
-              </select>
+                defaultValue={timeOptions[0]}
+                placeholder={timeOptions[0]?.value}
+                classNamePrefix="react-select"
+                className="react-select-container"
+                // isLoading={false}
+                isSearchable={false}
+                options={timeOptions}
+                // onChange={option => setValue(field.name, option.value)}
+              />
             )}
           />
-        </Label>
+        </WrapperCategory>
 
       </InputsStyled>
     </RecipeDescStyled>

@@ -118,7 +118,6 @@ export const InputHidden = styled.input`
   cursor: pointer;
 `;
 
-
 export const InputsStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -131,26 +130,34 @@ export const InputsStyled = styled.div`
   @media screen and (min-width: 1280px) {
     gap: 40px;
   }
+`;
 
-  .wrapperCategory {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #e0e0e0;
+export const WrapperCategory = styled.label`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 343px;
+  height: 40px;
+  border-bottom: 1px solid #e0e0e0;
+
+  @media screen and (min-width: 768px) {
+    width: 393px;
+    height: 43px;
   }
+`;
 
-  input {
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-    background-color: transparent;
-    color: #23262a;
+export const PlaceHolder = styled.span`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.5;
 
-    &:hover,
-    &:focus {
-      outline: none;
-    }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
   }
 `;
 
@@ -172,6 +179,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   padding-bottom: 18px;
+  padding-top: 0;
   border: none;
   border-bottom: 1px solid #e0e0e0;
   background-color: transparent;
@@ -181,57 +189,157 @@ export const Input = styled.input`
     color: #000000;
     opacity: 0.5;
   }
+
+  &:focus-visible {
+    outline: none;
+  }
 `;
 
 
-
-
 export const StyledSelect = styled(Select)`
-  width: 123px;
-  font-size: 20px;
-  line-height: 1;
+  
+  &.react-select-container {
+    height: 20px;
+  }
+  
+  .react-select__control {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    outline: 0;
+    cursor: pointer;
+    min-height: 0;
+
+     input {
+    position: absolute;
+     &:focus-visible{
+      outline: none;
+     }
+    }
+  }
+
+  .react-select__control--is-focused {
+    box-shadow: none;
+    border: none;
+  }
+
+  .react-select__value-container {
+    position: relative;
+    padding: 4px 0;
+    height: 20px;
+    display: block;
+    @media screen and (min-width: 768px) {
+      padding: 3px 0;
+    }
+  }
+
+  .react-select__single-value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    color: #000000;
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+    }
+  }
+
+  .react-select__placeholder {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    color: #000000;
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+    }
+  }
+
+  .react-select__indicator-separator {
+    display: none;
+  }
+
+  .react-select__indicator {
+    padding: 0;
+  }
+
+  .react-select__menu {
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+    border-radius: 6px;
+    margin-top: 4px;
+    margin-bottom: 0;
+    padding: 8px 4px 8px 14px;
+    background-color: ${props => props.theme.colors.white};
+    width: 123px;
+    height: 144px;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 8px;
+      padding: 8px 4px 8px 18px;
+      height: 162px;
+      width: 132px;
+    }
+  }
+
+  .react-select__menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+    max-height: 128px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #E7E5E5;
+      border-radius: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: white;
+      border-radius: 12px;
+    }
+
+    @media screen and (min-width: 768px) {
+      max-height: 146px;
+    }
+  }
+
+  .react-select__option {
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: #000000;
+    opacity: 0.5;
+
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+    }
+  }
+
+  .react-select__option--is-focused {
+    background-color: ${props => props.theme.colors.lightGreen};
+
+  }
+
+  .react-select__option--is-selected {
+    background-color: white;
+    color: ${props => props.theme.colors.green};
+    opacity: 1;
+  }
 
   svg {
     fill: ${props => props.theme.colors.green};
-  }
-
-  &.сustom-select-container {
-    /* position: absolute; */
-    /* right: 0;
-    top: -8px; */
-    /* z-index: 5; */
-  }
-
-  .сustom-select__control {
-    border: none;
-    border-width: 0;
-    background-color: transparent !important;
-  }
-
-  .сustom-select__control--menu-is-open {
-    box-shadow: 0 0 0 3px ${props => props.theme.colors.green};
-  }
-
-  .сustom-select__control--is-focused {
-    box-shadow: 0 0 0 3px ${props => props.theme.colors.green};
-  }
-
-  .сustom-select__indicator-separator {
-    display: none !important;
-    width: 0;
-  }
-
-  .сustom-select__value-container {
-    padding: 2px 0px 2px 14px;
-  }
-
-  .сustom-select__single-value {
-    color: green;
-    text-align: right;
-  }
-
-  .сustom-select__menu {
-    background-color: green;
   }
 
   .сustom-select__menu-list {
@@ -251,34 +359,8 @@ export const StyledSelect = styled(Select)`
       border-radius: 5px;
     }
   }
-
-  .сustom-select__option {
-    font-size: 14px;
-    line-height: 1.5;
-    color: green;
-    opacity: 0.5;
-
-    &:hover,
-    &:focus {
-      background-color: green;
-      color: green;
-      opacity: 1;
-    }
-  }
-
-  .сustom-select__option--is-selected {
-    background-color: ${props => props.theme.colors.green};
-    color: green;
-    opacity: 1;
-  }
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-
-    .сustom-select__option {
-      font-size: 14px;
-    }
-  }
 `;
+
 
 // ------ERROR ------
 export const Error = styled(ErrorMessage)`
