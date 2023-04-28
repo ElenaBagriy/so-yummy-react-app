@@ -27,7 +27,7 @@ export const Textarea = styled.textarea`
   width: 100%;
   height: 154px;
   padding: 9.89px 16px;
-  background-color: ${props => props.theme.colors.grey};
+  background-color: #f5f5f5;
   border: none;
   border-radius: 6px;
   font-family: 'Poppins', sans-serif;

@@ -8,7 +8,6 @@ import { RecipePreparationFields } from './RecipePreparationFields/RecipePrepara
 import { SubmitButton } from './AddRecipeForm.styled';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientFields';
 import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
-import { onCapitalise } from 'services/onCapitalise';
 import { useNavigate } from 'react-router-dom';
 
 export const AddRecipeForm = () => {
@@ -39,20 +38,23 @@ export const AddRecipeForm = () => {
   });
 
   const onSubmit = data => {
-    const { category, ingredients, instructions, fullImage } = data;
+    const { fullImage, title, description, category, time, ingredients, instructions } = data;
     const recipe = {
-      ...data,
-      category: onCapitalise(category.value),
       fullImage: fullImage[0],
+      title,
+      description,
+      category: category.value,
+      time: time.value.slice(0,-4),
       instructions: instructions.split('\n').join(', '),
-      ingredients: JSON.stringify(
-            ingredients.map(({ _id, measure }) => {
-              return {
-                id: _id,
-                measure: measure.join(''),
-              };
-            })
-          ),
+      ingredients:
+        JSON.stringify(
+        ingredients.map(({ _id, measure }) => {
+          return {
+            id: _id.id,
+            measure: measure[0] + measure[1].value,
+          };
+        })
+      ),
     };
 
     console.log(recipe);

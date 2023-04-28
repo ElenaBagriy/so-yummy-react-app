@@ -1,11 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useFieldArray } from 'react-hook-form';
-import { IconButton, Tooltip } from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
+import { Controller, useFieldArray } from 'react-hook-form';
+import { Tooltip } from '@mui/material';
 import {
+  CountButton,
+  Counter,
+  CounterValue,
+  DeleteButton,
+  DeleteIcon,
+  FieldsList,
+  Icon,
   IngredFieldsStyled,
+  IngredientLabel,
+  Input,
+  Labels,
+  MeasureLabel,
   RecipeIngredStyled,
+  StyledMeasureSelect,
+  StyledSelect,
+  Title,
+  Wrapper,
 } from './RecipeIngredientFields.styled';
+import SVG from '../../../images/svg/sprite.svg';
+import { nanoid } from '@reduxjs/toolkit';
+
 
 export const RecipeIngredientsFields = ({
   ingredients,
@@ -38,90 +55,128 @@ export const RecipeIngredientsFields = ({
 
   const measurement = ['tbs', 'tsp', 'kg', 'g', 'l', 'ml', 'lbs', 'oz'];
 
+  const ingredientsOptions = ingredients.map(option => {
+    return { id: option._id, value: option.ttl, label: option.ttl };
+  });
+
+  const measureOptions = measurement.map(option => {
+    return { id: nanoid(), value: option, label: option };
+  });
+
   useEffect(() => {
     setNumberOfFields(fields.length);
   }, [fields]);
 
   return (
-    <>
+    <Wrapper>
       <RecipeIngredStyled>
-        <div>
-          <h3>Ingredients</h3>
-        </div>
-        <div className="counterWrapper">
+          <Title>Ingredients</Title>
+        <Counter>
           <Tooltip title="Remove one field">
-            <button
+            <span>
+            <CountButton
+              disabled={numberOfFields === 0}
               onClick={e => {
+                console.log('clis');
                 e.preventDefault();
                 deleteField(fields.length - 1);
               }}
             >
-              -
-            </button>
+              <Icon>
+                <use href={`${SVG}#icon-decrement`}/>
+              </Icon>
+              </CountButton>
+              </span>
           </Tooltip>
-          <span className="counter">
+          <CounterValue>
             {numberOfFields > 0 ? numberOfFields : 0}
-          </span>
+          </CounterValue>
           <Tooltip title="Add one field">
-            <span>
-              <button
-                onClick={e => {
-                  e.preventDefault();
-                  append({});
-                }}
-              >
-                +
-              </button>
-            </span>
+            <CountButton
+              disabled={false}
+              onClick={e => {
+                e.preventDefault();
+                append({});
+              }}
+            >
+              <Icon>
+                <use href={`${SVG}#icon-increment`}/>
+              </Icon>
+            </CountButton>
           </Tooltip>
-        </div>
-
+        </Counter>
       </RecipeIngredStyled>
-      
 
-      {controlledFields.map((field, index) => {
-        return (
-          <IngredFieldsStyled key={field.id}>
-            <label>
-              <select
-                {...field}
-                {...register(`ingredients.${index}._id`)}
-                className="сustom-select-container"
-              >
-                {ingredients && ingredients.map(ingredient => {
-                  return <option key={ingredient._id} value={ingredient._id}>{ingredient.ttl}</option>
-                })}
-              </select>
-            </label>
+      <FieldsList>
+        {controlledFields.map((field, index) => {
+          return (
+            <IngredFieldsStyled key={field.id}>
+              <Labels>
+                <IngredientLabel>
+                    <Controller
+                      name={`ingredients.${index}._id`}
+                      control={control}
+                      render={({ field }) => (
+                        <StyledSelect
+                          {...field}
+                          value={ingredientsOptions.find(
+                            option => option.value === field.value
+                          )}
+                          defaultValue={ingredientsOptions[0]}
+                          placeholder={'Type ingredient name'}
+                          classNamePrefix="ingr-select"
+                          className="ingr-select-container"
+                          // isLoading={false}
+                          isSearchable={true}
+                          options={ingredientsOptions}
+                        // onChange={option => setValue(field.name, option.value)}
+                        />
+                      )}
+                    />
+                </IngredientLabel>
 
-            <label>
-              <input {...register(`ingredients.${index}.measure[0]`)}/>
-              <select
-                {...field}
-                {...register(`ingredients.${index}.measure[1]`)}
-                className="сustom-select-container"
-              >
-                {measurement && measurement.map(measure => {
-                  return <option key={measure} value={measure}>{measure}</option>
-                })}
-              </select>
-            </label>
+                <MeasureLabel>
+                  <Input {...register(`ingredients.${index}.measure[0]`)} />
+                  <Controller
+                      name={`ingredients.${index}.measure[1]`}
+                      control={control}
+                      render={({ field }) => (
+                  <StyledMeasureSelect
+                    defaultValue=''
+                    placeholder={measureOptions[0]?.value}
+                    classNamePrefix="measure-select"
+                    className="measure-select-container"
+                    // isLoading={false}
+                    isSearchable={false}
+                    options={measureOptions}
+                    // value={measureOptions.find(
+                    //   option => option.value === field.value
+                    // )}
+                    {...field}
+                    // {...register(`ingredients.${index}.measure[1]`)}
+                  >
+                        </StyledMeasureSelect>
+                        )}
+                    />
+                </MeasureLabel>
+              </Labels>
 
-
-            <Tooltip title="Delete field" className="deleteBtn">
-              <IconButton
-                onClick={e => {
-                  e.preventDefault();
-                  remove(index);
-                }}
-              >
-                <ClearIcon />
-              </IconButton>
-            </Tooltip>
-          </IngredFieldsStyled>
-        );
-      })}
-
-    </>
+              <Tooltip title="Delete field" className="deleteBtn">
+                <DeleteButton
+                  onClick={e => {
+                    e.preventDefault();
+                    remove(index);
+                  }}
+                >
+                  <DeleteIcon>
+                    <use href={`${SVG}#icon-x`} />
+                  </DeleteIcon>
+                </DeleteButton>
+              </Tooltip>
+            </IngredFieldsStyled>
+          );
+        })}
+      </FieldsList>
+    </Wrapper>
   );
 };
