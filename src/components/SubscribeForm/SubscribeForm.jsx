@@ -37,6 +37,7 @@ export function SubscribeForm() {
     }
   
   const onSubmit = (values, actions) => {
+    console.log(values);
     dispatch(subscribe(values))
       .unwrap()
       .then(() => {
@@ -69,7 +70,7 @@ export function SubscribeForm() {
                 placeholder="Enter your email address"
                 validate={validateEmail}
                 error={errors.email}
-                touched={touched.email}
+                touched={`${touched.email}`}
               />
               <EmailIcon error={errors.email} />
               {errors.email && touched.email && (
