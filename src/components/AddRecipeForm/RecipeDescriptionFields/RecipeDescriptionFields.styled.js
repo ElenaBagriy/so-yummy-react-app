@@ -392,39 +392,14 @@ export const ErrorImageMessage = styled.span`
     }
 `;
 
-// ------ERROR ------
 export const Error = styled.span`
   position: absolute;
   bottom: 0;
-  /* top: ${props => {
-    switch (props.type) {
-      case 'input':
-        return 0;
-      case 'select':
-        return '20px';
-      
-      case 'file':
-        return '-20px';
-      default:
-        return;
-    }
-  }}; */
-  /* right: ${props => {
-    switch (props.type) {
-      case 'input':
-        return 0;
-      default:
-        return;
-    }
-  }}; */
   left: ${props => {
     switch (props.type) {
       case 'input':
         return 0;
       case 'select':
-        return 0;
-      
-       case 'file':
         return 0;
       default:
         return;

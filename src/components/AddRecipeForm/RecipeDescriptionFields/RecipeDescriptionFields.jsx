@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
+import { timeGenerator } from 'services/timeGenerator';
+import { onCapitalise } from 'services/onCapitalise';
+import camera from '../../../images/AddRecipe/preview.svg';
 import {
   ImageLabel,
   RecipeDescStyled,
@@ -18,9 +21,6 @@ import {
   ImageWrapper,
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
-import camera from '../../../images/AddRecipe/preview.svg';
-import { timeGenerator } from 'services/timeGenerator';
-import { onCapitalise } from 'services/onCapitalise';
 
 export const RecipeDescriptionFields = ({
   register,
@@ -146,7 +146,7 @@ export const RecipeDescriptionFields = ({
             )}
           />
           {errors.category &&
-            <Error type="input">
+            <Error type="select">
               {errors.category.message}
             </Error>
           }
@@ -169,7 +169,7 @@ export const RecipeDescriptionFields = ({
             }}
           />
           {errors.time &&
-            <Error type="input">
+            <Error type="select">
               {errors.time.message}
             </Error>
           }

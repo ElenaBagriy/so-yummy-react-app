@@ -1,21 +1,30 @@
 import React from 'react';
-import { StyledPreparation, Textarea, Title } from './RecipePreparationFields.styled';
+import { ErrorMessage } from '@hookform/error-message';
+import { Error, StyledPreparation, Textarea, Title } from './RecipePreparationFields.styled';
 
 export const RecipePreparationFields = ({
   register,
-  control
+  control,
+  errors
 }) => {
 
+  console.log(errors);
   return (
     <StyledPreparation>
       <Title>Recipe Preparation</Title>
       <label>
         <Textarea
+          isError={errors.instructions}
           placeholder="Enter recipe"
           name="instructions"
           control={control}
           {...register('instructions')}
-        ></Textarea>
+        />
+        <ErrorMessage
+          errors={errors}
+          name={`instructions`}
+          render={({ message }) => <Error>{message}</Error>}
+        />
       </label>
     </StyledPreparation>
   );

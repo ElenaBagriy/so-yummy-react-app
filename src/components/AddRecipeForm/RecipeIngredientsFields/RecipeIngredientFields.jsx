@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Controller, useFieldArray } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 import { Tooltip } from '@mui/material';
+import { nanoid } from '@reduxjs/toolkit';
+import SVG from '../../../images/svg/sprite.svg';
 import {
   CountButton,
   Counter,
   CounterValue,
   DeleteButton,
   DeleteIcon,
+  Error,
   FieldsList,
   Icon,
   IngredFieldsStyled,
@@ -20,8 +24,6 @@ import {
   Title,
   Wrapper,
 } from './RecipeIngredientFields.styled';
-import SVG from '../../../images/svg/sprite.svg';
-import { nanoid } from '@reduxjs/toolkit';
 
 
 export const RecipeIngredientsFields = ({
@@ -29,6 +31,7 @@ export const RecipeIngredientsFields = ({
   register,
   control,
   watch,
+  errors
 }) => {
 
   const { fields, append, remove } = useFieldArray({
@@ -44,7 +47,7 @@ export const RecipeIngredientsFields = ({
       ...field,
       ...watchFieldArray[index]
     };
-    });
+  });
   
   const deleteField = index => {
     if (!fields.length) return;
@@ -70,23 +73,22 @@ export const RecipeIngredientsFields = ({
   return (
     <Wrapper>
       <RecipeIngredStyled>
-          <Title>Ingredients</Title>
+        <Title>Ingredients</Title>
         <Counter>
           <Tooltip title="Remove one field">
             <span>
-            <CountButton
-              disabled={numberOfFields === 0}
-              onClick={e => {
-                console.log('clis');
-                e.preventDefault();
-                deleteField(fields.length - 1);
-              }}
-            >
-              <Icon>
-                <use href={`${SVG}#icon-decrement`}/>
-              </Icon>
+              <CountButton
+                disabled={numberOfFields === 0}
+                onClick={e => {
+                  e.preventDefault();
+                  deleteField(fields.length - 1);
+                }}
+              >
+                <Icon>
+                  <use href={`${SVG}#icon-decrement`} />
+                </Icon>
               </CountButton>
-              </span>
+            </span>
           </Tooltip>
           <CounterValue>
             {numberOfFields > 0 ? numberOfFields : 0}
@@ -106,61 +108,70 @@ export const RecipeIngredientsFields = ({
           </Tooltip>
         </Counter>
       </RecipeIngredStyled>
-
       <FieldsList>
         {controlledFields.map((field, index) => {
           return (
             <IngredFieldsStyled key={field.id}>
               <Labels>
                 <IngredientLabel>
-                    <Controller
-                      name={`ingredients.${index}._id`}
-                      control={control}
-                      render={({ field }) => (
-                        <StyledSelect
-                          {...field}
-                          value={ingredientsOptions.find(
-                            option => option.value === field.value
-                          )}
-                          defaultValue={ingredientsOptions[0]}
-                          placeholder={'Type ingredient name'}
-                          classNamePrefix="ingr-select"
-                          className="ingr-select-container"
-                          // isLoading={false}
-                          isSearchable={true}
-                          options={ingredientsOptions}
-                        // onChange={option => setValue(field.name, option.value)}
-                        />
-                      )}
-                    />
-                </IngredientLabel>
-
-                <MeasureLabel>
-                  <Input {...register(`ingredients.${index}.measure[0]`)} />
                   <Controller
-                      name={`ingredients.${index}.measure[1]`}
-                      control={control}
-                      render={({ field }) => (
-                  <StyledMeasureSelect
-                    defaultValue=''
-                    placeholder={measureOptions[0]?.value}
-                    classNamePrefix="measure-select"
-                    className="measure-select-container"
-                    // isLoading={false}
-                    isSearchable={false}
-                    options={measureOptions}
-                    // value={measureOptions.find(
-                    //   option => option.value === field.value
-                    // )}
-                    {...field}
-                    // {...register(`ingredients.${index}.measure[1]`)}
-                  >
-                        </StyledMeasureSelect>
-                        )}
-                    />
+                    name={`ingredients.${index}._id`}
+                    control={control}
+                    render={({ field: { onChange, onBlur, value },
+                    }) => {
+                      return <StyledSelect
+                        classNamePrefix="ingr-select"
+                        className="ingr-select-container"
+                        isSearchable={true}
+                        options={ingredientsOptions}
+                        selected={value}
+                        onChange={(e) => onChange(e.id)}
+                        onBlur={onBlur}
+                      />
+                    }}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name={`ingredients.${index}._id`}
+                    render={({ message }) => <Error>{message}</Error>}
+                  />
+                </IngredientLabel>
+                <MeasureLabel>
+                  <Input
+                    type="number"
+                    {...register(`ingredients.${index}.quantity`)} />
+                  <Controller
+                    name={`ingredients.${index}.measure`}
+                    control={control}
+                    defaultValue={measurement[0]}
+                    render={({ field: { onChange, onBlur, value } }) => {
+                      return <StyledMeasureSelect
+                        placeholder={value}
+                        classNamePrefix="measure-select"
+                        className="measure-select-container"
+                        selected={value}
+                        isSearchable={false}
+                        options={measureOptions}
+                        value={value}
+                        onChange={(e) => {
+                          onChange(e.value)
+                        }}
+                        onBlur={onBlur}
+                      />
+                    }}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name={`ingredients.${index}.measure`}
+                    render={({ message }) => <Error>{message}</Error>}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name={`ingredients.${index}.quantity`}
+                    render={({ message }) => <Error>{message}</Error>}
+                  />
                 </MeasureLabel>
               </Labels>
-
               <Tooltip title="Delete field" className="deleteBtn">
                 <DeleteButton
                   onClick={e => {
@@ -174,7 +185,7 @@ export const RecipeIngredientsFields = ({
                 </DeleteButton>
               </Tooltip>
             </IngredFieldsStyled>
-          );
+          )
         })}
       </FieldsList>
     </Wrapper>

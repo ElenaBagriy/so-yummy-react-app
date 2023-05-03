@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledPreparation = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 24px;
   margin-bottom: 18px;
@@ -30,6 +31,7 @@ export const Textarea = styled.textarea`
   background-color: #f5f5f5;
   border: none;
   border-radius: 6px;
+  border: ${props => (props.isError ? '1px solid #e74a3b' : 'none')};
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -42,7 +44,7 @@ export const Textarea = styled.textarea`
   }
 
   &:focus-visible {
-    outline: ${props => props.theme.colors.green} auto 1px;
+    outline: ${props => (props.isError ? '1px solid #e74a3b' : `props.theme.colors.green auto 1px`)};
 }
 
   @media screen and (min-width: 768px) {
@@ -51,4 +53,22 @@ export const Textarea = styled.textarea`
     padding: 16px 22.84px;
     font-size: 18px;
   }
+`;
+
+export const Error = styled.span`
+  position: absolute;
+  top: 32px;
+  left: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+  color: #e74a3b;
+
+    @media screen and (min-width: 768px) {
+      font-size: 12px;
+      left: 18px;
+      top: 36px;
+    }
 `;

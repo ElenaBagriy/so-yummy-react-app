@@ -158,8 +158,10 @@ export const DeleteIcon = styled.svg`
 `;
 
 export const IngredientLabel = styled.label`
+position: relative;
  height: 53px;
  width: 194px;
+
     @media screen and (min-width: 768px) {
       height: 59px;
       width: 398px;
@@ -194,6 +196,7 @@ export const StyledSelect = styled(Select)`
 
      input {
     position: absolute;
+    
      &:focus-visible{
       outline: none;
      }
@@ -224,6 +227,7 @@ export const StyledSelect = styled(Select)`
     padding: 0;
     margin: 0;
     color: #000000;
+    
 
     @media screen and (min-width: 768px) {
       font-size: 18px;
@@ -339,6 +343,7 @@ export const StyledSelect = styled(Select)`
 `;
 
 export const MeasureLabel = styled.label`
+  position: relative;
   display: flex;
   width: 84px;
   height: 53px;
@@ -546,4 +551,22 @@ export const StyledMeasureSelect = styled(Select)`
   svg {
     fill: ${props => props.theme.colors.green};
   }
+`;
+
+export const Error = styled.span`
+  position: absolute;
+  bottom: -14px;
+  left: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+  color: #e74a3b;
+
+    @media screen and (min-width: 768px) {
+      font-size: 12px;
+      left: 18px;
+      bottom: -16px;
+    }
 `;

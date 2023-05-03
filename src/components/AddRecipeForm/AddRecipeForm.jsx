@@ -28,11 +28,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
     //   ),
     // title: Yup.string().required('Required'),
     // description: Yup.string().required('Required'),
-    category: Yup.string().required('Required'),
-    time: Yup.string().required('Required'),
-    // ingredients: Yup.string().required(),
-    instructions: Yup.array().required('Required'),
-
+    // category: Yup.string().required('Required'),
+    // time: Yup.string().required('Required'),
+    // ingredients: Yup.array().of(Yup.object({
+    //   _id: Yup.string().required('Required'),
+    //   measure: Yup.string().required('Required'),
+    //   quantity: Yup.number('Required').typeError('Required').positive('Not positive').required('Required')
+    // })).required(),
+    instructions: Yup.string().required('Required'),
   });
 
 export const AddRecipeForm = () => {
@@ -70,14 +73,14 @@ export const AddRecipeForm = () => {
       fullImage: fullImage[0],
       instructions: instructions.split('\n').join(', '),
       ingredients:
-        JSON.stringify(
-        ingredients.map(({ _id, measure }) => {
+      //   JSON.stringify(
+        ingredients.map(({ _id, measure, quantity }) => {
           return {
-            id: _id.id,
-            measure: measure[0] + measure[1].value,
+            id: _id,
+            measure: quantity + measure,
           };
         })
-      ),
+      // ),
     };
 
     console.log(recipe);
@@ -107,6 +110,7 @@ export const AddRecipeForm = () => {
         control={control}
       />
       <RecipeIngredientsFields
+        errors={errors}
         register={register}
         control={control}
         ingredients={ingredients}
@@ -115,6 +119,7 @@ export const AddRecipeForm = () => {
       <RecipePreparationFields
         register={register}
         control={control}
+        errors={errors}
       />
       <SubmitButton type="submit" className="submitBtn">
         Add
