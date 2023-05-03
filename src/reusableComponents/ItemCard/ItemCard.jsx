@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Checkbox, Tooltip, Typography } from "@mui/material";
 import { CheckedIcon, Icon, LikeButton, Link, PictureTitle, StyledPopover } from "./ItemCard.styled";
 
-import defaultImage from '../../images/commonImages/defaultImage@1x.png';
+import defaultImage from '../../images/commonImages/defaultImage@2x.png';
 
 export const ItemCard = ({item}) => {
     const { title, _id, preview, favorite } = item;

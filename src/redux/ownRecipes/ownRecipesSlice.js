@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addOwnRecipe, deleteOwnRecipe, getAllOwnRecipes, getOwnRecipeById } from "./ownRecipesOperations";
+import { addOwnRecipe, deleteOwnRecipe, getAllOwnRecipes } from "./ownRecipesOperations";
 
 const ownRecipesInitialState = {
     recipes: [
@@ -42,8 +42,9 @@ const ownRecipesSlice = createSlice({
             .addCase(getAllOwnRecipes.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = false;
-                // state.recipes = action.payload.recipes;
+                state.recipes = action.payload.recipes;
                 state.total = action.payload.total;
+                state.page = action.payload.page;
             })
             .addCase(getAllOwnRecipes.rejected, handleRejected)
     
@@ -71,13 +72,6 @@ const ownRecipesSlice = createSlice({
                 state.error = false;
             })
             .addCase(deleteOwnRecipe.rejected, handleRejected)
-
-            // ------------ Get Own Recipe By Id ----------------
-            .addCase(getOwnRecipeById.pending, handlePending)
-            .addCase(getOwnRecipeById.fulfilled, (state, action) => {
-
-            })
-            .addCase(getOwnRecipeById.rejected, handleRejected)
 });
 
 

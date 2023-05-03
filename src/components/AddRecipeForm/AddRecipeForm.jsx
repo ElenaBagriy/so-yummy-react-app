@@ -11,6 +11,7 @@ import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
 
 
   const validationSchema = Yup.object({
@@ -73,17 +74,16 @@ export const AddRecipeForm = () => {
       fullImage: fullImage[0],
       instructions: instructions.split('\n').join(', '),
       ingredients:
-      //   JSON.stringify(
+        JSON.stringify(
         ingredients.map(({ _id, measure, quantity }) => {
           return {
             id: _id,
             measure: quantity + measure,
           };
         })
-      // ),
+      ),
     };
 
-    console.log(recipe);
     const formData = new FormData();
     Object.keys(recipe).forEach(key => {
           formData.append(key, recipe[key]);
@@ -91,7 +91,8 @@ export const AddRecipeForm = () => {
     
     dispatch(addOwnRecipe(formData))
       .unwrap()
-      .then(res => navigate('/my'));
+      .then(res => navigate('/my'))
+      .catch(() => toast.error('Something went wrong. Please, try again later'));
   };
 
 

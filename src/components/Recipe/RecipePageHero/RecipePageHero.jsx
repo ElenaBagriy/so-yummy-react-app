@@ -16,7 +16,7 @@ import { selectLoadingRecipes } from "../../../redux/selectors";
 import ButtonLoader from "../../ButtonLoader/ButtonLoader";
 import timeConvert from "services/timeConverter";
 
-export const RecipePageHero = ({ title, description, time, id, favorite }) => {
+export const RecipePageHero = ({ title, description, time, id, favorite, buttonState }) => {
   const [isFavorite, setIsFavorite] = useState(null);
 
   const dispatch = useDispatch();
@@ -42,23 +42,24 @@ export const RecipePageHero = ({ title, description, time, id, favorite }) => {
             {title}
           </MainPageTitle>
             <Text $isBig={title?.split(" ").length > 6}>{description}</Text>
-            </TextWrapper>
-          <Button
-            disabled={isLoading}
-            whileHover={{
-              backgroundColor: theme.colors.green,
-              borderColor: theme.colors.green,
-            }}
-            onClick={() => handleFavoriteButton(id)}
-          >
-            {isLoading ? (
-              <ButtonLoader color="white" width={25} />
-            ) : isFavorite ? (
+          </TextWrapper>
+          {!buttonState &&
+            <Button
+              disabled={isLoading}
+              whileHover={{
+                backgroundColor: theme.colors.green,
+                borderColor: theme.colors.green,
+              }}
+              onClick={() => handleFavoriteButton(id)}
+            >
+              {isLoading ? (
+                <ButtonLoader color="white" width={25} />
+              ) : isFavorite ? (
                 "Remove from favorite recipes"
               ) : (
-              "Add to favorite recipes"
-            )}
-          </Button>
+                "Add to favorite recipes"
+              )}
+            </Button>}
           <Box>
             <ClockSvg />
             <Time>{timeConvert(time)}</Time>

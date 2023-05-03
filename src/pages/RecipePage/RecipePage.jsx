@@ -13,8 +13,11 @@ import { GoToTop } from "reusableComponents/ScrollToTop/ScrollToTop";
 import { Background } from "reusableComponents/Background/Background";
 import { Container } from "reusableComponents/Container/Container";
 import { Section } from "./RecipePage.styled";
+import { useLocation } from "react-router-dom";
+import { getOwnRecipeById } from "redux/ownRecipes/ownRecipesOperations";
 
 const RecipePage = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const { id } = useParams();
  
@@ -32,8 +35,12 @@ const RecipePage = () => {
 
   useEffect(() => {
     dispatch(fetchShoppingList());
-    dispatch(getRecipeById(id));
-  }, [dispatch, id]);
+    if (location?.state?.from.pathname === '/my') {
+      dispatch(getOwnRecipeById(id));
+    } else {
+      dispatch(getRecipeById(id));
+    }
+  }, [dispatch, id, location?.state?.from.pathname]);
     
   
   const isLoading = useSelector(selectLoadingRecipes);
@@ -41,15 +48,16 @@ const RecipePage = () => {
   return (
     <Main>
       <Background noDots />
-          <RecipePageHero
-            title={title}
-            description={description}
-            time={time}
-            id={_id}
-            favorite={favorite}
-            />
-            <Section>
-            <Container>
+      <RecipePageHero
+        title={title}
+        description={description}
+        time={time}
+        id={_id}
+        favorite={favorite}
+        buttonState={location?.state?.from.pathname === '/my'}
+      />
+      <Section>
+        <Container>
           {/* <RecipeSkeleton /> */}
           {isLoading ? (
             <RecipeSkeleton />

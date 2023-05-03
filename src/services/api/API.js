@@ -145,24 +145,22 @@ export const RecipesAPI = {
 
 //=========Own recipes ==================
 export const OwnRecipesAPI = {
-  getAllOwnRecipes: async ({ page, limit }) => {
+  getAllOwnRecipes: async ({ page }) => {
     const { data } = await axios.get(
-      `/own-recipes?page=${page}&limit=${limit}`
+      `/own-recipes?page=${page}&limit=4`
     );
     return data;
   },
   addOwnRecipe: async recipeData => {
-    console.log('recipeData', recipeData);
     const { data } = await axios.post('/own-recipes', recipeData);
-    console.log('data', data);
     return data;
   },
   deleteOwnRecipe: async recipeId => {
-    const { data } = await axios.delete(`/own-recipes${recipeId}`);
+    const { data } = await axios.delete(`/own-recipes/id/${recipeId}`);
     return data;
   },
   getOwnRecipeById: async recipeId => {
-    const { data } = await axios.get(`/own-recipes/${recipeId}`);
+    const { data } = await axios.get(`/own-recipes/id/${recipeId}`);
     return data;
   },
 };

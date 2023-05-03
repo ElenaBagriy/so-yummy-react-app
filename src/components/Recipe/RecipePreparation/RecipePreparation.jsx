@@ -10,6 +10,7 @@ import {
   Text,
   Title,
 } from "./RecipePreparation.styled";
+import defaultImage from '../../../images/commonImages/defaultImage@2x.png';
 
 export const RecipePreparation = ({ preview, title, instructions }) => {
   const cleanedInstructions = instructions?.replace(/^\d+\)\s*/gm, "");
@@ -33,7 +34,7 @@ export const RecipePreparation = ({ preview, title, instructions }) => {
           ))}
         </List>
       </Box>
-        <Img alt={title} src={preview} width={343} />
+        <Img alt={title} src={preview ? preview : defaultImage} width={343} />
     </MainBox>
   );
 };

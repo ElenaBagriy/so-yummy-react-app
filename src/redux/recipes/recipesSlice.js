@@ -11,6 +11,7 @@ import {
   toggleFavoriteRecipesById,
   toggleLikeRecipesStatusById,
 } from './recipesOperations';
+import { getOwnRecipeById } from 'redux/ownRecipes/ownRecipesOperations';
 
 const recipesInitialState = {
   popularRecipes: [],
@@ -129,7 +130,15 @@ const recipesSlice = createSlice({
 
         state.isLoading = false;
       })
-      .addCase(getIngredients.rejected, handleRejected),
+      .addCase(getIngredients.rejected, handleRejected)
+  
+        // ------------ Get Own Recipe By Id ----------------
+      .addCase(getOwnRecipeById.pending, handlePending)
+      .addCase(getOwnRecipeById.fulfilled, (state, action) => {
+        state.choosedRecipe = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getOwnRecipeById.rejected, handleRejected)
 });
 
 export const recipesReducer = recipesSlice.reducer;

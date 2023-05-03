@@ -19,6 +19,7 @@ export const Hero = styled.section`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  /* height: 455px; */
 
 
   @media screen and (min-device-pixel-ratio: 2),

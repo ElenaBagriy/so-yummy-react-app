@@ -3,7 +3,7 @@ import { Container } from "reusableComponents/Container/Container";
 import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link, DeleteButton, DeleteIcon, TextWrapper } from "./MyRecipesList.styled";
 import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import { useDispatch, useSelector } from "react-redux";
-
+import defaultImage from '../../images/commonImages/defaultImage@2x.png';
 import { useEffect, useMemo, useState } from "react";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import timeConvert from "services/timeConverter";
@@ -12,10 +12,12 @@ import EllipsisText from "react-ellipsis-text";
 import { selectMyRecipes, selectTotalPageRecipe } from "redux/selectors";
 import { deleteOwnRecipe, getAllOwnRecipes } from "redux/ownRecipes/ownRecipesOperations";
 import { Loader } from "components/Loader/Loader";
+import { useLocation } from "react-router-dom";
 
 
 export const MyRecipesList = () => {
     const dispatch = useDispatch();
+    const location = useLocation();
     const myRecipes = useSelector(selectMyRecipes);
     const totalPages = useSelector(selectTotalPageRecipe); //изменить?
     
@@ -70,7 +72,7 @@ export const MyRecipesList = () => {
         dispatch(getAllOwnRecipes({page}));
     }, [dispatch, page]);
 
-    const handleChangePage = (_, value) => {
+    const handleChangePage = (value) => {
         setTimeout(() => {
             window.scrollTo({
                 top: 0,
@@ -88,17 +90,16 @@ export const MyRecipesList = () => {
         });
     };
     
-    return         <>
-            <Background/>
-            <Container>
-                <Section>
-                    <MainPageTitle title='My recipes' />
-                    
-                    {!myRecipes ? <Loader/> :
+    return <>
+        <Background />
+        <Container>
+            <Section>
+                <MainPageTitle title='My recipes' />
+                {!myRecipes ? <Loader /> :
                     <RecipesList>
                         {myRecipes.map((recipe) => {
                             return <RecipesItem key={recipe._id}>
-                                    <Image src={recipe.preview} alt={recipe.title} />
+                                <Image src={recipe.preview ? recipe.preview : defaultImage} alt={recipe.title} />
                                 <Wrapper>
                                     <TextWrapper>
                                         <Title>
@@ -110,7 +111,7 @@ export const MyRecipesList = () => {
                                     </TextWrapper>
                                     <BottomWrapper>
                                         <Time>{timeConvert(recipe.time)}</Time>
-                                        <Link to={`/recipe/${recipe._id}`}>
+                                        <Link to={`/recipe/${recipe._id}`} state={{from: location}}>
                                             See recipe
                                         </Link>
                                     </BottomWrapper>
@@ -122,10 +123,10 @@ export const MyRecipesList = () => {
                                 </Tooltip>
                             </RecipesItem>
                         })}
-                        </RecipesList>
-                    }
-                    <Pagination page={page} totalPages={totalPages} onChange={handleChangePage} />
-                    </Section>
-            </Container>
-        </>
+                    </RecipesList>
+                }
+                <Pagination page={page} totalPages={totalPages} onChange={handleChangePage} />
+            </Section>
+        </Container>
+    </>
 }
