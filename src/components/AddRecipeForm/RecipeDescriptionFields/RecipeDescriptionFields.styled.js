@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Select from 'react-select';
 import { ReactComponent as CloseIcon } from "../../../images/svg/x.svg";
-import { ErrorMessage } from '@hookform/error-message';
 
 export const RecipeDescStyled = styled.div`
   display: flex;
@@ -29,7 +28,6 @@ export const ImageLabel = styled.label`
   width: 279px;
   height: 268px;
   border-radius: 8px;
-  overflow: hidden;
   background-color: ${props => props.theme.colors.green};
   transition: background-color ${props => props.theme.hover.transition};
   
@@ -39,6 +37,19 @@ export const ImageLabel = styled.label`
   }
   
   @media screen and (min-width: 1280px) {
+    width: 357px;
+    height: 344px;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  width: 279px;
+  height: 268px;
+  overflow: hidden;
+  border-radius: 8px;
+
+    @media screen and (min-width: 1280px) {
     width: 357px;
     height: 344px;
   }
@@ -139,7 +150,8 @@ export const WrapperCategory = styled.label`
   justify-content: space-between;
   width: 343px;
   height: 40px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${props => (props.isError ? '#e74a3b' : '#e0e0e0')};
+
 
   @media screen and (min-width: 768px) {
     width: 393px;
@@ -162,6 +174,7 @@ export const PlaceHolder = styled.span`
 `;
 
 export const Label = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
@@ -181,7 +194,7 @@ export const Input = styled.input`
   padding-bottom: 18px;
   padding-top: 0;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${props => (props.isError ? '#e74a3b' : '#e0e0e0')};
   background-color: transparent;
   color: ${props => props.theme.text.heroParagraph};
 
@@ -361,11 +374,29 @@ export const StyledSelect = styled(Select)`
   }
 `;
 
+export const ErrorImageMessage = styled.span`
+  position: absolute;
+  top: -18px;
+  left:  50%;
+  transform: translateX(-50%);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+  color: #e74a3b;
+
+    @media screen and (min-width: 768px) {
+      top: -20px;
+      font-size: 12px;
+    }
+`;
 
 // ------ERROR ------
-export const Error = styled(ErrorMessage)`
+export const Error = styled.span`
   position: absolute;
-  top: ${props => {
+  bottom: 0;
+  /* top: ${props => {
     switch (props.type) {
       case 'input':
         return 0;
@@ -377,19 +408,19 @@ export const Error = styled(ErrorMessage)`
       default:
         return;
     }
-  }};
-  right: ${props => {
+  }}; */
+  /* right: ${props => {
     switch (props.type) {
       case 'input':
         return 0;
       default:
         return;
     }
-  }};
+  }}; */
   left: ${props => {
     switch (props.type) {
       case 'input':
-        return;
+        return 0;
       case 'select':
         return 0;
       
@@ -399,9 +430,15 @@ export const Error = styled(ErrorMessage)`
         return;
     }
   }};
-  font-family: 'Poppins';
+  
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  color: red;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 1.5;
+  text-align: center;
+  color: #e74a3b;
+
+    @media screen and (min-width: 768px) {
+      font-size: 12px;
+    }
 `;

@@ -9,6 +9,31 @@ import { SubmitButton } from './AddRecipeForm.styled';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientFields';
 import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+
+  const validationSchema = Yup.object({
+    // fullImage: Yup.mixed()
+    //   .test('required', "Required", value => value && value.length)
+    //   .test("fileSize", "The file is too large", (value, context) => {
+    //     return value && value[0] && value[0].size <= 41943040;
+    //   })
+    //   .test(
+    //     'fileType',
+    //     'Only image files are allowed',
+    //     value => value =>
+    //       !value ||
+    //       ['image/jpg', 'image/jpeg', 'image/png'].includes(value.type)
+    //   ),
+    // title: Yup.string().required('Required'),
+    // description: Yup.string().required('Required'),
+    category: Yup.string().required('Required'),
+    time: Yup.string().required('Required'),
+    // ingredients: Yup.string().required(),
+    instructions: Yup.array().required('Required'),
+
+  });
 
 export const AddRecipeForm = () => {
   const navigate = useNavigate();
@@ -21,30 +46,28 @@ export const AddRecipeForm = () => {
     register,
     control,
     watch,
-    setValue,
-    formState: { errors,
+    formState: { errors
       // isDirty, isValid
     },
   } = useForm({
+    mode: 'onTouched',
+    resolver: yupResolver(validationSchema),
     defaultValues: {
       fullImage: '',
       title: '',
       description: '',
-      category: 'breakfast',
-      time: '40',
+      category: '',
+      time: '',
       ingredients: [],
       instructions: [],
     },
   });
 
   const onSubmit = data => {
-    const { fullImage, title, description, category, time, ingredients, instructions } = data;
+    const { fullImage, ingredients, instructions } = data;
     const recipe = {
+      ...data,
       fullImage: fullImage[0],
-      title,
-      description,
-      category: category.value,
-      time: time.value.slice(0,-4),
       instructions: instructions.split('\n').join(', '),
       ingredients:
         JSON.stringify(
@@ -82,7 +105,6 @@ export const AddRecipeForm = () => {
         register={register}
         categories={categories}
         control={control}
-        setValue={setValue}
       />
       <RecipeIngredientsFields
         register={register}

@@ -14,6 +14,8 @@ import {
   WrapperCategory,
   PlaceHolder,
   StyledSelect,
+  ErrorImageMessage,
+  ImageWrapper,
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
 import camera from '../../../images/AddRecipe/preview.svg';
@@ -24,10 +26,8 @@ export const RecipeDescriptionFields = ({
   register,
   categories,
   control,
-  errors,
-  setValue
+  errors
 }) => {
-
   const [preview, setPreview] = useState('');
 
   const imageChange = e => {
@@ -54,12 +54,12 @@ export const RecipeDescriptionFields = ({
     <RecipeDescStyled>
       <ImageLabel>
         {preview ? (
-          <div>
+          <ImageWrapper>
             <StyledImg src={preview} width="279" height="268" alt="recipe preview" />
             <RemoveFileBtn onClick={removeFileUpload}>
               <IconClose />
             </RemoveFileBtn>
-          </div>) :
+          </ImageWrapper>) :
           (<div width="279" height="268">
             <DefaultImage
               src={camera}
@@ -69,11 +69,6 @@ export const RecipeDescriptionFields = ({
             />
           </div>)
         }
-        {errors.fullImage && (
-          <Error name="fullImage">
-            {errors.fullImage}
-          </Error>
-        )}
         <InputHidden
           {...register('fullImage', {
             onChange: (e) => imageChange(e)
@@ -81,12 +76,16 @@ export const RecipeDescriptionFields = ({
           type="file"
           name="fullImage"
           accept="image/*,.png, .jpeg,.gif,.web"
-        />
+          />
+          {errors.fullImage && (
+            <ErrorImageMessage>
+              {errors.fullImage.message}
+            </ErrorImageMessage>
+          )}
       </ImageLabel>
 
       <InputsStyled>
         <Label>
-          {/* <span>Enter item title</span> */}
           <Controller
             name="title"
             control={control}
@@ -100,11 +99,14 @@ export const RecipeDescriptionFields = ({
               />
             )}
           />
-            <Error errors={errors} name="title"/>
+          {errors.title && 
+            <Error type="input">
+            {errors.title.message}
+            </Error>
+          }
         </Label>
 
         <Label>
-          {/* <span>Enter about recipe</span> */}
           <Controller
             name="description"
             control={control}
@@ -114,55 +116,63 @@ export const RecipeDescriptionFields = ({
                 type='text'
                 placeholder='Enter about recipe'
                 onChange={e => field.onChange(e.target.value)}
+                isError={errors.description}
               />
             )}
           />
-          <Error errors={errors} name="description"/>
+          {errors.description && 
+            <Error type="input">
+            {errors.description.message}
+            </Error>
+          }
         </Label>
 
-        {/* {errors.exampleRequired && <span>This field is required</span>} */}
-
-        <WrapperCategory>
+        <WrapperCategory isError={errors.category}>
           <PlaceHolder>Category</PlaceHolder>
           <Controller
             name="category"
             control={control}
-            render={({ field, form }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <StyledSelect
-                {...field}
-                defaultValue={categoriesOptions[0]}
-                placeholder={categoriesOptions[0]?.value}
                 classNamePrefix="react-select"
                 className="react-select-container"
-                // isLoading={false}
                 isSearchable={false}
                 options={categoriesOptions}
-                // onChange={option => setValue(field.name, option.value)}
+                onChange={(e) => {
+                  onChange(e.value)
+                }}
+                onBlur={onBlur}
               />
             )}
           />
+          {errors.category &&
+            <Error type="input">
+              {errors.category.message}
+            </Error>
+          }
         </WrapperCategory>
 
-        <WrapperCategory>
+        <WrapperCategory isError={errors.time}>
           <PlaceHolder>Cooking time</PlaceHolder>
           <Controller
             name="time"
             control={control}
-            render={({ field }) => (
-
-              <StyledSelect
-                {...field}
-                defaultValue={timeOptions[0]}
-                placeholder={timeOptions[0]?.value}
+            render={({ field: { onChange, onBlur } }) => {
+              return <StyledSelect
                 classNamePrefix="react-select"
                 className="react-select-container"
-                // isLoading={false}
                 isSearchable={false}
                 options={timeOptions}
-                // onChange={option => setValue(field.name, option.value)}
+                onChange={(e) => onChange(e.value.slice(0, -4))}
+                onBlur={onBlur}
               />
-            )}
+            }}
           />
+          {errors.time &&
+            <Error type="input">
+              {errors.time.message}
+            </Error>
+          }
         </WrapperCategory>
 
       </InputsStyled>
