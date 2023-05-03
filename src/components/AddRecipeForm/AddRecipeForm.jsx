@@ -14,27 +14,27 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 
   const validationSchema = Yup.object({
-    // fullImage: Yup.mixed()
-    //   .test('required', "Required", value => value && value.length)
-    //   .test("fileSize", "The file is too large", (value, context) => {
-    //     return value && value[0] && value[0].size <= 41943040;
-    //   })
-    //   .test(
-    //     'fileType',
-    //     'Only image files are allowed',
-    //     value => value =>
-    //       !value ||
-    //       ['image/jpg', 'image/jpeg', 'image/png'].includes(value.type)
-    //   ),
-    // title: Yup.string().required('Required'),
-    // description: Yup.string().required('Required'),
-    // category: Yup.string().required('Required'),
-    // time: Yup.string().required('Required'),
-    // ingredients: Yup.array().of(Yup.object({
-    //   _id: Yup.string().required('Required'),
-    //   measure: Yup.string().required('Required'),
-    //   quantity: Yup.number('Required').typeError('Required').positive('Not positive').required('Required')
-    // })).required(),
+    fullImage: Yup.mixed()
+      .test('required', "Required", value => value && value.length)
+      .test("fileSize", "The file is too large", (value, context) => {
+        return value && value[0] && value[0].size <= 41943040;
+      })
+      .test(
+        'fileType',
+        'Only image files are allowed',
+        value => value =>
+          !value ||
+          ['image/jpg', 'image/jpeg', 'image/png'].includes(value.type)
+      ),
+    title: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
+    category: Yup.string().required('Required'),
+    time: Yup.string().required('Required'),
+    ingredients: Yup.array().of(Yup.object({
+      _id: Yup.string().required('Required'),
+      measure: Yup.string().required('Required'),
+      quantity: Yup.number('Required').typeError('Required').positive('Not positive').required('Required')
+    })).required(),
     instructions: Yup.string().required('Required'),
   });
 
