@@ -137,40 +137,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
-
-  @media screen and (min-width: 768px) {
-    
-  };
-
-  @media screen and (min-width: 1280px) {
-    
-  };
 `;
 
-export const TextWrapper = styled.div`
-  /* max-width: 155px; */
-
-  @media screen and (min-width: 768px) {
-    /* max-width: 298px; */
-  };
-
-  @media screen and (min-width: 1280px) {
-    /* max-width: 679px; */
-  };
+export const TemplatetWrapper = styled.div`
+  margin-top: 50px;
 `;
 
 export const BottomWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-
-  @media screen and (min-width: 768px) {
-    
-  };
-
-  @media screen and (min-width: 1280px) {
-    
-  };
 `;
 
 export const Link = styled(NavLink)`

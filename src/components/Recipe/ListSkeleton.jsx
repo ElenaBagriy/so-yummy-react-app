@@ -1,10 +1,10 @@
 import * as React from "react";
 import { ReactComponent as ProductSvg } from "../../images/svg/skeletonImg.svg";
-import { ListItem } from "../Recipe/RecipeIngredientsList/RecipeIngredientsList.styled";
+import { ListItem } from "./RecipeIngredientsList/RecipeIngredientsList.styled";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const RecipeSkeleton = () => {
+export const ListSkeleton = () => {
   return (
     <>
       <ListItem>

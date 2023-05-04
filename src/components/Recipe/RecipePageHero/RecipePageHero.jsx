@@ -18,10 +18,10 @@ import timeConvert from "services/timeConverter";
 
 export const RecipePageHero = ({ title, description, time, id, favorite, buttonState }) => {
   const [isFavorite, setIsFavorite] = useState(null);
-
+  
   const dispatch = useDispatch();
   const theme = useTheme();
-
+  
   const isLoading = useSelector(selectLoadingRecipes);
 
   useEffect(() => {
@@ -35,6 +35,7 @@ export const RecipePageHero = ({ title, description, time, id, favorite, buttonS
 
       return (
         <Hero>
+          <div>
           <TextWrapper>
           <MainPageTitle
             // $isBig={title?.split(" ").length > 6}
@@ -53,13 +54,14 @@ export const RecipePageHero = ({ title, description, time, id, favorite, buttonS
               onClick={() => handleFavoriteButton(id)}
             >
               {isLoading ? (
-                <ButtonLoader color="white" width={25} />
+                <ButtonLoader color="white" width={11} />
               ) : isFavorite ? (
                 "Remove from favorite recipes"
               ) : (
                 "Add to favorite recipes"
               )}
-            </Button>}
+              </Button>}
+            </div>
           <Box>
             <ClockSvg />
             <Time>{timeConvert(time)}</Time>

@@ -8,9 +8,10 @@ import backgroundTablet2x from "../../../images/recipePage/vegetables-tablet@2x-
 import backgroundDesktop1x from "../../../images/recipePage/vegetables-desktop@1x-min.jpg";
 import backgroundDesktop2x from "../../../images/recipePage/vegetables-desktop@2x-min.jpg";
 
-
-
 export const Hero = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-top: 144px;
   padding-bottom: 90px;
   padding-left: 16px;
@@ -19,7 +20,7 @@ export const Hero = styled.section`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  /* height: 455px; */
+  min-height: 455px;
 
 
   @media screen and (min-device-pixel-ratio: 2),
@@ -28,13 +29,12 @@ export const Hero = styled.section`
     background-image: url(${backgroundMobile2x});
   }
 
-
-
     @media screen and (min-width: 768px) {
       padding-top: 136px;
       padding-bottom: 32px;
       padding-left: 32px;
       padding-right: 32px;
+      min-height: 495px;
       background-image: url(${backgroundTablet1x});
 
       @media screen and (min-device-pixel-ratio: 2),
@@ -46,9 +46,9 @@ export const Hero = styled.section`
 
     @media screen and (min-width: 1280px) {
       padding-top: 164px;
-      padding-bottom: 32px;
       padding-left: 100px;
       padding-right: 100px;
+      min-height: 493px;
       background-image: url(${backgroundDesktop1x});
 
       @media screen and (min-device-pixel-ratio: 2),
@@ -86,11 +86,6 @@ export const MainPageTitle = styled.h1`
   }
   ${(p) => p.theme.sizes.desktop} {
     font-size: ${(p) => p.theme.fontSizes.xl};
-    /* ${(p) =>
-      p.$isBig &&
-      css`
-        font-size: ${(p) => p.theme.fontSizes.l};
-      `} */
   }
 `;
 

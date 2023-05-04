@@ -372,6 +372,12 @@ export const Input = styled.input`
   background-color: #f5f5f5;
   color: rgba(35, 38, 42, 0.6);
 
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
   &:focus-visible {
     outline: none;
     color: ${props => props.theme.text.heroParagraph};

@@ -1,25 +1,27 @@
-import { Background } from "reusableComponents/Background/Background";
-import { Container } from "reusableComponents/Container/Container";
-import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link, DeleteButton, DeleteIcon, TextWrapper } from "./MyRecipesList.styled";
-import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
-import { useDispatch, useSelector } from "react-redux";
-import defaultImage from '../../images/commonImages/defaultImage@2x.png';
 import { useEffect, useMemo, useState } from "react";
-import { Pagination } from "reusableComponents/Pagination/Pagination";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import EllipsisText from "react-ellipsis-text";
+import { selectIsLoadingMyRecipes, selectMyRecipes, selectTotalPageRecipe } from "redux/selectors";
+import { deleteOwnRecipe, getAllOwnRecipes } from "redux/ownRecipes/ownRecipesOperations";
 import timeConvert from "services/timeConverter";
 import { Tooltip, useMediaQuery } from "@mui/material";
-import EllipsisText from "react-ellipsis-text";
-import { selectMyRecipes, selectTotalPageRecipe } from "redux/selectors";
-import { deleteOwnRecipe, getAllOwnRecipes } from "redux/ownRecipes/ownRecipesOperations";
-import { Loader } from "components/Loader/Loader";
-import { useLocation } from "react-router-dom";
+import { Background } from "reusableComponents/Background/Background";
+import { Container } from "reusableComponents/Container/Container";
+import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
+import { Pagination } from "reusableComponents/Pagination/Pagination";
+import defaultImage from '../../images/commonImages/defaultImage@2x.png';
+import NeedSearching from "components/NeedSearching/NeedSearching";
+import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link, DeleteButton, DeleteIcon, TemplatetWrapper } from "./MyRecipesList.styled";
+import { ListSkeleton } from "components/Recipe/ListSkeleton";
 
 
 export const MyRecipesList = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const myRecipes = useSelector(selectMyRecipes);
-    const totalPages = useSelector(selectTotalPageRecipe); //изменить?
+    const totalPages = useSelector(selectTotalPageRecipe); 
+    const isLoading = useSelector(selectIsLoadingMyRecipes);
     
     const [page, setPage] = useState(1);
     const [deviceType, setDeviceType] = useState('');
@@ -95,20 +97,23 @@ export const MyRecipesList = () => {
         <Container>
             <Section>
                 <MainPageTitle title='My recipes' />
-                {!myRecipes ? <Loader /> :
+                {isLoading ? <ListSkeleton/> :!myRecipes || myRecipes.length === 0 ?
+                    <TemplatetWrapper>
+                        <NeedSearching text="First you need to add some recipe." />
+                    </TemplatetWrapper> :
                     <RecipesList>
                         {myRecipes.map((recipe) => {
                             return <RecipesItem key={recipe._id}>
                                 <Image src={recipe.preview ? recipe.preview : defaultImage} alt={recipe.title} />
                                 <Wrapper>
-                                    <TextWrapper>
+                                    <div>
                                         <Title>
                                             <EllipsisText text={recipe.title} length={length.title} tooltip='true'/>
                                         </Title>
                                         <Description>
                                             <EllipsisText text={recipe.description} length={length.text} tooltip='true' />
                                         </Description>
-                                    </TextWrapper>
+                                    </div>
                                     <BottomWrapper>
                                         <Time>{timeConvert(recipe.time)}</Time>
                                         <Link to={`/recipe/${recipe._id}`} state={{from: location}}>

@@ -24,6 +24,7 @@ export const selectCategoryList = state => state.recipes.categoryList;
 export const selectMainPageRecipes = state => state.recipes.mainPageRecipes;
 
 export const selectFavoriteRecipes = state => state.recipes.favoriteRecipes.recipes;
+
 export const selectFavoriteRecipesTotalPages = state => {
     return Math.round(state.recipes.favoriteRecipes.total / state.recipes.favoriteRecipes.limit);
 };
@@ -57,6 +58,8 @@ export const selectChoosedRecipe = state => state.recipes.choosedRecipe;
 
 export const selectMyRecipes = state => state.ownRecipes.recipes;
 
+export const selectIsLoadingMyRecipes = state => state.ownRecipes.isLoading;
+
 export const selectTotalPageRecipe = state => {
-    return Math.round(state.ownRecipes.total / state.ownRecipes.limit);
+    return Math.round(state.ownRecipes.total / 4);
 };

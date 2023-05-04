@@ -1,20 +1,19 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { RecipeIngredientsList } from "../../components/Recipe/RecipeIngredientsList/RecipeIngredientsList";
-import { RecipePageHero } from "../../components/Recipe/RecipePageHero/RecipePageHero";
-import { RecipePreparation } from "../../components/Recipe/RecipePreparation/RecipePreparation";
-import { RecipeSkeleton } from "../../components/Recipe/RecipeSceleton";
-import { getRecipeById } from "redux/recipes/recipesOperations";
-import { selectChoosedRecipe, selectLoadingRecipes } from "../../redux/selectors";
+import { selectChoosedRecipe } from "../../redux/selectors";
 import { fetchShoppingList } from "../../redux/shoplist/shoplistOperation";
+import { getRecipeById } from "redux/recipes/recipesOperations";
+import { getOwnRecipeById } from "redux/ownRecipes/ownRecipesOperations";
 import { Main } from "reusableComponents/Main/Main";
 import { GoToTop } from "reusableComponents/ScrollToTop/ScrollToTop";
 import { Background } from "reusableComponents/Background/Background";
 import { Container } from "reusableComponents/Container/Container";
+import { RecipeIngredientsList } from "../../components/Recipe/RecipeIngredientsList/RecipeIngredientsList";
+import { RecipePageHero } from "../../components/Recipe/RecipePageHero/RecipePageHero";
+import { RecipePreparation } from "../../components/Recipe/RecipePreparation/RecipePreparation";
 import { Section } from "./RecipePage.styled";
-import { useLocation } from "react-router-dom";
-import { getOwnRecipeById } from "redux/ownRecipes/ownRecipesOperations";
 
 const RecipePage = () => {
   const location = useLocation();
@@ -41,9 +40,7 @@ const RecipePage = () => {
       dispatch(getRecipeById(id));
     }
   }, [dispatch, id, location?.state?.from.pathname]);
-    
-  
-  const isLoading = useSelector(selectLoadingRecipes);
+
 
   return (
     <Main>
@@ -58,18 +55,13 @@ const RecipePage = () => {
       />
       <Section>
         <Container>
-          {/* <RecipeSkeleton /> */}
-          {isLoading ? (
-            <RecipeSkeleton />
-          ) : (<>
-              <RecipeIngredientsList ingredients={ingredients} />
-              <RecipePreparation
-                preview={previewImg}
-                title={title}
-                instructions={instructions}
-                tags={tags}
-            />
-          </>)}
+          <RecipeIngredientsList ingredients={ingredients} />
+          <RecipePreparation
+            preview={previewImg}
+            title={title}
+            instructions={instructions}
+            tags={tags}
+          />
         </Container>
       </Section>
       <GoToTop />

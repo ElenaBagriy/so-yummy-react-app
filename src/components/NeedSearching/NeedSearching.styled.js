@@ -9,11 +9,10 @@ export const Wrapp = styled.div`
   }
 `;
 export const Text = styled.p`
-  margin-top: 32px;
+  margin-top: 24px;
 
   text-align: center;
-  font-family: "Poppins";
-  font-style: normal;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
 
   font-size: 14px;
@@ -23,7 +22,8 @@ export const Text = styled.p`
   color: ${(props) => props.theme.text.black};
   opacity: 0.5;
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
     font-size: 24px;
     line-height: 24px;
   } ;

@@ -1,6 +1,6 @@
 import { Background } from "reusableComponents/Background/Background";
 import { Container } from "reusableComponents/Container/Container";
-import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link, DeleteButton, DeleteIcon, TextWrapper } from "./Favorite.styled";
+import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link, DeleteButton, DeleteIcon, TemplatetWrapper } from "./Favorite.styled";
 import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavoriteRecipes, selectFavoriteRecipesTotalPages } from "redux/selectors";
@@ -89,23 +89,25 @@ export const Favorite = () => {
     return <>
         <Background />
         <Container>
-                <Section>
-                    <MainPageTitle title='Favorites'/>
-                    
-                    {!favoriteRecipes || favoriteRecipes.length === 0 ? <NeedSearching text="Please, add something to your favorite"/> : 
+            <Section>
+                <MainPageTitle title='Favorites' />
+                {!favoriteRecipes || favoriteRecipes.length === 0 ?
+                    <TemplatetWrapper>
+                        <NeedSearching text="Please, add something to your favorite" />
+                    </TemplatetWrapper> : 
                     <RecipesList>
                         { favoriteRecipes.map((recipe) => {
                             return <RecipesItem key={recipe._id}>
                                     <Image src={recipe.preview} alt={recipe.title} />
                                 <Wrapper>
-                                    <TextWrapper>
+                                    <div>
                                         <Title>
                                             <EllipsisText text={recipe.title} length={length.title} tooltip='true'/>
                                         </Title>
                                         <Description>
                                             <EllipsisText text={recipe.description} length={length.text} tooltip='true' />
                                         </Description>
-                                    </TextWrapper>
+                                    </div>
                                     <BottomWrapper>
                                         <Time>{timeConvert(recipe.time)}</Time>
                                         <Link to={`/recipe/${recipe._id}`}>

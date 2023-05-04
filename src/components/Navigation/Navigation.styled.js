@@ -25,6 +25,9 @@ export const StyledLink = styled(NavLink)`
   transition: color ${props => props.theme.hover.transition},
     stroke ${props => props.theme.hover.transition};
 
+    svg path {
+      transition: stroke ${props => props.theme.hover.transition};
+    }
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 1;

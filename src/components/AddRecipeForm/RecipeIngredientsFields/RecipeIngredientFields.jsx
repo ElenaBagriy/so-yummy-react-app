@@ -138,6 +138,9 @@ export const RecipeIngredientsFields = ({
                 </IngredientLabel>
                 <MeasureLabel>
                   <Input
+                    autoFocus='false'
+                    autoComplete='false'
+                    min="0"
                     type="number"
                     {...register(`ingredients.${index}.quantity`)} />
                   <Controller

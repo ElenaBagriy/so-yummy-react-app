@@ -1,12 +1,13 @@
 import { useEffect } from "react";
-import { Container } from "reusableComponents/Container/Container";
-import { onCapitalise } from "services/onCapitalise";
-import { StyledTitle } from "reusableComponents/ManePageTitle/ManePageTitle.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMainPageRecipes } from "redux/selectors";
 import { getRecipesMainPage } from "redux/recipes/recipesOperations";
+import { Container } from "reusableComponents/Container/Container";
+import { onCapitalise } from "services/onCapitalise";
+import { StyledTitle } from "reusableComponents/ManePageTitle/ManePageTitle.styled";
 import { Button, Link, CategoriesList, Section, RecipesList, RecipesItem, StyledLink } from "./PreviewCategories.styled";
 import { ItemCard } from "reusableComponents/ItemCard/ItemCard";
+import { NavLink } from "react-router-dom";
 // import { useMediaQuery } from "@mui/material";
 
 export const PreviewCategories = () => {
@@ -28,7 +29,8 @@ export const PreviewCategories = () => {
             <CategoriesList>
             {mainPageRecipes && mainPageRecipes.map(({title, data}) => {
                 return <li key={title}>
-                    <StyledTitle >{onCapitalise(title)}</StyledTitle>
+                    <NavLink to={`/categories/${title}`}><StyledTitle isLink="true">{onCapitalise(title)}</StyledTitle></NavLink>
+                    
                     <RecipesList>
                         {data.map(item =>
                             <RecipesItem key={item._id}>

@@ -50,7 +50,7 @@ export const IngredientsShoppingListItem = styled.li`
   font-weight: 500;
   background: #fafafa;
   border-bottom: 1px solid rgb(224, 224, 224);
-  /* border-radius: 8px; */
+
   @media screen and (min-width: 768px) {
     max-width: 704px;
     padding: 0px 24px 42px 16px; // 16px 24px;
@@ -132,12 +132,15 @@ export const DeleteBtn = styled.button`
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   @media screen and (min-width: 769px) {
     width: 20px;
     height: 20px;
+
     &:hover {
-      stroke: #8BAA36;
+      svg {
+        stroke: #8BAA36;
+      }
     }
   }
 `;
@@ -149,8 +152,14 @@ export const DelIconStyled = styled(DelIcon)`
   height: 14px;
   stroke: #3E4462;
   transform: translate(0%, -50%);
+  transition: stroke ${props => props.theme.hover.transition};
+
   @media screen and (min-width: 769px) {
     width: 20px;
     height: 20px;
   }
+`;
+
+export const TemplatetWrapper = styled.div`
+  margin-top: 50px;
 `;

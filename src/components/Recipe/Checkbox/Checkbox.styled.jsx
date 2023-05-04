@@ -14,6 +14,13 @@ export const Box = styled.div`
     border: 2px solid rgba(126, 126, 126, 0.5);
     width: 35px;
     height: 35px;
+  };
+  transition: border-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition};
+
+  &:hover,
+  :focus {
+    border-color: ${props => props.theme.colors.green};
+    box-shadow: ${props => props.theme.hover.boxShadow};
   }
 `;
 

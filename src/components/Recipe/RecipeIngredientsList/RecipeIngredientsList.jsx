@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectShoppingList } from "../../../redux/selectors";
 import {
   ButtonWrapper,
   Img,
@@ -11,8 +13,6 @@ import {
   Wrapper,
 } from "./RecipeIngredientsList.styled";
 import { CustomCheckbox } from "../Checkbox/Checkbox";
-import { useSelector } from "react-redux";
-import { selectShoppingList } from "../../../redux/selectors";
 
 export const RecipeIngredientsList = ({ ingredients }) => {
   const list = useSelector(selectShoppingList);
