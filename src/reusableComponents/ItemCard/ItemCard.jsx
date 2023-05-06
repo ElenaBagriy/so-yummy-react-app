@@ -6,12 +6,16 @@ import { Checkbox, Tooltip, Typography } from "@mui/material";
 import { CheckedIcon, Icon, LikeButton, Link, PictureTitle, StyledPopover } from "./ItemCard.styled";
 
 import defaultImage from '../../images/commonImages/defaultImage@2x.png';
+import { MotivatingModal } from "reusableComponents/MotivatingModal/MotivatingModal";
 
 export const ItemCard = ({item}) => {
     const { title, _id, preview, favorite } = item;
+    // const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     const [isFavorite, setIsFavorite] = useState(favorite);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [motivation, setMotivation] = useState(null);
     const navigate = useNavigate();
 
     const maxTextLength = 22;
@@ -24,8 +28,9 @@ export const ItemCard = ({item}) => {
                 setIsFavorite(favorite);
 
                 favorite && toast.success(`Added to Favorite!`);
+                setMotivation(1);
+                // setIsModalOpen(true)
                 !favorite && toast.info(`Removed from Favorite!`);
-                //         setMotivation(motivation);
             } catch (error) {
                 return toast.error(`Something went wrong! Please, try again`);
             };
@@ -33,6 +38,10 @@ export const ItemCard = ({item}) => {
         toggleFavorite(_id);
     };
 
+    // const onCloseModal = () => {
+    //     setIsModalOpen(false);
+    // }
+    
     const onLinkClick = (e) => {
         if (e.target.classList.contains('PrivateSwitchBase-input')) {
             return;
@@ -49,9 +58,9 @@ export const ItemCard = ({item}) => {
     };
     const open = Boolean(anchorEl);  
     
-  return (
+  return ( <>
+          {motivation && <MotivatingModal option={motivation}/>}
       <Link onClick={onLinkClick}>
-          {/* <Image src={defaultImage} alt={title} /> */}
           <img src={preview ? preview : defaultImage} alt={title} />
           <PictureTitle
               aria-owns={open ? 'mouse-over-popover' : undefined}
@@ -84,5 +93,6 @@ export const ItemCard = ({item}) => {
               </LikeButton>
           </Tooltip>
       </Link>
+      </>
   );
 };
