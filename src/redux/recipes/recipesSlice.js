@@ -78,6 +78,7 @@ const recipesSlice = createSlice({
       .addCase(toggleFavoriteRecipesById.pending, handlePending)
       .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => {
         state.isLoading = false;
+        // state.favoriteRecipes = [...state.favoriteRecipes, ...action.payload];
       })
       .addCase(toggleFavoriteRecipesById.rejected, handleRejected)
 

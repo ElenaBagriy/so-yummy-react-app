@@ -24,41 +24,64 @@ import shoppingTablet2x from '../../images/modal/shoppingMotivation-tablet@2x-mi
 import shoppingDesktop1x from '../../images/modal/shoppingMotivation-desktop@1x-min.png';
 import shoppingDesktop2x from '../../images/modal/shoppingMotivation-desktop@2x-min.png';
 
-let url1x;
-let url2x;
-
-// const getBackground = (option) => {
-//   switch (option) {
-//     case 1:
-//       return (
-//         url1x = shoppingMobile1x;
-//       url2x = shoppingMobile2x
-//       );
-//             case 2:
-//                 return (
-//                         <Text>
-//                             <AccentText>Wow!</AccentText> You have been using the application for
-//                             <AccentText> 100 </AccentText>
-//                             days!
-//                         </Text>
-//                 );
-//             case 3:
-//                 return (
-//                         <Text>
-//                             <AccentText>Wow!</AccentText> You have added 10 recipes to your
-//                             favorites!
-//                         </Text>
-//                 );
-//             case 4:
-//                 return (
-//                         <Text>
-//                             <AccentText>Wow!</AccentText> You have created your first recipe!
-//                         </Text>
-//                 );
-//             default:
-//                 return null;
-//         }
-//     };
+const background = {
+  1: {
+    mobile: {
+      x1: shoppingMobile1x,
+      x2: shoppingMobile2x,
+    },
+    tablet: {
+      x1: shoppingTablet1x,
+      x2: shoppingTablet2x,
+    },
+    desktop: {
+      x1: shoppingDesktop1x,
+      x2: shoppingDesktop2x,
+    }
+  },
+  2: {
+     mobile: {
+      x1: days100Mobile1x,
+      x2: days100Mobile2x,
+    },
+    tablet: {
+      x1: days100Tablet1x,
+      x2: days100Tablet2x,
+    },
+    desktop: {
+      x1: days100Desktop1x,
+      x2: days100Desktop2x,
+    }
+  },
+  3: {
+    mobile: {
+      x1: recipes10Mobile1x,
+      x2: recipes10Mobile2x,
+    },
+    tablet: {
+      x1: recipes10Tablet1x,
+      x2: recipes10Tablet2x,
+    },
+    desktop: {
+      x1: recipes10Desktop1x,
+      x2: recipes10Desktop2x,
+    }
+  },
+  4: {
+    mobile: {
+      x1: firstRecipeMobile1x,
+      x2: firstRecipeMobile2x,
+    },
+    tablet: {
+      x1: firstRecipeTablet1x,
+      x2: firstRecipeTablet2x,
+    },
+    desktop: {
+      x1: firstRecipeDesktop1x,
+      x2: firstRecipeDesktop2x,
+    }
+  }
+}
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -68,6 +91,7 @@ export const Backdrop = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
+  overflow-y: hidden;
   /* background-attachment: fixed; */
   z-index: 1000;
 `;
@@ -76,7 +100,7 @@ export const Modal = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${shoppingMobile1x});
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${({ content }) => (background[content].mobile.x1)});
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -96,14 +120,14 @@ export const Modal = styled.div`
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${shoppingMobile2x});
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${({ content }) => (background[content].mobile.x2)});
       background-size: cover;
     }
 
   @media screen and (min-width: 768px) {
     border-radius: 30px;
     background-color: white;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${shoppingTablet1x});
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${({ content }) => (background[content].tablet.x1)});
     background-size: cover;
     box-shadow: ${props => props.theme.hover.boxShadow};
     animation: fadeIn 0.25s ease-out;
@@ -116,7 +140,7 @@ export const Modal = styled.div`
     @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${shoppingTablet2x});
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${({ content }) => (background[content].tablet.x2)});
       background-size: cover;
     }
   }
@@ -124,13 +148,13 @@ export const Modal = styled.div`
   @media screen and (min-width: 1280px) {
       width: 500px;
       height: 500px;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${shoppingDesktop1x});
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${({ content }) => (background[content].desktop.x1)});
       background-size: cover;
 
     @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${shoppingDesktop2x});
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${({ content }) => (background[content].desktop.x2)});
       background-size: cover;
     }
   }

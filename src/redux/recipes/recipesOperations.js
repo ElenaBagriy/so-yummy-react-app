@@ -31,7 +31,6 @@ export const getRecipesFavorite = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await RecipesAPI.getRecipesFavorite(formData);
-
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
