@@ -1,41 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RecipesAPI } from "services/api/API";
 import { toast } from 'react-toastify';
 import { Checkbox, Tooltip, Typography } from "@mui/material";
 import { CheckedIcon, Icon, LikeButton, Link, PictureTitle, StyledPopover } from "./ItemCard.styled";
-
 import defaultImage from '../../images/commonImages/defaultImage@2x.png';
 import { MotivatingModal } from "reusableComponents/MotivatingModal/MotivatingModal";
-import { useSelector } from "react-redux";
-import { selectFavoriteRecipesTotal } from "redux/selectors";
+import { useDispatch } from "react-redux";
+import { getRecipesFavorite } from "redux/recipes/recipesOperations";
 
 export const ItemCard = ({ item }) => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const { title, _id, preview, favorite } = item;
-    const totalFavorite = useSelector(selectFavoriteRecipesTotal);
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-
+    const [motivation, setMotivation] = useState(null);
     const [isFavorite, setIsFavorite] = useState(favorite);
     const [anchorEl, setAnchorEl] = useState(null);
-    const [motivation, setMotivation] = useState(null);
     const navigate = useNavigate();
 
     const maxTextLength = 22;
     const shortTitle = title.length < maxTextLength ? title : title.substr(0, maxTextLength).replace(/\s+\S*$/, '') + '...';
     
     const addToFavorite = () => {
-
         async function toggleFavorite(id) {
             try {
                 const { favorite } = await RecipesAPI.toggleFavoriteRecipesById(id);
                 setIsFavorite(favorite);
                 favorite && toast.success(`Added to Favorite!`);
-                console.log(totalFavorite);
-                if (favorite & totalFavorite === 1) {
-                    setMotivation(1);
-                }
-
                 !favorite && toast.info(`Removed from Favorite!`);
             } catch (error) {
                 return toast.error(`Something went wrong! Please, try again`);
@@ -44,9 +34,24 @@ export const ItemCard = ({ item }) => {
         toggleFavorite(_id);
     };
 
-    // const onCloseModal = () => {
-    //     setIsModalOpen(false);
-    // }
+    useEffect(() => {
+        if (isFavorite && !favorite) {
+            dispatch(getRecipesFavorite(1))
+                .then((e) => {
+                    if (e.payload.total === 1) {
+                        setMotivation(4);
+                    }
+                    if (e.payload.total === 10) {
+                        setMotivation(3);
+                    }
+            })
+        }
+    }, [dispatch, isFavorite, favorite]);
+
+    
+    const onCloseModal = () => {
+        setMotivation(null);
+    }
     
     const onLinkClick = (e) => {
         if (e.target.classList.contains('PrivateSwitchBase-input')) {
@@ -65,7 +70,7 @@ export const ItemCard = ({ item }) => {
     const open = Boolean(anchorEl);  
     
   return ( <>
-          {motivation && <MotivatingModal option={motivation}/>}
+      {motivation && <MotivatingModal option={motivation} onClose={onCloseModal} />}
       <Link onClick={onLinkClick}>
           <img src={preview ? preview : defaultImage} alt={title} />
           <PictureTitle

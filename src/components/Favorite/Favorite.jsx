@@ -17,7 +17,6 @@ export const Favorite = () => {
     const dispatch = useDispatch();
     const favoriteRecipes = useSelector(selectFavoriteRecipes);
     const totalPages = useSelector(selectFavoriteRecipesTotalPages);
-    
     const [page, setPage] = useState(1);
     const [deviceType, setDeviceType] = useState('');
 
@@ -46,17 +45,23 @@ export const Favorite = () => {
                     text: 310,
                 };
                 break;
-                default:
-                    lengthOptions = {
+            default:
+                lengthOptions = {
                     title: 10,
                     text: 10,
                 };
-            break;
-            }
+                break;
+        }
         return lengthOptions;
         
     }, [deviceType]);
 
+    useEffect(() => {
+        if (!favoriteRecipes || favoriteRecipes.length === 0) {
+            setPage(1);
+        };
+    }, [favoriteRecipes]);
+    
     
     useEffect(() => {
         if (mobile) { setDeviceType('mobile') };

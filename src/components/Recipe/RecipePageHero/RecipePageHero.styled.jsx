@@ -89,7 +89,6 @@ export const MainPageTitle = styled.h1`
   }
 `;
 
-
 export const Text = styled.p`
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -123,7 +122,9 @@ export const Button = styled(motion.button)`
   line-height: 1.5;
   display: block;
   background-color: transparent;
-  padding: 10px 18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  height: 35px;
   border-radius: 24px 44px;
   border: 1px solid #8baa36;
   color: ${props => props.theme.text.heroParagraph};
@@ -132,7 +133,9 @@ export const Button = styled(motion.button)`
     margin-top: 30px;
     font-size: ${(p) => p.theme.fontSizes.s};
     line-height: 1.5;
-    padding: 18px 44px;
+    height: 59px;
+    padding-left: 44px;
+    padding-right: 44px;
   }
 `;
 

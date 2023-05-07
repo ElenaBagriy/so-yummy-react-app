@@ -1,49 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from "react-dom";
-
 import { Backdrop, CloseButton, Content, Text, Modal, AccentText, Icon } from './MotivatingModal.styled';
-import { useMediaQuery } from '@mui/material';
 import SVG from '../../images/svg/sprite.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const MotivatingModal = ({ option }) => {
-    const [isVisible, setIsVisible] = useState(true);
-    const [deviceType, setDeviceType] = useState('');
-
-    const mobile = useMediaQuery('(max-width: 767px)');
-    const tablet = useMediaQuery('(min-width: 768px)');
-    const desktop = useMediaQuery('(min-width: 1280px)');
-
-     useEffect(() => {
-        if (mobile) { setDeviceType('mobile') };
-        if (tablet) { setDeviceType('tablet') };
-        if (desktop) { setDeviceType('desktop') };
-        
-     }, [mobile, tablet, desktop, deviceType]);
+export const MotivatingModal = ({ option, onClose }) => {
     
     useEffect(() => {
         const handleKeyDown = event => {
             if (event.key === 'Escape') {
-                // onClose()
-                handleClose();
+                onClose();
             }
         };
         document.addEventListener("keydown", handleKeyDown);
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
-    }, []);
-    
-    const handleClose = () => {
-        // onClose()
-        setIsVisible(false);
-    };
+    }, [onClose]);
 
     const handleOverlayClick = event => {
         if (event.target === event.currentTarget) {
-            handleClose();
-            // onClose()
+            onClose()
         }
     };
 
@@ -73,7 +51,7 @@ export const MotivatingModal = ({ option }) => {
             case 4:
                 return (
                         <Text>
-                            <AccentText>Wow!</AccentText> You have created your first recipe!
+                            <AccentText>Wow!</AccentText> You have added the first recipe to your favorites!
                         </Text>
                 );
             default:
@@ -81,12 +59,12 @@ export const MotivatingModal = ({ option }) => {
         }
     };
     
-    return isVisible && createPortal(
+    return createPortal(
             <Backdrop onClick={handleOverlayClick}>
             <Modal content={option}>
                 <Content>
                     {getContent()}
-                    <CloseButton onClick={handleClose}>
+                    <CloseButton onClick={onClose}>
                         <Icon><use href={`${SVG}#icon-x`} /></Icon>
                     </CloseButton>
                 </Content>

@@ -11,14 +11,17 @@ import {
   TextWrapper,
   Time,
 } from "./RecipePageHero.styled";
-import { toggleFavoriteRecipesById } from "../../../redux/recipes/recipesOperations";
+import { getRecipesFavorite, toggleFavoriteRecipesById } from "../../../redux/recipes/recipesOperations";
 import { selectLoadingRecipes } from "../../../redux/selectors";
 import ButtonLoader from "../../ButtonLoader/ButtonLoader";
 import timeConvert from "services/timeConverter";
+import { MotivatingModal } from "reusableComponents/MotivatingModal/MotivatingModal";
+import { useMediaQuery } from "@mui/material";
 
 export const RecipePageHero = ({ title, description, time, id, favorite, buttonState }) => {
   const [isFavorite, setIsFavorite] = useState(null);
-  
+  const [motivation, setMotivation] = useState(null);
+  const isMobile = useMediaQuery('(max-width: 767px)');
   const dispatch = useDispatch();
   const theme = useTheme();
   
@@ -28,13 +31,33 @@ export const RecipePageHero = ({ title, description, time, id, favorite, buttonS
     setIsFavorite(favorite);
   }, [ favorite]);
 
+  useEffect(() => {
+    if (isFavorite && !favorite) {
+      dispatch(getRecipesFavorite(1))
+        .then((e) => {
+          if (e.payload.total === 1) {
+            setMotivation(4);
+          }
+          if (e.payload.total === 10) {
+            setMotivation(3);
+          }
+        })
+    }
+  }, [dispatch, isFavorite, favorite]);
+  
   const handleFavoriteButton = (id) => {
-    dispatch(toggleFavoriteRecipesById(id));
-    setIsFavorite(!isFavorite);
-      };
+    dispatch(toggleFavoriteRecipesById(id))
+      .then(() => setIsFavorite(!isFavorite));
+  };
 
-      return (
-        <Hero>
+  const onCloseModal = () => {
+        setMotivation(null);
+    }
+
+  return (<>
+    {motivation && <MotivatingModal option={motivation} onClose={onCloseModal} />}
+  
+    <Hero>
           <div>
           <TextWrapper>
           <MainPageTitle
@@ -52,9 +75,9 @@ export const RecipePageHero = ({ title, description, time, id, favorite, buttonS
                 borderColor: theme.colors.green,
               }}
               onClick={() => handleFavoriteButton(id)}
-            >
+          >
               {isLoading ? (
-                <ButtonLoader color="white" width={11} />
+                <ButtonLoader color={theme.colors.green} width={isMobile ? 12 : 25} />
               ) : isFavorite ? (
                 "Remove from favorite recipes"
               ) : (
@@ -67,5 +90,6 @@ export const RecipePageHero = ({ title, description, time, id, favorite, buttonS
             <Time>{timeConvert(time)}</Time>
           </Box>
     </Hero>
+    </>
   );
 };

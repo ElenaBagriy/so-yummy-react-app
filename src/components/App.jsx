@@ -12,7 +12,6 @@ import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosInterceptor from './hooks/interceptors';
 import { Loader } from './Loader/Loader';
-// import { getRecipesFavorite } from 'redux/recipes/recipesOperations';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -42,7 +41,6 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-    // dispatch(getRecipesFavorite(1));
   }, [dispatch, accessToken]);
 
   return (

@@ -28,7 +28,7 @@ export const selectFavoriteRecipes = state => state.recipes.favoriteRecipes.reci
 export const selectFavoriteRecipesTotal = state => state.recipes.favoriteRecipes.total;
 
 export const selectFavoriteRecipesTotalPages = state => {
-    return Math.round(state.recipes.favoriteRecipes.total / state.recipes.favoriteRecipes.limit);
+    return Math.ceil(state.recipes.favoriteRecipes.total / state.recipes.favoriteRecipes.limit);
 };
 
 //Search Page selectors
@@ -63,5 +63,5 @@ export const selectMyRecipes = state => state.ownRecipes.recipes;
 export const selectIsLoadingMyRecipes = state => state.ownRecipes.isLoading;
 
 export const selectTotalPageRecipe = state => {
-    return Math.round(state.ownRecipes.total / 4);
+    return Math.ceil(state.ownRecipes.total / 4);
 };
