@@ -2,132 +2,169 @@ import styled from 'styled-components';
 import { ReactComponent as DelIcon } from '../../images/commonImages/closeBtn.svg';
 
 
-export const IngredientsShoppingListHead = styled.div`
-  margin-bottom: 24px;
-  margin-top: 72px;
-  max-width: 343px;
-  padding: 12px 14px;
+export const TableHead = styled.div`
+  margin-bottom: 32px;
+  margin-top: 50px;
+  padding: 10px;
+  height: 38px;
   display: flex;
-  gap: 18px;
-  color: #fafafa;
+  justify-content: space-between;
+  align-items: center;
+  color: ${props => props.theme.colors.bgMain};
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 10px;
-  line-height: 1, 5;
-  background-color: #8baa36;
-  border-radius: 8px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 32px;
-    max-width: 704px;
-    padding: 21px 32px;
-    font-size: 18px;
-    gap: 38px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-bottom: 50px;
-    max-width: 1240px;
-    padding: 21px 40px;
-    gap: 109px;
-  }
-  p:first-of-type {
-    margin-right: auto;
-  }
-`;
-export const IngredientsShoppingListStyled = styled.ul`
-  li:not(:last-child) {
-    margin-bottom: 16px;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 24px;
-    }
-  }
-`;
-
-export const IngredientsShoppingListItem = styled.li`
-  display: flex;
-  align-items: start;
-  max-width: 343px;
-  padding: 0px 10px 23px 10px; //10px;
   font-size: 12px;
-  font-weight: 500;
-  background: #fafafa;
-  border-bottom: 1px solid rgb(224, 224, 224);
+  line-height: 1.5;
+  background-color: ${props => props.theme.colors.green};
+  border-radius: 8px;
 
   @media screen and (min-width: 768px) {
-    max-width: 704px;
-    padding: 0px 24px 42px 16px; // 16px 24px;
-    font-size: 24px;
-  }
-  @media screen and (min-width: 1280px) {
-    max-width: 1240px;
-    padding: 0px 70px 42px 32px;
-  }
-  img {
+    margin-bottom: 50px;
+    margin-top: 72px;
+    padding: 16px 20px;
+    height: 58px;
+    font-size: 18px;
     border-radius: 8px;
-    width: 65px;
-    height: 100%;
-    margin: 0px 8px 0px 0px;
-    @media screen and (min-width: 768px) {
-      width: 144px;
-      margin-right: 24px;
-    }
-    @media screen and (min-width: 1280px) {
-      width: 180px;
-      margin-right: 40px;
-    }
   }
-  input[type='checkbox'] {
-    width: 18px;
-    height: 18px;
-    @media screen and (min-width: 768px) {
-      width: 35px;
-      height: 35px;
-    }
-  }
-  p:nth-child(2) {
-    margin-right: auto;
+
+  @media screen and (min-width: 1280px) {
+    padding: 17px 40px;
+    height: 60px;
   }
 `;
 
-export const IngredientsShoppingListMeasure = styled.p`
-  margin-right: 28px;
-  padding: 4px;
-  background-color: #8baa36;
-  color: #fafafa;
-  font-size: 10px;
-  line-height: 1, 5;
-  font-weight: 600;
-  border-radius: 4px;
+export const RightWrapper = styled.div`
+  display: flex;
+  gap: 24px;
+
   @media screen and (min-width: 768px) {
-    padding: 4px 8px;
-    font-size: 18px;
-    margin-right: 78px;
+    gap: 78px;
   }
+
   @media screen and (min-width: 1280px) {
-    margin-right: 151px;
+    gap: 142px;
+  }
+`;
+
+export const IngredientsList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 44px;
+  }
+`;
+
+export const IngredientsItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  padding-right: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  color: ${props => props.theme.text.primary};
+  border-bottom: 1px solid ${props => props.theme.border.grey};
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 42px;
+    padding-right: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+`;
+
+export const ProductWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+
+  @media screen and (min-width: 768px) {
+    gap: 16px;
   }
 `;
 
 export const BoxForImage = styled.div`
   height: 60px;
   width: 60px;
-  background-color: ${p => p.theme.colors.ingredientsBgrCol};
-  border-radius: 10px;
-  margin-right: 10px;
-  @media screen and (min-width: 769px) {
-    height: 95px;
-    width: 95px;
-    margin-right: 15px;
+  background-color: ${p => p.theme.colors.lightGreen};
+  border-radius: 6px;
+  padding: 6px;
+  
+  @media screen and (min-width: 768px) {
+    height: 97px;
+    width: 93px;
+    border-radius: 8px;
+    padding: 8px 6px;
   }
 `;
 
-export const IngredientsShoppingListImg = styled.img`
-  width: 100%;
-  height: 100%;
-`
+export const MeasureWrapper = styled.div`
+  display: flex;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 78px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 142px;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 78px;
+  }
+`;
+
+export const MeasureList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 75px;
+  }
+`;
+
+export const MeasureItem = styled.li`
+  text-align: center;
+`;
+
+export const Measure = styled.span`
+  display: inline-block;
+  text-align: center;
+  padding: 4px;
+  background-color: ${props => props.theme.colors.green};
+  color: ${props => props.theme.colors.bgMain};
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 600;
+  border-radius: 4px;
+
+  @media screen and (min-width: 768px) {
+    padding: 4px 8px;
+    font-size: 18px;
+  }
+`;
 
 export const DeleteBtn = styled.button`
-  width: 20px;
-  height: 20px;
-  stroke: #3E4462;
+  width: 14px;
+  height: 14px;
+  stroke: ${props => props.theme.text.primary};
   outline: none;
   background-color: transparent;
   border: 0;
@@ -139,7 +176,7 @@ export const DeleteBtn = styled.button`
 
     &:hover {
       svg {
-        stroke: #8BAA36;
+        stroke: ${props => props.theme.colors.green};
       }
     }
   }

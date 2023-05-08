@@ -5,12 +5,17 @@ import {
   BoxForImage,
   DelIconStyled,
   DeleteBtn,
-  IngredientsShoppingListHead,
-  IngredientsShoppingListImg,
-  IngredientsShoppingListItem,
-  IngredientsShoppingListMeasure,
-  IngredientsShoppingListStyled,
+  TableHead,
+  IngredientsItem,
+  Measure,
+  IngredientsList,
   TemplatetWrapper,
+  MeasureList,
+  RightWrapper,
+  ProductWrapper,
+  MeasureWrapper,
+  ButtonWrapper,
+  MeasureItem,
 } from './ShoppingListTabl.styled';
 import { selectShoppingList } from 'redux/shoplist/shoplistSelectors';
 import { removeProductFromShoppingList } from 'redux/shoplist/shoplistOperation';
@@ -21,40 +26,53 @@ export default function IngredientsShoppingList() {
   const dispatch = useDispatch();
   const products = useSelector(selectShoppingList);
 
-  const deleteProduct = ({ productId, measureString }) => {
-    dispatch(removeProductFromShoppingList({ productId, measure: measureString }))
+  const deleteProduct = ({ productId, measure }) => {
+    dispatch(removeProductFromShoppingList({ productId, measure: measure[0] }))
   };
 
   return (
     <div>
-      <IngredientsShoppingListHead>
+      <TableHead>
         <p>Products</p>
-        <p>Number</p>
-        <p>Remove</p>
-      </IngredientsShoppingListHead>
+        <RightWrapper>
+          <p>Number</p>
+          <p>Remove</p>
+        </RightWrapper>
+      </TableHead>
       {!products || products.length === 0 ?
         <TemplatetWrapper>
           <NeedSearching text="Please, add something to your shopping list." />
-        </TemplatetWrapper> : <IngredientsShoppingListStyled>
+        </TemplatetWrapper> :
+        <IngredientsList>
           {products.map(({ productId, title, thumb, measure }) => {
-            const measureString = measure.toString();
-
-            return (<IngredientsShoppingListItem key={productId}>
-              <BoxForImage>
-                <IngredientsShoppingListImg src={thumb} alt={title} />
-              </BoxForImage>
-              <p>{title}</p>
-              <IngredientsShoppingListMeasure>
-                {measure}
-              </IngredientsShoppingListMeasure>
-              <DeleteBtn type='button'
-                onClick={() => deleteProduct({ productId, measureString })}>
-                <DelIconStyled />
-              </DeleteBtn>
-            </IngredientsShoppingListItem>)
+            return (<IngredientsItem key={productId}>
+              <ProductWrapper>
+                <BoxForImage>
+                  <img src={thumb} alt={title} />
+                </BoxForImage>
+                <p>{title}</p>
+              </ProductWrapper>
+              <MeasureWrapper>
+                <MeasureList>
+                  {measure.map((meas, index) => {
+                    return <MeasureItem key={index}>
+                      <Measure>
+                        {meas}
+                      </Measure>
+                    </MeasureItem>
+                  })}
+                </MeasureList>
+                <ButtonWrapper>
+                  <DeleteBtn type='button'
+                    onClick={() => deleteProduct({ productId, measure })}>
+                    <DelIconStyled />
+                  </DeleteBtn>
+                </ButtonWrapper>
+              </MeasureWrapper>
+            </IngredientsItem>)
           })
           }
-        </IngredientsShoppingListStyled>}
+        </IngredientsList>}
     </div>
   );
 }
