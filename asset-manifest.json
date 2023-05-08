@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-react-app/static/css/main.98ec47ca.css",
-    "main.js": "/so-yummy-react-app/static/js/main.96386a83.js",
+    "main.js": "/so-yummy-react-app/static/js/main.ee0c295a.js",
     "static/js/16.1ca2b1a7.chunk.js": "/so-yummy-react-app/static/js/16.1ca2b1a7.chunk.js",
     "static/js/424.9a6e69ac.chunk.js": "/so-yummy-react-app/static/js/424.9a6e69ac.chunk.js",
     "static/js/335.7f8b5fed.chunk.js": "/so-yummy-react-app/static/js/335.7f8b5fed.chunk.js",
@@ -146,7 +146,7 @@
     "static/media/greenDot-mobile.svg": "/so-yummy-react-app/static/media/greenDot-mobile.af29d8b1bca94eacaade35b8f1adef72.svg",
     "static/media/blackDot-mobile.svg": "/so-yummy-react-app/static/media/blackDot-mobile.2ccb0a550da4cedb703cea8325e1509c.svg",
     "main.98ec47ca.css.map": "/so-yummy-react-app/static/css/main.98ec47ca.css.map",
-    "main.96386a83.js.map": "/so-yummy-react-app/static/js/main.96386a83.js.map",
+    "main.ee0c295a.js.map": "/so-yummy-react-app/static/js/main.ee0c295a.js.map",
     "16.1ca2b1a7.chunk.js.map": "/so-yummy-react-app/static/js/16.1ca2b1a7.chunk.js.map",
     "424.9a6e69ac.chunk.js.map": "/so-yummy-react-app/static/js/424.9a6e69ac.chunk.js.map",
     "335.7f8b5fed.chunk.js.map": "/so-yummy-react-app/static/js/335.7f8b5fed.chunk.js.map",
@@ -178,6 +178,6 @@
   },
   "entrypoints": [
     "static/css/main.98ec47ca.css",
-    "static/js/main.96386a83.js"
+    "static/js/main.ee0c295a.js"
   ]
 }
