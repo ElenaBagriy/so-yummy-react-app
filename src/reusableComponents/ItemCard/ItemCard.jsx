@@ -72,7 +72,7 @@ export const ItemCard = ({ item }) => {
   return ( <>
       {motivation && <MotivatingModal option={motivation} onClose={onCloseModal} />}
       <Link onClick={onLinkClick}>
-          <img src={preview ? preview : defaultImage} alt={title} />
+          <img src={preview ? preview : defaultImage} alt={title} loading="lazy"/>
           <PictureTitle
               aria-owns={open ? 'mouse-over-popover' : undefined}
               aria-haspopup="true"

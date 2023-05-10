@@ -1,6 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import {
   Box,
+  ImageWrapper,
   Img,
   Item,
   List,
@@ -11,18 +12,42 @@ import {
   Title,
 } from "./RecipePreparation.styled";
 import defaultImage from '../../../images/commonImages/defaultImage@2x.png';
+import { Player } from "components/Player/Player";
 
-export const RecipePreparation = ({ preview, title, instructions }) => {
-  const cleanedInstructions = instructions?.replace(/^\d+\)\s*/gm, "");
-  const sentences = cleanedInstructions?.split(/(?:\.|\?|!)\s/g);
-  const steps = sentences?.map((sentence) =>
-    sentence.replace(/^\d+\)/, "").trim()
-  );
+export const RecipePreparation = ({ preview, title, instructions, youtube }) => {
+
+  const splitText = (stringToSplit, separator) => {
+    if (
+      stringToSplit !== null &&
+      stringToSplit?.length !==0 &&
+      !Array.isArray(stringToSplit)
+    ) {
+    if (stringToSplit.startsWith(1)) {
+      return stringToSplit
+        .split("\r\n")
+        .map((n) => {
+          const number = n.trim().slice(0, 1);
+          if (Number(number) !== 0 && Number(number)) {
+            return n.replace(number, "");
+          };
+          return n;
+        })
+        .filter(n => n)
+        .filter(x => x.length > 2);
+    }
+      return stringToSplit
+        .split(separator)
+        .filter(n => n)
+        .filter(x => x.length > 2);
+    }
+  };
+
+  const steps = instructions && splitText(instructions, '\r\n');
     
       return (
     <MainBox>
       <Box>
-      <Title>Recipe Preparation</Title>
+            <Title>Recipe Preparation</Title>
         <List>
           {steps?.map((el, idx) => (
             <Item key={nanoid()}>
@@ -33,8 +58,11 @@ export const RecipePreparation = ({ preview, title, instructions }) => {
             </Item>
           ))}
         </List>
-      </Box>
-        <Img alt={title} src={preview ? preview : defaultImage} width={343} />
+          </Box>
+          {youtube ? <Player url={youtube} src={preview} /> :
+            <ImageWrapper>
+              <Img alt={title} src={preview ? preview : defaultImage} width={343} />
+        </ImageWrapper>}
     </MainBox>
   );
 };

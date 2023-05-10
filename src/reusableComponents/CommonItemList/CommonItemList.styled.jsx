@@ -16,6 +16,7 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
+    height: 323px;
     position: relative;
     width: 100%;
     border-radius: 8px;

@@ -29,7 +29,7 @@ const RecipePage = () => {
     title,
     _id,
     favorite,
-    tags
+    youtube
   } = useSelector(selectChoosedRecipe);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const RecipePage = () => {
             preview={previewImg}
             title={title}
             instructions={instructions}
-            tags={tags}
+            youtube={youtube}
           />
         </Container>
       </Section>

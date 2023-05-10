@@ -85,7 +85,6 @@ export const MyRecipesList = () => {
     };
 
     const onDelete = (id) => {
-        console.log('id', id);
         dispatch(deleteOwnRecipe(id))
         .then(() => {
             dispatch(getAllOwnRecipes({ page }))

@@ -13,7 +13,7 @@ export const MainBox = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
-    justify-content: space-between;
+    align-items: flex-start;
     padding-top: 100px;
   }
 
@@ -55,6 +55,12 @@ export const List = styled.ul`
   };
 `;
 
+export const Item = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+`;
+
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,16 +68,12 @@ export const Box = styled.div`
   ${(p) => p.theme.sizes.tablet} {
     gap: 32px;
   }
+  @media screen and (min-width: 1280px) {
+    flex-grow: 1;
+    /* height: 203px; */
+  }
 `;
 
-export const Item = styled.li`
-  display: flex;
-  align-items: flex-start;   ///????
-  gap: 14px;
-  @media screen and (min-width: 768px) {
-    
-  };
-`;
 
 export const SpanBox = styled.div`
   text-align: center;
@@ -94,12 +96,30 @@ export const Span = styled.span`
   ${(p) => p.theme.flexCentered};
 `;
 
-export const Img = styled.img`
+export const ImageWrapper = styled.div`
+    display: flex;
+    box-sizing: border-box;
+    background-color: red;
     border-radius: 8px;
+    /* overflow: hidden; */
     width: 343px;
     height: 250px;
-  ${(p) => p.theme.sizes.tablet} {
+
+  @media screen and (min-width: 768px) {
     width: 433px;
+    min-width: 433px;
     height: 332px;
   }
+
+  @media screen and (min-width: 1280px) {
+    flex-basis: 433px;
+    height: 332px;
+  }
+`;
+
+export const Img = styled.img`
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
 `;
