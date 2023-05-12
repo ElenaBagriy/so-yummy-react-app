@@ -1,49 +1,39 @@
-// import ReactDOM from 'react-dom';
-import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-// import * as Yup from 'yup';
-
-import pictureDesktop from '../../images/welcomePage/img-sign-reg-desktop.png';
-import pictureDesktop2x from '../../images/welcomePage/img-sign-reg-desktop@2x.png';
-import pictureTabl from '../../images/welcomePage/img-sign-reg-tablet.png';
-import pictureTabl2x from '../../images/welcomePage/img-sign-reg-tablet@2x.png';
-import pictureMob from '../../images/welcomePage/img-sign-reg-mobile.png';
-import pictureMob2x from '../../images/welcomePage/img-sign-reg-mobile@2x.png';
-import pictureDesktopWebP from '../../images/welcomePage/img-sign-reg-desktop.webp';
-import pictureDesktopWebP2x from '../../images/welcomePage/img-sign-reg-desktop@2x.webp';
-import pictureTablWebP from '../../images/welcomePage/img-sign-reg-tablet.webp';
-import pictureTablWebP2x from '../../images/welcomePage/img-sign-reg-tablet@2x.webp';
-import pictureMobWebP from '../../images/welcomePage/img-sign-reg-mobile.webp';
-import pictureMobWebP2x from '../../images/welcomePage/img-sign-reg-mobile@2x.webp';
-import { FormWrapper, LinkStyled, RegisterStyled } from './RegisterFormStyled';
-import sprite from '../../images/welcomePage/symbol-defs.svg';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, registerUser } from 'redux/user/userOperations';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { loginUser, registerUser } from 'redux/user/userOperations';
+import { Formik } from 'formik';
+import { BackgroundImage, Button, Container, Error, FormWrapper, InfoSVG, Input, Label, LinkStyled, SVG, Section, StyledForm, Title } from './RegisterFormStyled';
+import sprite from '../../images/welcomePage/symbol-defs.svg';
 
-// const RegisterSchema = Yup.object().shape({
-//   name: Yup.string()
-//     .min(2, 'Too Short!')
-//     .max(20, 'Too Long!')
-//     .required('Required'),
-//   email: Yup.string().email('Invalid email').required('Required'),
-//   password: Yup.string()
-//     .min(8, 'Password must be at least 8 characters long')
-//     .matches(/[0-9]/, 'Password requires a number')
-//     .matches(/[a-z]/, 'Your password is little secure')
-//     .required('Required'),
-// .matches(/[0-9]/, 'Password requires a number')
-// .matches(/[A-Z]/, 'Password requires an uppercase letter')
-// .matches(/[^\w]/, 'Password requires a symbol'),
-// });
+const setSVGColor = (errors, touched) => {
+  if (errors === "Your password is little secure" && touched) {
+    return "#F6C23E"
+  }
+  if (errors && touched) {
+        return "#E74A3B"
+      } else if (!errors && touched) {
+        return "#3CBC81"
+      } else {
+        return "white"
+      }
+};
+
+const setInfoSVG = (errors, touched) => {
+  if (errors === "Your password is little secure" && touched) {
+    return <InfoSVG><use href={sprite + '#icon-warning'} /></InfoSVG>
+  }
+  if (errors && touched) {
+        return <InfoSVG><use href={sprite + '#icon-error'} /></InfoSVG>
+      } else if (!errors && touched) {
+        return <InfoSVG><use href={sprite + '#icon-success'} /></InfoSVG>
+      }
+    return;
+};
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [warning, setWarning] = useState(null);
-  // const [error, setError] = useState(null);
-  // const [success, setSuccess] = useState(null);
 
   function validateName(value) {
     let error;
@@ -52,6 +42,8 @@ export const RegisterForm = () => {
       error = 'Required';
     } else if (!lettersOnly) {
       error = 'Invalid name';
+    } else if (value.length < 2) {
+      error = 'Too Short!';
     }
     return error;
   }
@@ -82,61 +74,24 @@ export const RegisterForm = () => {
   }
 
   return (
-    <RegisterStyled>
-      <picture>
-        {/* desktop */}
-        <source
-          srcSet={`${pictureDesktop} 1x, ${pictureDesktop2x} 2x`}
-          media="(min-width: 1280px)"
-          type="image/png"
-        />
-        <source
-          srcSet={`${pictureDesktopWebP} 1x, ${pictureDesktopWebP2x} 2x`}
-          media="(min-width: 1280px)"
-          type="image/webp"
-        />
-
-        {/* tablet */}
-        <source
-          srcSet={`${pictureTabl} 1x, ${pictureTabl2x} 2x`}
-          media="(min-width: 768px)"
-          type="image/png"
-        />
-        <source
-          srcSet={`${pictureTablWebP} 1x, ${pictureTablWebP2x} 2x`}
-          media="(min-width: 768px)"
-          type="image/webp"
-        />
-
-        {/* mobile */}
-        <source
-          srcSet={`${pictureMob} 1x, ${pictureMob2x} 2x`}
-          media="(max-width: 767px)"
-          type="image/png"
-        />
-        <source
-          srcSet={`${pictureMobWebP} 1x, ${pictureMobWebP2x} 2x`}
-          media="(max-width: 767px)"
-          type="image/webp"
-        />
-        <img src={pictureMob} alt="girl sofa phone food" />
-      </picture>
-      <FormWrapper>
-        <Formik
+    <Section>
+      <Container>
+        <BackgroundImage />
+        <FormWrapper>
+          <Formik
           initialValues={{
             name: '',
             email: '',
             password: '',
           }}
-          validateOnChange={false}
-          validateOnBlur={false}
+          validateOnChange={true}
+          validateOnBlur={true}
           onSubmit={(values, actions) => {
             const { email, password } = values;
 
             setTimeout(
               dispatch(registerUser(values)).then(() => {
                 dispatch(loginUser({ email, password }))
-                  // .unwrap()
                   .then(() => {
                     toast.success(
                       `User ${values.name} email ${values.email} successfully registered`
@@ -158,56 +113,56 @@ export const RegisterForm = () => {
               2000
             );
           }}
-        >
-          <Form>
-            <h2>Registration</h2>
-            <label>
-              <div className="wrapperForIcon">
-                <svg width="24" height="24">
-                  <use href={sprite + '#icon-user'} />
-                </svg>
-                <Field name="name" placeholder="Name" validate={validateName} />
-              </div>
+          >
+            {({ errors, touched }) => {
+              return (<StyledForm>
+                <Title>Registration</Title>
+                <Label>
+                    <SVG width="24" height="24" color={setSVGColor(errors.name, touched.name)}>
+                      <use href={sprite + '#icon-user'} />
+                  </SVG>
+                  {setInfoSVG(errors.name, touched.name)}
+                    <Input name="name" placeholder="Name" validate={validateName} error={errors.name} touched={touched.name?.toString()} />
+                  <Error name="name" component="div" color={setSVGColor(errors.name, touched.name)}/>
+                </Label>
 
-              <ErrorMessage className="error" name="name" component="div" />
-            </label>
+                <Label>
+                    <SVG width="24" height="24" color={setSVGColor(errors.email, touched.email)}>
+                      <use href={sprite + '#icon-mail'} />
+                  </SVG>
+                  {setInfoSVG(errors.email, touched.email)}
+                    <Input
+                      name="email"
+                      placeholder="Email"
+                      validate={validateEmail}
+                      error={errors.email} 
+                      touched={touched.email?.toString()} 
+                    />
+                  <Error name="email" component="div" color={setSVGColor(errors.email, touched.email)}/>
+                </Label>
 
-            <label>
-              <div className="wrapperForIcon">
-                <svg width="24" height="24">
-                  <use href={sprite + '#icon-mail'} />
-                </svg>
-                <Field
-                  name="email"
-                  placeholder="Email"
-                  validate={validateEmail}
-                />
-              </div>
-
-              <ErrorMessage className="error" name="email" component="div" />
-            </label>
-            <label>
-              <div className="wrapperForIcon">
-                <svg width="24" height="24">
-                  <use href={sprite + '#icon-lock'} />
-                </svg>
-                <Field
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  validate={validatePassword}
-                />
-              </div>
-
-              <ErrorMessage className="error" name="password" component="div" />
-            </label>
-
-            <button type="submit">Register</button>
-          </Form>
-        </Formik>
-
-        <LinkStyled to="/signin">Sign in</LinkStyled>
-      </FormWrapper>
-    </RegisterStyled>
+                <Label>
+                    <SVG width="24" height="24" color={setSVGColor(errors.password, touched.password)}>
+                      <use href={sprite + '#icon-lock'} />
+                  </SVG>
+                  {setInfoSVG(errors.password, touched.password)}
+                    <Input
+                      name="password"
+                      placeholder="Password"
+                      type="password"
+                      validate={validatePassword}
+                      error={errors.password} 
+                      touched={touched.password?.toString()} 
+                    />
+                  <Error name="password" component="div" color={setSVGColor(errors.password, touched.password)}/>
+                </Label>
+                <Button type="submit">Sign up</Button>
+              </StyledForm>)
+            }}
+            </Formik>
+          <LinkStyled to="/signin">Sign in</LinkStyled>
+        </FormWrapper>
+      </Container>
+    </Section>
   );
 };

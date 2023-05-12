@@ -1,23 +1,35 @@
-import React from 'react';
-import { Formik, Field, Form } from 'formik';
-import { SigninStyled, LinkStyled, FormWrapper } from './SigningFormStyled';
-import pictureDesktop from '../../images/welcomePage/img-sign-reg-desktop.png';
-import pictureDesktop2x from '../../images/welcomePage/img-sign-reg-desktop@2x.png';
-import pictureTabl from '../../images/welcomePage/img-sign-reg-tablet.png';
-import pictureTabl2x from '../../images/welcomePage/img-sign-reg-tablet@2x.png';
-import pictureMob from '../../images/welcomePage/img-sign-reg-mobile.png';
-import pictureMob2x from '../../images/welcomePage/img-sign-reg-mobile@2x.png';
-import pictureDesktopWebP from '../../images/welcomePage/img-sign-reg-desktop.webp';
-import pictureDesktopWebP2x from '../../images/welcomePage/img-sign-reg-desktop@2x.webp';
-import pictureTablWebP from '../../images/welcomePage/img-sign-reg-tablet.webp';
-import pictureTablWebP2x from '../../images/welcomePage/img-sign-reg-tablet@2x.webp';
-import pictureMobWebP from '../../images/welcomePage/img-sign-reg-mobile.webp';
-import pictureMobWebP2x from '../../images/welcomePage/img-sign-reg-mobile@2x.webp';
-import sprite from '../../images/welcomePage/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
-import { loginUser } from 'redux/user/userOperations';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { loginUser } from 'redux/user/userOperations';
+import { Formik } from 'formik';
+import { LinkStyled, FormWrapper, InfoSVG, Section, SVG, Error, Label, Container, BackgroundImage, Title, Input, Button, StyledForm } from './SigningFormStyled';
+import sprite from '../../images/welcomePage/symbol-defs.svg';
+
+const setSVGColor = (errors, touched) => {
+  if (errors === "Your password is little secure" && touched) {
+    return "#F6C23E"
+  }
+  if (errors && touched) {
+        return "#E74A3B"
+      } else if (!errors && touched) {
+        return "#3CBC81"
+      } else {
+        return "white"
+      }
+};
+
+const setInfoSVG = (errors, touched) => {
+  if (errors === "Your password is little secure" && touched) {
+    return <InfoSVG><use href={sprite + '#icon-warning'} /></InfoSVG>
+  }
+  if (errors && touched) {
+        return <InfoSVG><use href={sprite + '#icon-error'} /></InfoSVG>
+      } else if (!errors && touched) {
+        return <InfoSVG><use href={sprite + '#icon-success'} /></InfoSVG>
+      }
+    return;
+};
 
 export const SigninForm = () => {
   const dispatch = useDispatch();
@@ -42,54 +54,17 @@ export const SigninForm = () => {
   }
 
   return (
-    <SigninStyled>
-      <picture>
-        {/* desktop */}
-        <source
-          srcSet={`${pictureDesktop} 1x, ${pictureDesktop2x} 2x`}
-          media="(min-width: 1280px)"
-          type="image/png"
-        />
-        <source
-          srcSet={`${pictureDesktopWebP} 1x, ${pictureDesktopWebP2x} 2x`}
-          media="(min-width: 1280px)"
-          type="image/webp"
-        />
-
-        {/* tablet */}
-        <source
-          srcSet={`${pictureTabl} 1x, ${pictureTabl2x} 2x`}
-          media="(min-width: 768px)"
-          type="image/png"
-        />
-        <source
-          srcSet={`${pictureTablWebP} 1x, ${pictureTablWebP2x} 2x`}
-          media="(min-width: 768px)"
-          type="image/webp"
-        />
-
-        {/* mobile */}
-        <source
-          srcSet={`${pictureMob} 1x, ${pictureMob2x} 2x`}
-          media="(max-width: 767px)"
-          type="image/png"
-        />
-        <source
-          srcSet={`${pictureMobWebP} 1x, ${pictureMobWebP2x} 2x`}
-          media="(max-width: 767px)"
-          type="image/webp"
-        />
-        <img src={pictureMob} alt="girl sofa phone food" />
-      </picture>
-
+    <Section>
+      <Container>
+        <BackgroundImage />
       <FormWrapper>
         <Formik
           initialValues={{
             email: '',
             password: '',
           }}
-          validateOnChange={false}
-          validateOnBlur={false}
+          validateOnChange={true}
+          validateOnBlur={true}
           onSubmit={(values, actions) => {
             dispatch(loginUser(values))
               .unwrap()
@@ -109,54 +84,42 @@ export const SigninForm = () => {
           }}
         >
           {({ errors, touched }) => (
-            <Form>
-              <h2>Sign In</h2>
-              <label>
-                <div className="wrapperForIcon">
-                  <svg width="24" height="24">
-                    <use href={sprite + '#icon-mail'} />
-                  </svg>
-                  <Field
+            <StyledForm>
+              <Title>Sign In</Title>
+              <Label>
+                <SVG width="24" height="24" color={setSVGColor(errors.email, touched.email)}>
+                      <use href={sprite + '#icon-user'} />
+                  </SVG>
+                  {setInfoSVG(errors.email, touched.email)}
+                  <Input
                     name="email"
                     placeholder="Email"
                     validate={validateEmail}
                   />
-                </div>
 
-                {/* <ErrorMessage className="error" name="email" component="div" /> */}
-                {errors.email && touched.email && (
-                  <div className="error">{errors.email}</div>
-                )}
-              </label>
-              <label>
-                <div className="wrapperForIcon">
-                  <svg width="24" height="24">
-                    <use href={sprite + '#icon-lock'} />
-                  </svg>
-                  <Field
+                <Error name="email" component="div" color={setSVGColor(errors.email, touched.email)}/>
+              </Label>
+              <Label>
+                <SVG width="24" height="24" color={setSVGColor(errors.password, touched.password)}>
+                      <use href={sprite + '#icon-user'} />
+                  </SVG>
+                  {setInfoSVG(errors.password, touched.password)}
+                  <Input
                     name="password"
                     placeholder="Password"
                     type="password"
                     validate={validatePassword}
                   />
-                </div>
 
-                {/* <ErrorMessage
-                  className="error"
-                  name="password"
-                  component="div"
-                /> */}
-                {errors.password && touched.password && (
-                  <div className="error ">{errors.password}</div>
-                )}
-              </label>
-              <button type="submit">Sign in</button>
-            </Form>
+                <Error name="password" component="div" color={setSVGColor(errors.password, touched.password)}/>
+              </Label>
+              <Button type="submit">Sign in</Button>
+            </StyledForm>
           )}
         </Formik>
-        {/* <img src={picture} alt="" width="532" height="468" /> */}
         <LinkStyled to="/register">Registration</LinkStyled>
       </FormWrapper>
-    </SigninStyled>
+    </Container>
+    </Section>
   );
 };

@@ -10,6 +10,7 @@ const lightTheme = {
     black: '#22252A',
     white: '#ffffff',
     title: '#001833',
+    error: '#E74A3B',
   },
   text: {
     hero: '#22252A',
