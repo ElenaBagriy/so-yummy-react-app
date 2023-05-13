@@ -49,7 +49,7 @@ const userSlice = createSlice({
 
       // ------------ Register user ----------------
       .addCase(registerUser.pending, handlePending)
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(registerUser.fulfilled, (state) => {
         state.isLoading = false;
       })
       .addCase(registerUser.rejected, handleRejected)

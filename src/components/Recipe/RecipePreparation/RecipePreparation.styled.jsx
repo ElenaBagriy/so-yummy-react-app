@@ -70,10 +70,8 @@ export const Box = styled.div`
   }
   @media screen and (min-width: 1280px) {
     flex-grow: 1;
-    /* height: 203px; */
   }
 `;
-
 
 export const SpanBox = styled.div`
   text-align: center;
@@ -101,7 +99,6 @@ export const ImageWrapper = styled.div`
     box-sizing: border-box;
     background-color: red;
     border-radius: 8px;
-    /* overflow: hidden; */
     width: 343px;
     height: 250px;
 

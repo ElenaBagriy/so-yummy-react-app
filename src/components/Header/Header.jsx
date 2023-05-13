@@ -1,8 +1,7 @@
 import { useMediaQuery } from '@mui/material';
-
 import { Container } from '../../reusableComponents/Container/Container';
 import { Navigation } from 'components/Navigation/Navigation';
-import { Logo } from 'components/Logo/Logo';
+import { Logo } from 'reusableComponents/Logo/Logo';
 import { UserLogo } from 'components/UserLogo/UserLogo';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 

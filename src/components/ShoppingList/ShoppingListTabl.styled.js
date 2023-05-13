@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as DelIcon } from '../../images/commonImages/closeBtn.svg';
 
-
 export const TableHead = styled.div`
   margin-bottom: 32px;
   margin-top: 50px;

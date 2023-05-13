@@ -33,7 +33,11 @@ export function UserLogo() {
       };
       return;
     }
-    window.addEventListener('click', onCloseModal)
+    window.addEventListener('click', onCloseModal);
+
+    return () => {
+      window.removeEventListener('click', onCloseModal);;
+    };
   }, [])
   
 

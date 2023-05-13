@@ -1,5 +1,5 @@
-import { Tabs } from "@mui/material";
 import styled from "styled-components";
+import { Tabs } from "@mui/material";
 
 export const Section = styled.section`
     padding-top: 114px;

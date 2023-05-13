@@ -17,7 +17,7 @@ export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 //recipes
-export const selectPopularRecipes = (state) => state.recipes.popularRecipes;
+export const selectPopularRecipes = state => state.recipes.popularRecipes;
 
 export const selectCategoryList = state => state.recipes.categoryList;
 

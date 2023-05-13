@@ -1,5 +1,5 @@
-import { Avatar } from '@mui/material';
 import styled from 'styled-components';
+import { Avatar } from '@mui/material';
 
 export const UserLogoWrapper = styled.div`
   cursor: pointer;

@@ -1,23 +1,19 @@
-//  Добавить лоудеры под разные размеры через useMediaQuery('(max-width: ...px)');
-//  Добавить мотивашки
-//  Прописать ошибку
-//  Добавить нотифай
-
-import { Container } from 'reusableComponents/Container/Container';
-import { Background } from 'reusableComponents/Background/Background';
-import { MainPageTitle } from 'reusableComponents/ManePageTitle/ManePageTitle';
-import Tab from '@mui/material/Tab';
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
-import { Section, StyledTabs } from './Categories.styled';
-import { Pagination } from 'reusableComponents/Pagination/Pagination';
-import { RecipesAPI } from '../../services/api/API';
-import { CommonItemList } from 'reusableComponents/CommonItemList/CommonItemList';
-import { onCapitalise } from 'services/onCapitalise';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategories } from 'redux/recipes/recipesOperations';
 import { selectCategoryList } from 'redux/selectors';
-import { Loader } from 'components/Loader/Loader';
+import { RecipesAPI } from '../../services/api/API';
+import { onCapitalise } from '../../services/onCapitalise';
+import { Container } from 'reusableComponents/Container/Container';
+import { Background } from 'reusableComponents/Background/Background';
+import { MainPageTitle } from 'reusableComponents/ManePageTitle/ManePageTitle';
+import { Pagination } from 'reusableComponents/Pagination/Pagination';
+import { CommonItemList } from 'reusableComponents/CommonItemList/CommonItemList';
+import Tab from '@mui/material/Tab';
+import { Section, StyledTabs } from './Categories.styled';
+import { Loader } from 'reusableComponents/Loader/Loader';
+import { toast } from 'react-toastify';
 
 export const Categories = () => {
   const dispatch = useDispatch();
@@ -49,7 +45,7 @@ export const Categories = () => {
         setIsLoading(true);
         const results = await RecipesAPI.getRecipeByCategories(data);
         if (results.length === 0) {
-          return; ///Прописать ошибку
+          return toast.error('Something went wrong. Please, try again later!');
         }
 
         setCategoryRecipes(results.recipes);
@@ -60,7 +56,7 @@ export const Categories = () => {
           setTotalPages(null);
         }
       } catch (error) {
-        return; ///Прописать ошибку
+        return toast.error('Something went wrong. Please, try again later!');
       } finally {
         setIsLoading(false);
       }

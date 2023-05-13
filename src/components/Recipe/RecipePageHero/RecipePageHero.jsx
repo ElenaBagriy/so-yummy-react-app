@@ -56,40 +56,37 @@ export const RecipePageHero = ({ title, description, time, id, favorite, buttonS
 
   return (<>
     {motivation && <MotivatingModal option={motivation} onClose={onCloseModal} />}
-  
     <Hero>
-          <div>
-          <TextWrapper>
-          <MainPageTitle
-            // $isBig={title?.split(" ").length > 6}
-          >
+      <div>
+        <TextWrapper>
+          <MainPageTitle>
             {title}
           </MainPageTitle>
-            <Text $isBig={title?.split(" ").length > 6}>{description}</Text>
-          </TextWrapper>
-          {!buttonState &&
-            <Button
-              disabled={isLoading}
-              whileHover={{
-                backgroundColor: theme.colors.green,
-                borderColor: theme.colors.green,
-              }}
-              onClick={() => handleFavoriteButton(id)}
+          <Text $isBig={title?.split(" ").length > 6}>{description}</Text>
+        </TextWrapper>
+        {!buttonState &&
+          <Button
+            disabled={isLoading}
+            onClick={() => handleFavoriteButton(id)}
+            whileHover={{
+              backgroundColor: theme.colors.green,
+              borderColor: theme.colors.green,
+            }}
           >
-              {isLoading ? (
-                <ButtonLoader color={theme.colors.green} width={isMobile ? 12 : 25} />
-              ) : isFavorite ? (
+            {isLoading ? (
+              <ButtonLoader color={theme.colors.green} width={isMobile ? 12 : 25} />
+            ) : isFavorite ? (
                 "Remove from favorite recipes"
               ) : (
-                "Add to favorite recipes"
-              )}
-              </Button>}
-            </div>
-          <Box>
-            <ClockSvg />
-            <Time>{timeConvert(time)}</Time>
-          </Box>
+              "Add to favorite recipes"
+            )}
+          </Button>}
+      </div>
+      <Box>
+        <ClockSvg />
+        <Time>{timeConvert(time)}</Time>
+      </Box>
     </Hero>
-    </>
+  </>
   );
 };

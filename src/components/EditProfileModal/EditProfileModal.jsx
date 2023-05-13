@@ -18,9 +18,8 @@ import {
   StyledFileInput,
   StyledNameInput,
   StyledNameLabel,
-  UserSVG,
+  UserSVG
 } from './EditProfileModal.styled';
-
 import { updateUser } from 'redux/user/userOperations';
 import { toast } from 'react-toastify';
 
@@ -78,53 +77,50 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
   }, [userName, newAvatar, newName, userAvatar]);
 
   return (
-    <>
-      <Modal className='modal'
-        open={isOpenEditModal}
-        onClose={() => handleCloseEditModal()}
-        slots={{ backdrop: StyledBackdrop }}
-      >
-        <EditProfileWrapper className='modal'>
-          <EditProfileCloseButton
-            onClick={() => handleCloseEditModal()}>
-            <IconClose />
-          </EditProfileCloseButton>
-          <StyledEditProfileForm onSubmit={handleFormSubmit}>
-            <StyledAvatarLabel>
-              <StyledAvatar
-                alt={userName}
-                src={newAvatar ? newAvatar : userAvatar}
+    <Modal className='modal'
+      open={isOpenEditModal}
+      onClose={() => handleCloseEditModal()}
+      slots={{ backdrop: StyledBackdrop }}
+    >
+      <EditProfileWrapper className='modal'>
+        <EditProfileCloseButton
+          onClick={() => handleCloseEditModal()}>
+          <IconClose />
+        </EditProfileCloseButton>
+        <StyledEditProfileForm onSubmit={handleFormSubmit}>
+          <StyledAvatarLabel>
+            <StyledAvatar
+              alt={userName}
+              src={newAvatar ? newAvatar : userAvatar}
+            />
+            <PlusSVG>
+            </PlusSVG>
+            <StyledFileInput
+              name="image"
+              type="file"
+              accept={'image/jpeg,image/png,image/gif'}
+              onChange={handleFileInputChange}
+            />
+          </StyledAvatarLabel>
+          <SimpleDiv>
+            <StyledNameLabel>
+              <StyledNameInput
+                type="text"
+                name='name'
+                value={newName ? newName : userName}
+                onChange={handleNameInputChange}
               />
-              <PlusSVG>
-              </PlusSVG>
-              <StyledFileInput
-                name="image"
-                type="file"
-                accept={'image/jpeg,image/png,image/gif'}
-                onChange={handleFileInputChange}
-              />
-            </StyledAvatarLabel>
-
-            <SimpleDiv>
-              <StyledNameLabel>
-                <StyledNameInput
-                  type="text"
-                  name='name'
-                  value={newName ? newName : userName}
-                  onChange={handleNameInputChange}
-                />
-                <UserSVG>
-                  <use href={`${sprite}#icon-user`} />
-                </UserSVG>
-                <EditSVG>
-                  <use href={`${sprite}#icon-edit`} />
-                </EditSVG>
-              </StyledNameLabel>
-              <SaveChangesBtn type="submit">Save changes</SaveChangesBtn>
-            </SimpleDiv>
-          </StyledEditProfileForm>
-        </EditProfileWrapper>
-      </Modal>
-    </>
+              <UserSVG>
+                <use href={`${sprite}#icon-user`} />
+              </UserSVG>
+              <EditSVG>
+                <use href={`${sprite}#icon-edit`} />
+              </EditSVG>
+            </StyledNameLabel>
+            <SaveChangesBtn type="submit">Save changes</SaveChangesBtn>
+          </SimpleDiv>
+        </StyledEditProfileForm>
+      </EditProfileWrapper>
+    </Modal>
   );
 }

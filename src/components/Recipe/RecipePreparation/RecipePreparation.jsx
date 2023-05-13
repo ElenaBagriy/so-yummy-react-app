@@ -12,7 +12,7 @@ import {
   Title,
 } from "./RecipePreparation.styled";
 import defaultImage from '../../../images/commonImages/defaultImage@2x.png';
-import { Player } from "components/Player/Player";
+import { Player } from "../Player/Player";
 
 export const RecipePreparation = ({ preview, title, instructions, youtube }) => {
 
@@ -44,10 +44,10 @@ export const RecipePreparation = ({ preview, title, instructions, youtube }) => 
 
   const steps = instructions && splitText(instructions, '\r\n');
     
-      return (
+  return (
     <MainBox>
       <Box>
-            <Title>Recipe Preparation</Title>
+        <Title>Recipe Preparation</Title>
         <List>
           {steps?.map((el, idx) => (
             <Item key={nanoid()}>
@@ -58,10 +58,10 @@ export const RecipePreparation = ({ preview, title, instructions, youtube }) => 
             </Item>
           ))}
         </List>
-          </Box>
-          {youtube ? <Player url={youtube} src={preview} /> :
-            <ImageWrapper>
-              <Img alt={title} src={preview ? preview : defaultImage} width={343} />
+      </Box>
+      {youtube ? <Player url={youtube} src={preview} /> :
+        <ImageWrapper>
+          <Img alt={title} src={preview ? preview : defaultImage} width={343} />
         </ImageWrapper>}
     </MainBox>
   );

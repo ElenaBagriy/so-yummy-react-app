@@ -9,11 +9,11 @@ import { useRecipes } from '../../components/hooks';
 
 import { Main } from 'reusableComponents/Main/Main';
 import { Section } from './SearchPage.styled';
-import SearchBar from 'components/SearchBar/SearchBar';
-import NeedSearching from 'components/NeedSearching/NeedSearching';
+import NeedSearching from 'reusableComponents/NeedSearching/NeedSearching';
 import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 import { useSearchParams } from 'react-router-dom';
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'reusableComponents/Loader/Loader';
+import { SearchBar } from 'components/SearchBar/SearchBar';
 
 export default function SearchPage() {
   const [page, setPage] = useState(1);

@@ -1,9 +1,8 @@
-import { Container } from "reusableComponents/Container/Container";
-import { Accent, ArrowLink, Hero, Link, Paragraph, ProductBlock, Text, Title } from "./СhooseYourBreakfast.styled";
-import { HeroBG } from "components/HeroBG/HeroBG";
-import { SearchForm } from "components/SearchForm/SearchForm";
 import { useNavigate } from "react-router-dom";
-
+import { Container } from "../../reusableComponents/Container/Container";
+import { SearchForm } from "../../reusableComponents/SearchForm/SearchForm";
+import { HeroBG } from "components/HeroBG/HeroBG";
+import { Accent, ArrowLink, Hero, Link, Paragraph, ProductBlock, Text, Title } from "./СhooseYourBreakfast.styled";
 
 export const СhooseYourBreakfast = () => {
     const navigate = useNavigate();

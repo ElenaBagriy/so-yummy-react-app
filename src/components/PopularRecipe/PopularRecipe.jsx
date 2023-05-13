@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import EllipsisText from 'react-ellipsis-text/lib/components/EllipsisText';
 import { getPopularRecipes } from 'redux/recipes/recipesOperations';
 import { selectPopularRecipes } from 'redux/selectors';
 import { Description, Image, Link, PopularStyled, RecipeItem, RecipeTitle, RecipesList, Title } from './PopularRecipe.styled';
 import { useMediaQuery } from '@mui/material';
-import EllipsisText from 'react-ellipsis-text/lib/components/EllipsisText';
 
 export const PopularRecipe = () => {
   const dispatch = useDispatch();

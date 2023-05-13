@@ -100,11 +100,6 @@ export const RecipesAPI = {
     return data;
   },
 
-  toggleLikeRecipesStatusById: async id => {
-    const { data } = await axios.patch(`/recipes/like/${id}`);
-    return data;
-  },
-
   getRecipeById: async id => {
     const { data } = await axios.get(`/recipes/id/${id}`);
     return data;

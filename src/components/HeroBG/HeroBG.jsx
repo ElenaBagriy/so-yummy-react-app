@@ -8,5 +8,4 @@ export const HeroBG = () => {
         <Plate />
         <Arrow/>
     </div>
-        ;
 };

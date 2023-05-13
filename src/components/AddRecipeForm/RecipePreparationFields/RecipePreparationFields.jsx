@@ -1,4 +1,3 @@
-import React from 'react';
 import { ErrorMessage } from '@hookform/error-message';
 import { Error, StyledPreparation, Textarea, Title } from './RecipePreparationFields.styled';
 
@@ -8,7 +7,6 @@ export const RecipePreparationFields = ({
   errors
 }) => {
 
-  console.log(errors);
   return (
     <StyledPreparation>
       <Title>Recipe Preparation</Title>

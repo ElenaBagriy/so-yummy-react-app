@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { getAllCategories, getIngredients } from 'redux/recipes/recipesOperations';
+import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
+import { toast } from 'react-toastify';
 import { selectCategoryList, selectIngredients } from 'redux/selectors';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
 import { SubmitButton } from './AddRecipeForm.styled';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientFields';
-import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
-import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify';
 
 
   const validationSchema = Yup.object({
@@ -50,9 +50,7 @@ export const AddRecipeForm = () => {
     register,
     control,
     watch,
-    formState: { errors
-      // isDirty, isValid
-    },
+    formState: { errors},
   } = useForm({
     mode: 'onTouched',
     resolver: yupResolver(validationSchema),

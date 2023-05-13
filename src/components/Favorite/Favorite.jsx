@@ -10,7 +10,7 @@ import { Pagination } from "reusableComponents/Pagination/Pagination";
 import timeConvert from "services/timeConverter";
 import { Tooltip, useMediaQuery } from "@mui/material";
 import EllipsisText from "react-ellipsis-text";
-import NeedSearching from "components/NeedSearching/NeedSearching";
+import NeedSearching from "reusableComponents/NeedSearching/NeedSearching";
 
 
 export const Favorite = () => {

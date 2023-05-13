@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import { FormHelperText } from '@mui/material';
 import { Field, Form } from 'formik';
 import { ReactComponent as EmailSVG } from '../../images/svg/mail.svg';
-import styled from 'styled-components';
 
 export const StyledSubscribeForm = styled(Form)`
   display: flex;

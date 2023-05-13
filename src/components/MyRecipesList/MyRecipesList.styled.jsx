@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import { ReactComponent as TrashIcon } from '../../images/favoritePage/trash-01.svg';
 
 export const Section = styled.main`

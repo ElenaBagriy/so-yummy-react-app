@@ -11,7 +11,7 @@ import { Container } from "reusableComponents/Container/Container";
 import { MainPageTitle } from "reusableComponents/ManePageTitle/ManePageTitle";
 import { Pagination } from "reusableComponents/Pagination/Pagination";
 import defaultImage from '../../images/commonImages/defaultImage@2x.png';
-import NeedSearching from "components/NeedSearching/NeedSearching";
+import NeedSearching from "reusableComponents/NeedSearching/NeedSearching";
 import { Description, Image, RecipesItem, RecipesList, Section, Wrapper, Time, Title, BottomWrapper, Link, DeleteButton, DeleteIcon, TemplatetWrapper } from "./MyRecipesList.styled";
 import { ListSkeleton } from "components/Recipe/ListSkeleton";
 

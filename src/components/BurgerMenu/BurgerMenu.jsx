@@ -10,7 +10,7 @@ import {
   Div,
 } from './BurgerMenu.styled';
 import { useState } from 'react';
-import { Logo } from 'components/Logo/Logo';
+import { Logo } from 'reusableComponents/Logo/Logo';
 import { Navigation } from 'components/Navigation/Navigation';
 // import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
 

@@ -2,16 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { addOwnRecipe, deleteOwnRecipe, getAllOwnRecipes } from "./ownRecipesOperations";
 
 const ownRecipesInitialState = {
-    recipes: [
-        {
-            _id: "640cd5ac2d9fecf12e8897fc",
-            title: "Spaghetti Bolognese",
-            category: "Beef",
-            description: "Recipe's description",
-            preview: "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560401/huqdxgwkvbhsfjqtexsm.jpg",
-            time: "40"
-        },
-    ],
+    recipes: [],
     total: null,
     page: null,
     isLoading: false,
@@ -33,7 +24,6 @@ const ownRecipesSlice = createSlice({
     initialState: ownRecipesInitialState,
     extraReducers: (builder) =>
         builder
-            
             // ------------ Get all own recipes ----------------
             .addCase(getAllOwnRecipes.pending, (state) => {
                 state.isLoading = true;

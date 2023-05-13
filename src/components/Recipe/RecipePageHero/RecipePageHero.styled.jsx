@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 import { ReactComponent as ClockIcon } from "../../../images/svg/clock.svg";
 import backgroundMobile1x from "../../../images/recipePage/vegetables-mobile@1x-min.jpg";
 import backgroundMobile2x from "../../../images/recipePage/vegetables-mobile@2x-min.jpg";

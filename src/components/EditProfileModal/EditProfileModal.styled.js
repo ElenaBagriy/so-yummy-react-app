@@ -1,5 +1,5 @@
-import { Avatar, Backdrop } from '@mui/material';
 import styled from 'styled-components';
+import { Avatar, Backdrop } from '@mui/material';
 import { ReactComponent as CloseIcon } from "../../images/svg/x.svg";
 import { ReactComponent as PlusIcon } from "../../images/svg/plus.svg";
 
@@ -136,7 +136,6 @@ export const PlusSVG = styled(PlusIcon)`
 export const SimpleDiv = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   width: 100%;
   gap: 24px;
   @media screen and (min-width: 768px) {
@@ -173,7 +172,6 @@ export const StyledNameLabel = styled.label`
       }
       input {
         border-color: ${props => props.theme.text.accent};
-        /* color: ${props => props.theme.text.accent}; */
       }
     }
 `;

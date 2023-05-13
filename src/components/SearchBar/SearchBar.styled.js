@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
     margin-top: 50px;
   } ;
 `;
+
 export const SelectBar = styled.div`
   display: flex;
   align-items: center;
@@ -31,22 +32,14 @@ export const SelectBar = styled.div`
     margin-bottom: 90px;
   } ;
 `;
+
 export const SelectText = styled.div`
   margin-right: 18px;
-
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-
   letter-spacing: -0.24px;
-
   color: ${(props) => props.theme.text.title};
-
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1280px) {
-  } ;
 `;

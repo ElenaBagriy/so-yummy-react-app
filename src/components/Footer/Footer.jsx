@@ -1,6 +1,5 @@
 import { Container } from 'reusableComponents/Container/Container';
-import { FooterLogo } from 'components/Logo/FooterLogo/FooterLogo';
-
+import { FooterLogo } from 'reusableComponents/Logo/FooterLogo/FooterLogo';
 import {
   Background,
   BenefitsList,
@@ -13,7 +12,6 @@ import {
   Section,
   TermsInfo,
 } from './Footer.styled';
-
 import { FollowUsFooter } from 'components/FollowUs/FollowUsFooter/FollowUsFooter';
 import { Nav } from 'components/Nav/Nav';
 import { SubscribeForm } from 'components/SubscribeForm/SubscribeForm';

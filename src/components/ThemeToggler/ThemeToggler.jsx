@@ -1,9 +1,5 @@
 import { Switch } from '@mui/material';
 
-export function ThemeToggler() {
-  return (
-    <>
-      <Switch />
-    </>
-  );
-}
+export const ThemeToggler = () => {
+  return <Switch />;
+};

@@ -1,21 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const FollowWrapper = styled.div`
-  /* margin: 0 auto; */
-  /* position: absolute; */
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
-  /* bottom: 21px; */
-
-  @media screen and (min-width: 768px) {
-    /* bottom: 24px; */
-  }
-  @media screen and (min-width: 1280px) {
-    /* bottom: 50px; */
-  }
-`;
-
 export const FollowList = styled.ul`
   display: flex;
     align-items: center;

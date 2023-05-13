@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Select from "../../reusableComponents/Select/Select";
-import { SearchForm } from "components/SearchForm/SearchForm";
-import { useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import Select from "../../reusableComponents/Select/Select";
+import { SearchForm } from "../../reusableComponents/SearchForm/SearchForm";
+import { useSearchParams } from "react-router-dom";
 import {
   getRecipesByIngredientsQuery,
   getRecipesByTitleQuery,
 } from "redux/recipes/recipesOperations";
 import { Wrapper, SelectBar, SelectText } from "./SearchBar.styled";
 
-export default function SearchBar({
+export const SearchBar = ({
   page,
   valueParam,
   queryParam,
   handleChangePage,
-}) {
+}) => {
   const [sendSearch, setSendSearch] = useState(valueParam || "");
   const [recipesBy, setRecipesBy] = useState(queryParam || "title");
   const [searchParams, setSearchParams] = useSearchParams();

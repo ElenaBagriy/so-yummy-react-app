@@ -1,6 +1,4 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   BoxForImage,
   DelIconStyled,
@@ -17,9 +15,9 @@ import {
   ButtonWrapper,
   MeasureItem,
 } from './ShoppingListTabl.styled';
-import { selectShoppingList } from 'redux/shoplist/shoplistSelectors';
+import { selectShoppingList } from '../../redux/selectors';
 import { removeProductFromShoppingList } from 'redux/shoplist/shoplistOperation';
-import NeedSearching from 'components/NeedSearching/NeedSearching';
+import NeedSearching from 'reusableComponents/NeedSearching/NeedSearching';
 
 
 export default function IngredientsShoppingList() {

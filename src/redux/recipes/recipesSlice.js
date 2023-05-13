@@ -8,8 +8,7 @@ import {
   getRecipesByTitleQuery,
   getRecipesByIngredientsQuery,
   getIngredients,
-  toggleFavoriteRecipesById,
-  toggleLikeRecipesStatusById,
+  toggleFavoriteRecipesById
 } from './recipesOperations';
 import { getOwnRecipeById } from 'redux/ownRecipes/ownRecipesOperations';
 
@@ -78,14 +77,8 @@ const recipesSlice = createSlice({
       .addCase(toggleFavoriteRecipesById.pending, handlePending)
       .addCase(toggleFavoriteRecipesById.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.favoriteRecipes = [...state.favoriteRecipes, ...action.payload];
       })
       .addCase(toggleFavoriteRecipesById.rejected, handleRejected)
-
-      // ------------ Toggle Like Recipes Status By Id ----------------
-      .addCase(toggleLikeRecipesStatusById.pending, handlePending)
-      .addCase(toggleLikeRecipesStatusById.fulfilled, (state, action) => {})
-      .addCase(toggleLikeRecipesStatusById.rejected, handleRejected)
 
       // ------------ Get Recipe By Id ----------------
       .addCase(getRecipeById.pending, handlePending)
@@ -128,7 +121,6 @@ const recipesSlice = createSlice({
       .addCase(getIngredients.pending, handlePending)
       .addCase(getIngredients.fulfilled, (state, action) => {
         state.ingredientsList = action.payload.ingredients;
-
         state.isLoading = false;
       })
       .addCase(getIngredients.rejected, handleRejected)

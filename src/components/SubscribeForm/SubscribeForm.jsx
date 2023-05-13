@@ -37,7 +37,7 @@ export function SubscribeForm() {
     }
   
   const onSubmit = (values, actions) => {
-    console.log(values);
+
     dispatch(subscribe(values))
       .unwrap()
       .then(() => {

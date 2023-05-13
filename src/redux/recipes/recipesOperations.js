@@ -50,18 +50,6 @@ export const toggleFavoriteRecipesById = createAsyncThunk(
   }
 );
 
-export const toggleLikeRecipesStatusById = createAsyncThunk(
-  'recipes/toggleLikeRecipesStatusById',
-  async (id, thunkAPI) => {
-    try {
-      const response = await RecipesAPI.toggleLikeRecipesStatusById(id);
-      return response;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const getRecipeById = createAsyncThunk(
   'recipes/getRecipeById',
   async (id, thunkAPI) => {

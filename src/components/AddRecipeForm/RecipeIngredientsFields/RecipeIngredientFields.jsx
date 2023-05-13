@@ -138,7 +138,7 @@ export const RecipeIngredientsFields = ({
                 </IngredientLabel>
                 <MeasureLabel>
                   <Input
-                    autoFocus='false'
+                    autoFocus={false}
                     autoComplete='false'
                     min="0"
                     type="number"

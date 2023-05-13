@@ -1,17 +1,17 @@
-import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Flip, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { refreshUser } from 'redux/user/userOperations';
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Theme } from 'styles/Theme';
 import { RestrictedRoute } from 'routes/RestrictedRoute';
 import { PrivateRoute } from 'routes/PrivateRoute';
 import ShoppingListPage from 'pages/ShoppingList/ShoppingList';
-import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from './hooks';
-import { refreshUser } from 'redux/user/userOperations';
-import { Flip, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import useAxiosInterceptor from './hooks/interceptors';
-import { Loader } from './Loader/Loader';
+import { Loader } from '../reusableComponents/Loader/Loader';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));

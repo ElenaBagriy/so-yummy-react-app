@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { BtnStyled, WelcomePageStyled } from './WelcomePageStyled';
+import { selectIsLoggedIn } from 'redux/selectors';
 import logoDesktop1x from '../../images/welcomePage/logo-desk-tabl.png';
 import logoDesktop2x from '../../images/welcomePage/logo-desk@2x.png';
 import logoMobile from '../../images/welcomePage/logo-mob.png';
 import logoMobile2x from '../../images/welcomePage/logo-mob@2x.png';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/selectors';
 
 const WelcomePage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -23,7 +23,7 @@ const WelcomePage = () => {
             media="(max-width: 767px)"
             type="image/png"
           />
-          <img src={logoMobile} alt="logo" />
+          <img src={logoMobile} alt="logo" width="68px" height='68px'/>
         </picture>
         <h1>Welcome to the app!</h1>
         <p>

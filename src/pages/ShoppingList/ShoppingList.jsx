@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import ShoppingListTabl from "components/ShoppingList/ShoppingListTabl";
 import { fetchShoppingList } from "redux/shoplist/shoplistOperation";
-import { Container } from 'reusableComponents/Container/Container';
+import ShoppingListTabl from "components/ShoppingList/ShoppingListTabl";
+import { Container } from '../../reusableComponents/Container/Container';
 import { MainPageTitle } from '../../reusableComponents/ManePageTitle/ManePageTitle';
-import { Main } from 'reusableComponents/Main/Main';
-import { Background } from 'reusableComponents/Background/Background';
+import { Main } from '../../reusableComponents/Main/Main';
+import { Background } from '../../reusableComponents/Background/Background';
+import { GoToTop } from '../../reusableComponents/ScrollToTop/ScrollToTop';
 import { Section } from './ShoppingList.styled';
-import { GoToTop } from 'reusableComponents/ScrollToTop/ScrollToTop';
 
 
 const ShoppingListPage = () => {
@@ -24,10 +24,10 @@ const ShoppingListPage = () => {
         <Section>
           <MainPageTitle title="Shopping list"></MainPageTitle>
           <ShoppingListTabl />
-          </Section>
+        </Section>
       </Container>
-      <GoToTop/>
-      </Main>
+      <GoToTop />
+    </Main>
   );
 };
 

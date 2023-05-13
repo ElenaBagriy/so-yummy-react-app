@@ -12,21 +12,25 @@ ${normalize}
     font-family: 'Poppins';
     src: url(${Regular}) format("truetype");
     font-weight: 400;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Poppins';
     src: url(${Medium}) format("truetype");
     font-weight: 500;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Poppins';
     src: url(${SemiBold}) format("truetype");
     font-weight: 600;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Poppins';
     src: url(${Bold}) format("truetype");
     font-weight: 700;
+    font-display: swap;
 }
 
 body {
@@ -136,7 +140,5 @@ table {
   height: 100vh;
    margin-left: auto;
   margin-right: auto;
-  
- 
 }
 `;

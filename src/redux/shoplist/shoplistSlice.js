@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addProductToShoppingList, fetchShoppingList, removeProductFromShoppingList } from './shoplistOperation';
 
-
 const initialState = {
   products: [],
   isLoading: false,
@@ -37,17 +36,9 @@ const shoppingListSlice = createSlice({
       .addCase(removeProductFromShoppingList.pending, pendingReducer)
       .addCase(removeProductFromShoppingList.fulfilled, (state, { payload }) => {
         state.products = payload;
-
-          // state.products = state.products.filter(
-          //   //  check when few products have the same id
-
-          //   product => product.productId !== payload.productId
-          // );
-
-          state.isLoading = false;
-          state.error = null;
-        }
-      )
+        state.isLoading = false;
+        state.error = null;
+      })
       .addCase(removeProductFromShoppingList.rejected, errorReducer);
   },
 });

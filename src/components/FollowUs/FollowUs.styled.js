@@ -48,6 +48,3 @@ export const SocialSVG = styled.svg`
     background-color: ${props => props.theme.colors.green}
   }
 `;
-
-// add dark: '#1E1F28' to theme
-// треба через пропси відображати різні заливки (у футері один, на додаванні рецепту інший)
