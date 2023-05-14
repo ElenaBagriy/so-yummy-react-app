@@ -20,7 +20,7 @@ export const WelcomePageStyled = styled.main`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.bgMain};
 
   //767px high-resolution
   @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
@@ -122,7 +122,7 @@ export const BtnStyled = styled.button`
   border-radius: 24px 44px;
   border: none;
   background-color: ${props => props.theme.colors.green};
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.bgMain};
   font-size: 14px;
   line-height: 1.5;
   transition: background-color ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition}, border-color ${props => props.theme.hover.transition};
@@ -141,7 +141,7 @@ export const BtnStyled = styled.button`
 
   &.outlined {
     background-color: transparent;
-    border: 2px solid ${props => props.theme.colors.white};
+    border: 2px solid ${props => props.theme.colors.bgMain};
   }
 
   &.outlined:hover,

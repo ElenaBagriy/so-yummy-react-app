@@ -15,6 +15,7 @@ export const List = styled.ul`
     }
 `;
 
+
 export const Item = styled.li`
     height: 323px;
     position: relative;

@@ -13,6 +13,7 @@ import {
 } from "./RecipePreparation.styled";
 import defaultImage from '../../../images/commonImages/defaultImage@2x.png';
 import { Player } from "../Player/Player";
+import PropTypes from 'prop-types';
 
 export const RecipePreparation = ({ preview, title, instructions, youtube }) => {
 
@@ -65,4 +66,11 @@ export const RecipePreparation = ({ preview, title, instructions, youtube }) => 
         </ImageWrapper>}
     </MainBox>
   );
+};
+
+RecipePreparation.propTypes = {
+  preview: PropTypes.string,
+  title: PropTypes.string,
+  instructions: PropTypes.string,
+  youtube: PropTypes.string,
 };

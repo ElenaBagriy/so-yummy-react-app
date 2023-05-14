@@ -1,5 +1,6 @@
 import { BasicPagination, ArrowBack, ArrowForward } from "./Pagination.styled"
 import { PaginationItem } from "@mui/material";
+import PropTypes from 'prop-types';
 
 export const Pagination = ({ onChange, page, totalPages }) => {
     return  <>{totalPages >1 && <BasicPagination
@@ -16,4 +17,10 @@ export const Pagination = ({ onChange, page, totalPages }) => {
         )}
     />}
     </>
+};
+
+Pagination.propTypes = {
+    onChange: PropTypes.func,
+    page: PropTypes.number,
+    totalPages: PropTypes.number,
 };

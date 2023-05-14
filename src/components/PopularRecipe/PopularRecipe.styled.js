@@ -17,7 +17,7 @@ export const Title = styled.h3`
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: ${props => props.theme.text.primary};
+  color: ${props => props.theme.text.main};
 `;
 
 export const RecipesList = styled.ul`
@@ -47,7 +47,7 @@ export const RecipesList = styled.ul`
 
 export const RecipeItem = styled.li`
   padding-bottom: 13.13px;
-  border-bottom: 1px solid rgb(112, 112, 112, 0.17);
+  border-bottom: ${props => props.theme.border.recipe};
 `;
 
 export const Link = styled(NavLink)`
@@ -62,6 +62,7 @@ export const Link = styled(NavLink)`
   &:hover {
     scale: 1.02;
     box-shadow: ${props => props.theme.hover.boxShadow};
+    outline: ${props => props.theme.border.recipeHover};
   }
 
   @media screen and (min-width: 768px) {
@@ -96,7 +97,7 @@ export const RecipeTitle = styled.h4`
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.text.primary};
+  color: ${props => props.theme.text.main};
 
   @media screen and (min-width: 768px) {
     max-width: 151px;

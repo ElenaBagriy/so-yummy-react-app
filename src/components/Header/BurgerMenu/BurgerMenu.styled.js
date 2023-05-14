@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { Backdrop } from '@mui/material';
-import menuIcon from 'images/svg/menu.svg';
-
-import spinachBottomMobile1x from '../../images/menu/spinachMenu-mobile@1x.png';
-import spinachBottomMobile2x from '../../images/menu/spinachMenu-mobile@2x.png';
-import spinachBottomTablet1x from '../../images/menu/spinachMenu-tablet@1x.png';
-import spinachBottomTablet2x from '../../images/menu/spinachMenu-tablet@2x.png';
-
-import { ReactComponent as CloseIcon } from "../../images/svg/x.svg";
+import spinachBottomMobile1x from '../../../images/menu/spinachMenu-mobile@1x.png';
+import spinachBottomMobile2x from '../../../images/menu/spinachMenu-mobile@2x.png';
+import spinachBottomTablet1x from '../../../images/menu/spinachMenu-tablet@1x.png';
+import spinachBottomTablet2x from '../../../images/menu/spinachMenu-tablet@2x.png';
+import { ReactComponent as CloseIcon } from "../../../images/svg/x.svg";
 
 export const BurgerMenuButton = styled.button`
   display: block;
@@ -16,9 +13,26 @@ export const BurgerMenuButton = styled.button`
 
   border: none;
   background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(${menuIcon});
+
+  &:hover,
+   :focus {
+    & svg {
+      stroke: ${props => props.theme.colors.green};
+    }
+   }
+
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+export const SvgIcon = styled.svg`
+  width: 28px;
+  height: 28px;
+  stroke: ${props => props.light ? props.theme.colors.black : props.theme.text.hero};
+  transition: stroke ${props => props.theme.hover.transition};
+
   @media screen and (min-width: 768px) {
     width: 32px;
     height: 32px;
@@ -27,7 +41,7 @@ export const BurgerMenuButton = styled.button`
 
 export const StyledBackdrop = styled(Backdrop)`
   &.MuiBackdrop-root {
-    background-color: ${({ theme }) => theme.colors.lightGreen};
+    background-color: ${({ theme }) => theme.colors.burger};
   }
 `;
 export const BurgerMenuWrapper = styled.div`
@@ -64,14 +78,14 @@ export const CloseButton = styled.button`
 
   & svg path{
     transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.theme.text.main};
     box-shadow: ${props => props.theme.hover.boxShadow};
   }
 
     &:hover,
      :focus {
       & svg path{
-      stroke: ${props => props.theme.text.accent};
+      stroke: ${props => props.theme.colors.green};
     }}
 `;
 
@@ -82,11 +96,11 @@ export const IconClose = styled(CloseIcon)`
 
     & path {
     transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.theme.text.main};
 
     &:hover,
      :focus {
-      stroke: ${props => props.theme.text.accent};
+      stroke: ${props => props.theme.colors.green};
     }
   }
 
@@ -128,7 +142,3 @@ export const SpinachBottom = styled.div`
       }
   }
 `;
-
-export const Div = styled.div`
-color: ${props => props.theme.colors.lightGreen};
-`

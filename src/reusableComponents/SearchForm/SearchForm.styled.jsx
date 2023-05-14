@@ -24,14 +24,14 @@ export const Input = styled.input`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-  color: ${(props) => props.theme.text.heroParagraph};
-  background-color: ${(props) => props.theme.colors.white};
+  color: ${props => props.theme.text.heroParagraph};
+  background-color: ${(props) => props.theme.input.white};
   border: 1px solid ${(props) => props.theme.input.normal};
   border-radius: 24px 44px;
 
   &:focus-visible {
     outline: none;
-    border: 1px solid ${(props) => props.theme.input.active};
+    border: 1px solid ${(props) => props.theme.input.focus};
   }
 
   &::placeholder {
@@ -54,14 +54,14 @@ export const Button = styled.button`
   right: 0;
   padding: 16px 32px;
   border-radius: 24px 44px;
-  background-color: ${(props) => props.theme.colors[props.$color || "black"]};
+  background-color: ${(props) => props.color === 'green' ? props.theme.input.buttonGreen : props.theme.input.buttonBlack};
   color: ${(props) => props.theme.colors.bgMain};
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
   border: none;
-  transition: background-color ${(props) => props.theme.hover.transition};
+  transition: background-color ${(props) => props.theme.hover.transition}, color ${(props) => props.theme.hover.transition};
 
   //tablet
   @media screen and (min-width: 768px) {
@@ -76,8 +76,8 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${(props) =>
-      props.theme.colors[props.$color === "green" ? "black" : "green"]};
+      background-color: ${props => props.color === 'green' ? props.theme.button.accent : props.theme.colors.green};
+      color: ${props => props.theme.button.textToDark};
   }
 `;
 
@@ -91,6 +91,6 @@ export const HelperText = styled(FormHelperText)`
     position: absolute;
     padding: 0 38px;
     margin-left: 14px;
-    color: #e74a3b;
+    color: ${props => props.theme.colors.error};
   }
 `;

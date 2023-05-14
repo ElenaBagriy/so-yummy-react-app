@@ -1,5 +1,6 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { Error, StyledPreparation, Textarea, Title } from './RecipePreparationFields.styled';
+import PropTypes from 'prop-types';
 
 export const RecipePreparationFields = ({
   register,
@@ -26,4 +27,10 @@ export const RecipePreparationFields = ({
       </label>
     </StyledPreparation>
   );
+};
+
+RecipePreparationFields.propTypes = {
+  register: PropTypes.func,
+  control: PropTypes.object,
+  errors: PropTypes.object,
 };

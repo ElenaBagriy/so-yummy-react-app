@@ -1,5 +1,6 @@
 import SVG from 'images/svg/sprite.svg';
 import { LogoWrapper, StyledLogoLink, StyledSVG } from './Logo.styled';
+import PropTypes from 'prop-types';
 
 export function Logo({ handleClose = () => {} }) {
   return (
@@ -11,4 +12,8 @@ export function Logo({ handleClose = () => {} }) {
       </StyledLogoLink>
     </LogoWrapper>
   );
-}
+};
+
+Logo.propTypes = {
+  handleClose: PropTypes.func,
+};

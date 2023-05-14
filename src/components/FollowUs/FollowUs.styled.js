@@ -12,10 +12,10 @@ transition: fill ${props => props.theme.hover.transition}, background-color ${pr
 
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.follow.bgMain};
 
     & svg {
-      fill: ${props => props.theme.colors.white};
+      fill: ${props => props.theme.follow.hover};
     }
   }
 `;
@@ -28,7 +28,7 @@ export const StyledFollow = styled.div`
     line-height: 1;
     margin-bottom: 36px;
     letter-spacing: -0.24px;
-    color: ${props => props.theme.text.primary};
+    color: ${props => props.theme.text.main};
   }
 
   ul {
@@ -40,11 +40,12 @@ export const StyledFollow = styled.div`
 `;
 
 export const SocialSVG = styled.svg`
+  fill: ${props => props.theme.follow.main};;
   transition: fill ${props => props.theme.hover.transition}, background-color ${props => props.theme.hover.transition};
 
   &:hover,
   &:focus {
-    fill: ${props => props.theme.colors.white};
-    background-color: ${props => props.theme.colors.green}
+    fill: ${props => props.theme.follow.hover};
+    background-color: ${props => props.theme.follow.bgMain};
   }
 `;

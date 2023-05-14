@@ -7,14 +7,18 @@ import {
   StyledUserName,
   UserLogoWrapper,
 } from './UserLogo.styled';
+import { useLocation } from 'react-router-dom';
 
 export function UserLogo() {
   const userName = useSelector(selectUserName);
   const userAvatar = useSelector(selectUserAvatar);
+  const location = useLocation();
 
   const userLogoRef = useRef();
 
   const [isOpen, setOpen] = useState(false);
+
+  const light = location.pathname === '/main' || location.pathname.includes('/recipe');
 
   function popoverTogler(e) {
     setOpen(!isOpen);
@@ -43,7 +47,7 @@ export function UserLogo() {
 
   return (
     <>
-      <UserLogoWrapper ref={userLogoRef} onClick={popoverTogler} className='user'>
+      <UserLogoWrapper ref={userLogoRef} onClick={popoverTogler} className="user" isWhite={light} >
         <StyledAvatar alt={userName} src={userAvatar} />
         <StyledUserName>{userName}</StyledUserName>
       </UserLogoWrapper>

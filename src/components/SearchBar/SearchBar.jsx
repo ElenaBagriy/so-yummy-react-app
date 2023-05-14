@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import Select from "../../reusableComponents/Select/Select";
+import Select from "./Select/Select";
 import { SearchForm } from "../../reusableComponents/SearchForm/SearchForm";
 import { useSearchParams } from "react-router-dom";
 import {

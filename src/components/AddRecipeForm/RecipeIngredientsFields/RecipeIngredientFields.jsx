@@ -24,6 +24,7 @@ import {
   Title,
   Wrapper,
 } from './RecipeIngredientFields.styled';
+import PropTypes from 'prop-types';
 
 
 export const RecipeIngredientsFields = ({
@@ -193,4 +194,12 @@ export const RecipeIngredientsFields = ({
       </FieldsList>
     </Wrapper>
   );
+};
+
+RecipeIngredientsFields.propTypes = {
+  ingredients: PropTypes.array,
+  register: PropTypes.func,
+  control: PropTypes.object,
+  errors: PropTypes.object,
+  watch: PropTypes.func,
 };

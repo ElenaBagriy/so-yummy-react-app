@@ -13,6 +13,7 @@ import {
   Wrapper,
 } from "./RecipeIngredientsList.styled";
 import { CustomCheckbox } from "../Checkbox/Checkbox";
+import PropTypes from 'prop-types';
 
 export const RecipeIngredientsList = ({ ingredients }) => {
   const list = useSelector(selectShoppingList);
@@ -51,4 +52,8 @@ export const RecipeIngredientsList = ({ ingredients }) => {
         })}
       </List>
   );
+};
+
+RecipeIngredientsList.propTypes = {
+  ingredients: PropTypes.array,
 };

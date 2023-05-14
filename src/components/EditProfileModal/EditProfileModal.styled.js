@@ -19,7 +19,7 @@ export const EditProfileWrapper = styled.div`
   height: 327px;
   padding: 32px 24px;
 
-  background-color: #fafafa;
+  background-color: ${props => props.theme.colors.backgroundSecondary};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
 
@@ -48,14 +48,14 @@ export const EditProfileCloseButton = styled.button`
   background-color: transparent;
     & svg path{
     transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.theme.text.main};
     box-shadow: ${props => props.theme.hover.boxShadow};
   }
 
     &:hover,
      :focus {
       & svg path{
-      stroke: ${props => props.theme.text.accent};
+      stroke: ${props => props.theme.colors.green};
     }}
 
   @media screen and (min-width: 768px) {
@@ -73,11 +73,11 @@ export const IconClose = styled(CloseIcon)`
 
     & path {
     transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.theme.text.main};
 
     &:hover,
      :focus {
-      stroke: ${props => props.theme.text.accent};
+      stroke: ${props => props.theme.colors.green};
     }
   }
 
@@ -144,22 +144,24 @@ export const SimpleDiv = styled.div`
 `;
 
 export const StyledNameInput = styled.input`
-  color: ${props => props.theme.text.primary};
   display: inline-block;
   width: 100%;
   padding: 14px 40px;
   background-color: transparent;
-  border: 1px solid #23262a;
+  border: 1px solid ${props => props.theme.input.text};
   border-radius: 6px;
+  color: ${props => props.theme.input.text};
+  opacity: 0.8;
   transition: border-color ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition};
+
+  &:focus-visible {
+    outline: 2px solid ${props => props.theme.input.active};
+    border: 1px solid ${props => props.theme.colors.white};
+}
+
   @media screen and (min-width: 768px) {
     padding: 16px 51px;
   }
-
-  &:focus-visible {
-    outline: 2px solid ${props => props.theme.text.accent};
-    border: 1px solid ${props => props.theme.colors.white};
-}
 `;
 
 export const StyledNameLabel = styled.label`
@@ -183,7 +185,8 @@ export const UserSVG = styled.svg`
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  stroke: ${props => props.theme.text.primary};
+  stroke: ${props => props.theme.text.main};
+  opacity: 0.8;
   transition: stroke ${props => props.theme.hover.transition};
 
   @media screen and (min-width: 768px) {
@@ -205,7 +208,8 @@ export const EditSVG = styled.svg`
   transform: translateY(-50%);
   width: 17px;
   height: 17px;
-  stroke: ${props => props.theme.text.primary};
+  stroke: ${props => props.theme.text.main};
+  opacity: 0.8;
   transition: stroke ${props => props.theme.hover.transition};
 
   @media screen and (min-width: 768px) {
@@ -231,7 +235,7 @@ export const SaveChangesBtn = styled.button`
   font-size: 14px;
   line-height: 1.29;
   color: #fafafa;
-  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition};
+  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition};
   &:disabled {
     background-color: ${props => props.theme.colors.grey};
   }
@@ -244,7 +248,8 @@ export const SaveChangesBtn = styled.button`
 
       &:hover,
      :focus {
-      background-color: ${props => props.theme.colors.black};
+      background-color: ${props => props.theme.button.accent};
       box-shadow: ${props => props.theme.hover.boxShadow};
+      color: ${props => props.theme.button.textToDark};
     }
 `;

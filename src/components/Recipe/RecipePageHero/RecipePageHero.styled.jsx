@@ -96,7 +96,7 @@ export const Text = styled.p`
   max-width: 656px;
   margin: 0 auto;
   margin-top: 18px;
-  color: ${(p) => p.theme.text.hero};
+  color: ${(p) => p.theme.text.favorite};
   font-size: ${(p) => p.theme.fontSizes.xxs};
   line-height: 1.33;
   text-align: center;
@@ -127,7 +127,7 @@ export const Button = styled(motion.button)`
   height: 35px;
   border-radius: 24px 44px;
   border: 1px solid #8baa36;
-  color: ${props => props.theme.text.heroParagraph};
+  color: ${props => props.theme.text.favorite};
   cursor: pointer;
   ${(p) => p.theme.sizes.tablet} {
     margin-top: 30px;
@@ -162,7 +162,7 @@ export const ClockSvg = styled(ClockIcon)`
 
 export const Time = styled.span`
   margin-left: 4px;
-  color: ${(p) => p.theme.text.heroParagraph};
+  color: ${(p) => p.theme.text.favorite};
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: ${(p) => p.theme.fontSizes.xxxs};

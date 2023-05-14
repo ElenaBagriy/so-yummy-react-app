@@ -65,7 +65,7 @@ export const IngredientsItem = styled.li`
   font-weight: 500;
   font-size: 10px;
   line-height: 1.2;
-  color: ${props => props.theme.text.primary};
+  color: ${props => props.theme.text.main};
   border-bottom: 1px solid ${props => props.theme.border.grey};
 
   @media screen and (min-width: 768px) {
@@ -93,7 +93,7 @@ export const ProductWrapper = styled.div`
 export const BoxForImage = styled.div`
   height: 60px;
   width: 60px;
-  background-color: ${p => p.theme.colors.lightGreen};
+  background-color: ${p => p.theme.colors.ingredients};
   border-radius: 6px;
   padding: 6px;
   
@@ -163,7 +163,7 @@ export const Measure = styled.span`
 export const DeleteBtn = styled.button`
   width: 14px;
   height: 14px;
-  stroke: ${props => props.theme.text.primary};
+  stroke: ${props => props.theme.text.main};
   outline: none;
   background-color: transparent;
   border: 0;
@@ -186,7 +186,7 @@ export const DelIconStyled = styled(DelIcon)`
   position: absolute;
   width: 14px;
   height: 14px;
-  stroke: #3E4462;
+  stroke: ${props => props.theme.text.main};
   transform: translate(0%, -50%);
   transition: stroke ${props => props.theme.hover.transition};
 

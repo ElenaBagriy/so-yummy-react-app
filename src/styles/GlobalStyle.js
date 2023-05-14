@@ -33,10 +33,11 @@ ${normalize}
     font-display: swap;
 }
 
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #fafafa;
+  background-color:${props => props.theme.colors.background}; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

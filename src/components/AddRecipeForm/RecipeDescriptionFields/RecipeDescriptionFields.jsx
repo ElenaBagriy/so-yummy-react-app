@@ -21,6 +21,7 @@ import {
   ImageWrapper,
 } from './RecipeDescriptionFields.styled';
 import { InputsStyled } from './RecipeDescriptionFields.styled';
+import PropTypes from 'prop-types';
 
 export const RecipeDescriptionFields = ({
   register,
@@ -178,4 +179,11 @@ export const RecipeDescriptionFields = ({
       </InputsStyled>
     </RecipeDescStyled>
   );
+};
+
+RecipeDescriptionFields.propTypes = {
+  register: PropTypes.func,
+  categories: PropTypes.array,
+  control: PropTypes.object,
+  errors: PropTypes.object,
 };

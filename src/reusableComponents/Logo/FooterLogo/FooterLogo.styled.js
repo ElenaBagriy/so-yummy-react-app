@@ -11,10 +11,10 @@ export const FooterLogoLink = styled(NavLink)`
 
   &:hover,
   :focus {
-   color: ${props => props.theme.colors.green};
+   color: ${props => props.theme.colors.accent};
 
    svg {
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.colors.accent};
     stroke: ${props => props.theme.colors.bgMain};
    }
     }
@@ -36,7 +36,7 @@ export const FooterLogoSVG = styled.svg`
 
   &:hover,
     :focus {
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.colors.accent};
     stroke: ${props => props.theme.colors.bgMain};
   }
 

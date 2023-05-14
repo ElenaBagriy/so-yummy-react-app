@@ -17,6 +17,7 @@ import ButtonLoader from "../../ButtonLoader/ButtonLoader";
 import timeConvert from "services/timeConverter";
 import { MotivatingModal } from "reusableComponents/MotivatingModal/MotivatingModal";
 import { useMediaQuery } from "@mui/material";
+import PropTypes from 'prop-types';
 
 export const RecipePageHero = ({ title, description, time, id, favorite, buttonState }) => {
   const [isFavorite, setIsFavorite] = useState(null);
@@ -89,4 +90,13 @@ export const RecipePageHero = ({ title, description, time, id, favorite, buttonS
     </Hero>
   </>
   );
+};
+
+RecipePageHero.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  time: PropTypes.string,
+  id: PropTypes.string,
+  favorite: PropTypes.bool,
+  buttonState: PropTypes.bool,
 };

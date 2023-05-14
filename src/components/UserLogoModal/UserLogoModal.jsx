@@ -3,6 +3,7 @@ import {
   EditIcon,
   EditProfileButton,
   LogoutButton,
+  SVG,
   UserModalWrapper,
 } from './UserLogoModal.styled';
 import spriteSVG from 'images/svg/sprite.svg';
@@ -10,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/user/userOperations';
 import { useState } from 'react';
 import { EditProfileModal } from 'components/EditProfileModal/EditProfileModal';
+import PropTypes from 'prop-types';
 
 export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
   const setOffset = [
@@ -22,7 +24,9 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
   ];
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
 
-  const handleOpenEditModal = () => setIsOpenEditModal(true);
+  const handleOpenEditModal = () => {
+    setIsOpenEditModal(true)
+  };
 
   const handleCloseEditModal = () => {
     setIsOpenEditModal(false);
@@ -58,9 +62,9 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
               </EditProfileButton>
               <LogoutButton onClick={logoutBtnHandle}>
                 Log out
-                <svg width="18" height="19">
+                <SVG width="18" height="19">
                   <use href={`${spriteSVG}#icon-arrow-right`} />
-                </svg>
+                </SVG>
               </LogoutButton>
             </UserModalWrapper>
           </Grow>
@@ -73,4 +77,10 @@ export function UserLogoModal({ userLogoRef, popoverTogler, isOpen }) {
       />
     </>
   );
-}
+};
+
+UserLogoModal.propTypes = {
+  userLogoRef: PropTypes.object,
+  popoverTogler: PropTypes.func,
+  isOpen: PropTypes.bool,
+};

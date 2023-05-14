@@ -19,11 +19,11 @@ export const StyledLink = styled(NavLink)`
   width: 24px;
   height: 24px;
   transition: fill ${props => props.theme.hover.transition};
-  fill: ${props => props.theme.colors.green};
+  fill: ${props => props.theme.follow.main};
 
   &:hover,
   &:focus {
-    fill: ${props => props.theme.colors.white};
+    fill: ${props => props.theme.follow.hoverFooter};
   }
 `;
 

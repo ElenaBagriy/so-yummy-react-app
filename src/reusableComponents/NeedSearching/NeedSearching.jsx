@@ -6,6 +6,7 @@ import pictureTabl2x from '../../images/Search/vegetables-tablet@2x.png';
 import pictureMob from '../../images/Search/vegetables-mob.png';
 import pictureMob2x from '../../images/Search/vegetables-mob@2x.png';
 import { Text, Wrapp } from './NeedSearching.styled';
+import PropTypes from 'prop-types';
 
 export default function NeedSearching({text}) {
   return (
@@ -36,4 +37,8 @@ export default function NeedSearching({text}) {
       <Text>{text}</Text>
     </Wrapp>
   );
-}
+};
+
+NeedSearching.propTypes = {
+    text: PropTypes.string,
+};

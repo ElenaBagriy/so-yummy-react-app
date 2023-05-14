@@ -75,14 +75,13 @@ export const ProductBlock = styled.div`
     padding: 8px;
     width: 225px;
     border-radius: 8px;
-    background-color: ${props => props.theme.colors.bgMain};
+    background-color: ${props => props.theme.colors.backgroundSecondary};
 
     @media screen and (min-width: 768px) {
         right: 33px;
         bottom: 168px;
         padding: 12px;
         width: 260px;
-        background-color: ${props => props.theme.colors.white};
     };
   
     @media screen and (min-width: 1280px) {
@@ -100,7 +99,7 @@ export const Text = styled.p`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.024em;
-    color: ${props => props.theme.text.primary};   
+    color: ${props => props.theme.text.main};   
 
     @media screen and (min-width: 768px) {
         font-size: 14px;
@@ -123,7 +122,7 @@ export const Link = styled(NavLink)`
     font-size: 10px;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: ${props => props.theme.text.primary}; 
+    color: ${props => props.theme.text.main}; 
     transition: color ${props => props.theme.hover.transition};
     
     &:hover,
@@ -140,7 +139,7 @@ export const ArrowLink = styled(Arrow)`
   
   & path {
     transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.theme.text.main};
 
     &:hover,
      :focus {

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { createPortal } from "react-dom";
 import { Backdrop, CloseButton, Content, Text, Modal, AccentText, Icon } from './MotivatingModal.styled';
 import SVG from '../../images/svg/sprite.svg';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -71,4 +72,9 @@ export const MotivatingModal = ({ option, onClose }) => {
                 </Modal>
         </Backdrop>
     , modalRoot);
+};
+
+MotivatingModal.propTypes = {
+    option: PropTypes.number,
+    onClose: PropTypes.func,
 };

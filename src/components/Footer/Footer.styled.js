@@ -15,7 +15,7 @@ export const FooterSection = styled.footer`
 export const Section = styled.div`
   padding-top: 28px;
   padding-bottom: 16px;
-  background-color: ${props => props.theme.colors.black};
+  background-color: ${props => props.theme.colors.footer};
 
   @media screen and (min-width: 768px) {
     padding-top: 50px;
@@ -92,7 +92,7 @@ export const BenefitsList = styled.ul`
     font-size: 14px;
     line-height: 1.29;
     letter-spacing: -0.02em;
-    color: ${({ theme }) => theme.colors.bgMain};
+    color: ${({ theme }) => theme.text.white};
   }
 
   @media screen and (min-width: 1280px) {
@@ -128,7 +128,7 @@ export const CopyrightInfo = styled.p`
     font-size: 10px;
     line-height: 1;
     letter-spacing: -0.01em;
-    color: ${props => props.theme.text.hero};
+    color: ${props => props.theme.text.main};
     opacity: 0.5;
 
     @media screen and (min-width: 768px) {
@@ -141,7 +141,7 @@ export const TermsInfo = styled(NavLink)`
     font-size: 10px;
     line-height: 1;
     letter-spacing: -0.01em;
-    color: ${props => props.theme.text.hero};
+    color: ${props => props.theme.text.main};
     opacity: 0.5;
 
     @media screen and (min-width: 768px) {

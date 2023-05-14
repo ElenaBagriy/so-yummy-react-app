@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeProductFromShoppingList, addProductToShoppingList } from "../../../redux/shoplist/shoplistOperation";
 import { SvgCheck, Box } from "./Checkbox.styled";
 import { MotivatingModal } from "reusableComponents/MotivatingModal/MotivatingModal";
+import PropTypes from 'prop-types';
 
 export const CustomCheckbox = ({ ingredientId: productId, isChecked, measure }) => {
   const dispatch = useDispatch();
@@ -38,4 +39,10 @@ export const CustomCheckbox = ({ ingredientId: productId, isChecked, measure }) 
       <SvgCheck />
     }</Box>
   </>;
+};
+
+CustomCheckbox.propTypes = {
+  ingredientId: PropTypes.string,
+  isChecked: PropTypes.bool,
+  measure: PropTypes.string,
 };

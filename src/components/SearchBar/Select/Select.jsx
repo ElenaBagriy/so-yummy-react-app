@@ -6,6 +6,7 @@ import {
   DropdownItem,
   Arrow,
 } from "./Select.styled";
+import PropTypes from 'prop-types';
 
 export default function Select({ label, values, onChange }) {
   const [currentValue, setCurrentValue] = useState("");
@@ -14,7 +15,7 @@ export default function Select({ label, values, onChange }) {
 
   useEffect(() => {
     const onClick = (e) => {
-      if (!selectRef.current.contains(e.target)) return handleClose(false);
+      if (!selectRef.current?.contains(e.target)) return handleClose(false);
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
@@ -53,4 +54,10 @@ export default function Select({ label, values, onChange }) {
       </DropdownStyle>
     </SelectContainer>
   );
-}
+};
+
+Select.propTypes = {
+  label: PropTypes.string,
+  values: PropTypes.array,
+  onChange: PropTypes.func,
+};

@@ -24,7 +24,7 @@ export const Title = styled.h3`
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.text.primary};
+  color: ${props => props.theme.text.main};
 `;
 
 export const Counter = styled.div`
@@ -35,7 +35,7 @@ export const Counter = styled.div`
     justify-content: space-around;
     width: 92px;
     height: 28px;
-    border: 1px solid rgba(51, 51, 51, 0.3);
+    border: 1px solid ${props => props.theme.border.light};
     border-radius: 18px;
 
     @media screen and (min-width: 768px) {
@@ -52,7 +52,6 @@ export const CountButton = styled.button`
     padding-right: 7px;
     border: none;
     background-color: transparent;
-    color: rgba(51, 51, 51, 0.3);
     transition: stroke ${props => props.theme.hover.transition};
 
     &:not(:disabled) {
@@ -73,7 +72,7 @@ export const Icon = styled.svg`
   width: 14px;
   height: 14px;
   fill: transparent;
-  stroke: #3333334D;
+  stroke: ${props => props.theme.border.light};
 
    @media screen and (min-width: 768px) {
     width: 16px;
@@ -85,13 +84,13 @@ export const CounterValue = styled.span`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
-  color: #333333;
+  color: ${props => props.theme.counter};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.5;
   }
-  `;
+`;
 
 export const FieldsList = styled.ul`
  display: flex;
@@ -147,7 +146,7 @@ export const DeleteIcon = styled.svg`
   width: 18px;
   height: 18px;
   fill: transparent;
-  stroke: #333333;
+  stroke: ${props => props.theme.counter};
   stroke-width: 1.5px;
   transition: stroke ${props => props.theme.hover.transition};
 
@@ -185,20 +184,22 @@ export const StyledSelect = styled(Select)`
     align-items: center;
     justify-content: space-between;
     height: 53px;
-    border: none;
-    background-color: #f5f5f5;
+    background-color: ${props => props.theme.input.background};
     border-radius: 6px;
     padding-left: 16px;
     padding-right: 16px;
     outline: 0;
     cursor: pointer;
     min-height: 0;
+    border: ${props => props.theme.input.border};
 
      input {
     position: absolute;
     
      &:focus-visible{
       outline: none;
+      outline: ${props => props.theme.input.border};
+      border: ${props => props.theme.input.border};
      }
     }
 
@@ -211,7 +212,8 @@ export const StyledSelect = styled(Select)`
 
   .ingr-select__control--is-focused {
     box-shadow: none;
-    border: none;
+
+    border: ${props => props.theme.input.border};
   }
 
   .ingr-select__value-container {
@@ -226,9 +228,11 @@ export const StyledSelect = styled(Select)`
     letter-spacing: -0.02em;
     padding: 0;
     margin: 0;
-    color: #000000;
+    color: ${props => props.theme.input.line};
     
-
+    &:focus-visible{
+      outline: none;
+   }
     @media screen and (min-width: 768px) {
       font-size: 18px;
     }
@@ -240,8 +244,7 @@ export const StyledSelect = styled(Select)`
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: #000000;
-    opacity: 0.5;
+    color: ${props => props.theme.input.text};
 
     @media screen and (min-width: 768px) {
       font-size: 18px;
@@ -254,7 +257,8 @@ export const StyledSelect = styled(Select)`
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: #000000;
+    color: ${props => props.theme.placeholder.blured};
+
     @media screen and (min-width: 768px) {
       font-size: 18px;
     }
@@ -276,7 +280,7 @@ export const StyledSelect = styled(Select)`
     margin-top: 0;
     margin-bottom: 0;
     padding: 8px 4px 8px 18px;
-    background-color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.list.background};
     width: 100%;
     height: 154px;
 
@@ -298,11 +302,11 @@ export const StyledSelect = styled(Select)`
       width: 6px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #E7E5E5;
+      background-color: ${props => props.theme.list.scroll};
       border-radius: 12px;
     }
     ::-webkit-scrollbar-track {
-      background-color: white;
+      background-color: ${props => props.theme.list.background};
       border-radius: 12px;
     }
 
@@ -318,8 +322,8 @@ export const StyledSelect = styled(Select)`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: #000000;
-    opacity: 0.5;
+    color: ${props => props.theme.list.option};
+    cursor: pointer;
 
     @media screen and (min-width: 768px) {
       font-size: 14px;
@@ -327,13 +331,12 @@ export const StyledSelect = styled(Select)`
   }
 
   .ingr-select__option--is-focused {
-    background-color: ${props => props.theme.colors.lightGreen};
-
+    background-color: ${props => props.theme.list.focus};
   }
 
   .ingr-select__option--is-selected {
-    background-color: white;
-    color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.list.selected};
+    color: ${props => props.theme.list.selectedText};
     opacity: 1;
   }
 
@@ -342,7 +345,7 @@ export const StyledSelect = styled(Select)`
   }
 `;
 
-export const MeasureLabel = styled.label`
+export const MeasureLabel = styled.div`
   position: relative;
   display: flex;
   width: 84px;
@@ -362,15 +365,18 @@ export const Input = styled.input`
   text-align: right;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  border: none;
+  border-bottom: ${props => props.theme.input.border};
+  border-left: ${props => props.theme.input.border};
+  border-top: ${props => props.theme.input.border};
+  border-right: none;
   width: 26px;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  background-color: #f5f5f5;
-  color: rgba(35, 38, 42, 0.6);
+  background-color: ${props => props.theme.input.background};
+  color: ${props => props.theme.placeholder.blured};
 
   ::-webkit-outer-spin-button,
   ::-webkit-inner-spin-button {
@@ -380,7 +386,7 @@ export const Input = styled.input`
 
   &:focus-visible {
     outline: none;
-    color: ${props => props.theme.text.heroParagraph};
+    color: ${props => props.theme.input.line};
   }
 
   @media screen and (min-width: 768px) {
@@ -394,6 +400,7 @@ export const StyledMeasureSelect = styled(Select)`
   &.measure-select-container {
     height: 53px;
     width: 58px;
+    
 
     @media screen and (min-width: 768px) {
       height: 59px;
@@ -406,15 +413,29 @@ export const StyledMeasureSelect = styled(Select)`
     align-items: center;
     justify-content: space-between;
     height: 53px;
-    border: none;
-    background-color: #f5f5f5;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
+    background-color: ${props => props.theme.input.background};
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
     padding-right: 12px;
     outline: 0;
     cursor: pointer;
     min-height: 0;
+    border-bottom: ${props => props.theme.input.border};
+    border-right: ${props => props.theme.input.border};
+    border-top: ${props => props.theme.input.border};
+    border-left: none;
 
+    &:hover,
+    :focus {
+      border-bottom: ${props => props.theme.input.border};
+      border-right: ${props => props.theme.input.border};
+      border-top: ${props => props.theme.input.border};
+      border-left: none;
+    }
      input {
     position: absolute;
      &:focus-visible{
@@ -431,6 +452,10 @@ export const StyledMeasureSelect = styled(Select)`
   .measure-select__control--is-focused {
     box-shadow: none;
     border: none;
+          border-bottom: ${props => props.theme.input.border};
+      border-right: ${props => props.theme.input.border};
+      border-top: ${props => props.theme.input.border};
+      border-left: none;
   }
 
   .measure-select__value-container {
@@ -445,7 +470,6 @@ export const StyledMeasureSelect = styled(Select)`
     letter-spacing: -0.02em;
     padding: 0;
     margin: 0;
-    color: rgba(35, 38, 42, 0.6);
 
     @media screen and (min-width: 768px) {
       font-size: 18px;
@@ -459,7 +483,6 @@ export const StyledMeasureSelect = styled(Select)`
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(35, 38, 42, 0.6);
 
     @media screen and (min-width: 768px) {
       font-size: 18px;
@@ -472,7 +495,8 @@ export const StyledMeasureSelect = styled(Select)`
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: rgba(35, 38, 42, 0.6);
+    color: ${props => props.theme.placeholder.blured};
+
     @media screen and (min-width: 768px) {
       font-size: 18px;
     }
@@ -493,7 +517,7 @@ export const StyledMeasureSelect = styled(Select)`
     margin-top: 0;
     margin-bottom: 0;
     padding: 12px 4px 12px 28px;
-    background-color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.list.background};
     width: 84px;
     height: 154px;
 
@@ -515,11 +539,11 @@ export const StyledMeasureSelect = styled(Select)`
       width: 6px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #E7E5E5;
+      background-color: ${props => props.theme.list.scroll};
       border-radius: 12px;
     }
     ::-webkit-scrollbar-track {
-      background-color: white;
+      background-color: ${props => props.theme.list.background};;
       border-radius: 12px;
     }
 
@@ -535,8 +559,8 @@ export const StyledMeasureSelect = styled(Select)`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: #000000;
-    opacity: 0.5;
+    color: ${props => props.theme.list.option};
+    cursor: pointer;
 
     @media screen and (min-width: 768px) {
       font-size: 14px;
@@ -544,14 +568,12 @@ export const StyledMeasureSelect = styled(Select)`
   }
 
   .measure-select__option--is-focused {
-    background-color: ${props => props.theme.colors.lightGreen};
-
+     background-color: ${props => props.theme.list.focus};
   }
 
   .measure-select__option--is-selected {
-    background-color: white;
-    color: ${props => props.theme.colors.green};
-    opacity: 1;
+    background-color: ${props => props.theme.list.selected};
+    color: ${props => props.theme.list.selectedText};
   }
 
   svg {
@@ -568,7 +590,7 @@ export const Error = styled.span`
   font-size: 10px;
   line-height: 1.5;
   text-align: center;
-  color: #e74a3b;
+  color: ${props => props.theme.colors.error};
 
     @media screen and (min-width: 768px) {
       font-size: 12px;

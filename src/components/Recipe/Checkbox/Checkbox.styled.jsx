@@ -8,10 +8,10 @@ export const Box = styled.div`
   width: 18px;
   height: 18px;
   cursor: pointer;
-  border: 1px solid rgba(126, 126, 126, 0.5);
+  border: 1px solid ${props => props.theme.colors.checkBox};
   border-radius: 4px;
   ${(p) => p.theme.sizes.tablet} {
-    border: 2px solid rgba(126, 126, 126, 0.5);
+    border: 2px solid ${props => props.theme.colors.checkBox};
     width: 35px;
     height: 35px;
   };

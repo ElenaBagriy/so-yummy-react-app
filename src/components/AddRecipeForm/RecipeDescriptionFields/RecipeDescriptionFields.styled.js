@@ -103,8 +103,9 @@ export const IconClose = styled(CloseIcon)`
   height: 20px;
 
     & path {
-    transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+      stroke: ${props => props.theme.text.primary};
+      transition: stroke ${props => props.theme.hover.transition};
+      box-shadow: ${props => props.theme.hover.boxShadow};
 
     &:hover,
      :focus {
@@ -150,7 +151,7 @@ export const WrapperCategory = styled.label`
   justify-content: space-between;
   width: 343px;
   height: 40px;
-  border-bottom: 1px solid ${props => (props.isError ? '#e74a3b' : '#e0e0e0')};
+  border-bottom: 1px solid ${props => (props.isError ? '#e74a3b' : props.theme.border.grey)};
 
 
   @media screen and (min-width: 768px) {
@@ -165,8 +166,7 @@ export const PlaceHolder = styled.span`
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: #000000;
-  opacity: 0.5;
+  color: ${props => props.theme.placeholder.main};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -194,20 +194,18 @@ export const Input = styled.input`
   padding-bottom: 18px;
   padding-top: 0;
   border: none;
-  border-bottom: 1px solid ${props => (props.isError ? '#e74a3b' : '#e0e0e0')};
+  border-bottom: 1px solid ${props => (props.isError ? '#e74a3b' : props.theme.border.grey)};
   background-color: transparent;
   color: ${props => props.theme.text.heroParagraph};
 
   &::placeholder {
-    color: #000000;
-    opacity: 0.5;
+    color: ${props => props.theme.placeholder.main};
   }
 
   &:focus-visible {
     outline: none;
   }
 `;
-
 
 export const StyledSelect = styled(Select)`
   
@@ -254,7 +252,7 @@ export const StyledSelect = styled(Select)`
     font-weight: 400;
     font-size: 12px;
     line-height: 1;
-    color: #000000;
+    color: ${props => props.theme.text.black};
     @media screen and (min-width: 768px) {
       font-size: 14px;
     }
@@ -265,7 +263,7 @@ export const StyledSelect = styled(Select)`
     font-weight: 400;
     font-size: 12px;
     line-height: 1;
-    color: #000000;
+    color: ${props => props.theme.text.black};
     @media screen and (min-width: 768px) {
       font-size: 14px;
     }
@@ -287,7 +285,7 @@ export const StyledSelect = styled(Select)`
     margin-top: 4px;
     margin-bottom: 0;
     padding: 8px 4px 8px 14px;
-    background-color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.list.background};
     width: 123px;
     height: 144px;
 
@@ -312,11 +310,11 @@ export const StyledSelect = styled(Select)`
       width: 4px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #E7E5E5;
+      background-color: ${props => props.theme.list.scroll};
       border-radius: 12px;
     }
     ::-webkit-scrollbar-track {
-      background-color: white;
+      background-color: ${props => props.theme.list.background};
       border-radius: 12px;
     }
 
@@ -332,8 +330,8 @@ export const StyledSelect = styled(Select)`
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: -0.02em;
-    color: #000000;
-    opacity: 0.5;
+    color: ${props => props.theme.list.option};
+    cursor: pointer;
 
     @media screen and (min-width: 768px) {
       font-size: 14px;
@@ -341,36 +339,17 @@ export const StyledSelect = styled(Select)`
   }
 
   .react-select__option--is-focused {
-    background-color: ${props => props.theme.colors.lightGreen};
-
+    background-color: ${props => props.theme.list.focus};
   }
 
   .react-select__option--is-selected {
-    background-color: white;
-    color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.list.selected};
+    color: ${props => props.theme.list.selectedText};
     opacity: 1;
   }
 
   svg {
     fill: ${props => props.theme.colors.green};
-  }
-
-  .сustom-select__menu-list {
-    max-height: 210px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: green;
-      border-radius: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background-color: green;
-      border-radius: 5px;
-    }
   }
 `;
 
@@ -384,7 +363,7 @@ export const ErrorImageMessage = styled.span`
   font-size: 10px;
   line-height: 1.5;
   text-align: center;
-  color: #e74a3b;
+  color: ${props => props.theme.colors.error};
 
     @media screen and (min-width: 768px) {
       top: -20px;
@@ -411,7 +390,7 @@ export const Error = styled.span`
   font-size: 10px;
   line-height: 1.5;
   text-align: center;
-  color: #e74a3b;
+  color: ${props => props.theme.colors.error};
 
     @media screen and (min-width: 768px) {
       font-size: 12px;

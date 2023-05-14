@@ -8,6 +8,7 @@ import defaultImage from '../../images/commonImages/defaultImage@2x.png';
 import { MotivatingModal } from "reusableComponents/MotivatingModal/MotivatingModal";
 import { useDispatch } from "react-redux";
 import { getRecipesFavorite } from "redux/recipes/recipesOperations";
+import PropTypes from 'prop-types';
 
 export const ItemCard = ({ item }) => {
     const dispatch = useDispatch();
@@ -106,4 +107,8 @@ export const ItemCard = ({ item }) => {
       </Link>
       </>
   );
+};
+
+ItemCard.propTypes = {
+  item: PropTypes.object,
 };

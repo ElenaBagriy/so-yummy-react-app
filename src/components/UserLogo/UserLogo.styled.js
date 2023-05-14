@@ -7,7 +7,7 @@ export const UserLogoWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 24px;
-  color: ${({ theme }) => theme.text.hero};
+  color: ${props => props.isWhite ? props.theme.colors.black : props.theme.text.hero};
   transition: color ${props => props.theme.hover.transition};
 
   &:hover,

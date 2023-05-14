@@ -41,7 +41,7 @@ export const RecipesItem = styled.li`
   gap: 14px;
   width: 100%;
   border-radius: 8px;
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.card};
 
   @media screen and (min-width: 768px) {
     padding: 28px 130px 28px 24px;
@@ -58,7 +58,7 @@ export const Image = styled.img`
   border-radius: 8px;
   width: 124px;
   height: 124px;
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.card};
 
   @media screen and (min-width: 768px) {
     width: 228px;
@@ -78,7 +78,7 @@ export const Title = styled.h3`
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.text.primary};
+  color: ${props => props.theme.text.main};
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -97,7 +97,7 @@ export const Description = styled.p`
   font-size: 8px;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  color: ${props => props.theme.text.heroParagraph};
+  color: ${props => props.theme.text.card};
 
   @media screen and (min-width: 768px) {
     max-height: 73px;
@@ -118,7 +118,7 @@ export const Time = styled.p`
   font-size: 10px;
   line-height: 1.4;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.text.primary};
+  color: ${props => props.theme.text.main};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -163,15 +163,15 @@ export const Link = styled(NavLink)`
   font-weight: 400;
   font-size: 10px;
   line-height: 1.5;
-  background-color: ${props => props.theme.colors.black};
-  color: ${props => props.theme.colors.bgMain};
+  background-color: ${props => props.theme.button.accent};
+  color: ${props => props.theme.text.white};
   border-radius: 24px 44px;
-  transition: color ${props => props.theme.hover.transition}, background-color ${props => props.theme.hover.transition};
+  transition: background-color ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition};
 
   &:hover,
   :focus {
     background-color: ${props => props.theme.colors.green};
-    color: ${props => props.theme.colors.bgMain};
+    color: ${props => props.theme.button.textToDark};
   };
 
     @media screen and (min-width: 768px) {
@@ -199,8 +199,8 @@ export const DeleteButton = styled.button`
     height: 24px;
     border: none;
     border-radius: 4px;
-    background-color: ${props => props.theme.colors.lightGreen};
-    stroke: ${props => props.theme.colors.black};
+    background-color: ${props => props.theme.button.delete};
+    stroke: ${props => props.theme.text.hero};
     transition: background-color ${props => props.theme.hover.transition}, stroke ${props => props.theme.hover.transition};
 
     @media screen and (min-width: 768px) {

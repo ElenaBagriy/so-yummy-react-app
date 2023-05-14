@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as ArrowDown } from "../../images/commonImages/arrowDown.svg";
+import { ReactComponent as ArrowDown } from "../../../images/commonImages/arrowDown.svg";
 
 export const SelectContainer = styled.div`
   position: relative;
@@ -47,14 +47,14 @@ export const DropdownStyle = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 110%;
+  top: 100%;
   left: 0;
   max-height: 200px;
   width: 100%;
   margin-bottom: 10px;
   margin-right: 4px;
 
-  background-color: ${(props) => props.theme.colors.bgMain};
+  background-color: ${(props) => props.theme.select.list};
   border-radius: 0px 0px 6px 6px;
 
   overflow: auto;
@@ -72,7 +72,7 @@ export const DropdownStyle = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #e7e5e5;
+    background-color: ${(props) => props.theme.list.scroll};;
     border-radius: 12px;
   }
 
@@ -105,7 +105,7 @@ export const DropdownItem = styled.div`
   ${(p) =>
     p.active &&
     css`
-      color: ${(props) => props.theme.colors.green};
+      color: ${(props) => props.theme.list.selectedText};
       font-weight: 500;
     `}
   &:hover, :focus, :focus:hover {

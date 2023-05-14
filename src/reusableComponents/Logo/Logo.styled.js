@@ -12,11 +12,13 @@ export const StyledSVG = styled.svg`
   height: 40px;
   background-color: ${props => props.theme.colors.green};
   border-radius: 12px;
-  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition};
+  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition}, stroke ${props => props.theme.hover.transition};
+  stroke: ${props => props.theme.colors.bgMain};;
 
   &:hover,
     :focus {
-    background-color: ${props => props.theme.colors.black};
+    background-color: ${props => props.theme.button.accent};
+    stroke: ${props => props.theme.button.textToDark};
     box-shadow: ${props => props.theme.hover.boxShadow};
   }
 

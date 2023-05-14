@@ -8,8 +8,9 @@ export const UserModalWrapper = styled.div`
   width: 161px;
   height: 130px;
   padding: 18px;
-  background-color: ${({ theme }) => theme.colors.bgMain};
+  background-color: ${({ theme }) => theme.colors.background};
   border-radius: 8px;
+  border: ${props => props.theme.border.modal};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
 
   @media screen and (min-width: 768px) {
@@ -30,20 +31,20 @@ export const EditProfileButton = styled.button`
   font-size: 14px;
   line-height: 1.6;
 
-  color: ${({ theme }) => theme.text.heroParagraph};
+  color: ${({ theme }) => theme.text.header};
   transition: color ${props => props.theme.hover.transition};
 
   &:hover,
     :focus {
     color: ${props => props.theme.colors.green};
     & svg path{
-      stroke: ${props => props.theme.text.accent};
+      stroke: ${props => props.theme.colors.green};
     }
   };
 
   & svg path{
     transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.theme.text.header};
     box-shadow: ${props => props.theme.hover.boxShadow};
   }
 `;
@@ -51,11 +52,11 @@ export const EditProfileButton = styled.button`
 export const EditIcon = styled(EditSvg)`
       & path {
     transition: stroke ${props => props.theme.hover.transition};
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.theme.text.header};
 
     &:hover,
      :focus {
-      stroke: ${props => props.theme.text.accent};
+      stroke: ${props => props.theme.colors.green};
     }
   }
 `;
@@ -72,15 +73,25 @@ export const LogoutButton = styled.button`
   border: none;
   background-color: ${({ theme }) => theme.colors.green};
   color: ${({ theme }) => theme.colors.bgMain};
-  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition};
+  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition}, stroke ${props => props.theme.hover.transition};
 
   &:hover,
     :focus {
-    background-color: ${props => props.theme.colors.black};
+    background-color: ${props => props.theme.button.accent};
     box-shadow: ${props => props.theme.hover.boxShadow};
+    color: ${props => props.theme.button.textToDark};
+
+    & svg {
+      stroke: ${props => props.theme.button.textToDark};
+    }
   }
 
   @media screen and (min-width: 768px) {
     padding: 12px 32px;
   }
+`;
+
+export const SVG = styled.svg`
+  stroke: ${props => props.theme.colors.bgMain};
+  transition: stroke ${props => props.theme.hover.transition};
 `;

@@ -41,7 +41,7 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.02em;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${props => props.theme.list.option};
 
   @media screen and (min-width: 768px) {
     max-width: 428px;
@@ -58,7 +58,7 @@ export const BoldText = styled.span`
   font-size: 18px;
   line-height: 1.11;
   letter-spacing: -0.02em;
-  color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.text.black};
 
   @media screen and (min-width: 768px) {
     margin-bottom: 14px;

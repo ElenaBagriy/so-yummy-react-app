@@ -18,8 +18,8 @@ export const BasicPagination = styled(Pagination)`
         padding: 12px 28px;
         width: 275px;
         border-radius: 26px;
-        box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
-        background-color: ${props => props.theme.colors.bgMain};
+        box-shadow: 0px 4px 4px ${props => props.theme.pagination.shadow};
+        background-color: ${props => props.theme.colors.backgroundSecondary};
 
         @media screen and (min-width: 768px) {
         padding: 14px 24px;
@@ -37,28 +37,31 @@ export const BasicPagination = styled(Pagination)`
         min-width: auto;
         width: 27px;
         height: 27px;
-        color: ${props => props.theme.text.paginationText};
-        transition: background-color ${props => props.theme.hover.transition};
+        color: ${props => props.theme.pagination.text};
+        transition: background-color ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition};
         
         &:hover {
             background-color: #cce681;
+            color: #656565;
         }
 
         &.Mui-selected {
-        background-color: ${props => props.theme.colors.lightGreen};
-        transition: background-color ${props => props.theme.hover.transition};
+        background-color: ${props => props.theme.pagination.selected};
+        color: ${props => props.theme.text.hero};
+        transition: background-color ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition};
 
         &:hover {
             background-color: #cce681;
+            color: #656565;
         }
         }
     }
 `
 
 export const ArrowBack = styled(ArrowBackIcon)`
-  fill: rgba(169, 169, 169, 0.73);
+  fill: ${props => props.theme.pagination.arrow};
 `
 
 export const ArrowForward = styled(ArrowForwardIcon)`
-  fill: rgba(169, 169, 169, 0.73);
+  fill: ${props => props.theme.pagination.arrow};
 `

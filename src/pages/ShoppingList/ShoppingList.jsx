@@ -22,7 +22,7 @@ const ShoppingListPage = () => {
       <Background />
       <Container>
         <Section>
-          <MainPageTitle title="Shopping list"></MainPageTitle>
+          <MainPageTitle title="Shopping list"/>
           <ShoppingListTabl />
         </Section>
       </Container>

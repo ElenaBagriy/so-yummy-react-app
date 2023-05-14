@@ -22,6 +22,7 @@ import {
 } from './EditProfileModal.styled';
 import { updateUser } from 'redux/user/userOperations';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
   const userName = useSelector(selectUserName);
@@ -123,4 +124,9 @@ export function EditProfileModal({ isOpenEditModal, handleCloseEditModal }) {
       </EditProfileWrapper>
     </Modal>
   );
-}
+};
+
+EditProfileModal.propTypes = {
+  isOpenEditModal: PropTypes.bool,
+  handleCloseEditModal: PropTypes.func,
+};

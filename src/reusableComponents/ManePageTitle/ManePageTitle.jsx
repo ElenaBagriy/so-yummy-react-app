@@ -1,5 +1,11 @@
-import { StyledTitle } from "./ManePageTitle.styled"
+import { StyledTitle } from "./ManePageTitle.styled";
+import PropTypes from 'prop-types';
 
-export const MainPageTitle = ({title, color = 'title', isLink = false}) => {
-    return <StyledTitle color={color} isLink={isLink}>{title}</StyledTitle>
-}
+export const MainPageTitle = ({ title, isLink = false }) => {
+    return <StyledTitle isLink={isLink}>{title}</StyledTitle>
+};
+
+MainPageTitle.propTypes = {
+    title: PropTypes.string,
+    isLink: PropTypes.bool,
+};

@@ -31,6 +31,6 @@ export const StyledLink = styled(Link)`
   &:hover,
   :focus,
   :active {
-    color: ${({ theme }) => theme.text.accent};
+    color: ${({ theme }) => theme.colors.accent};
   }
 `;

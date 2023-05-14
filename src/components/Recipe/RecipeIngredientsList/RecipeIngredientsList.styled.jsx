@@ -13,6 +13,7 @@ export const ListItemHeader = styled.li`
   margin-bottom: 24px;
   background-color: ${(p) => p.theme.colors.green};
   border-radius: 8px;
+
   ${(p) => p.theme.sizes.tablet} {
     padding: 21px 32px;
   }
@@ -51,7 +52,7 @@ export const ListItem = styled.li`
   align-items: center;
   justify-content: space-between;
   padding: 14.5px 29px 14px 14px;
-  background: ${(p) => p.theme.colors.lightGreen};
+  background: ${(p) => p.theme.colors.ingredients};
   border-radius: 8px;
    &:not(:last-child) {
     margin-bottom: 16px;
@@ -70,14 +71,14 @@ export const ListItem = styled.li`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 
   @media screen and (min-width: 768px) {
-    gap: 40px;
+    gap: 24px;
   };
 
   @media screen and (min-width: 1280px) {
-    gap: 66px;
+    gap: 40px;
   }
 `;
 
@@ -100,7 +101,7 @@ export const Title = styled.h2`
   font-size: ${(p) => p.theme.fontSizes.xxs};
   line-height: 1.17;
   letter-spacing: -0.24px;
-  color: ${(p) => p.theme.text.primary};
+  color: ${(p) => p.theme.text.main};
   ${(p) => p.theme.sizes.tablet} {
     font-size: ${(p) => p.theme.fontSizes.m};
     line-height: 1;

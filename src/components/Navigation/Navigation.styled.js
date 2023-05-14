@@ -21,7 +21,8 @@ export const StyledLink = styled(NavLink)`
   font-weight: 500;
   font-size: 18px;
   line-height: 1;
-  color: ${({ theme }) => theme.text.heroParagraph};
+  cursor: pointer;
+  color: ${props => props.iswhite === 'true' ? props.theme.text.dark : props.theme.text.header};
   transition: color ${props => props.theme.hover.transition},
     stroke ${props => props.theme.hover.transition};
 
@@ -57,7 +58,7 @@ export const StyledSVG = styled(SearchIcon)`
   transition: all ${props => props.theme.hover.transition};
 
   & path {
-    stroke: ${props => props.theme.text.primary};
+    stroke: ${props => props.iswhite === 'true' ? props.theme.text.dark : props.theme.text.hero};
   }
 
   @media screen and (min-width: 1280px) {

@@ -1,4 +1,5 @@
 import { RotatingLines } from "react-loader-spinner";
+import PropTypes from 'prop-types';
 
 const ButtonLoader = ({ color, width }) => {
   return (
@@ -13,3 +14,8 @@ const ButtonLoader = ({ color, width }) => {
 };
 
 export default ButtonLoader;
+
+ButtonLoader.propTypes = {
+  color: PropTypes.string,
+  width: PropTypes.number,
+};

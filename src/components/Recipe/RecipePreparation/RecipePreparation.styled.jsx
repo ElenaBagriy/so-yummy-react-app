@@ -25,7 +25,7 @@ export const Title = styled.h2`
   font-size: ${(p) => p.theme.fontSizes.m};
   line-height: 1;
   letter-spacing: -0.02em;
-  color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.text.main};
   ${(p) => p.theme.sizes.tablet} {
     letter-spacing: -0.24px;
   }
@@ -34,7 +34,7 @@ export const Title = styled.h2`
 export const Text = styled.p`
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.8);
+  color: ${props => props.theme.text.preparation};
   font-size: ${(p) => p.theme.fontSizes.xxs};
   line-height: 1.17;
   letter-spacing: -0.02em;
@@ -79,7 +79,7 @@ export const SpanBox = styled.div`
   justify-content: center;
   min-width: 21px;
   min-height: 21px;
-  color: white;
+  color: ${props => props.theme.colors.bgMain};
 `;
 
 export const Span = styled.span`

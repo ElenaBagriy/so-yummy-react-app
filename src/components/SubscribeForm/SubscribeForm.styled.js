@@ -135,7 +135,7 @@ export const EmailIcon = styled(EmailSVG)`
 export const SubscribeBtn = styled.button`
   text-align: center;
   padding: 11px;
-  background-color: ${props => props.theme.colors.green};
+  background-color: ${props => props.theme.button.background};
   border: none;
   border-radius: 6px;
 
@@ -147,12 +147,13 @@ export const SubscribeBtn = styled.button`
 
   &:hover,
   :focus {
-    color: ${({ theme }) => theme.text.hero};
+    color: ${({ theme }) => theme.button.accent};
   }
 
   &:disabled {
     background-color: ${props => props.theme.colors.grey};
-    color: ${props => props.theme.text.heroParagraph};
+    color: ${props => props.theme.text.favorite};
+    cursor: not-allowed;
   }
 
   @media screen and (min-width: 768px) {
@@ -177,7 +178,7 @@ export const HelperText = styled(FormHelperText)`
     line-height: 1.5;
     text-align: center;
     padding-left: 42px;
-    color: #e74a3b;
+    color: ${props => props.theme.colors.error};
 
     @media screen and (min-width: 768px) {
       top: -18px;

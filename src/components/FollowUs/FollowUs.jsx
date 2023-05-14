@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyledFollow, SocialSVG, Link } from './FollowUs.styled';
 import sprite from '../../images/FollowUs/symbol-defs.svg';
+import PropTypes from 'prop-types';
 
 export const FollowUs = ({title = true}) => {
   return (
@@ -38,4 +39,8 @@ export const FollowUs = ({title = true}) => {
       </ul>
     </StyledFollow>
   );
+};
+
+FollowUs.propTypes = {
+  title: PropTypes.bool,
 };

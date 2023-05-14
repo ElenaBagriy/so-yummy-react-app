@@ -1,4 +1,5 @@
 import { PlayerStyled, PlayerWrapper } from './Player.styled';
+import PropTypes from 'prop-types';
 
 export const Player = ({ url, src }) => {
 
@@ -10,4 +11,9 @@ export const Player = ({ url, src }) => {
             height='100%'
         />
     </PlayerWrapper>
+};
+
+Player.propTypes = {
+  url: PropTypes.string,
+  src: PropTypes.string,
 };

@@ -48,11 +48,12 @@ export const Link = styled(NavLink)`
   line-height: 1.29;
   background-color: ${props => props.theme.colors.green};
   color: ${props => props.theme.colors.bgMain};
-  transition: background-color ${props => props.theme.hover.transition};
+  transition: background-color ${props => props.theme.hover.transition}, color ${props => props.theme.hover.transition};
 
   &:hover,
   :focus {
-    background-color: ${props => props.theme.colors.black};
+    background-color: ${props => props.theme.button.accent};
+    color: ${props => props.theme.button.textToDark};
   }
 `;
 
@@ -61,13 +62,16 @@ export const RecipesList = styled.ul`
     margin-top: 32px;
     flex-wrap: nowrap;
 
-    @media screen and (max-width: 767px) {
+    /* @media screen and (max-width: 767px) { */
       & li:nth-last-child(-n + 3) {
         display: none;
       };
-    };
+    /* }; */
 
     @media screen and (min-width: 768px) {
+      & li:nth-last-child(-n + 3) {
+        display: block;
+      };
         & li:nth-last-child(-n + 2) {
           display: none;
         };
@@ -85,6 +89,7 @@ export const RecipesList = styled.ul`
 `;
 
 export const RecipesItem = styled.li`
+    height: 323px;
     position: relative;
     width: 100%;
     border-radius: 8px;
@@ -117,8 +122,9 @@ export const StyledLink = styled(NavLink)`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
+  overflow: hidden;
   background-color: transparent;
-  color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.text.hero};
   border-radius: 24px 44px;
   border: 2px solid ${props => props.theme.colors.green};
   transition: color ${props => props.theme.hover.transition}, background-color ${props => props.theme.hover.transition};
