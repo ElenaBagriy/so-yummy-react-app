@@ -88,7 +88,6 @@ export const AddRecipeForm = () => {
         });
     
     dispatch(addOwnRecipe(formData))
-      .unwrap()
       .then(res => navigate('/my'))
       .catch(() => toast.error('Something went wrong. Please, try again later'));
   };

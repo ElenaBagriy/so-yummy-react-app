@@ -44,7 +44,6 @@ const ownRecipesSlice = createSlice({
             .addCase(addOwnRecipe.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = false;
-                state.recipes = action.payload;
             })
             .addCase(addOwnRecipe.rejected, handleRejected)
 

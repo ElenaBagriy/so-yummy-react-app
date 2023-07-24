@@ -32,7 +32,6 @@ export const deleteOwnRecipe = createAsyncThunk(
     async (id, thunkAPI) => {
       try {
         const response = await OwnRecipesAPI.deleteOwnRecipe(id);
-  
         return response;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);

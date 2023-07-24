@@ -101,7 +101,7 @@ export const MyRecipesList = () => {
                         <NeedSearching text="First you need to add some recipe." />
                     </TemplatetWrapper> :
                     <RecipesList>
-                        {myRecipes.map((recipe) => {
+                        {myRecipes?.map((recipe) => {
                             return <RecipesItem key={recipe._id}>
                                 <Image src={recipe.preview ? recipe.preview : defaultImage} alt={recipe.title} />
                                 <Wrapper>
